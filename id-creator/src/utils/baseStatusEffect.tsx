@@ -251,6 +251,84 @@ export const baseStatusEffect={
     "serpent_arm":
         "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Serpent_Arm.png' alt='serpent_arm_icon' />Serpent Arm</span>",
 
+    "assist_-援-":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Assist_-援-.png' alt='assist_-援-_icon' />Assist -援-</span>",
+    
+    "overheat":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Overheat.png' alt='overheat_icon' />Overheat</span>",
+
+    "unrelenting_spirit_-剛氣-":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Unrelenting_Spirit_-剛氣-.png' alt='unrelenting_spirit_-剛氣-_icon' />Unrelenting Spirit -剛氣-</span>",
+    
+    "unrelenting_spirit_-_shin_-剛氣-心-":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Unrelenting_Spirit_-_Shin_-剛氣-心-.png' alt='unrelenting_spirit_-_shin_-剛氣-心-_icon' />Unrelenting Spirit - Shin -剛氣-心-</span>",
+    
+    "scorch_propellant_ammo":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Scorch_Propellant_Ammo.png' alt='scorch_propellant_ammo_icon' />Scorch Propellant Ammo</span>",
+    
+    "fell_bullet":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Fell_Bullet.png' alt='fell_bullet_icon' />Fell Bullet</span>",
+    
+    "deep_tears":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Deep_Tears.png' alt='deep_tears_icon' />Deep Tears</span>",
+
+    "piercing_sword":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Piercing_Sword.png' alt='piercing_sword_icon' />Piercing Sword</span>",
+
+    "protecting_sword":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Protecting_Sword.png' alt='protecting_sword_icon' />Protecting Sword</span>",
+
+    "tear-sharpened":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Tear-sharpened.png' alt='tear-sharpened_icon' />Tear-sharpened</span>",
+
+    "blessing":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Blessing.png' alt='blessing_icon' />Blessing</span>",
+    
+    "despair":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Despair.png' alt='despair_icon' />Despair</span>",
+
+    "love-hate":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Love-Hate.png' alt='love-hate_icon' />Love-Hate</span>",
+    
+    "magical_girl's_chant":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Magical_Girl's_Chant.png' alt='magical_girl's_chant_icon' />Magical Girl's Chant</span>",
+
+    "here_comes_magical_girl!":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Here_Comes_Magical_Girl!.png' alt='here_comes_magical_girl_icon' />Here Comes Magical Girl!</span>",
+
+    "magical_arcana":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Magical_Arcana.png' alt='magical_arcana_icon' />Magical Arcana</span>",
+    
+    "violent_collections":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Violent_Collections.png' alt='violent_collections_icon' />Violent Collections</span>",
+    
+    "accumulated_past":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Accumulated_Past.png' alt='accumulated_past_icon' />Accumulated Past</span>",
+    
+    "leash-holder_of_all_heishou":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Leash-holder_of_All_Heishou.png' alt='leash_holder_of_all_heishou_icon' />Leash Holder of All Heishou</span>",
+
+    "life_from_death_-死中求活-":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Life_from_Death_-死中求活-.png' alt='life_from_death_icon' />Life from Death -死中求活-</span>",
+
+    "heishou_bolus_contamination_-黑獸丸染-":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Heishou_Bolus_Contamination_-黑獸丸染-.png' alt='heishou_bolus_contamination_icon' />Heishou Bolus Contamination -黑獸丸染-</span>",
+
+    "tarnished_blood":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Tarnished_Blood.png' alt='tarnished_blood_icon' />Tarnished Blood</span>",
+
+    "unrelenting_storm":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Unrelenting_Storm.png' alt='unrelenting_storm_icon' />Unrelenting Storm</span>",
+    
+    "flower-burying_pin_-埋花針-":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Flower-burying_Pin_-埋花針-.png' alt='flower_burying_pin_icon' />Flower Burying Pin -埋花針-</span>",
+
+    "denial_-不許-":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Denial_-不許-.png' alt='denial_icon' />Denial -不許-</span>",
+
+    "flower-burying_wedge_-埋花櫼-":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Flower-burying_Wedge_-埋花櫼-.png' alt='flower_burying_wedge_icon' />Flower Burying Wedge -埋花櫼-</span>",
+
     "slash_dmg_down":
         "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Slash_DMG_Down.png' alt='slash_dmg_down_icon' />Slash DMG Down</span>",
     
@@ -518,6 +596,18 @@ export const baseStatusEffect={
     "mark_of_decay":
         "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Mark_of_Decay.png' alt='mark_of_decay_icon' />Mark of Decay</span>",
 
+    "tremor_-_scorch":
+        "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Tremor_-_Scorch.png' alt='tremor_-_scorch_icon' />Tremor - Scorch</span>",
+    
+    "mark_of_villainy":
+        "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Mark_of_Villainy.png' alt='mark_of_villainy_icon' />Mark of Villainy</span>",
+
+    "hysteria":
+        "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Hysteria.png' alt='hysteria_icon' />Hysteria</span>",
+
+    "regressive_transformation_-_reversed":
+        "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Regressive_Transformation_-_Reversed.png' alt='regressive_transformation_-_reversed_icon' />Regressive Transformation - Reversed</span>",
+
     "aggro":
         "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Aggro.png' alt='aggro_icon' />Aggro</span>",
 
@@ -616,6 +706,33 @@ export const baseStatusEffect={
 
     "tianjiu_star's_blade":
         "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Tianjiu_Star's_Blade.png' alt='tianjiu_star's_blade_icon' />Tianjiu Star's Blade</span>",
+    
+    "launcher_-始-":
+        "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Launcher_-始-.png' alt='launcher_-始-_icon' />Launcher -始-</span>",
+    
+    "ready_-待-":
+        "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Ready_-待-.png' alt='ready_-待-_icon' />Ready -待-</span>",
+
+    "battlefield_retreat":
+        "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Battlefield_Retreat.png' alt='battlefield_retreat_icon' />Battlefield Retreat</span>",
+
+    "savage_tigermark_round":
+        "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Savage_Tigermark_Round.png' alt='savage_tigermark_round_icon' />Savage Tigermark Round</span>",
+
+    "tigermark_round":
+        "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Tigermark_Round.png' alt='tigermark_round_icon' />Tigermark Round</span>",
+
+    "torn_memory":
+        "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Torn_Memory.png' alt='torn_memory_icon' />Torn Memory</span>",
+    
+    "your_will_guides_my_blade":
+        "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Your_Will_Guides_My_Blade.png' alt='your_will_guides_my_blade_icon' />Your Will Guides My Blade</span>",
+
+    "exalted_command":
+        "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Exalted_Command.png' alt='exalted_command_icon' />Exalted Command</span>",
+
+    "lordsguard":
+        "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/LordsGuard.png' alt='lordsguard_icon' />LordsGuard</span>",
 
     "coin_1":
         "<span class='center-element' contenteditable='false'><img class='status-icon' src='Images/status-effect/Coin_Effect_1.png' alt='coin-effect-1' /></span>",
@@ -682,6 +799,9 @@ export const baseStatusEffect={
     
     "on_crit":
         "<span class='center-element' contenteditable='false' style='color:#94f140'>[On Crit]</span>",
+    
+    "on_hit_without_cracking":
+        "<span class='center-element' contenteditable='false' style='color:#94f140'>[On Hit Without Cracking]</span>",
     
     "indiscriminate":
         "<span class='center-element' contenteditable='false' style='color:#ff0000'>[Indiscriminate]</span>",
