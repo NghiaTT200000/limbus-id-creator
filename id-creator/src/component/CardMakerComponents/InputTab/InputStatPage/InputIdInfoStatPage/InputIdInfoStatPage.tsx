@@ -39,14 +39,15 @@ export default function InputIdInfoStatPage({collaspPage}:{collaspPage:()=>void}
 
     function changeResistantColor(value:number):string{
         if(value<1) return "var(--Endure)"
-        if(value>=2.0) return "var(--Fatal)"
+        if(value>=1.5) return "var(--Fatal)"
         
         return"var(--Normal)"
     }
 
     function changeResistantText(value:number):string{
         if(value<=0.5) return "Ineff"
-        if(value<1) return "Endure"
+        if(value<=0.75) return "Endure"
+        if(value>=1.5) return "Weak"
         if(value>=2.0) return "Fatal"
         return "Normal"
     }
