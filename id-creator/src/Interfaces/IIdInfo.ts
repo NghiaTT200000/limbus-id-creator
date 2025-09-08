@@ -49,6 +49,7 @@ export class IdInfo implements IIdInfo{
     sinnerColor: string = "var(--Yi-Sang-color)";
     sinnerIcon: string = "Images/sinner-icon/Yi_Sang_Icon.png";
     rarity: string = "Images/rarity/IDNumber1.png";
+    localSaveId:number = 1;
     skillDetails: (IOffenseSkill | IDefenseSkill | IPassiveSkill | ICustomEffect | IMentalEffect | never)[] = [
         new OffenseSkill("Skill 1", "Wrath", 3, "SKILL 1"),
         new OffenseSkill("Skill 2", "Gluttony", 2, "SKILL 2"),

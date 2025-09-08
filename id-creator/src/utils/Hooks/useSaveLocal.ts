@@ -1,76 +1,76 @@
+import { Table } from "dexie";
 import { ISaveFile } from "Interfaces/ISaveFile";
 import { useCallback, useEffect, useState } from "react";
+import { db } from "utils/IndexDB/db";
 
 
 export default function useSaveLocal<SaveObj>(LocalSaveDataName:string){
+    const [saveDataTable,setSaveDataTable] = useState<Table<any>|null>(null)
     const [saveData,setSaveData] = useState<ISaveFile<SaveObj>[]>([]) 
+    const [isLoading, setIsLoading] = useState(false)
 
-    const changeSaveName=useCallback((index:number,newName:string)=>{
+    const deleteSave = useCallback(async (id:string)=>{
+        if(!saveDataTable) return null
         try {
-            const newSaveData = [...saveData]
-            newSaveData[index].saveName=newName
-            setSaveData(newSaveData)
-            localStorage.setItem(LocalSaveDataName,JSON.stringify(newSaveData))    
+           setIsLoading(true)
+           await saveDataTable?.delete(id)
+           setSaveData(saveData.filter((item)=>item.id!==id))
+        } catch (error) {
+            console.log(error)
+        } finally {
+            setIsLoading(false)
+        }
+    },[saveData, saveDataTable])
+
+    const createSave = useCallback(async (saveObj: ISaveFile<SaveObj>)=>{
+        if(!saveDataTable) return null
+        try {
+           setIsLoading(true)
+           const id = await saveDataTable?.add(saveObj)
+           console.log("Saved with id: ",id)
+           setSaveData([...saveData, { ...saveObj}])
         } catch (error) {
             console.log(error)
         }
-        
-    },[saveData])
+        finally {
+            setIsLoading(false)
+        }
+    },[saveData, saveDataTable])
 
-    const deleteSave = useCallback((index:number)=>{
+    const getAllSaves = useCallback(async () => {
+        if (!saveDataTable) return null
+        return await saveDataTable?.toArray()
+    }, [saveDataTable])
+
+    const loadSave = useCallback(async (id: string)=>{
+        if(!saveDataTable) return null
+        return await saveDataTable?.get(id) as ISaveFile<SaveObj>
+    },[saveData, saveDataTable])
+
+    const overwriteSave = useCallback(async (id: string,saveObj:ISaveFile<SaveObj>)=>{
+        if(!saveDataTable) return null
         try {
-            const newSaveData = [...saveData]
-            newSaveData.splice(index,1)
-            setSaveData(newSaveData)
-            localStorage.setItem(LocalSaveDataName,JSON.stringify(newSaveData))    
+            setIsLoading(true)
+            await saveDataTable.update(id, saveObj)            
+            setSaveData(saveData.map(item=>item.id===id?{...saveObj}:item))
         } catch (error) {
             console.log(error)
         }
-    },[saveData])
-
-    const createSave = useCallback((saveObj: ISaveFile<SaveObj>)=>{
-        try {
-            const newSaveData = [...saveData]
-            newSaveData.unshift(saveObj)
-            setSaveData(newSaveData)
-            localStorage.setItem(LocalSaveDataName,JSON.stringify(newSaveData))    
-        } catch (error) {
-            console.log(error)
+        finally {
+            setIsLoading(false)
         }
-        
-    },[saveData])
-
-    const loadSave = useCallback((index: number)=>{
-        return saveData[index]
-    },[saveData])
-
-    const overwriteSave = useCallback((index: number,saveObj:ISaveFile<SaveObj>)=>{
-        try {
-            const newSaveData = [...saveData]
-            newSaveData[index]={...newSaveData[index],saveTime:saveObj.saveTime,saveInfo:saveObj.saveInfo}
-            setSaveData(newSaveData)
-            localStorage.setItem(LocalSaveDataName,JSON.stringify(newSaveData))
-        } catch (error) {
-            console.log(error)
-        }
-        
     },[saveData])
 
 
     useEffect(()=>{
-        try {
-            if(LocalSaveDataName){
-                if(localStorage.getItem(LocalSaveDataName)){
-                    setSaveData(JSON.parse(localStorage.getItem(LocalSaveDataName)))
-                }
-                else{
-                    localStorage.setItem(LocalSaveDataName,JSON.stringify([]))
-                }   
-            }
-        } catch (error) {
-            console.log(error)
-        }
-    },[JSON.stringify(saveData),LocalSaveDataName])
+        if(LocalSaveDataName)setSaveDataTable(db.table(LocalSaveDataName))
+    },[LocalSaveDataName])
 
-    return {saveData,changeSaveName,deleteSave,createSave,loadSave,overwriteSave}
+    useEffect(()=>{
+        if(saveDataTable)getAllSaves().then(saves=>{
+            if(saves) setSaveData(saves)
+        })
+    },[saveDataTable])
+
+    return {saveData,isLoading,deleteSave,createSave,getAllSaves,loadSave,overwriteSave}
 }

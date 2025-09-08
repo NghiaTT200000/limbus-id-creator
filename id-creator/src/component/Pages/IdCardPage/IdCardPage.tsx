@@ -1,4 +1,4 @@
-import React, { ReactElement, useCallback, useEffect, useRef, useState } from 'react';
+import React, { ReactElement, useEffect, useRef, useState } from 'react';
 import 'styles/reset.css'
 import 'styles/style.css'
 import '../EditorPage.css'
@@ -12,6 +12,7 @@ import ResetMenu from 'utils/ResetMenu/ResetMenu';
 import { IdInfo } from 'Interfaces/IIdInfo';
 import CardMakerFooter from 'component/CardMakerComponents/CardMakerFooter/CardMakerFooter';
 import { useSettingMenuContext } from 'component/util/SettingMenu/SettingMenu';
+import { db } from 'utils/IndexDB/db';
 
 
 
@@ -41,24 +42,27 @@ function IdCardContext():ReactElement{
 
     useEffect(()=>{
         //Get the last save id
-        const lastSave = JSON.parse(localStorage.getItem("currIdSave"))
-        if(lastSave){
-            setIdInfoValue(lastSave)
-        }
-        //Get local save id based on the url
-        const id = parseInt(query.get('id'))
-        if(query.get('saveMode')==="local"){
-            const save = JSON.parse(localStorage.getItem("IdLocalSaves"))
-            if(save && save[id] && id!==undefined){
-                setIdInfoValue(save[id].saveInfo)
+        db.currIdSave.toArray().then(arr=>{
+            const lastSave = arr[0]
+            console.log(lastSave)
+            if(lastSave){
+                setIdInfoValue(lastSave)
             }
-        }
-        //Setting the save menu
-        setLocalSaveName("IdLocalSaves")
-        changeSaveInfo(idInfoValue)
-        setLoadObjInfoValueCb(()=>{return setIdInfoValue})
-        //Setting the domref for downloading
-        setDomRef(domRef)
+            //Get local save id based on the url
+            const id = parseInt(query.get('id'))
+            if(query.get('saveMode')==="local"){
+                const save = JSON.parse(localStorage.getItem("IdLocalSaves"))
+                if(save && save[id] && id!==undefined){
+                    setIdInfoValue(save[id].saveInfo)
+                }
+            }
+            //Setting the save menu
+            setLocalSaveName("IdLocalSaves")
+            changeSaveInfo(idInfoValue)
+            setLoadObjInfoValueCb(()=>{return setIdInfoValue})
+            //Setting the domref for downloading
+            setDomRef(domRef)
+        })
     },[])
 
     useEffect(()=>{
@@ -73,7 +77,7 @@ function IdCardContext():ReactElement{
     useEffect(()=>{
         changeSaveInfo(new IdInfo(idInfoValue))
         //Save the last change
-        localStorage.setItem("currIdSave",JSON.stringify(new IdInfo(idInfoValue)))
+        db.currIdSave.put(new IdInfo(idInfoValue),1)
     },[JSON.stringify(idInfoValue)])
 
     return <StatusEffectProvider skillDetails={idInfoValue.skillDetails}>
