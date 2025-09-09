@@ -1,7 +1,7 @@
 import { Table } from "dexie";
 import { ISaveFile } from "Interfaces/ISaveFile";
 import { useCallback, useEffect, useState } from "react";
-import { db } from "utils/IndexDB/db";
+import { indexDB } from "utils/IndexDB/indexDB";
 
 
 export default function useSaveLocal<SaveObj>(LocalSaveDataName:string){
@@ -28,7 +28,7 @@ export default function useSaveLocal<SaveObj>(LocalSaveDataName:string){
            setIsLoading(true)
            const id = await saveDataTable?.add(saveObj)
            console.log("Saved with id: ",id)
-           setSaveData([...saveData, { ...saveObj}])
+           setSaveData([{ ...saveObj},...saveData])
         } catch (error) {
             console.log(error)
         }
@@ -47,12 +47,15 @@ export default function useSaveLocal<SaveObj>(LocalSaveDataName:string){
         return await saveDataTable?.get(id) as ISaveFile<SaveObj>
     },[saveData, saveDataTable])
 
-    const overwriteSave = useCallback(async (id: string,saveObj:ISaveFile<SaveObj>)=>{
+    const overwriteSave = useCallback(async (id: string,saveObj:SaveObj)=>{
         if(!saveDataTable) return null
         try {
             setIsLoading(true)
-            await saveDataTable.update(id, saveObj)            
-            setSaveData(saveData.map(item=>item.id===id?{...saveObj}:item))
+            await saveDataTable.update(id, {saveInfo: saveObj, saveTime: new Date().toLocaleString()})            
+            setSaveData(saveData.map(item=>item.id===id?
+                {...item, saveInfo: saveObj, saveTime: new Date().toLocaleString()}:
+                item
+            ))
         } catch (error) {
             console.log(error)
         }
@@ -63,7 +66,7 @@ export default function useSaveLocal<SaveObj>(LocalSaveDataName:string){
 
 
     useEffect(()=>{
-        if(LocalSaveDataName)setSaveDataTable(db.table(LocalSaveDataName))
+        if(LocalSaveDataName)setSaveDataTable(indexDB.table(LocalSaveDataName))
     },[LocalSaveDataName])
 
     useEffect(()=>{

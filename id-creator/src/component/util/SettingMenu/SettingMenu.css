@@ -103,6 +103,7 @@
     cursor: pointer;
     padding: 8px;
     background-color: #ECCAA5;
+    width: 100%;
 }
 
 .save-tab:hover,.save-tab.active{

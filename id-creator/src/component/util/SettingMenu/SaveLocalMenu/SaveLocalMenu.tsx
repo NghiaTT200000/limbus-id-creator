@@ -52,27 +52,25 @@ const SaveLocalMenu=({localSaveName,saveObjInfoValue,loadObjInfoValueCb,isActive
         <div className="save-menu-list local">
             {saveData.length>0?<>
                 {saveData.map((data)=>
-                    <div className={`save-tab center-element`} key={data.id}>
+                    <div className={`save-tab center-element-vertically`} key={data.id}>
                         {data.previewImg?<img className="save-preview-img" src={data.previewImg} alt="preview-save" />:<></>}
-                        <div>
-                            <p className="created-time">Created on: {data.saveTime}</p>
-                            <div className="center-element save-tab-input-container">
-                                <p>{data.saveName}</p>
-                            </div>
-                            <div className="center-element">
-                                <MainButton component={"Delete"} clickHandler={()=>{
-                                        deleteSave(data.id)
-                                    }} btnClass={"main-button"}/>
-                                <MainButton component={"Overwrite"} clickHandler={()=>{
-                                    saveObjInfoValue.saveTime = new Date().toLocaleString()
-                                    overwriteSave(data.id,saveObjInfoValue)
-                                }} btnClass={"main-button"}/>
-                                <MainButton component={"Load"} clickHandler={async ()=>{
-                                    const save = await loadSave(data.id)
-                                    loadObjInfoValueCb(save.saveInfo)
-                                    setIsActive(!isActive)
-                                }} btnClass={"main-button"}/>
-                            </div>
+                        <p className="created-time">Last updated: {data.saveTime}</p>
+                        <div className="center-element save-tab-input-container">
+                            <p>{data.saveName}</p>
+                        </div>
+                        <div className="center-element">
+                            <MainButton component={"Delete"} clickHandler={()=>{
+                                deleteSave(data.id)
+                            }} btnClass={"main-button"}/>
+                            <MainButton component={"Overwrite"} clickHandler={()=>{
+                                saveObjInfoValue.saveTime = new Date().toLocaleString()
+                                overwriteSave(data.id,saveObjInfoValue.saveInfo)
+                            }} btnClass={"main-button"}/>
+                            <MainButton component={"Load"} clickHandler={async ()=>{
+                                const save = await loadSave(data.id)
+                                loadObjInfoValueCb(save.saveInfo)
+                                setIsActive(!isActive)
+                            }} btnClass={"main-button"}/>
                         </div>
                     </div>
                 )}

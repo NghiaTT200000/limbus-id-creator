@@ -10,7 +10,7 @@ interface LocalSaves {
     EgoLocalSaves: ISaveFile<IEgoInfo>;
 }
 
-const db = new Dexie("LocalSaves") as Dexie & {
+const indexDB = new Dexie("LocalSaves") as Dexie & {
     currIdSave: EntityTable<
         IIdInfo & { localSaveId?: number },
         'localSaveId'>,
@@ -21,7 +21,7 @@ const db = new Dexie("LocalSaves") as Dexie & {
     EgoLocalSaves: EntityTable<ISaveFile<IEgoInfo>, 'id'>
 };
 
-db.version(1).stores({
+indexDB.version(1).stores({
     currIdSave: '++localSaveId',
     IdLocalSaves: 'id',
     currEgoSave: '++localSaveId',
@@ -29,4 +29,4 @@ db.version(1).stores({
 })
 
 export type { LocalSaves };
-export { db };
+export { indexDB };

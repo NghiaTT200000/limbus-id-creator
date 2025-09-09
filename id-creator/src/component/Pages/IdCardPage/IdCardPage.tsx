@@ -12,7 +12,7 @@ import ResetMenu from 'utils/ResetMenu/ResetMenu';
 import { IdInfo } from 'Interfaces/IIdInfo';
 import CardMakerFooter from 'component/CardMakerComponents/CardMakerFooter/CardMakerFooter';
 import { useSettingMenuContext } from 'component/util/SettingMenu/SettingMenu';
-import { db } from 'utils/IndexDB/db';
+import { indexDB } from 'utils/IndexDB/indexDB';
 
 
 
@@ -42,9 +42,8 @@ function IdCardContext():ReactElement{
 
     useEffect(()=>{
         //Get the last save id
-        db.currIdSave.toArray().then(arr=>{
+        indexDB.currIdSave.toArray().then(arr=>{
             const lastSave = arr[0]
-            console.log(lastSave)
             if(lastSave){
                 setIdInfoValue(lastSave)
             }
@@ -77,7 +76,7 @@ function IdCardContext():ReactElement{
     useEffect(()=>{
         changeSaveInfo(new IdInfo(idInfoValue))
         //Save the last change
-        db.currIdSave.put(new IdInfo(idInfoValue),1)
+        indexDB.currIdSave.put(new IdInfo(idInfoValue),1)
     },[JSON.stringify(idInfoValue)])
 
     return <StatusEffectProvider skillDetails={idInfoValue.skillDetails}>

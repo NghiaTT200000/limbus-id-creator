@@ -11,6 +11,7 @@ import { useSearchParams } from 'react-router-dom';
 import ResetMenu from 'utils/ResetMenu/ResetMenu';
 import CardMakerFooter from 'component/CardMakerComponents/CardMakerFooter/CardMakerFooter';
 import { useSettingMenuContext } from 'component/util/SettingMenu/SettingMenu';
+import { indexDB } from 'utils/IndexDB/indexDB';
 
 
 
@@ -39,25 +40,26 @@ function EgoCardContent():ReactElement{
 
     useEffect(()=>{
         //Get the last save id
-        const lastSave = JSON.parse(localStorage.getItem("currEgoSave"))
-        if(lastSave){
-            setEgoInfoValue
-            (lastSave)
-        }
-        //Get local save id based on the url
-        const id = parseInt(query.get('id'))
-        if(query.get('saveMode')==="local"){
-            const save = JSON.parse(localStorage.getItem("EgoLocalSaves"))
-            if(save && save[id] && id!==undefined){
-                setEgoInfoValue(save[id].saveInfo)
+        indexDB.currEgoSave.toArray().then(arr=>{
+            const lastSave = arr[0]
+            if(lastSave){
+                setEgoInfoValue(lastSave)
             }
-        }
-        //Setting the save menu
-        setLocalSaveName("EgoLocalSaves")
-        changeSaveInfo(EgoInfoValue)
-        setLoadObjInfoValueCb(()=>{return setEgoInfoValue})
-        //Setting the domref for downloading
-        setDomRef(domRef)
+            //Get local save id based on the url
+            const id = parseInt(query.get('id'))
+            if(query.get('saveMode')==="local"){
+                const save = JSON.parse(localStorage.getItem("EgoLocalSaves"))
+                if(save && save[id] && id!==undefined){
+                    setEgoInfoValue(save[id].saveInfo)
+                }
+            }
+            //Setting the save menu
+            setLocalSaveName("EgoLocalSaves")
+            changeSaveInfo(EgoInfoValue)
+            setLoadObjInfoValueCb(()=>{return setEgoInfoValue})
+            //Setting the domref for downloading
+            setDomRef(domRef)
+        })
     },[])
 
     useEffect(()=>{
@@ -72,7 +74,7 @@ function EgoCardContent():ReactElement{
     useEffect(()=>{
         changeSaveInfo(EgoInfoValue)
         //Save the last change
-        localStorage.setItem("currEgoSave",JSON.stringify(EgoInfoValue))
+        indexDB.currEgoSave.put(EgoInfoValue, 1)
     },[JSON.stringify(EgoInfoValue)])
 
     return <StatusEffectProvider skillDetails={EgoInfoValue.skillDetails}>
