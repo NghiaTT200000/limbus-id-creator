@@ -1,6 +1,5 @@
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import HeaderLayout from 'component/util/Layout/HeaderLayout';
-import DisplayPage from 'component/Pages/DisplayPage/DisplayPage';
 import EgoCardPage from 'component/Pages/EgoCardPage/EgoCardPage';
 import ForumPage from 'component/Pages/ForumPage/ForumPage';
 import IdCardPage from 'component/Pages/IdCardPage/IdCardPage';
@@ -9,10 +8,12 @@ import PostPage from 'component/Pages/PostPage/PostPage';
 import UserPage from 'component/Pages/UserPage/UserPage';
 import React, { ReactElement, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
-import { createBrowserRouter, json, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { DndProvider } from 'react-dnd'
 import { TouchBackend } from 'react-dnd-touch-backend'
 import DragAndDroppableSkillPreviewLayer from 'component/CardMakerComponents/Card/components/DragAndDroppableSkill/DragAndDroppableSkillPreviewLayer';
+import { ISaveFile } from 'Interfaces/ISaveFile';
+import { indexDB } from 'utils/IndexDB/indexDB';
 
 const root = createRoot(document.getElementById('root')!);
 
@@ -56,11 +57,39 @@ const router = createBrowserRouter([
 
 function App():ReactElement{
     useEffect(()=>{
-        const keyStorageName = ["currEgoSave","EgoLocalSaves","currIdSave","IdLocalSaves","customKeywords"]
-        for (let i = 0; i < localStorage.length; i++) {
-            if(!keyStorageName.includes(localStorage.key(i))){
-                localStorage.removeItem(localStorage.key(i))
+        // const keyStorageName = ["currEgoSave","EgoLocalSaves","currIdSave","IdLocalSaves","customKeywords"]
+        // for (let i = 0; i < localStorage.length; i++) {
+        //     if(!keyStorageName.includes(localStorage.key(i))){
+        //         localStorage.removeItem(localStorage.key(i))
+        //     }
+        // }
+        // Migrating from local storage to indexDB
+        const idLocalSaves = localStorage.getItem("IdLocalSaves")
+        const egoLocalSaves = localStorage.getItem("EgoLocalSaves")
+        const currIdSave = localStorage.getItem("currIdSave")
+        const currEgoSave = localStorage.getItem("currEgoSave")
+
+        if(idLocalSaves){
+            const saveArr:ISaveFile<any>[] = JSON.parse(idLocalSaves)
+            if(saveArr.length>0){
+                indexDB.IdLocalSaves.bulkPut(saveArr)
             }
+            localStorage.removeItem("IdLocalSaves")
+        }
+        if(egoLocalSaves){
+            const saveArr:ISaveFile<any>[] = JSON.parse(egoLocalSaves)
+            if(saveArr.length>0){
+                indexDB.EgoLocalSaves.bulkPut(saveArr)
+            }
+            localStorage.removeItem("EgoLocalSaves")
+        }
+        if(currIdSave){
+            indexDB.currIdSave.put(JSON.parse(currIdSave), 1)
+            localStorage.removeItem("currIdSave")
+        }
+        if(currEgoSave){
+            indexDB.currEgoSave.put(JSON.parse(currEgoSave), 1)
+            localStorage.removeItem("currEgoSave")
         }
     },[])
     return <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
