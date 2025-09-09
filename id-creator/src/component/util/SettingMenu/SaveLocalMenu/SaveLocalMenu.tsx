@@ -7,17 +7,25 @@ import { IEgoInfo } from "Interfaces/IEgoInfo";
 import useSaveLocal from "utils/Hooks/useSaveLocal";
 import uuid from "react-uuid";
 import PopUpMenu from "utils/PopUpMenu/PopUpMenu";
+import Edit_icon from "Icons/Edit_icon";
 
 
 
 const SaveLocalMenu=({localSaveName,saveObjInfoValue,loadObjInfoValueCb,isActive,setIsActive}:{localSaveName:string, saveObjInfoValue:ISaveFile<IIdInfo|IEgoInfo>, loadObjInfoValueCb:React.Dispatch<React.SetStateAction<IIdInfo|IEgoInfo>>,isActive:boolean,setIsActive:(a:boolean)=>void})=>{
-    const {saveData,isLoading,deleteSave,createSave,loadSave,overwriteSave} = useSaveLocal<IIdInfo|IEgoInfo>(localSaveName)
+    const {saveData,isLoading,deleteSave,createSave,changeSaveName,loadSave,overwriteSave} = useSaveLocal<IIdInfo|IEgoInfo>(localSaveName)
     const [namePopup,setNamePopup] = useState(false)
+    const [popupMode,setPopupMode] = useState<"create"|"overwrite">("create")
+    const [nameChangingSaveId,setNameChangingSaveId] = useState<string|null>(null)
     const [newSaveName,setNewSaveName] = useState("Save "+new Date().toISOString())
 
-    const openPopup = ()=>{
+    const openPopup = (newSaveName?:string)=>{
         setNamePopup(true)
-        setNewSaveName("Save "+new Date().toISOString())
+        setNewSaveName(newSaveName || "Save "+new Date().toISOString())
+    }
+
+    const closePopup = () => {
+        setNamePopup(false)
+        setPopupMode("create")
     }
     //Some of the save can have the same id
     //This is to create new save for some 
@@ -31,7 +39,9 @@ const SaveLocalMenu=({localSaveName,saveObjInfoValue,loadObjInfoValueCb,isActive
 
     return<>
         <div className={`${namePopup?"":"hidden"}`}>
-            <PopUpMenu setIsActive={()=>setNamePopup(false)}>
+            <PopUpMenu setIsActive={()=>{
+                    closePopup()
+                }}>
                 <div className="save-cloud-name-popup">
                     <label htmlFor="saveName">Enter the name of the new save:</label>
                     <input className="input save-cloud-name-input" name="saveName" id="saveName" type="text" placeholder="Save name" 
@@ -39,12 +49,16 @@ const SaveLocalMenu=({localSaveName,saveObjInfoValue,loadObjInfoValueCb,isActive
                     onChange={(e)=>{
                         setNewSaveName(e.target.value)
                     }}/>
-                    <MainButton component={"Create"} btnClass={"main-button create-new-save-btn"} clickHandler={()=>{
-                        saveObjInfoValue.id = uuid()
-                        saveObjInfoValue.saveName = newSaveName
-                        saveObjInfoValue.saveTime = new Date().toLocaleString()
-                        createSave(saveObjInfoValue)
-                        setNamePopup(false)
+                    <MainButton component={popupMode==="overwrite"?"Update":"Create"} btnClass={"main-button create-new-save-btn"} clickHandler={()=>{
+                        if(popupMode==="overwrite"){
+                            if(nameChangingSaveId) changeSaveName(nameChangingSaveId,newSaveName)
+                        }
+                        else{
+                            saveObjInfoValue.id = uuid()
+                            saveObjInfoValue.saveName = newSaveName
+                            createSave(saveObjInfoValue)
+                        }
+                        closePopup()
                     }}/>
                 </div>
             </PopUpMenu>
@@ -57,6 +71,13 @@ const SaveLocalMenu=({localSaveName,saveObjInfoValue,loadObjInfoValueCb,isActive
                         <p className="created-time">Last updated: {data.saveTime}</p>
                         <div className="center-element save-tab-input-container">
                             <p>{data.saveName}</p>
+                            <div onClick={()=>{
+                                setPopupMode("overwrite")
+                                setNameChangingSaveId(data.id)
+                                openPopup(data.saveName)
+                            }}>
+                                <Edit_icon/>
+                            </div>
                         </div>
                         <div className="center-element">
                             <MainButton component={"Delete"} clickHandler={()=>{

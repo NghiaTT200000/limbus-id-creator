@@ -47,6 +47,20 @@ export default function useSaveLocal<SaveObj>(LocalSaveDataName:string){
         return await saveDataTable?.get(id) as ISaveFile<SaveObj>
     },[saveData, saveDataTable])
 
+    const changeSaveName = useCallback(async(id:string,newName:string)=>{
+        if(!saveDataTable) return null
+        try{
+            await saveDataTable.update(id, {saveName: newName, saveTime: new Date().toLocaleString()})
+            setSaveData(saveData.map(item=>item.id===id?
+                {...item, saveName: newName, saveTime: new Date().toLocaleString()}:
+                item
+            ))
+        }
+        catch(error){
+            console.log(error)
+        }
+    },[saveData, saveDataTable])
+
     const overwriteSave = useCallback(async (id: string,saveObj:SaveObj)=>{
         if(!saveDataTable) return null
         try {
@@ -75,5 +89,5 @@ export default function useSaveLocal<SaveObj>(LocalSaveDataName:string){
         })
     },[saveDataTable])
 
-    return {saveData,isLoading,deleteSave,createSave,getAllSaves,loadSave,overwriteSave}
+    return {saveData,isLoading,deleteSave,createSave,getAllSaves,changeSaveName,loadSave,overwriteSave}
 }
