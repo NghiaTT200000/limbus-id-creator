@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
+/* --- Universal Base Styles --- */
+* {
+    box-sizing: border-box;
+    word-break: break-word;
+}
+
 /* --- Custom Fonts --- */
 @font-face {
     font-family: "Mikodacs";
@@ -29,6 +35,32 @@
         U+30A0-30FF, /* Katakana */
         U+4E00-9FFF; /* Kanji */
     font-display: swap;
+}
+
+.font-block {
+    padding: 1rem;
+    border: 1px solid #555;
+    border-radius: 6px;
+}
+
+.english {
+    font-family: "Mikodacs", sans-serif;
+    font-size: 1em;
+}
+
+.korean {
+    font-family: "KOTRA_BOLDS", sans-serif;
+    font-size: 0.8em;
+}
+
+.japanese {
+    font-family: "HigashiOme-Gothic", sans-serif;
+    font-size: 0.8em;
+}
+
+.others {
+    font-family: "Rubik", sans-serif;
+    font-size: 0.8em;
 }
 
 
@@ -110,12 +142,6 @@
     --editor-container-height: calc(100vh - var(--header-height) - var(--editor-page-footer));
 }
 
-/* --- Base Styles --- */
-*{
-    font-family: "Mikodacs", "KOTRA_BOLD", "HigashiOme-Gothic", "Rubik", sans-serif; 
-    word-break: break-word;
-    box-sizing: border-box;
-}
 
 body{
     background: var(--background-black);
