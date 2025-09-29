@@ -12,6 +12,7 @@ import ResetMenu from 'utils/ResetMenu/ResetMenu';
 import CardMakerFooter from 'component/CardMakerComponents/CardMakerFooter/CardMakerFooter';
 import { useSettingMenuContext } from 'component/util/SettingMenu/SettingMenu';
 import { indexDB } from 'utils/IndexDB/indexDB';
+import { EgoInfo } from 'Interfaces/IEgoInfo';
 
 
 
@@ -72,9 +73,9 @@ function EgoCardContent():ReactElement{
         document.querySelector(".card-maker-footer")?.clientHeight])
 
     useEffect(()=>{
-        changeSaveInfo(EgoInfoValue)
+        changeSaveInfo(new EgoInfo(EgoInfoValue))
         //Save the last change
-        indexDB.currEgoSave.put(EgoInfoValue, 1)
+        indexDB.currEgoSave.put(new EgoInfo(EgoInfoValue), 1)
     },[JSON.stringify(EgoInfoValue)])
 
     return <StatusEffectProvider skillDetails={EgoInfoValue.skillDetails}>

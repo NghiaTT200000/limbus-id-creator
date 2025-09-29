@@ -75,6 +75,7 @@ export class EgoInfo implements IEgoInfo{
     sinnerColor:string = "var(--Yi-Sang-color)";
     sinnerIcon:string = "Images/sinner-icon/Yi_Sang_Icon.png";
     egoLevel:string = "ZAYIN";
+    localSaveId:number = 1;
     skillDetails: (IOffenseSkill | IDefenseSkill | IPassiveSkill | ICustomEffect | IMentalEffect | never)[] = [
         new OffenseSkill("Awakening", "Wrath", 1, "AWAKENING"),
         new OffenseSkill("Corrision", "Wrath", 1, "CORRISION"),

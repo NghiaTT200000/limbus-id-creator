@@ -1,6 +1,6 @@
 import { ICustomEffect } from "./CustomEffect/ICustomEffect";
 import { DefenseSkill, IDefenseSkill } from "./DefenseSkill/IDefenseSkill";
-import { IMentalEffect, MentalEffect } from "./MentalEffect/IMentalEffect";
+import { IMentalEffect } from "./MentalEffect/IMentalEffect";
 import { IOffenseSkill, OffenseSkill } from "./OffenseSkill/IOffenseSkill";
 import { IPassiveSkill, PassiveSkill } from "./PassiveSkill/IPassiveSkill";
 
