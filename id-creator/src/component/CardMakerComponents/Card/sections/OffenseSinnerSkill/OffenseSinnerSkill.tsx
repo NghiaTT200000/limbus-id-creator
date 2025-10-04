@@ -24,16 +24,19 @@ const OffenseSinnerSkill = forwardRef<HTMLDivElement, { offenseSkill: IOffenseSk
         atkWeight,
     } = offenseSkill;
 
-    const printCoins = useCallback(function (coinNo: number): (ReactElement | never)[] {
-        if (coinNo > 5) return [<img key={0} src={"Images/Coin.png"} alt="coin_icon" />];
+    const printCoins = function (coinNo: number,skillEffect:string): (ReactElement | never)[] {
+        if (coinNo > 10) return [<img key={0} src={"Images/Coin.png"} alt="coin_icon" />];
 
         const arr = [];
 
         for (let i = 0; i < coinNo; i++) {
-            arr.push(<img key={i} src={"Images/Coin.png"} alt="coin_icon" />);
+            if(skillEffect.includes(`alt="coin-effect-${i+1}-unbreakable"`)){
+                arr.push(<img key={i} src={"Images/Unbreakable_Coin.png"} alt="unbreakable_coin_icon" />);
+            }
+            else arr.push(<img key={i} src={"Images/Coin.png"} alt="coin_icon" />);
         }
         return arr;
-    }, []);
+    }
 
     return (
         <div className="skill-section-container active-skill-container" >
@@ -61,7 +64,7 @@ const OffenseSinnerSkill = forwardRef<HTMLDivElement, { offenseSkill: IOffenseSk
                         {skillAffinity==="None"?<></>:<img className={`sinner-skill-affinity-icon ${skillAffinity}`} src={`Images/sin-affinity/affinity_${skillAffinity}_big.webp`} alt={`sinner-skill-${skillAffinity}-icon`} />}
                         <div>
                             <div className="coin-container">
-                                {printCoins(coinNo)}
+                                {printCoins(coinNo,skillEffect)}
                                 {coinNo > 5 ? `x ${coinNo}` : ""}
                             </div>
                             <div className="active-skill-title-container">

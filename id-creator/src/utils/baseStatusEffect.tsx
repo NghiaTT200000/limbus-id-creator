@@ -678,7 +678,7 @@ export const baseStatusEffect={
         "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Clashable_Guard.png' alt='clashable_guard_icon' />Clashable Guard</span>",
 
     "unbreakable_coin":
-        "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Unbreakable_Coin.png' alt='unbreakable_coin_icon' />Unbreakable Coin</span>",
+        "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/Unbreakable_Coin.png' alt='unbreakable_coin_icon' />Unbreakable Coin</span>",
 
     "bloodfeast":
         "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/bloodfeast.png' alt='Bloodfeast_icon' />Bloodfeast</span>",
@@ -751,6 +751,25 @@ export const baseStatusEffect={
     
     "coin_6":
         "<span class='center-element' contenteditable='false'><img class='status-icon' src='Images/status-effect/Coin_Effect_6.png' alt='coin-effect-6' /></span>",
+    
+    "coin_1_unbreakable":
+        "<span class='center-element' contenteditable='false'><img class='status-icon' src='Images/status-effect/Coin_Effect_1.png' alt='coin-effect-1-unbreakable' /> <span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/Unbreakable_Coin.png' alt='unbreakable_coin_icon' />Unbreakable Coin</span></span>",
+
+    "coin_2_unbreakable":
+        "<span class='center-element' contenteditable='false'><img class='status-icon' src='Images/status-effect/Coin_Effect_2.png' alt='coin-effect-2-unbreakable' /> <span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/Unbreakable_Coin.png' alt='unbreakable_coin_icon' />Unbreakable Coin</span></span>",
+
+    "coin_3_unbreakable":
+        "<span class='center-element' contenteditable='false'><img class='status-icon' src='Images/status-effect/Coin_Effect_3.png' alt='coin-effect-3-unbreakable' /> <span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/Unbreakable_Coin.png' alt='unbreakable_coin_icon' />Unbreakable Coin</span></span>",
+
+    "coin_4_unbreakable":
+        "<span class='center-element' contenteditable='false'><img class='status-icon' src='Images/status-effect/Coin_Effect_4.png' alt='coin-effect-4-unbreakable' /> <span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/Unbreakable_Coin.png' alt='unbreakable_coin_icon' />Unbreakable Coin</span></span>",
+
+    "coin_5_unbreakable":
+        "<span class='center-element' contenteditable='false'><img class='status-icon' src='Images/status-effect/Coin_Effect_5.png' alt='coin-effect-5-unbreakable' /> <span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/Unbreakable_Coin.png' alt='unbreakable_coin_icon' />Unbreakable Coin</span></span>",
+
+    "coin_6_unbreakable":
+        "<span class='center-element' contenteditable='false'><img class='status-icon' src='Images/status-effect/Coin_Effect_6.png' alt='coin-effect-6-unbreakable' /> <span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/Unbreakable_Coin.png' alt='unbreakable_coin_icon' />Unbreakable Coin</span></span>",
+
     
     "on_use":
         "<span class='center-element' contenteditable='false' style='color:#26cfff'>[On Use]</span>",
