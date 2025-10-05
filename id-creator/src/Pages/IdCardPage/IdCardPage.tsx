@@ -12,7 +12,7 @@ import ResetMenu from 'Utils/Components/ResetMenu/ResetMenu';
 import { IdInfo } from 'Interfaces/IIdInfo';
 import CardMakerFooter from 'Utils/Components/CardMakerComponents/CardMakerFooter/CardMakerFooter';
 import { useSettingMenuContext } from 'Utils/Components/SettingMenu/SettingMenu';
-import { indexDB } from 'Utils/IndexDB/indexDB';
+import { indexDB } from 'Utils/IndexDB';
 
 
 

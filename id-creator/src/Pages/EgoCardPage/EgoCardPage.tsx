@@ -11,7 +11,7 @@ import { useSearchParams } from 'react-router-dom';
 import ResetMenu from 'Utils/Components/ResetMenu/ResetMenu';
 import CardMakerFooter from 'Utils/Components/CardMakerComponents/CardMakerFooter/CardMakerFooter';
 import { useSettingMenuContext } from 'Utils/Components/SettingMenu/SettingMenu';
-import { indexDB } from 'Utils/IndexDB/indexDB';
+import { indexDB } from 'Utils/IndexDB';
 import { EgoInfo } from 'Interfaces/IEgoInfo';
 
 

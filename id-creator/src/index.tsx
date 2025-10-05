@@ -13,7 +13,7 @@ import { DndProvider } from 'react-dnd'
 import { TouchBackend } from 'react-dnd-touch-backend'
 import DragAndDroppableSkillPreviewLayer from 'Utils/Components/CardMakerComponents/Card/components/DragAndDroppableSkill/DragAndDroppableSkillPreviewLayer';
 import { ISaveFile } from 'Interfaces/ISaveFile';
-import { indexDB } from 'Utils/IndexDB/indexDB';
+import { indexDB } from 'Utils/IndexDB';
 
 const root = createRoot(document.getElementById('root')!);
 
