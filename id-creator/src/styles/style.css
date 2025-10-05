@@ -70,7 +70,12 @@
     --layout-max-width: 1200px;
     --padding-layout-width: 16px;
     --id-ego-card: 300px;
-    --id-ego-mobile-card: 150px
+    --id-ego-mobile-card: 150px;
+
+    --header-height: 45px;
+    --editor-page-footer: 25px;
+
+    --editor-container-height: calc(100vh - var(--header-height) - var(--editor-page-footer));
 }
 
 *{

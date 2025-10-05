@@ -1,7 +1,7 @@
 import { Table } from "dexie";
 import { ISaveFile } from "Interfaces/ISaveFile";
 import { useCallback, useEffect, useState } from "react";
-import { indexDB } from "utils/IndexDB/indexDB";
+import { indexDB } from "Utils/IndexDB/indexDB";
 
 
 export default function useSaveLocal<SaveObj>(LocalSaveDataName:string){
@@ -45,7 +45,7 @@ export default function useSaveLocal<SaveObj>(LocalSaveDataName:string){
     const loadSave = useCallback(async (id: string)=>{
         if(!saveDataTable) return null
         return await saveDataTable?.get(id) as ISaveFile<SaveObj>
-    },[saveData, saveDataTable])
+    },[saveDataTable])
 
     const changeSaveName = useCallback(async(id:string,newName:string)=>{
         if(!saveDataTable) return null
@@ -76,7 +76,7 @@ export default function useSaveLocal<SaveObj>(LocalSaveDataName:string){
         finally {
             setIsLoading(false)
         }
-    },[saveData])
+    },[saveData,saveDataTable])
 
 
     useEffect(()=>{
@@ -87,7 +87,7 @@ export default function useSaveLocal<SaveObj>(LocalSaveDataName:string){
         if(saveDataTable)getAllSaves().then(saves=>{
             if(saves) setSaveData(saves)
         })
-    },[saveDataTable])
+    },[saveDataTable,getAllSaves])
 
     return {saveData,isLoading,deleteSave,createSave,getAllSaves,changeSaveName,loadSave,overwriteSave}
 }

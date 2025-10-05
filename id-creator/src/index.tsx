@@ -1,19 +1,19 @@
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import HeaderLayout from 'component/util/Layout/HeaderLayout';
-import EgoCardPage from 'component/Pages/EgoCardPage/EgoCardPage';
-import ForumPage from 'component/Pages/ForumPage/ForumPage';
-import IdCardPage from 'component/Pages/IdCardPage/IdCardPage';
-import NewPostPage from 'component/Pages/NewPostPage/NewPostPage';
-import PostPage from 'component/Pages/PostPage/PostPage';
-import UserPage from 'component/Pages/UserPage/UserPage';
+import HeaderLayout from 'Utils/Components/Layout/HeaderLayout';
+import EgoCardPage from 'Pages/EgoCardPage/EgoCardPage';
+import ForumPage from 'Pages/ForumPage/ForumPage';
+import IdCardPage from 'Pages/IdCardPage/IdCardPage';
+import NewPostPage from 'Pages/NewPostPage/NewPostPage';
+import PostPage from 'Pages/PostPage/PostPage';
+import UserPage from 'Pages/UserPage/UserPage';
 import React, { ReactElement, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { DndProvider } from 'react-dnd'
 import { TouchBackend } from 'react-dnd-touch-backend'
-import DragAndDroppableSkillPreviewLayer from 'component/CardMakerComponents/Card/components/DragAndDroppableSkill/DragAndDroppableSkillPreviewLayer';
+import DragAndDroppableSkillPreviewLayer from 'Utils/Components/CardMakerComponents/Card/components/DragAndDroppableSkill/DragAndDroppableSkillPreviewLayer';
 import { ISaveFile } from 'Interfaces/ISaveFile';
-import { indexDB } from 'utils/IndexDB/indexDB';
+import { indexDB } from 'Utils/IndexDB/indexDB';
 
 const root = createRoot(document.getElementById('root')!);
 
