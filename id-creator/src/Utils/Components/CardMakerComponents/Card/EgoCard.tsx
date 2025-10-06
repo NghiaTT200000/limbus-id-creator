@@ -72,7 +72,7 @@ export  const EgoCard=forwardRef<HTMLDivElement,{changeActiveTab:React.Dispatch<
                             <div>
                                 <EgoHeader/>
                             </div> 
-                            <div className="center-element">
+                            <div className="center-element" style={{maxHeight:"665px"}}>
                                 <SkillDetailContainer  moveSkill={moveSkill} skillDetails={EgoInfoValue.skillDetails} draggingHandler={(isDragging)=>setIsDragging(isDragging)} changeActiveTab={changeActiveTab}/>
                                 <SinCost sinCost={EgoInfoValue.sinCost}/>
                             </div>
