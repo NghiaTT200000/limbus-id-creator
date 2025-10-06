@@ -6,7 +6,8 @@
       "moduleResolution":"node",
       "module": "es2015",
       "types": ["node", "react"],
-      "target": "ES2015"
+      "target": "ES2015",
+      "ignoreDeprecations": "6.0"
     },
     "include": ["src"],
     "exclude": ["build"],
