@@ -1,7 +1,7 @@
-import { IActiveSkill } from "interfaces/ActiveSkill/IActiveSkill";
-import { IActiveSkillEffect } from "interfaces/ActiveSkill/IActiveSkillEffect";
-import IUID from "interfaces/IUID";
-import uuid from "../../../node_modules/react-uuid/uuid";
+import { IActiveSkill } from "Interfaces/ActiveSkill/IActiveSkill";
+import { IActiveSkillEffect } from "Interfaces/ActiveSkill/IActiveSkillEffect";
+import IUID from "Interfaces/IUID";
+import uuid from "react-uuid";
 
 export interface IOffenseSkill extends IActiveSkill,IUID{
     damageType:string,

@@ -1,9 +1,9 @@
 import React from "react";
 import './PostDisplayCard.css'
-import { IPostDisplayCard } from "interfaces/IPostDisplayCard/IPostDisplayCard";
-import ViewIcon from "utils/icons/ViewIcon";
-import CommentIcon from "utils/icons/CommentIcon";
-import { TagList } from "utils/TagList";
+import { IPostDisplayCard } from "Interfaces/IPostDisplayCard/IPostDisplayCard";
+import ViewIcon from "Utils/Icons/ViewIcon";
+import CommentIcon from "Utils/Icons/CommentIcon";
+import { TagList } from "Utils/TagList";
 import { Link } from "react-router-dom";
 
 export default function PostDisplayCard({id,title,cardImg,userIcon,userName,userId,created,tags,viewCount,commentCount}:IPostDisplayCard){

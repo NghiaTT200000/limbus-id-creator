@@ -1,18 +1,18 @@
 import React from "react";
 import { ReactElement } from "react";
 import "../InputPage.css"
-import useInputs from "utils/hooks/useInputs";
+import useInputs from "Utils/Hooks/useInputs";
 import UploadImgBtn from "../Components/UploadImgBtn/UploadImgBtn";
 import "../InputPage.css"
 import ChangeInputType from "../Components/ChangeInputType/ChangeInputType";
-import { IDefenseSkill } from "interfaces/DefenseSkill/IDefenseSkill";
-import DamageTypeInput from "../Components/DamageTypeInput/DamageTypeInput";
-import SinAffinityInput from "../Components/SinAffinityInput/SinAffinityInput";
-import DefenseTypeInput from "../Components/DefenseTypeInput/DefenseTypeInput";
+import { IDefenseSkill } from "Interfaces/DefenseSkill/IDefenseSkill";
 import EditableAutoCorrect from "../Components/EditableAutoCorrectInput/EditableAutoCorrect";
-import DeleteIcon from "utils/icons/DeleteIcon";
-import MainButton from "utils/components/MainButton/MainButton";
-import ArrowDownIcon from "utils/icons/ArrowDownIcon";
+import DeleteIcon from "Utils/Icons/DeleteIcon";
+import MainButton from "Utils/Components/MainButton/MainButton";
+import ArrowDownIcon from "Utils/Icons/ArrowDownIcon";
+import DamageTypeInput from "../Components/DamageTypeInput/DamageTypeInput";
+import DefenseTypeInput from "../Components/DefenseTypeInput/DefenseTypeInput";
+import SinAffinityInput from "../Components/SinAffinityInput/SinAffinityInput";
 
 export default function InputDefenseSkillPage({
     defenseSkill,

@@ -1,6 +1,6 @@
-import IUID from "interfaces/IUID";
-import IEffect from "interfaces/SkillAndEffect/IEffect";
-import uuid from "../../../node_modules/react-uuid/uuid";
+import IUID from "Interfaces/IUID";
+import IEffect from "Interfaces/SkillAndEffect/IEffect";
+import uuid from "react-uuid";
 
 export interface ICustomEffect extends IEffect,IUID{
     name:string,

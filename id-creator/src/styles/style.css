@@ -98,7 +98,7 @@ a{
 
 @font-face {
     font-family: "Mikodacs";
-    src: local("Mikodacs"),url("../font/mikodacs/mikodacs.regular.ttf");
+    src: local("Mikodacs"),url("../Font/mikodacs/mikodacs.regular.ttf");
     font-weight: normal;
 }
 

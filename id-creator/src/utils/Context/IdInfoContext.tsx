@@ -1,7 +1,7 @@
 import React from 'react'
 import { ReactElement, createContext, useContext, useState } from "react";
-import { PassiveSkill } from 'interfaces/PassiveSkill/IPassiveSkill';
-import { IIdInfo, IdInfo } from 'interfaces/IIdInfo';
+import { PassiveSkill } from 'Interfaces/PassiveSkill/IPassiveSkill';
+import { IIdInfo, IdInfo } from 'Interfaces/IIdInfo';
 
 const idInfoContext = createContext(null)
 

@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { ReactElement } from "react";
 import "../PageLayout.css"
-import UserProfile from "./User/UserProfile";
 import "./User.css"
+import UserProfile from "./User/UserProfile";
 import {  useNavigate, useParams } from "react-router-dom";
 import UserProfileLoading from "./User/UserProfileLoading";
-import { IUserProfile, UserProfileRes } from "interfaces/API/OAuth/IUserProfile";
-import MainButton from "utils/components/MainButton/MainButton";
-import { useAlertContext } from "utils/context/AlertContext";
-import { useLoginUserContext } from "utils/context/LoginUserContext";
+import { IUserProfile, UserProfileRes } from "Interfaces/API/OAuth/IUserProfile";
+import MainButton from "Utils/Components/MainButton/MainButton";
+import { useAlertContext } from "Utils/Context/AlertContext";
+import { useLoginUserContext } from "Utils/Context/LoginUserContext";
 import PaginatedPost from "../PaginatedPost/PaginatedPost";
-import { IPostDisplayCard } from "interfaces/IPostDisplayCard/IPostDisplayCard";
+import { IPostDisplayCard } from "Interfaces/IPostDisplayCard/IPostDisplayCard";
 
 
 

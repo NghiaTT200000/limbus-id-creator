@@ -1,9 +1,9 @@
-import { useAlertContext } from "utils/context/AlertContext";
+import { useAlertContext } from "Utils/Context/AlertContext";
 import React, { useEffect, useState } from "react";
 import { ReactElement } from "react";
 import "./AlertPopUp.css"
-import { IAlert } from "interfaces/Utils/IAlert";
-import ClosIcon from "utils/icons/CloseIcon";
+import { IAlert } from "Interfaces/Utils/IAlert";
+import ClosIcon from "Utils/Icons/CloseIcon";
 
 
 

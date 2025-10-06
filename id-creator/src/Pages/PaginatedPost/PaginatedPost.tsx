@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
 import "./PaginatedPost.css"
 import ReactPaginate from "react-paginate";
-import { IPostDisplayCard } from "interfaces/IPostDisplayCard/IPostDisplayCard";
-import PostDisplayList from "utils/components/PostDisplayList/PostDisplayList";
+import { IPostDisplayCard } from "Interfaces/IPostDisplayCard/IPostDisplayCard";
+import PostDisplayList from "Utils/Components/PostDisplayList/PostDisplayList";
 
 export default function PaginatedPost({currPage,maxCount,pageLimit,postList,fetchPost,isLoading}:{currPage:number,maxCount:number,pageLimit:number,postList:IPostDisplayCard[],fetchPost:(page:number)=>void,isLoading:boolean}){
     const headPost = useRef(null)

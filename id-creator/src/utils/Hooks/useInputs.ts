@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import imageCompression from 'browser-image-compression';
-import replaceKeyWord from "utils/components/CardMakerComponents/InputTab/Components/EditableAutoCorrectInput/Functions/replaceKeyWord";
-import getImageDimensions from "utils/functions/getImageDimensions";
-import isObject from "utils/functions/isObject";
+import replaceKeyWord from "Utils/Components/CardMakerComponents/InputTab/Components/EditableAutoCorrectInput/Functions/replaceKeyWord";
+import getImageDimensions from "Utils/Functions/getImageDimensions";
+import isObject from "Utils/Functions/isObject";
 
 interface INewInput{
     [type:string]:string|number|INewInput

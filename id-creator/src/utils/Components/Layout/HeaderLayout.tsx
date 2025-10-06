@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { ReactElement } from "react";
 import {Link, Outlet} from "react-router-dom";
 import "./HeaderLayout.css"
-import MainButton from "utils/components/MainButton/MainButton";
-import { RefDownloadProvider } from "utils/context/ImgUrlContext";
+import MainButton from "Utils/Components/MainButton/MainButton";
+import { RefDownloadProvider } from "Utils/Context/ImgUrlContext";
 import SideBar from "./SideBar/SideBar";
-import { AlertContextProvider } from "utils/context/AlertContext";
+import { AlertContextProvider } from "Utils/Context/AlertContext";
 import AlertPopUp from "./AlertPopUp/AlertPopUp";
-import { LoginMenu, useLoginMenuContext } from "utils/components/LoginMenu/LoginMenu";
-import { LoginUserContextProvider, useLoginUserContext } from "utils/context/LoginUserContext";
+import { LoginMenu, useLoginMenuContext } from "Utils/Components/LoginMenu/LoginMenu";
+import { LoginUserContextProvider, useLoginUserContext } from "Utils/Context/LoginUserContext";
 import { SettingMenu } from "../SettingMenu/SettingMenu";
-import KofiIcon from "utils/icons/KofiIcon";
+import KofiIcon from "Utils/Icons/KofiIcon";
 
 export default function HeaderLayout():ReactElement{
 

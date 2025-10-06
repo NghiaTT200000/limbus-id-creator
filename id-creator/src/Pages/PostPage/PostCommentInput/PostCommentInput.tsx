@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import MainButton from "utils/components/MainButton/MainButton";
+import MainButton from "Utils/Components/MainButton/MainButton";
 import Editor from 'react-simple-wysiwyg';
 
 export default function PostCommentInput({authorIcon,authorName,createComment}:{authorIcon:string,authorName:string,createComment:(comment:string)=>Promise<void>}){

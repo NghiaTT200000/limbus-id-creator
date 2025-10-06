@@ -2,9 +2,9 @@ import React, { useEffect } from "react"
 import { useState } from "react"
 import {MapInteractionCSS} from "react-map-interaction"
 import "./ViewImagePopUp.css"
-import ArrowUpIcon from "utils/icons/ArrowUpIcon"
-import ArrowDownIcon from "utils/icons/ArrowDownIcon"
-import CloseIcon from "utils/icons/CloseIcon"
+import ArrowUpIcon from "Utils/Icons/ArrowUpIcon"
+import ArrowDownIcon from "Utils/Icons/ArrowDownIcon"
+import CloseIcon from "Utils/Icons/CloseIcon"
 
 
 export default function ViewImagePopUp({images,index=0,isActive,closeFn}:{images:string[],index:number,isActive:boolean,closeFn:()=>void}){

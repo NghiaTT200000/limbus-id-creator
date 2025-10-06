@@ -1,4 +1,4 @@
-import { useIdInfoContext } from "utils/context/IdInfoContext";
+import { useIdInfoContext } from "Utils/Context/IdInfoContext";
 import React, { forwardRef, useState } from "react";
 import { ReactElement } from "react";
 import './styles/Card.css'

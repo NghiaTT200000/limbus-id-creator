@@ -1,11 +1,11 @@
-import { useAlertContext } from "utils/context/AlertContext";
-import { useRefDownloadContext } from "utils/context/ImgUrlContext";
+import { useAlertContext } from "Utils/Context/AlertContext";
+import { useRefDownloadContext } from "Utils/Context/ImgUrlContext";
 import React, { useState } from "react";
-import DownloadImg from "utils/functions/DownloadImg";
+import DownloadImg from "Utils/Functions/DownloadImg";
 import CardMakerFooterDownloadComponent from "./CardMakerFooterComponents/CardMakerFooterDownloadComponent";
 import "./CardMakerFooter.css"
 import CardMakerFooterSettingComponent from "./CardMakerFooterComponents/CardMakerFooterSettingComponent";
-import { useSettingMenuContext } from "utils/components/SettingMenu/SettingMenu";
+import { useSettingMenuContext } from "Utils/Components/SettingMenu/SettingMenu";
 
 export default function CardMakerFooter(){
     const {setIsActive} = useSettingMenuContext()

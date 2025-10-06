@@ -1,4 +1,4 @@
-import { useIdInfoContext } from "utils/context/IdInfoContext";
+import { useIdInfoContext } from "Utils/Context/IdInfoContext";
 import React from "react";
 import { ReactElement } from "react";
 import "../../InputPage.css"
@@ -7,11 +7,11 @@ import UploadImgBtn from "../../Components/UploadImgBtn/UploadImgBtn";
 import SinnerIconInput from "../SinnerIconInput/SinnerIconInput";
 import SinnerSplashArtRepositionInput from "../SinnerSplashArtRepositionInput/SinnerSplashArtRepositionInput";
 import SinnerRarityIconInput from "../SinnerRarityInput/SinnerRarityInput";
-import DeleteIcon from "utils/icons/DeleteIcon";
-import MainButton from "utils/components/MainButton/MainButton";
-import ArrowDownIcon from "utils/icons/ArrowDownIcon";
+import DeleteIcon from "Utils/Icons/DeleteIcon";
+import MainButton from "Utils/Components/MainButton/MainButton";
+import ArrowDownIcon from "Utils/Icons/ArrowDownIcon";
 import imageCompression from 'browser-image-compression'
-import getImageDimensions from "utils/functions/getImageDimensions";
+import getImageDimensions from "Utils/Functions/getImageDimensions";
 
 export default function InputIdInfoStatPage({collaspPage}:{collaspPage:()=>void}):ReactElement{
     const {idInfoValue,setIdInfoValue} = useIdInfoContext()

@@ -1,6 +1,6 @@
 import React from "react";
 import { ReactElement } from "react";
-import MainButton from "utils/components/MainButton/MainButton";
+import MainButton from "Utils/Components/MainButton/MainButton";
 import "./SaveCloudMenu.css"
 
 export default function SaveCloudTab({saveName,saveDate,previewUrl,deleteSave,loadSave,overwriteSave}:{saveName:string,saveDate:string,previewUrl:string,deleteSave:()=>void,loadSave:()=>void,overwriteSave:()=>void}):ReactElement{

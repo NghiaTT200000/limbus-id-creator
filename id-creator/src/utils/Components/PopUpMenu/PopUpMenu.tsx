@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import "./PopUpMenu.css"
 import React from "react";
-import CloseIcon from "utils/icons/CloseIcon";
+import CloseIcon from "Utils/Icons/CloseIcon";
 
 export default function PopUpMenu({children,setIsActive}:{children:ReactElement,setIsActive:()=>void}):ReactElement{
 

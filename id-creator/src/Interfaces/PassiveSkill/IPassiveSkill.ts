@@ -1,6 +1,6 @@
-import IUID from "interfaces/IUID";
-import ISkill from "interfaces/SkillAndEffect/ISkill"
-import uuid from "../../../node_modules/react-uuid/uuid";
+import IUID from "Interfaces/IUID";
+import ISkill from "Interfaces/SkillAndEffect/ISkill"
+import uuid from "react-uuid";
 
 interface ISinCost{
     wrath_cost:number;

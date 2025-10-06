@@ -1,7 +1,7 @@
-import ThumbDownIcon from "utils/icons/ThumbDownIcon";
-import ThumbUpIcon from "utils/icons/ThumbUpIcon";
+import ThumbDownIcon from "Utils/Icons/ThumbDownIcon";
+import ThumbUpIcon from "Utils/Icons/ThumbUpIcon";
 import React from "react";
-import MainButton from "utils/components/MainButton/MainButton";
+import MainButton from "Utils/Components/MainButton/MainButton";
 
 export default function ShowIdEgoRating({rating,ratingChoice}:{rating:number,ratingChoice:string}){
     return <div className="center-element">

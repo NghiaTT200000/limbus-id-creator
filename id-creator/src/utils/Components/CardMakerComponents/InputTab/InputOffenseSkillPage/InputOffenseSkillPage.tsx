@@ -1,16 +1,16 @@
 import React from "react";
 import { ReactElement } from "react";
 import "../InputPage.css"
-import useInputs from "utils/hooks/useInputs";
-import { IOffenseSkill } from "interfaces/OffenseSkill/IOffenseSkill";
+import useInputs from "Utils/Hooks/useInputs";
+import { IOffenseSkill } from "Interfaces/OffenseSkill/IOffenseSkill";
 import UploadImgBtn from "../Components/UploadImgBtn/UploadImgBtn";
 import ChangeInputType from "../Components/ChangeInputType/ChangeInputType";
 import SinAffinityInput from "../Components/SinAffinityInput/SinAffinityInput";
 import DamageTypeInput from "../Components/DamageTypeInput/DamageTypeInput";
 import EditableAutoCorrect from "../Components/EditableAutoCorrectInput/EditableAutoCorrect";
-import MainButton from "utils/components/MainButton/MainButton";
-import DeleteIcon from "utils/icons/DeleteIcon";
-import ArrowDownIcon from "utils/icons/ArrowDownIcon";
+import MainButton from "Utils/Components/MainButton/MainButton";
+import DeleteIcon from "Utils/Icons/DeleteIcon";
+import ArrowDownIcon from "Utils/Icons/ArrowDownIcon";
 
 export default function InputOffenseSkillPage({
         offenseSkill,

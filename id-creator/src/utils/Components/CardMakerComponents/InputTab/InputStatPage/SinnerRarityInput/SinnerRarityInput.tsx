@@ -1,8 +1,8 @@
-import { useIdInfoContext } from "utils/context/IdInfoContext";
+import { useIdInfoContext } from "Utils/Context/IdInfoContext";
 import React from "react";
 import { ReactElement } from "react";
 import "./RarityIconInput.css"
-import { IIdInfo } from "interfaces/IIdInfo";
+import { IIdInfo } from "Interfaces/IIdInfo";
 
 export default function SinnerRarityIconInput():ReactElement{
     const {idInfoValue,setIdInfoValue} = useIdInfoContext()

@@ -3,7 +3,7 @@ import { ReactElement } from "react";
 import './PostDisplayList.css'
 import PostDisplayCard from "./PostDisplayCard/PostDisplayCard";
 import PostDisplayCardLoading from "./PostDisplayCard/PostDisplayCardLoading";
-import { IPostDisplayCard } from "interfaces/IPostDisplayCard/IPostDisplayCard";
+import { IPostDisplayCard } from "Interfaces/IPostDisplayCard/IPostDisplayCard";
 
 export default function PostDisplayList({isLoading,cardList}:{cardList:IPostDisplayCard[],isLoading:boolean}):ReactElement{
     return <div className="post-display-list">

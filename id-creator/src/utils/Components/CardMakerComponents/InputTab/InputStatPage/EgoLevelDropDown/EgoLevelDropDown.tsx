@@ -1,5 +1,5 @@
 import React from "react";
-import { dropDownEl } from "utils/components/DropDown/DropDown";
+import { dropDownEl } from "Utils/Components/DropDown/DropDown";
 import "./EgoLevelDropDown.css"
 
 export const EgoLevelDropDown:{[key:string]:dropDownEl}={

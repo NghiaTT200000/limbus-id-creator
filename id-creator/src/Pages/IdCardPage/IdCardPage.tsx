@@ -1,18 +1,18 @@
 import React, { ReactElement, useEffect, useRef, useState } from 'react';
-import 'styles/reset.css'
-import 'styles/style.css'
+import 'Styles/reset.css'
+import 'Styles/style.css'
 import '../EditorPage.css'
-import { StatusEffectProvider } from 'utils/context/StatusEffectContext';
-import { IdCard } from 'utils/components/CardMakerComponents/Card/IdCard';
-import { IdInfoProvider, useIdInfoContext } from 'utils/context/IdInfoContext';
-import InputTabIdInfoContainer from 'utils/components/CardMakerComponents/InputTab/InputTabContainer/InputTabIdInfoContainer/InputTabIdInfoContainer';
-import {  useRefDownloadContext } from 'utils/context/ImgUrlContext';
+import { StatusEffectProvider } from 'Utils/Context/StatusEffectContext';
+import { IdCard } from 'Utils/Components/CardMakerComponents/Card/IdCard';
+import { IdInfoProvider, useIdInfoContext } from 'Utils/Context/IdInfoContext';
+import InputTabIdInfoContainer from 'Utils/Components/CardMakerComponents/InputTab/InputTabContainer/InputTabIdInfoContainer/InputTabIdInfoContainer';
+import {  useRefDownloadContext } from 'Utils/Context/ImgUrlContext';
 import {  useSearchParams } from 'react-router-dom';
-import ResetMenu from 'utils/components/ResetMenu/ResetMenu';
-import { IdInfo } from 'interfaces/IIdInfo';
-import CardMakerFooter from 'utils/components/CardMakerComponents/CardMakerFooter/CardMakerFooter';
-import { useSettingMenuContext } from 'utils/components/SettingMenu/SettingMenu';
-import { indexDB } from 'utils/indexDB';
+import ResetMenu from 'Utils/Components/ResetMenu/ResetMenu';
+import { IdInfo } from 'Interfaces/IIdInfo';
+import CardMakerFooter from 'Utils/Components/CardMakerComponents/CardMakerFooter/CardMakerFooter';
+import { useSettingMenuContext } from 'Utils/Components/SettingMenu/SettingMenu';
+import { indexDB } from 'Utils/IndexDB';
 
 
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { ReactElement } from "react";
 import './CardTag.css'
-import { ITag } from "utils/TagList";
+import { ITag } from "Utils/TagList";
 
 export default function CardTag({card}:{card:ITag}):ReactElement{
     return <div className="card-tag center-element">

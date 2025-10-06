@@ -1,8 +1,8 @@
 import React from "react";
 import { ReactElement } from "react";
-import { ITag } from "utils/TagList";
+import { ITag } from "Utils/TagList";
 import "./TagsContainer.css"
-import CloseIcon from "utils/icons/CloseIcon";
+import CloseIcon from "Utils/Icons/CloseIcon";
 
 export default function TagsContainer({tags,customClass="",deleteTag}:{tags:ITag[],customClass?:string,deleteTag:(i:number)=>void}):ReactElement{
     return <div className={`tags-container  ${customClass}`}>

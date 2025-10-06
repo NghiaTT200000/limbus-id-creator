@@ -1,7 +1,7 @@
 import Dexie, { EntityTable } from 'dexie';
-import { IEgoInfo } from 'interfaces/IEgoInfo';
-import { IIdInfo } from 'interfaces/IIdInfo';
-import { ISaveFile } from 'interfaces/ISaveFile';
+import { IEgoInfo } from 'Interfaces/IEgoInfo';
+import { IIdInfo } from 'Interfaces/IIdInfo';
+import { ISaveFile } from 'Interfaces/ISaveFile';
 
 interface LocalSaves {
     currIdSave: IIdInfo;

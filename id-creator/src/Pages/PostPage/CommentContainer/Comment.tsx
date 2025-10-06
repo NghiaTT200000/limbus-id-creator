@@ -1,4 +1,4 @@
-import { IComment } from "interfaces/IPost/IComment";
+import { IComment } from "Interfaces/IPost/IComment";
 import React from "react";
 import { Link } from "react-router-dom";
 

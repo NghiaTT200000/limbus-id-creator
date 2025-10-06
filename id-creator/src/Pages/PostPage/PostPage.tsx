@@ -4,14 +4,14 @@ import "../PageLayout.css"
 import "./PostPage.css"
 import Post from "./Post/Post";
 import CommentContainer from "./CommentContainer/CommentContainer";
-import { useAlertContext } from "utils/context/AlertContext";
+import { useAlertContext } from "Utils/Context/AlertContext";
 import { useParams } from "react-router-dom";
-import { IPost } from "interfaces/IPost/IPost";
+import { IPost } from "Interfaces/IPost/IPost";
 import PostCommentInput from "./PostCommentInput/PostCommentInput";
-import { useLoginUserContext } from "utils/context/LoginUserContext";
-import { useLoginMenuContext } from "utils/components/LoginMenu/LoginMenu";
-import MainButton from "utils/components/MainButton/MainButton";
-import { IComment } from "interfaces/IPost/IComment";
+import { useLoginUserContext } from "Utils/Context/LoginUserContext";
+import { useLoginMenuContext } from "Utils/Components/LoginMenu/LoginMenu";
+import MainButton from "Utils/Components/MainButton/MainButton";
+import { IComment } from "Interfaces/IPost/IComment";
 
 export default function PostPage():ReactElement{
     const {postId} = useParams()

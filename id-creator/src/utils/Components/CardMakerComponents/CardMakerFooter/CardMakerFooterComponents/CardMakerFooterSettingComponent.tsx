@@ -1,4 +1,4 @@
-import SettingIcon from "utils/icons/SettingIcon";
+import SettingIcon from "Utils/Icons/SettingIcon";
 import React from "react";
 
 

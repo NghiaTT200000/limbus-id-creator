@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { ReactElement } from "react";
 import CardTag from "./CardTag/CardTag";
 import PostCarousel from "./PostCarousel/PostCarousel";
-import { IPost } from "interfaces/IPost/IPost";
-import UserProfileLoading from "pages/UserPage/User/UserProfileLoading";
-import { TagList } from "utils/TagList";
+import { IPost } from "Interfaces/IPost/IPost";
+import UserProfileLoading from "Pages/UserPage/User/UserProfileLoading";
+import { TagList } from "Utils/TagList";
 import { Link } from "react-router-dom";
-import ViewIcon from "utils/icons/ViewIcon";
-import CommentIcon from "utils/icons/CommentIcon";
+import ViewIcon from "Utils/Icons/ViewIcon";
+import CommentIcon from "Utils/Icons/CommentIcon";
 
 
 export default function Post({post,getPost}:{post:IPost,getPost:()=>Promise<void>}):ReactElement{

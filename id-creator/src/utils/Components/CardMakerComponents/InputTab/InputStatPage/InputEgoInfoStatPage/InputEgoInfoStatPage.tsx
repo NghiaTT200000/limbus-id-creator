@@ -4,12 +4,12 @@ import "../../InputPage.css"
 import "../InputStatPage.css"
 import UploadImgBtn from "../../Components/UploadImgBtn/UploadImgBtn";
 import SinnerSplashArtRepositionInput from "../SinnerSplashArtRepositionInput/SinnerSplashArtRepositionInput";
-import { useEgoInfoContext } from "utils/context/EgoInfoContext";
-import useInput from "utils/hooks/useInputs";
+import { useEgoInfoContext } from "Utils/Context/EgoInfoContext";
+import useInput from "Utils/Hooks/useInputs";
 import SinnerEgoIconInput from "../SinnerEgoIconInput/SinnerEgoIconInput";
-import DropDown from "utils/components/DropDown/DropDown";
+import DropDown from "Utils/Components/DropDown/DropDown";
 import { EgoLevelDropDown } from "../EgoLevelDropDown/EgoLevelDropDown";
-import ArrowDownIcon from "utils/icons/ArrowDownIcon";
+import ArrowDownIcon from "Utils/Icons/ArrowDownIcon";
 
 export default function InputStatPage({collaspPage}:{collaspPage:()=>void}):ReactElement{
     const {EgoInfoValue,setEgoInfoValue} = useEgoInfoContext()

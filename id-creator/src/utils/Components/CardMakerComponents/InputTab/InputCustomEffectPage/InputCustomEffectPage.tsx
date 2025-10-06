@@ -1,14 +1,14 @@
-import useInputs from "utils/hooks/useInputs";
-import { ICustomEffect } from "interfaces/CustomEffect/ICustomEffect";
+import useInputs from "Utils/Hooks/useInputs";
+import { ICustomEffect } from "Interfaces/CustomEffect/ICustomEffect";
 import React from "react";
 import { ReactElement } from "react";
 import ChangeInputType from "../Components/ChangeInputType/ChangeInputType";
 import UploadImgBtn from "../Components/UploadImgBtn/UploadImgBtn";
 import "../InputPage.css"
 import EditableAutoCorrect from "../Components/EditableAutoCorrectInput/EditableAutoCorrect";
-import DeleteIcon from "utils/icons/DeleteIcon";
-import MainButton from "utils/components/MainButton/MainButton";
-import ArrowDownIcon from "utils/icons/ArrowDownIcon";
+import DeleteIcon from "Utils/Icons/DeleteIcon";
+import MainButton from "Utils/Components/MainButton/MainButton";
+import ArrowDownIcon from "Utils/Icons/ArrowDownIcon";
 
 export default function InputCustomEffectPage({
     customEffect,

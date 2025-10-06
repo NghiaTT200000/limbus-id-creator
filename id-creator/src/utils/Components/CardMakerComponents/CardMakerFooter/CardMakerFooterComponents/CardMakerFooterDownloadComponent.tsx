@@ -1,4 +1,4 @@
-import DownloadIcon from "utils/icons/DownloadIcon";
+import DownloadIcon from "Utils/Icons/DownloadIcon";
 import React from "react";
 
 

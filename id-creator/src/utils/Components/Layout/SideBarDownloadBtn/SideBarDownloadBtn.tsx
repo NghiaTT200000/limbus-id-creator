@@ -1,10 +1,10 @@
-import { useRefDownloadContext } from "utils/context/ImgUrlContext";
-import DownloadIcon from "utils/icons/DownloadIcon";
+import { useRefDownloadContext } from "Utils/Context/ImgUrlContext";
+import DownloadIcon from "Utils/Icons/DownloadIcon";
 import React, { ReactElement, useState } from "react";
-import DownloadImg from "utils/functions/DownloadImg";
-import MainButton from "utils/components/MainButton/MainButton";
+import DownloadImg from "Utils/Functions/DownloadImg";
+import MainButton from "Utils/Components/MainButton/MainButton";
 import "./SideBarDownloadBtn.css"
-import { useAlertContext } from "utils/context/AlertContext";
+import { useAlertContext } from "Utils/Context/AlertContext";
 
 export default function SideBarDownloadBtn():ReactElement{
     const {setImgUrlState} = useRefDownloadContext()
