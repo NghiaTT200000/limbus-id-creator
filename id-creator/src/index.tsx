@@ -1,8 +1,8 @@
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import HeaderLayout from 'utils/components/Layout/HeaderLayout';
-import EgoCardPage from 'pages/EgoCardPage/EgoCardPage';
-import ForumPage from 'pages/ForumPage/ForumPage';
-import IdCardPage from 'pages/IdCardPage/IdCardPage';
+import EgoCardPage from 'pages/egoCardPage';
+import ForumPage from 'pages/forumPage';
+import IdCardPage from 'pages/idCardPage';
 import NewPostPage from 'pages/NewPostPage/NewPostPage';
 import PostPage from 'pages/PostPage/PostPage';
 import UserPage from 'pages/UserPage/UserPage';
