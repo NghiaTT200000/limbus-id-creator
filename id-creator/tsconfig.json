@@ -1,15 +1,15 @@
 {
-    "compilerOptions": {
-      "jsx": "react",
-      "baseUrl": "src",
-      "esModuleInterop": true,
-      "moduleResolution":"node",
-      "module": "es2015",
-      "types": ["node", "react"],
-      "target": "ES2015",
-      "ignoreDeprecations": "6.0"
-    },
-    "include": ["src"],
-    "exclude": ["build"],
+  "compilerOptions": {
+    "jsx": "react",
+    "baseUrl": "src",
+    "esModuleInterop": true,
+    "moduleResolution":"node",
+    "module": "es2015",
+    "types": ["node", "react"],
+    "target": "ES2015",
+    "ignoreDeprecations": "6.0"
+  },
+  "include": ["src", "./module.css.d.ts"],
+  "exclude": ["build"],
     
 }
