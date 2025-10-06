@@ -1,0 +1,88 @@
+.input-page{
+    flex: 1;
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    background-color: var(--None-input-page);
+    padding: 10px 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    color: white;
+    gap: 12px;
+    position: relative;
+}
+
+.input-page-icon-container{
+    fill: white;
+    position: absolute;
+    top: 7px;
+    right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+}
+
+.delete-icon,.collasp-icon{
+    cursor: pointer;
+}
+
+.delete-icon:hover{
+    fill:red
+}
+
+.collasp-icon{
+    transform: rotate(90deg);
+    scale: 1.2;
+}
+
+.collasp-icon:hover{
+    fill:green
+}
+
+.input-group-container{
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+
+.input-container{
+    flex: 1;
+}
+
+.input-container>.input{
+    width: 100%;
+    padding: 8px 4px;
+    font-size: 18px;
+}
+
+.input-label{
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.skill-effect-input{
+    min-height: 200px;
+}
+
+
+.preview-skill-image{
+    width: 100px;
+    height: 100px;
+}
+
+.delete-txt{
+    font-size: 18px;
+}
+
+.fill-button-component{
+    width: 100%;
+    font-size: 18px;
+}
