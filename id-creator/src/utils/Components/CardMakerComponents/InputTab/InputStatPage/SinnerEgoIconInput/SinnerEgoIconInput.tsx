@@ -1,8 +1,8 @@
 import React from "react";
 import { ReactElement } from "react";
 import "./SinnerEgoIconInput.css"
-import { useEgoInfoContext } from "Utils/Context/EgoInfoContext";
-import { IEgoInfo } from "Interfaces/IEgoInfo";
+import { useEgoInfoContext } from "utils/context/EgoInfoContext";
+import { IEgoInfo } from "interfaces/IEgoInfo";
 
 export default function SinnerEgoIconInput():ReactElement{
     const {EgoInfoValue,setEgoInfoValue} = useEgoInfoContext()

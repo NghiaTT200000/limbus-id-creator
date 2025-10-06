@@ -1,14 +1,14 @@
-import useInputs from "Utils/Hooks/useInputs";
-import { ICustomEffect } from "Interfaces/CustomEffect/ICustomEffect";
+import useInputs from "utils/hooks/useInputs";
+import { ICustomEffect } from "interfaces/CustomEffect/ICustomEffect";
 import React from "react";
 import { ReactElement } from "react";
 import ChangeInputType from "../Components/ChangeInputType/ChangeInputType";
 import UploadImgBtn from "../Components/UploadImgBtn/UploadImgBtn";
 import "../InputPage.css"
 import EditableAutoCorrect from "../Components/EditableAutoCorrectInput/EditableAutoCorrect";
-import Delete_icon from "Icons/Delete_icon";
-import MainButton from "Utils/Components/MainButton/MainButton";
-import Arrow_down_icon from "Icons/Arrow_down_icon";
+import DeleteIcon from "utils/icons/DeleteIcon";
+import MainButton from "utils/components/MainButton/MainButton";
+import ArrowDownIcon from "utils/icons/ArrowDownIcon";
 
 export default function InputCustomEffectPage({
     customEffect,
@@ -37,10 +37,10 @@ export default function InputCustomEffectPage({
     return <div className="input-page">
         <div className="input-page-icon-container">
             <div className="collasp-icon" onClick={collaspPage}>
-                <Arrow_down_icon></Arrow_down_icon>
+                <ArrowDownIcon></ArrowDownIcon>
             </div>
             <div className="delete-icon" onClick={()=>deleteSkill(inputId)}>
-                <Delete_icon></Delete_icon>
+                <DeleteIcon></DeleteIcon>
             </div>
         </div>
         <ChangeInputType changeSkillType={changeSkillType} type={type}/>
@@ -48,7 +48,7 @@ export default function InputCustomEffectPage({
             <div className="input-group-container">
                 <div className="input-container center-element">
                     <img className="status-icon" src={customImg} alt="custom-status-img" />
-                    <MainButton component={<p className="center-element delete-txt"><Delete_icon/> Delete</p>} clickHandler={()=>changeSkill({...customEffect,customImg:""})} btnClass="main-button"/>
+                    <MainButton component={<p className="center-element delete-txt"><DeleteIcon/> Delete</p>} clickHandler={()=>changeSkill({...customEffect,customImg:""})} btnClass="main-button"/>
                 </div>
             </div>     
         :<></>}

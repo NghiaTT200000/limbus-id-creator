@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { ReactElement } from "react";
 import IdAndEgoLocalCard from "./IdAndEgoLocalCard";
-import { ISaveFile } from "Interfaces/ISaveFile";
-import { IIdInfo } from "Interfaces/IIdInfo";
-import { IEgoInfo } from "Interfaces/IEgoInfo";
+import { ISaveFile } from "interfaces/ISaveFile";
+import { IIdInfo } from "interfaces/IIdInfo";
+import { IEgoInfo } from "interfaces/IEgoInfo";
 import "./IdAndEgoLocalDisplayList.css"
 
 export default function IdAndEgoLocalDisplayList({mode}:{mode:string}):ReactElement{

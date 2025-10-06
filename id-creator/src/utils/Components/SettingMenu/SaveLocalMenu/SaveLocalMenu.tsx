@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "../SettingMenu.css"
-import { ISaveFile, SaveFile } from "Interfaces/ISaveFile";
-import MainButton from "Utils/Components/MainButton/MainButton";
-import { IIdInfo } from "Interfaces/IIdInfo";
-import { IEgoInfo } from "Interfaces/IEgoInfo";
-import useSaveLocal from "Utils/Hooks/useSaveLocal";
+import { ISaveFile, SaveFile } from "interfaces/ISaveFile";
+import MainButton from "utils/components/MainButton/MainButton";
+import { IIdInfo } from "interfaces/IIdInfo";
+import { IEgoInfo } from "interfaces/IEgoInfo";
+import useSaveLocal from "utils/hooks/useSaveLocal";
 import uuid from "react-uuid";
-import PopUpMenu from "Utils/Components/PopUpMenu/PopUpMenu";
-import Edit_icon from "Icons/Edit_icon";
+import PopUpMenu from "utils/components/PopUpMenu/PopUpMenu";
+import EditIcon from "utils/icons/EditIcon";
 
 
 
@@ -76,7 +76,7 @@ const SaveLocalMenu=({localSaveName,saveObjInfoValue,loadObjInfoValueCb,isActive
                                 setNameChangingSaveId(data.id)
                                 openPopup(data.saveName)
                             }}>
-                                <Edit_icon/>
+                                <EditIcon/>
                             </div>
                         </div>
                         <div className="center-element">

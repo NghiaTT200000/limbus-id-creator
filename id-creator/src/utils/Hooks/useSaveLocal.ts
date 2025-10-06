@@ -1,7 +1,7 @@
 import { Table } from "dexie";
-import { ISaveFile } from "Interfaces/ISaveFile";
+import { ISaveFile } from "interfaces/ISaveFile";
 import { useCallback, useEffect, useState } from "react";
-import { indexDB } from "Utils/IndexDB";
+import { indexDB } from "utils/indexDB";
 
 
 export default function useSaveLocal<SaveObj>(LocalSaveDataName:string){

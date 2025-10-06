@@ -1,10 +1,10 @@
-import { IEgoInfo } from "Interfaces/IEgoInfo";
-import { IIdInfo } from "Interfaces/IIdInfo";
-import { ISaveFile } from "Interfaces/ISaveFile";
+import { IEgoInfo } from "interfaces/IEgoInfo";
+import { IIdInfo } from "interfaces/IIdInfo";
+import { ISaveFile } from "interfaces/ISaveFile";
 import React, { useEffect, useRef, useState } from "react";
 import { ReactElement } from "react";
 import "./SearchSaveInput.css"
-import useKeyPress from "Utils/Hooks/useKeyPress";
+import useKeyPress from "utils/hooks/useKeyPress";
 
 export default function SearchSaveInput({saveList,chooseSave,searchSave}:{saveList:ISaveFile<IIdInfo|IEgoInfo>[],chooseSave:(saveUrl:string)=>void,searchSave:(name:string)=>void}):ReactElement{
     const [searchName,setSearchName] = useState("")

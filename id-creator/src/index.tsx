@@ -1,19 +1,19 @@
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import HeaderLayout from 'Utils/Components/Layout/HeaderLayout';
-import EgoCardPage from 'Pages/EgoCardPage/EgoCardPage';
-import ForumPage from 'Pages/ForumPage/ForumPage';
-import IdCardPage from 'Pages/IdCardPage/IdCardPage';
-import NewPostPage from 'Pages/NewPostPage/NewPostPage';
-import PostPage from 'Pages/PostPage/PostPage';
-import UserPage from 'Pages/UserPage/UserPage';
+import HeaderLayout from 'utils/components/Layout/HeaderLayout';
+import EgoCardPage from 'pages/EgoCardPage/EgoCardPage';
+import ForumPage from 'pages/ForumPage/ForumPage';
+import IdCardPage from 'pages/IdCardPage/IdCardPage';
+import NewPostPage from 'pages/NewPostPage/NewPostPage';
+import PostPage from 'pages/PostPage/PostPage';
+import UserPage from 'pages/UserPage/UserPage';
 import React, { ReactElement, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { DndProvider } from 'react-dnd'
 import { TouchBackend } from 'react-dnd-touch-backend'
-import DragAndDroppableSkillPreviewLayer from 'Utils/Components/CardMakerComponents/Card/components/DragAndDroppableSkill/DragAndDroppableSkillPreviewLayer';
-import { ISaveFile } from 'Interfaces/ISaveFile';
-import { indexDB } from 'Utils/IndexDB';
+import DragAndDroppableSkillPreviewLayer from 'utils/components/CardMakerComponents/Card/components/DragAndDroppableSkill/DragAndDroppableSkillPreviewLayer';
+import { indexDB } from 'utils/indexDB';
+import { ISaveFile } from 'interfaces/ISaveFile';
 
 const root = createRoot(document.getElementById('root')!);
 

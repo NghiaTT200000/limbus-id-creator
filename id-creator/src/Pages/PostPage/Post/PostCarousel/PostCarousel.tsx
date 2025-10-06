@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./PostCarousel.css"
-import Arrow_up_icon from "Icons/Arrow_up_icon";
-import Arrow_down_icon from "Icons/Arrow_down_icon";
-import ViewImagePopUp from "Utils/Components/ViewImagePopUp/ViewImagePopUp";
+import ArrowUpIcon from "utils/icons/ArrowUpIcon";
+import ArrowDownIcon from "utils/icons/ArrowDownIcon";
+import ViewImagePopUp from "utils/components/ViewImagePopUp/ViewImagePopUp";
 
 export default function PostCarousel({postImages}:{postImages:string[]}){
     const [currImg,setCurrImg] = useState(0)
@@ -10,7 +10,7 @@ export default function PostCarousel({postImages}:{postImages:string[]}){
     
     return <div className="post-carousel-container">
         {currImg>0?<div className="post-carousel-arrow left" onClick={()=>setCurrImg(currImg-1)}>
-            <Arrow_down_icon/>
+            <ArrowDownIcon/>
         </div>
         :<></>}
         {postImages.map((image,i)=><img key={i} className={`post-img ${i!=currImg?"hidden":""}`} src={image} alt="card-img" onClick={()=>{
@@ -20,7 +20,7 @@ export default function PostCarousel({postImages}:{postImages:string[]}){
                 setIsViewModeActive(false)
             }}/>
         {currImg<postImages.length-1?<div className="post-carousel-arrow right" onClick={()=>setCurrImg(currImg+1)}>
-            <Arrow_up_icon/>
+            <ArrowUpIcon/>
         </div>
         :<></>}
         

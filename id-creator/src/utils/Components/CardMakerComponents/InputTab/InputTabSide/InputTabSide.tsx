@@ -1,12 +1,12 @@
-import Add_icon from "Icons/Add_icon";
+import AddIcon from "utils/icons/AddIcon";
 import React, { useState } from "react";
 import "./InputTabSide.css"
-import Reset_icon from "Icons/Reset_icon";
-import { IOffenseSkill, OffenseSkill } from "Interfaces/OffenseSkill/IOffenseSkill";
-import { DefenseSkill, IDefenseSkill } from "Interfaces/DefenseSkill/IDefenseSkill";
-import { CustomEffect, ICustomEffect } from "Interfaces/CustomEffect/ICustomEffect";
-import { IMentalEffect, MentalEffect } from "Interfaces/MentalEffect/IMentalEffect";
-import { IPassiveSkill, PassiveSkill } from "Interfaces/PassiveSkill/IPassiveSkill";
+import ResetIcon from "utils/icons/ResetIcon";
+import { IOffenseSkill, OffenseSkill } from "interfaces/OffenseSkill/IOffenseSkill";
+import { DefenseSkill, IDefenseSkill } from "interfaces/DefenseSkill/IDefenseSkill";
+import { CustomEffect, ICustomEffect } from "interfaces/CustomEffect/ICustomEffect";
+import { IMentalEffect, MentalEffect } from "interfaces/MentalEffect/IMentalEffect";
+import { IPassiveSkill, PassiveSkill } from "interfaces/PassiveSkill/IPassiveSkill";
 
 export default function InputTabSide({sinnerIcon,
     skillDetails,
@@ -47,7 +47,7 @@ export default function InputTabSide({sinnerIcon,
         <li className="input-tab-side icon-side" onClick={()=>{
             if(skillDetails.length<20) setIsAdding(!isAdding)
         }}>
-            <Add_icon/>
+            <AddIcon/>
         </li>
         <ul className="input-tab-side-mini-container">
             <li className={`input-tab-side ${activeTab===-1?"active":""}`} onClick={()=>changeTab(-1)}
@@ -69,7 +69,7 @@ export default function InputTabSide({sinnerIcon,
                     }}>
                     <img src={tabIcon} alt="" />
                     {/* <span className="input-tab-delete-icon" >
-                        <Delete_icon/>
+                        <DeleteIcon/>
                     </span> */}
                 </li>
             })}
@@ -77,7 +77,7 @@ export default function InputTabSide({sinnerIcon,
         
         <li className="input-tab-side icon-side reset-icon-side"
             onClick={resetBtnHandler}>
-            <Reset_icon/>
+            <ResetIcon/>
         </li>
         {isAdding?<ul className="input-tab-side-add-option-container">
             <li className="input-tab-side-add-option"

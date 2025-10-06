@@ -1,18 +1,18 @@
 import React from "react";
 import { ReactElement } from "react";
 import "../InputPage.css"
-import useInputs from "Utils/Hooks/useInputs";
+import useInputs from "utils/hooks/useInputs";
 import UploadImgBtn from "../Components/UploadImgBtn/UploadImgBtn";
 import "../InputPage.css"
 import ChangeInputType from "../Components/ChangeInputType/ChangeInputType";
-import { IDefenseSkill } from "Interfaces/DefenseSkill/IDefenseSkill";
+import { IDefenseSkill } from "interfaces/DefenseSkill/IDefenseSkill";
 import DamageTypeInput from "../Components/DamageTypeInput/DamageTypeInput";
 import SinAffinityInput from "../Components/SinAffinityInput/SinAffinityInput";
 import DefenseTypeInput from "../Components/DefenseTypeInput/DefenseTypeInput";
 import EditableAutoCorrect from "../Components/EditableAutoCorrectInput/EditableAutoCorrect";
-import Delete_icon from "Icons/Delete_icon";
-import MainButton from "Utils/Components/MainButton/MainButton";
-import Arrow_down_icon from "Icons/Arrow_down_icon";
+import DeleteIcon from "utils/icons/DeleteIcon";
+import MainButton from "utils/components/MainButton/MainButton";
+import ArrowDownIcon from "utils/icons/ArrowDownIcon";
 
 export default function InputDefenseSkillPage({
     defenseSkill,
@@ -53,10 +53,10 @@ export default function InputDefenseSkillPage({
     return <div className="input-page input-defense-skill-page" style={{background:`var(--${skillAffinity}-input-page)`}}>
         <div className="input-page-icon-container">
             <div className="collasp-icon" onClick={collaspPage}>
-                <Arrow_down_icon></Arrow_down_icon>
+                <ArrowDownIcon></ArrowDownIcon>
             </div>
             <div className="delete-icon" onClick={()=>deleteSkill(inputId)}>
-                <Delete_icon></Delete_icon>
+                <DeleteIcon></DeleteIcon>
             </div>
         </div>
         <ChangeInputType changeSkillType={changeSkillType} type={type}/>
@@ -64,7 +64,7 @@ export default function InputDefenseSkillPage({
             <div className="input-group-container">
                 <div className="center-element-vertically">
                     <img className="preview-skill-image" src={skillImage} alt="custom-skill-img" />
-                    <MainButton component={<p className="center-element delete-txt"><Delete_icon/> Delete</p>} clickHandler={()=>changeSkill({...defenseSkill,skillImage:""})} btnClass="main-button"/>
+                    <MainButton component={<p className="center-element delete-txt"><DeleteIcon/> Delete</p>} clickHandler={()=>changeSkill({...defenseSkill,skillImage:""})} btnClass="main-button"/>
                 </div>
             </div>
         :<></>}

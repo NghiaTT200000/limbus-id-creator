@@ -2,9 +2,9 @@ import React, { useEffect } from "react"
 import { useState } from "react"
 import {MapInteractionCSS} from "react-map-interaction"
 import "./ViewImagePopUp.css"
-import Arrow_up_icon from "Icons/Arrow_up_icon"
-import Arrow_down_icon from "Icons/Arrow_down_icon"
-import Close_icon from "Icons/Close_icon"
+import ArrowUpIcon from "utils/icons/ArrowUpIcon"
+import ArrowDownIcon from "utils/icons/ArrowDownIcon"
+import CloseIcon from "utils/icons/CloseIcon"
 
 
 export default function ViewImagePopUp({images,index=0,isActive,closeFn}:{images:string[],index:number,isActive:boolean,closeFn:()=>void}){
@@ -21,13 +21,13 @@ export default function ViewImagePopUp({images,index=0,isActive,closeFn}:{images
                     setCurrChoice(index)
                     closeFn()
                 }}>
-            <Close_icon/>
+            <CloseIcon/>
             </div>
             {currChoice>0?<div className="image-pop-up-arrow left" onClick={()=>setCurrChoice(currChoice-1)}>
-                <Arrow_down_icon/>
+                <ArrowDownIcon/>
             </div>:<></>}
             {currChoice<images.length-1?<div className="image-pop-up-arrow right" onClick={()=>setCurrChoice(currChoice+1)}>
-                <Arrow_up_icon/>
+                <ArrowUpIcon/>
             </div>:<></>}
         </div>
         :<></>}

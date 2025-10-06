@@ -1,14 +1,14 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import React from "react";
 import "./LoginMenu.css"
-import MainButton from "Utils/Components/MainButton/MainButton";
+import MainButton from "utils/components/MainButton/MainButton";
 import { TokenResponse, useGoogleLogin } from "@react-oauth/google";
-import PopUpMenu from "Utils/Components/PopUpMenu/PopUpMenu";
-import { useAlertContext } from "Utils/Context/AlertContext";
-import { useLoginUserContext } from "Utils/Context/LoginUserContext";
-import IResponse from "Interfaces/IResponse";
-import ILoginUser from "Interfaces/ILoginUser";
-import Google_icon from "Icons/Google_icon";
+import PopUpMenu from "utils/components/PopUpMenu/PopUpMenu";
+import { useAlertContext } from "utils/context/AlertContext";
+import { useLoginUserContext } from "utils/context/LoginUserContext";
+import IResponse from "interfaces/IResponse";
+import ILoginUser from "interfaces/ILoginUser";
+import GoogleIcon from "utils/icons/GoogleIcon";
 
 const loginMenuContext = createContext(null)
 
@@ -66,11 +66,11 @@ function LoginMenu({children}){
                     {isLoggingIn?
                     <MainButton component={<>
                         Logging in...
-                        <Google_icon/>
+                        <GoogleIcon/>
                     </>} btnClass="main-button active center-element"/>:
                     <MainButton clickHandler={() => login()} component={<>
                         Login/Register with Google
-                        <Google_icon/>
+                        <GoogleIcon/>
                     </>} btnClass={"main-button center-element"}/>}
                 </div>
             </PopUpMenu>

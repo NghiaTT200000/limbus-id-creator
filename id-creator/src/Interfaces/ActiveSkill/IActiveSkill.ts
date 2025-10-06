@@ -1,4 +1,4 @@
-import ISkill from "Interfaces/SkillAndEffect/ISkill";
+import ISkill from "interfaces/SkillAndEffect/ISkill";
 
 export interface IActiveSkill extends ISkill{
     name:string,

@@ -1,13 +1,13 @@
-import useInputs from "Utils/Hooks/useInputs";
-import { IPassiveSkill } from "Interfaces/PassiveSkill/IPassiveSkill";
+import useInputs from "utils/hooks/useInputs";
+import { IPassiveSkill } from "interfaces/PassiveSkill/IPassiveSkill";
 import React from "react";
 import { ReactElement } from "react";
 import ChangeInputType from "../Components/ChangeInputType/ChangeInputType";
-import DropDown from "Utils/Components/DropDown/DropDown";
+import DropDown from "utils/components/DropDown/DropDown";
 import "../InputPage.css"
 import EditableAutoCorrect from "../Components/EditableAutoCorrectInput/EditableAutoCorrect";
-import Delete_icon from "Icons/Delete_icon";
-import Arrow_down_icon from "Icons/Arrow_down_icon";
+import DeleteIcon from "utils/icons/DeleteIcon";
+import ArrowDownIcon from "utils/icons/ArrowDownIcon";
 
 
 
@@ -56,10 +56,10 @@ export default function InputPassivePage({
     return <div className="input-page input-passive-page">
         <div className="input-page-icon-container">
             <div className="collasp-icon" onClick={collaspPage}>
-                <Arrow_down_icon></Arrow_down_icon>
+                <ArrowDownIcon></ArrowDownIcon>
             </div>
             <div className="delete-icon" onClick={()=>deleteSkill(inputId)}>
-                <Delete_icon></Delete_icon>
+                <DeleteIcon></DeleteIcon>
             </div>
         </div>
         <div className="input-group-container">

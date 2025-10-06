@@ -1,9 +1,9 @@
 import React from "react";
 import { ReactElement } from "react";
 import "./UploadImgBtn.css"
-import Upload_file_icon from "Icons/Upload_file_icon";
-import MainButton from "Utils/Components/MainButton/MainButton";
-import { useAlertContext } from "Utils/Context/AlertContext";
+import UploadFileIcon from "utils/icons/UploadFileIcon";
+import MainButton from "utils/components/MainButton/MainButton";
+import { useAlertContext } from "utils/context/AlertContext";
 
 export default function UploadImgBtn({onFileInputChange,btnTxt,btnClass,maxSize}:{onFileInputChange:(e:React.ChangeEvent<HTMLInputElement>)=>void,btnTxt:string|ReactElement,btnClass?:string,maxSize?:number}):ReactElement{
     const {addAlert} = useAlertContext()
@@ -15,7 +15,7 @@ export default function UploadImgBtn({onFileInputChange,btnTxt,btnClass,maxSize}
                     else addAlert("Failure","That file is larger than the input limit")
                 }} onClick={(e)=>{e.currentTarget.value = ""}}/>
             <span>
-                <Upload_file_icon />
+                <UploadFileIcon />
             </span>
             <p>{btnTxt}</p>
         </>} btnClass={"upload-img-btn main-button fill-button-component "+btnClass}/>

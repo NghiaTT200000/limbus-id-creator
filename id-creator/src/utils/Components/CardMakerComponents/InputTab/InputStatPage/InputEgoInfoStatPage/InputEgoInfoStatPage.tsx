@@ -4,12 +4,12 @@ import "../../InputPage.css"
 import "../InputStatPage.css"
 import UploadImgBtn from "../../Components/UploadImgBtn/UploadImgBtn";
 import SinnerSplashArtRepositionInput from "../SinnerSplashArtRepositionInput/SinnerSplashArtRepositionInput";
-import { useEgoInfoContext } from "Utils/Context/EgoInfoContext";
-import useInput from "Utils/Hooks/useInputs";
+import { useEgoInfoContext } from "utils/context/EgoInfoContext";
+import useInput from "utils/hooks/useInputs";
 import SinnerEgoIconInput from "../SinnerEgoIconInput/SinnerEgoIconInput";
-import DropDown from "Utils/Components/DropDown/DropDown";
+import DropDown from "utils/components/DropDown/DropDown";
 import { EgoLevelDropDown } from "../EgoLevelDropDown/EgoLevelDropDown";
-import Arrow_down_icon from "Icons/Arrow_down_icon";
+import ArrowDownIcon from "utils/icons/ArrowDownIcon";
 
 export default function InputStatPage({collaspPage}:{collaspPage:()=>void}):ReactElement{
     const {EgoInfoValue,setEgoInfoValue} = useEgoInfoContext()
@@ -63,7 +63,7 @@ export default function InputStatPage({collaspPage}:{collaspPage:()=>void}):Reac
     return <div className="input-page input-stat-page">
         <div className="input-page-icon-container">
             <div className="collasp-icon" onClick={collaspPage}>
-                <Arrow_down_icon></Arrow_down_icon>
+                <ArrowDownIcon></ArrowDownIcon>
             </div>
         </div>
         <div className="sinner-icon-input-container">

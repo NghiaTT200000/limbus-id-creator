@@ -1,10 +1,10 @@
 import React, { forwardRef, useCallback } from "react";
 import { ReactElement } from "react";
 import "../SinnerSkill.css"
-import { IDefenseSkill } from "Interfaces/DefenseSkill/IDefenseSkill";
-import SkillEffect from "Utils/Components/CardMakerComponents/Card/components/SkillEffect/SkillEffect";
-import DefenseSkillSplash from "Utils/Components/CardMakerComponents/Card/components/SkillSplash/DefenseSkillSplash/DefenseSkillSplash";
-import SkillTitle from "Utils/Components/CardMakerComponents/Card/components/SkillTitle/SkillTitle";
+import { IDefenseSkill } from "interfaces/DefenseSkill/IDefenseSkill";
+import SkillEffect from "utils/components/CardMakerComponents/Card/components/SkillEffect/SkillEffect";
+import DefenseSkillSplash from "utils/components/CardMakerComponents/Card/components/SkillSplash/DefenseSkillSplash/DefenseSkillSplash";
+import SkillTitle from "utils/components/CardMakerComponents/Card/components/SkillTitle/SkillTitle";
 
 const DefenseSinnerSkill = forwardRef<HTMLDivElement, { defenseSkill: IDefenseSkill }>(({ defenseSkill }, ref) => {
     const {

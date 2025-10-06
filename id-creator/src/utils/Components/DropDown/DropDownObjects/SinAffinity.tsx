@@ -1,4 +1,4 @@
-import { dropDownEl } from "Utils/Components/DropDown/DropDown"
+import { dropDownEl } from "utils/components/DropDown/DropDown"
 import React from "react"
 
 export const SinAffinityDropDown:{[key:string]:dropDownEl}={

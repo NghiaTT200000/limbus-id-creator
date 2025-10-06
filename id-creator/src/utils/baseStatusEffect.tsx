@@ -1,6 +1,3 @@
-import React from "react";
-
-
 export const baseStatusEffect={
     "attack_power_up":
         "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Attack_Power_Up.png' alt='attack_power_up_icon' />Attack Power Up</span>",

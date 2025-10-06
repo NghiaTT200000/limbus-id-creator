@@ -2,13 +2,13 @@ import React, { useMemo, useState } from "react";
 import { ReactElement, useEffect, useRef } from "react";
 import ContentEditable from "react-contenteditable";
 import SuggestBox from "./SuggestBox/SuggestBox";
-import useKeyPress from "Utils/Hooks/useKeyPress";
+import useKeyPress from "utils/hooks/useKeyPress";
 import "./EditableAutoCorrect.css"
-import getCaretCharacterOffsetWithin from "Utils/Components/CardMakerComponents/InputTab/Components/EditableAutoCorrectInput/Functions/getCaretCharacterOffsetWithin";
-import getCaretHTMLCharacterOffSet from "Utils/Components/CardMakerComponents/InputTab/Components/EditableAutoCorrectInput/Functions/getCaretHTMLCharacterOffSet";
-import ecapeRegExp from "Utils/Components/CardMakerComponents/InputTab/Components/EditableAutoCorrectInput/Functions/ecapeRegExp";
-import setEditableCaretPos from "Utils/Components/CardMakerComponents/InputTab/Components/EditableAutoCorrectInput/Functions/setEditableCaretPos";
-import getTextInTag from "Utils/Components/CardMakerComponents/InputTab/Components/EditableAutoCorrectInput/Functions/getTextInTag";
+import getCaretCharacterOffsetWithin from "utils/components/CardMakerComponents/InputTab/Components/EditableAutoCorrectInput/Functions/getCaretCharacterOffsetWithin";
+import getCaretHTMLCharacterOffSet from "utils/components/CardMakerComponents/InputTab/Components/EditableAutoCorrectInput/Functions/getCaretHTMLCharacterOffSet";
+import ecapeRegExp from "utils/components/CardMakerComponents/InputTab/Components/EditableAutoCorrectInput/Functions/ecapeRegExp";
+import setEditableCaretPos from "utils/components/CardMakerComponents/InputTab/Components/EditableAutoCorrectInput/Functions/setEditableCaretPos";
+import getTextInTag from "utils/components/CardMakerComponents/InputTab/Components/EditableAutoCorrectInput/Functions/getTextInTag";
 
 
 export default function EditableAutoCorrect({inputId,content,matchList,changeHandler}:{inputId:string,content:string,changeHandler:(e:React.ChangeEvent<HTMLInputElement>)=>void,matchList:{[key:string]:string}}):ReactElement{

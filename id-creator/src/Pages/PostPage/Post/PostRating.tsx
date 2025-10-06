@@ -1,12 +1,12 @@
-import Thumb_down_icon from "Icons/Thumb_down_icon";
-import Thumb_up_icon from "Icons/Thumb_up_icon";
+import ThumbDownIcon from "utils/icons/ThumbDownIcon";
+import ThumbUpIcon from "utils/icons/ThumbUpIcon";
 import React from "react";
-import MainButton from "Utils/Components/MainButton/MainButton";
+import MainButton from "utils/components/MainButton/MainButton";
 
 export default function ShowIdEgoRating({rating,ratingChoice}:{rating:number,ratingChoice:string}){
     return <div className="center-element">
-        <MainButton btnClass={`main-button ${(ratingChoice==="Like")?" active":""}`} component={<p className="center-element"><Thumb_up_icon/>Like</p>} />
+        <MainButton btnClass={`main-button ${(ratingChoice==="Like")?" active":""}`} component={<p className="center-element"><ThumbUpIcon/>Like</p>} />
         {rating}
-        <MainButton btnClass={`main-button ${(ratingChoice==="DiskLike")?" active":""}`} component={<p className="center-element"><Thumb_down_icon/>Dislike</p>} />
+        <MainButton btnClass={`main-button ${(ratingChoice==="DiskLike")?" active":""}`} component={<p className="center-element"><ThumbDownIcon/>Dislike</p>} />
     </div>
 }

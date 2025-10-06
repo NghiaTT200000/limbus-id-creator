@@ -1,18 +1,18 @@
 import React, { ReactElement, useEffect, useRef, useState } from 'react';
-import 'Styles/reset.css'
-import 'Styles/style.css'
+import 'styles/reset.css'
+import 'styles/style.css'
 import '../EditorPage.css'
-import { StatusEffectProvider } from 'Utils/Context/StatusEffectContext';
-import { useRefDownloadContext } from 'Utils/Context/ImgUrlContext';
-import { EgoInfoProvider, useEgoInfoContext } from 'Utils/Context/EgoInfoContext';
-import { EgoCard } from 'Utils/Components/CardMakerComponents/Card/EgoCard';
-import InputTabEgoInfoContainer from 'Utils/Components/CardMakerComponents/InputTab/InputTabContainer/InputTabEgoInfoContainer/InputTabEgoInfoContainer';
+import { StatusEffectProvider } from 'utils/context/StatusEffectContext';
+import { useRefDownloadContext } from 'utils/context/ImgUrlContext';
+import { EgoInfoProvider, useEgoInfoContext } from 'utils/context/EgoInfoContext';
+import { EgoCard } from 'utils/components/CardMakerComponents/Card/EgoCard';
+import InputTabEgoInfoContainer from 'utils/components/CardMakerComponents/InputTab/InputTabContainer/InputTabEgoInfoContainer/InputTabEgoInfoContainer';
 import { useSearchParams } from 'react-router-dom';
-import ResetMenu from 'Utils/Components/ResetMenu/ResetMenu';
-import CardMakerFooter from 'Utils/Components/CardMakerComponents/CardMakerFooter/CardMakerFooter';
-import { useSettingMenuContext } from 'Utils/Components/SettingMenu/SettingMenu';
-import { indexDB } from 'Utils/IndexDB';
-import { EgoInfo } from 'Interfaces/IEgoInfo';
+import ResetMenu from 'utils/components/ResetMenu/ResetMenu';
+import CardMakerFooter from 'utils/components/CardMakerComponents/CardMakerFooter/CardMakerFooter';
+import { useSettingMenuContext } from 'utils/components/SettingMenu/SettingMenu';
+import { indexDB } from 'utils/indexDB';
+import { EgoInfo } from 'interfaces/IEgoInfo';
 
 
 

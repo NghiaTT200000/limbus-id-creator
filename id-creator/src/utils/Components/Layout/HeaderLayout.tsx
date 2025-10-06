@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { ReactElement } from "react";
 import {Link, Outlet} from "react-router-dom";
 import "./HeaderLayout.css"
-import MainButton from "Utils/Components/MainButton/MainButton";
-import { RefDownloadProvider } from "Utils/Context/ImgUrlContext";
+import MainButton from "utils/components/MainButton/MainButton";
+import { RefDownloadProvider } from "utils/context/ImgUrlContext";
 import SideBar from "./SideBar/SideBar";
-import { AlertContextProvider } from "Utils/Context/AlertContext";
+import { AlertContextProvider } from "utils/context/AlertContext";
 import AlertPopUp from "./AlertPopUp/AlertPopUp";
-import { LoginMenu, useLoginMenuContext } from "Utils/Components/LoginMenu/LoginMenu";
-import { LoginUserContextProvider, useLoginUserContext } from "Utils/Context/LoginUserContext";
+import { LoginMenu, useLoginMenuContext } from "utils/components/LoginMenu/LoginMenu";
+import { LoginUserContextProvider, useLoginUserContext } from "utils/context/LoginUserContext";
 import { SettingMenu } from "../SettingMenu/SettingMenu";
-import Kofi_icon from "Icons/Kofi_icon";
+import KofiIcon from "utils/icons/KofiIcon";
 
 export default function HeaderLayout():ReactElement{
 
@@ -51,7 +51,7 @@ function HeaderLayoutContent():ReactElement{
                     {loginUser&&<Link to={"/NewPost"}><MainButton component={"Post"} btnClass="main-button"></MainButton></Link>}
                     <a href="https://ko-fi.com/johnlimbusidmaker" target="_blank">
                         <button className="main-button center-element">
-                            <Kofi_icon width="16px" height="16px"/>
+                            <KofiIcon width="16px" height="16px"/>
                             <p>Support me</p>
                         </button>
                     </a>

@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 import "./CardHeader.css"
-import { useEgoInfoContext } from "Utils/Context/EgoInfoContext";
+import { useEgoInfoContext } from "utils/context/EgoInfoContext";
 
 export default function EgoHeader():ReactElement{
     const {EgoInfoValue} = useEgoInfoContext()

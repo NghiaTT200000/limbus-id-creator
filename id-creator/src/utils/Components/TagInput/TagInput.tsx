@@ -1,7 +1,7 @@
-import useKeyPress from "Utils/Hooks/useKeyPress";
+import useKeyPress from "utils/hooks/useKeyPress";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { ReactElement } from "react";
-import { ITag, TagList } from "Utils/TagList";
+import { ITag, TagList } from "utils/TagList";
 import "./TagInput.css"
 
 export default function TagInput({completeFn,customClass="",id}:{completeFn:(keyword:ITag)=>void,maxTag:number,customClass?:string,id:string}):ReactElement{

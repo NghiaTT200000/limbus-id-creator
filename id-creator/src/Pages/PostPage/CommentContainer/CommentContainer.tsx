@@ -1,4 +1,4 @@
-import { IComment } from "Interfaces/IPost/IComment";
+import { IComment } from "interfaces/IPost/IComment";
 import React, { useEffect, useRef, useState } from "react";
 import Comment from "./Comment";
 

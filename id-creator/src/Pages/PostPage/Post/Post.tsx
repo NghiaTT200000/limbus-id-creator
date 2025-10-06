@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { ReactElement } from "react";
 import CardTag from "./CardTag/CardTag";
 import PostCarousel from "./PostCarousel/PostCarousel";
-import { IPost } from "Interfaces/IPost/IPost";
-import UserProfileLoading from "Pages/UserPage/User/UserProfileLoading";
-import { TagList } from "Utils/TagList";
+import { IPost } from "interfaces/IPost/IPost";
+import UserProfileLoading from "pages/UserPage/User/UserProfileLoading";
+import { TagList } from "utils/TagList";
 import { Link } from "react-router-dom";
-import View_icon from "Icons/View_icon";
-import Comment_icon from "Icons/Comment_icon";
+import ViewIcon from "utils/icons/ViewIcon";
+import CommentIcon from "utils/icons/CommentIcon";
 
 
 export default function Post({post,getPost}:{post:IPost,getPost:()=>Promise<void>}):ReactElement{
@@ -43,11 +43,11 @@ export default function Post({post,getPost}:{post:IPost,getPost:()=>Promise<void
                 </div>
                 <div className="center-element">
                     <div className="card-tag center-element">
-                        <View_icon width={16} height={16}/>
+                        <ViewIcon width={16} height={16}/>
                         {post.viewCount}
                     </div>
                     <div className="card-tag center-element">
-                        <Comment_icon width={16} height={16}/>
+                        <CommentIcon width={16} height={16}/>
                        {post.commentCount}
                     </div>
                 </div>

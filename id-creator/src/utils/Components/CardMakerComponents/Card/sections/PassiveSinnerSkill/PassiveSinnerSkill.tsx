@@ -1,9 +1,9 @@
 import React, { forwardRef, ReactElement } from "react";
 import "../SinnerSkill.css"
 import "./PassiveSinnerSkill.css"
-import { IPassiveSkill } from "Interfaces/PassiveSkill/IPassiveSkill";
-import SkillTitle from "Utils/Components/CardMakerComponents/Card/components/SkillTitle/SkillTitle";
-import SkillEffect from "Utils/Components/CardMakerComponents/Card/components/SkillEffect/SkillEffect";
+import { IPassiveSkill } from "interfaces/PassiveSkill/IPassiveSkill";
+import SkillTitle from "utils/components/CardMakerComponents/Card/components/SkillTitle/SkillTitle";
+import SkillEffect from "utils/components/CardMakerComponents/Card/components/SkillEffect/SkillEffect";
 
 const PassiveSinnerSkill = forwardRef<HTMLDivElement, { passiveSkill: IPassiveSkill }>(({ passiveSkill }, ref) => {
     const {

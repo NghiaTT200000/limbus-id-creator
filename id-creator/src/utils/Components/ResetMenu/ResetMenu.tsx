@@ -1,9 +1,8 @@
 import React from "react";
-import PopUpMenu from "Utils/Components/PopUpMenu/PopUpMenu";
+import PopUpMenu from "utils/components/PopUpMenu/PopUpMenu";
 import "./ResetMenu.css"
-import MainButton from "Utils/Components/MainButton/MainButton";
-import Check_icon from "Icons/Check_icon";
-import Close_icon from "Icons/Close_icon";
+import MainButton from "utils/components/MainButton/MainButton";
+import CheckIcon from "utils/icons/CheckIcon";
 
 export default function ResetMenu({isActive,setIsActive,confirmFn}:{isActive:boolean,setIsActive:(isActive:boolean)=>void,confirmFn:()=>void}){
     return <div className={`${isActive?"":"hidden"}`}>
@@ -12,14 +11,14 @@ export default function ResetMenu({isActive,setIsActive,confirmFn}:{isActive:boo
                 <h1>Do you want to reset your progess</h1>
                 <div className="center-element">
                     <MainButton component={<>
-                        <Check_icon/>
+                        <CheckIcon/>
                         <p>Confirm</p>
                     </>} btnClass={"main-button center-element"} clickHandler={()=>{
                             confirmFn()
                             setIsActive(!isActive)
                         }}/>
                     <MainButton component={<>
-                        <Close_icon/>
+                        <CheckIcon/>
                         <p>Cancel</p>
                     </>} btnClass={"main-button center-element"} clickHandler={()=>setIsActive(!isActive)} />
                 </div>

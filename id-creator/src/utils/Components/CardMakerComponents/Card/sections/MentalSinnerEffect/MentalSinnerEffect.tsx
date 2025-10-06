@@ -1,9 +1,9 @@
-import { IMentalEffect } from "Interfaces/MentalEffect/IMentalEffect";
+import { IMentalEffect } from "interfaces/MentalEffect/IMentalEffect";
 import React, { forwardRef, ReactElement } from "react";
 import "../SinnerSkill.css"
 import "./MentalSinnerEffect.css"
-import SkillEffect from "Utils/Components/CardMakerComponents/Card/components/SkillEffect/SkillEffect";
-import SkillTitle from "Utils/Components/CardMakerComponents/Card/components/SkillTitle/SkillTitle";
+import SkillEffect from "utils/components/CardMakerComponents/Card/components/SkillEffect/SkillEffect";
+import SkillTitle from "utils/components/CardMakerComponents/Card/components/SkillTitle/SkillTitle";
 
 const MentalSinnerEffect = forwardRef<HTMLDivElement, { mentalEffect: IMentalEffect }>(({ mentalEffect }, ref) => {
     const { effect } = mentalEffect;

@@ -1,4 +1,4 @@
-import { useIdInfoContext } from "Utils/Context/IdInfoContext"
+import { useIdInfoContext } from "utils/context/IdInfoContext"
 import React, { ReactElement } from "react"
 import {MapInteractionCSS} from "react-map-interaction"
 import "./SinnerSplashArt.css"

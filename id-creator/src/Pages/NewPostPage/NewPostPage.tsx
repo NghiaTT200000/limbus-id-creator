@@ -1,19 +1,19 @@
-import { useLoginUserContext } from "Utils/Context/LoginUserContext";
-import { useLoginMenuContext } from "Utils/Components/LoginMenu/LoginMenu";
+import { useLoginUserContext } from "utils/context/LoginUserContext";
+import { useLoginMenuContext } from "utils/components/LoginMenu/LoginMenu";
 import React, { useEffect, useState } from "react";
 import { ReactElement } from "react";
-import MainButton from "Utils/Components/MainButton/MainButton";
+import MainButton from "utils/components/MainButton/MainButton";
 import "./NewPostPage.css";
-import TagInput from "Utils/Components/TagInput/TagInput";
-import TagsContainer from "Utils/Components/TagsContainer/TagsContainer";
-import { ITag } from "Utils/TagList";
-import { ISaveFile } from "Interfaces/ISaveFile";
-import { IIdInfo } from "Interfaces/IIdInfo";
-import { IEgoInfo } from "Interfaces/IEgoInfo";
+import TagInput from "utils/components/TagInput/TagInput";
+import TagsContainer from "utils/components/TagsContainer/TagsContainer";
+import { ITag } from "utils/TagList";
+import { ISaveFile } from "interfaces/ISaveFile";
+import { IIdInfo } from "interfaces/IIdInfo";
+import { IEgoInfo } from "interfaces/IEgoInfo";
 import SearchSaveInput from "./SearchSaveInput/SearchSaveInput";
-import Close_icon from "Icons/Close_icon";
+import CloseIcon from "utils/icons/CloseIcon";
 import Editor from 'react-simple-wysiwyg';
-import { useAlertContext } from "Utils/Context/AlertContext";
+import { useAlertContext } from "utils/context/AlertContext";
 import uuid from "react-uuid";
 import { useNavigate } from "react-router-dom";
 
@@ -140,7 +140,7 @@ export default function NewPostPage():ReactElement{
                 <div className="choosen-save-container">
                     {choosenSave.map((save,i)=><div key={i} className="choosen-save-img-container">
                         <div className="remove-btn" onClick={()=>removeSave(i)}>
-                            <Close_icon/>
+                            <CloseIcon/>
                         </div>
                         <img src={save.PreviewUrl} className="choosen-save-img" alt="preview-img" />
                     </div>)}

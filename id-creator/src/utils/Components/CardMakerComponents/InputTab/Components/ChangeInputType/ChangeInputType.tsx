@@ -1,4 +1,4 @@
-import DropDown from "Utils/Components/DropDown/DropDown";
+import DropDown from "utils/components/DropDown/DropDown";
 import React from "react";
 import { ReactElement } from "react";
 

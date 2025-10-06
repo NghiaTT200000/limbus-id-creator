@@ -1,9 +1,9 @@
 import React from "react";
 import './PostDisplayCard.css'
-import { IPostDisplayCard } from "Interfaces/IPostDisplayCard/IPostDisplayCard";
-import View_icon from "Icons/View_icon";
-import Comment_icon from "Icons/Comment_icon";
-import { TagList } from "Utils/TagList";
+import { IPostDisplayCard } from "interfaces/IPostDisplayCard/IPostDisplayCard";
+import ViewIcon from "utils/icons/ViewIcon";
+import CommentIcon from "utils/icons/CommentIcon";
+import { TagList } from "utils/TagList";
 import { Link } from "react-router-dom";
 
 export default function PostDisplayCard({id,title,cardImg,userIcon,userName,userId,created,tags,viewCount,commentCount}:IPostDisplayCard){
@@ -37,11 +37,11 @@ export default function PostDisplayCard({id,title,cardImg,userIcon,userName,user
             </div>
             <div className="post-display-tag-container r">
                 <div className="post-display-card-tag">
-                    <View_icon width={12} height={12}/>
+                    <ViewIcon width={12} height={12}/>
                     {viewCount}
                 </div>
                 <div className="post-display-card-tag">
-                    <Comment_icon width={12} height={12}/>
+                    <CommentIcon width={12} height={12}/>
                     {commentCount}
                 </div>
             </div>

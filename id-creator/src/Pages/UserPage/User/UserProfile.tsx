@@ -1,13 +1,13 @@
 import React, { useCallback, useState } from "react";
 import { ReactElement } from "react";
 import "../User.css"
-import MainButton from "Utils/Components/MainButton/MainButton";
-import Edit_icon from "Icons/Edit_icon";
-import Check_icon from "Icons/Check_icon";
+import MainButton from "utils/components/MainButton/MainButton";
+import EditIcon from "utils/icons/EditIcon";
+import CheckIcon from "utils/icons/CheckIcon";
 import { useParams } from "react-router-dom";
-import { IUserProfile } from "Interfaces/API/OAuth/IUserProfile";
-import IResponse from "Interfaces/IResponse";
-import { useAlertContext } from "Utils/Context/AlertContext";
+import { IUserProfile } from "interfaces/API/OAuth/IUserProfile";
+import IResponse from "interfaces/IResponse";
+import { useAlertContext } from "utils/context/AlertContext";
 
 
 
@@ -95,7 +95,7 @@ export default function UserProfile({userProfile,setUserProfile}:{userProfile:IU
                     <MainButton component={<>
                         <input className="input-profile-img" type="file" name="input-profile-img"  accept="image/png, image/jpeg" id="input-profile-img" onInput={changeProfileImg}/>
                         <p>Edit Profile</p>
-                        <Edit_icon/>
+                        <EditIcon/>
                     </>} btnClass="main-button center-element input-profile-img-button"/>}
                 </>
             :<></>}
@@ -108,7 +108,7 @@ export default function UserProfile({userProfile,setUserProfile}:{userProfile:IU
                 {isChangeName?
                 <MainButton component={<>
                     <p>{isChangingName?"Editting":"Confirm"}</p>
-                    <Check_icon/>
+                    <CheckIcon/>
                 </>} btnClass={`main-button ${isChangingName?"active":""} center-element user-name-edit`} clickHandler={()=>{
                     if(name.length<=65&&name.length>0){
                         changeName()
@@ -120,7 +120,7 @@ export default function UserProfile({userProfile,setUserProfile}:{userProfile:IU
                 }}/>:
                 <MainButton component={<>
                     <p>Edit</p>
-                    <Edit_icon/>
+                    <EditIcon/>
                 </>} btnClass={"main-button center-element user-name-edit"} clickHandler={()=>setIsChangeName(!isChangeName)}/>}
                 <p>{nameLenErr?userError:""}</p>
             </div>

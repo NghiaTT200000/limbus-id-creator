@@ -1,13 +1,13 @@
 import React, { createContext, useCallback, useContext, useState } from "react";
 import { ReactElement } from "react";
 import "./SettingMenu.css"
-import { IIdInfo } from "Interfaces/IIdInfo";
-import { IEgoInfo } from "Interfaces/IEgoInfo";
+import { IIdInfo } from "interfaces/IIdInfo";
+import { IEgoInfo } from "interfaces/IEgoInfo";
 import { SaveLocalMenu } from "./SaveLocalMenu/SaveLocalMenu";
-import MainButton from "Utils/Components/MainButton/MainButton";
+import MainButton from "utils/components/MainButton/MainButton";
 import SaveCloudMenu from "./SaveCloudMenu/SaveCloudMenu";
-import { ISaveFile, SaveFile } from "Interfaces/ISaveFile";
-import Close_icon from "Icons/Close_icon";
+import { ISaveFile, SaveFile } from "interfaces/ISaveFile";
+import CloseIcon from "utils/icons/CloseIcon";
 import CustomKeywordMenu from "./CustomKeywordMenu/CustomKeywordMenu";
 
 
@@ -37,7 +37,7 @@ const SettingMenu: React.FC<{children:ReactElement}>=({children})=>{
             <div className={`setting-menu-background ${isActive?"":"hidden"}`} onClick={()=>setIsActive(false)}></div>
             <div className={`setting-menu-outline ${isActive?"active":""}`}>
                 <div className="setting-menu-slide-in">
-                    <span className="close-setting-menu" onClick={()=>setIsActive(false)}><Close_icon/></span>
+                    <span className="close-setting-menu" onClick={()=>setIsActive(false)}><CloseIcon/></span>
                     <h1 className="setting-header">Settings</h1>
                     <div className="center-element">
                         <MainButton component={"Cloud saves"} btnClass={`main-button ${displayMode==="Cloud"?"active":""}`} clickHandler={()=>setDisplayMode("Cloud")}/>

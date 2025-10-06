@@ -1,4 +1,4 @@
-import { useIdInfoContext } from "Utils/Context/IdInfoContext";
+import { useIdInfoContext } from "utils/context/IdInfoContext";
 import React from "react";
 import { ReactElement } from "react";
 import "../../InputPage.css"
@@ -7,11 +7,11 @@ import UploadImgBtn from "../../Components/UploadImgBtn/UploadImgBtn";
 import SinnerIconInput from "../SinnerIconInput/SinnerIconInput";
 import SinnerSplashArtRepositionInput from "../SinnerSplashArtRepositionInput/SinnerSplashArtRepositionInput";
 import SinnerRarityIconInput from "../SinnerRarityInput/SinnerRarityInput";
-import Delete_icon from "Icons/Delete_icon";
-import MainButton from "Utils/Components/MainButton/MainButton";
-import Arrow_down_icon from "Icons/Arrow_down_icon";
+import DeleteIcon from "utils/icons/DeleteIcon";
+import MainButton from "utils/components/MainButton/MainButton";
+import ArrowDownIcon from "utils/icons/ArrowDownIcon";
 import imageCompression from 'browser-image-compression'
-import getImageDimensions from "Utils/Functions/getImageDimensions";
+import getImageDimensions from "utils/functions/getImageDimensions";
 
 export default function InputIdInfoStatPage({collaspPage}:{collaspPage:()=>void}):ReactElement{
     const {idInfoValue,setIdInfoValue} = useIdInfoContext()
@@ -78,7 +78,7 @@ export default function InputIdInfoStatPage({collaspPage}:{collaspPage:()=>void}
     return <div className="input-page input-stat-page">
         <div className="input-page-icon-container">
             <div className="collasp-icon" onClick={collaspPage}>
-                <Arrow_down_icon></Arrow_down_icon>
+                <ArrowDownIcon></ArrowDownIcon>
             </div>
         </div>
         <div className="sinner-icon-input-container">
@@ -97,7 +97,7 @@ export default function InputIdInfoStatPage({collaspPage}:{collaspPage:()=>void}
                     <SinnerSplashArtRepositionInput scale={splashArtScale} translation={splashArtTranslation} onChange={(value:{scale:number,translation:{x:number,y:number}})=>{setIdInfoValue({...idInfoValue,splashArtScale:value.scale,splashArtTranslation:value.translation})}}/>
                 </div>
                 <div className="input-group-container">
-                    <MainButton component={<p className="center-element delete-txt"><Delete_icon/> Delete splash art</p>} clickHandler={()=>{setIdInfoValue({...idInfoValue,splashArt:""})}} btnClass="main-button"/>
+                    <MainButton component={<p className="center-element delete-txt"><DeleteIcon/> Delete splash art</p>} clickHandler={()=>{setIdInfoValue({...idInfoValue,splashArt:""})}} btnClass="main-button"/>
                 </div>
             </>
            :<></>}

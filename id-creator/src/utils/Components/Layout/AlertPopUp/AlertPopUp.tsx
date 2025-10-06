@@ -1,9 +1,9 @@
-import { useAlertContext } from "Utils/Context/AlertContext";
+import { useAlertContext } from "utils/context/AlertContext";
 import React, { useEffect, useState } from "react";
 import { ReactElement } from "react";
 import "./AlertPopUp.css"
-import { IAlert } from "Interfaces/Utils/IAlert";
-import Close_icon from "Icons/Close_icon";
+import { IAlert } from "interfaces/Utils/IAlert";
+import ClosIcon from "utils/icons/CloseIcon";
 
 
 
@@ -37,6 +37,6 @@ function Alert({status,msg}:{status:string,msg:string}):ReactElement{
     
     return <div className={`alert-popup ${slideIn?"active":""}`} style={{backgroundColor:getAlertColor(status)}}>
         <p>{msg}</p>
-        <span className="alert-popup-close-icon" onClick={close}><Close_icon /></span>
+        <span className="alert-popup-close-icon" onClick={close}><ClosIcon /></span>
     </div>
 }

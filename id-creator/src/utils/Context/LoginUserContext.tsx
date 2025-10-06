@@ -1,5 +1,5 @@
-import ILoginUser from "Interfaces/ILoginUser";
-import IResponse from "Interfaces/IResponse";
+import ILoginUser from "interfaces/ILoginUser";
+import IResponse from "interfaces/IResponse";
 import React, { createContext, ReactElement, useContext, useEffect, useState } from "react";
 
 

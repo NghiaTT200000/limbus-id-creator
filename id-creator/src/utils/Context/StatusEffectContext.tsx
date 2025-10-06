@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import { ReactElement, createContext, useContext, useState } from "react";
-import { baseStatusEffect } from 'Utils/baseStatusEffect';
-import { ICustomEffect } from 'Interfaces/CustomEffect/ICustomEffect';
-import { IDefenseSkill } from 'Interfaces/DefenseSkill/IDefenseSkill';
-import { IMentalEffect } from 'Interfaces/MentalEffect/IMentalEffect';
-import { IOffenseSkill } from 'Interfaces/OffenseSkill/IOffenseSkill';
-import { IPassiveSkill } from 'Interfaces/PassiveSkill/IPassiveSkill';
-import { ICustomKeyword } from 'Interfaces/ICustomKeyword';
+import { baseStatusEffect } from 'utils/baseStatusEffect';
+import { ICustomEffect } from 'interfaces/CustomEffect/ICustomEffect';
+import { IDefenseSkill } from 'interfaces/DefenseSkill/IDefenseSkill';
+import { IMentalEffect } from 'interfaces/MentalEffect/IMentalEffect';
+import { IOffenseSkill } from 'interfaces/OffenseSkill/IOffenseSkill';
+import { IPassiveSkill } from 'interfaces/PassiveSkill/IPassiveSkill';
+import { ICustomKeyword } from 'interfaces/ICustomKeyword';
 
 const statusEffectContext = createContext(null)
 

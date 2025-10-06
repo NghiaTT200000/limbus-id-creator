@@ -2,7 +2,7 @@ import React, { forwardRef, useState } from "react";
 import { ReactElement } from "react";
 import './styles/Card.css'
 import SkillDetailContainer from "./components/SkillDetailContainer/SkillDetailContainer";
-import { useEgoInfoContext } from "Utils/Context/EgoInfoContext";
+import { useEgoInfoContext } from "utils/context/EgoInfoContext";
 import EgoHeader from "./components/CardHeader/EgoHeader";
 import SinCost from "./components/SinCost/SinCost";
 import SinResistant from "./components/SinResistant/SinResistant";

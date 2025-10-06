@@ -1,11 +1,11 @@
-import useInputs from "Utils/Hooks/useInputs";
-import { IMentalEffect } from "Interfaces/MentalEffect/IMentalEffect";
+import useInputs from "utils/hooks/useInputs";
+import { IMentalEffect } from "interfaces/MentalEffect/IMentalEffect";
 import React from "react";
 import { ReactElement } from "react";
 import ChangeInputType from "../Components/ChangeInputType/ChangeInputType";
 import EditableAutoCorrect from "../Components/EditableAutoCorrectInput/EditableAutoCorrect";
-import Delete_icon from "Icons/Delete_icon";
-import Arrow_down_icon from "Icons/Arrow_down_icon";
+import DeleteIcon from "utils/icons/DeleteIcon";
+import ArrowDownIcon from "utils/icons/ArrowDownIcon";
 
 
 export default function InputMentalEffect({
@@ -28,10 +28,10 @@ export default function InputMentalEffect({
     return <div className="input-page">
         <div className="input-page-icon-container">
             <div className="collasp-icon" onClick={collaspPage}>
-                <Arrow_down_icon></Arrow_down_icon>
+                <ArrowDownIcon></ArrowDownIcon>
             </div>
             <div className="delete-icon" onClick={()=>deleteSkill(inputId)}>
-                <Delete_icon></Delete_icon>
+                <DeleteIcon></DeleteIcon>
             </div>
         </div>
         <ChangeInputType changeSkillType={changeSkillType} type={type}/>

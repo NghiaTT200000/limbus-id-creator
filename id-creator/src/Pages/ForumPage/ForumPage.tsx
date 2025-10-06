@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { ReactElement } from "react";
-import TagInput from "Utils/Components/TagInput/TagInput";
-import { ITag } from "Utils/TagList";
+import TagInput from "utils/components/TagInput/TagInput";
+import { ITag } from "utils/TagList";
 import "./ForumPage.css"
-import TagsContainer from "Utils/Components/TagsContainer/TagsContainer";
-import MainButton from "Utils/Components/MainButton/MainButton";
-import { useLoginUserContext } from "Utils/Context/LoginUserContext";
-import { useLoginMenuContext } from "Utils/Components/LoginMenu/LoginMenu";
+import TagsContainer from "utils/components/TagsContainer/TagsContainer";
+import MainButton from "utils/components/MainButton/MainButton";
+import { useLoginUserContext } from "utils/context/LoginUserContext";
+import { useLoginMenuContext } from "utils/components/LoginMenu/LoginMenu";
 import { Link } from "react-router-dom";
-import DropDown from "Utils/Components/DropDown/DropDown";
-import { useAlertContext } from "Utils/Context/AlertContext";
-import { IPostDisplayCard } from "Interfaces/IPostDisplayCard/IPostDisplayCard";
+import DropDown from "utils/components/DropDown/DropDown";
+import { useAlertContext } from "utils/context/AlertContext";
+import { IPostDisplayCard } from "interfaces/IPostDisplayCard/IPostDisplayCard";
 import PaginatedPost from "../PaginatedPost/PaginatedPost";
 
 
