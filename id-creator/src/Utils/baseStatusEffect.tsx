@@ -218,9 +218,6 @@ export const baseStatusEffect={
     "ailing_heart":
         "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Ailing_Heart.png' alt='Ailing_Heart_icon' />Ailing Heart</span>",
 
-    "contempt_of_the_gaze":
-        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Contempt_of_the_Gaze.png' alt='contempt_of_the_gaze_icon' />Contempt of the Gaze</span>",
-    
     "concentration_-_sniper":
         "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Concentration-Sniper.png' alt='concentration_sniper_icon' />Concentration - Sniper</span>",
     
@@ -235,6 +232,15 @@ export const baseStatusEffect={
 
     "strider_-mao":
         "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Strider_-Mao-.png' alt='strider_-mao-_icon' />Strider -Mao-</span>",
+
+    "strider_-wu":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Strider_-Wu-.png' alt='strider_-wu-_icon' />Strider -Wu-</span>",
+
+    "linebreaker":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Linebreaker.png' alt='linebreaker_icon' />Linebreaker</span>",
+
+    "commanding_cry":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Commanding_Cry.png' alt='commanding_cry_icon' />Commanding Cry</span>",
 
     "cumulus_wall":
         "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Cumulus_Wall.png' alt='cumulus_wall_icon' />Cumulus Wall</span>",
@@ -325,7 +331,25 @@ export const baseStatusEffect={
 
     "flower-burying_wedge_-埋花櫼-":
         "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Flower-burying_Wedge_-埋花櫼-.png' alt='flower_burying_wedge_icon' />Flower Burying Wedge -埋花櫼-</span>",
+    
+    "man_in_scabbard":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Man_in_Scabbard.png' alt='man_in_scabbard_icon' />Man in Scabbard</span>",
 
+    "hardened_shell-barrier":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Hardened_Shell-Barrier.png' alt='hardened_shell_barrier_icon' />Hardened Shell-Barrier</span>",
+
+    "thunderer":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Thunderer.png' alt='thunderer_icon' />Thunderer</span>",
+    
+    "higher_thunderer":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Higher_Thunderer.png' alt='higher_thunderer_icon' />Higher Thunderer</span>",
+    
+    "target_aim":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Target_Aim.png' alt='target_aim_icon' />Target Aim</span>",
+    
+    "ready_to_loose":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Ready_to_Loose.png' alt='ready_to_loose_icon' />Ready to Loose</span>",
+    
     "slash_dmg_down":
         "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Slash_DMG_Down.png' alt='slash_dmg_down_icon' />Slash DMG Down</span>",
     
@@ -605,6 +629,15 @@ export const baseStatusEffect={
     "regressive_transformation_-_reversed":
         "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Regressive_Transformation_-_Reversed.png' alt='regressive_transformation_-_reversed_icon' />Regressive Transformation - Reversed</span>",
 
+    "contempt_of_the_gaze":
+        "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Contempt_of_the_Gaze.png' alt='contempt_of_the_gaze_icon' />Contempt of the Gaze</span>",
+    
+    "concussion":
+        "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Concussion.png' alt='concussion_icon' />Concussion</span>",
+
+    "comptempt":
+        "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Contempt_of_the_Gaze.png' alt='contempt_icon' />Contempt</span>",
+    
     "aggro":
         "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Aggro.png' alt='aggro_icon' />Aggro</span>",
 
@@ -731,6 +764,9 @@ export const baseStatusEffect={
     "lordsguard":
         "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/LordsGuard.png' alt='lordsguard_icon' />LordsGuard</span>",
 
+    "arrow-shi":
+        "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Arrow-Shi.png' alt='arrow-shi_icon' />Arrow-Shi</span>",
+
     "coin_1":
         "<span class='center-element' contenteditable='false'><img class='status-icon' src='Images/status-effect/Coin_Effect_1.png' alt='coin-effect-1' /></span>",
     
@@ -780,6 +816,15 @@ export const baseStatusEffect={
     "on_hit":
         "<span class='center-element' contenteditable='false' style='color:#94f140'>[On Hit]</span>",
     
+    "on_hit_without_cracking":
+        "<span class='center-element' contenteditable='false' style='color:#94f140'>[On Hit Without Cracking]</span>",
+    
+    "on_hit_cracked":
+        "<span class='center-element' contenteditable='false' style='color:#94f140'>[On Hit Cracked]</span>",
+
+    "reuse_-_on_hit":
+        "<span class='center-element' contenteditable='false' style='color:#94f140'>[Reuse - On Hit]</span>",
+
     "hit_after_clash_win":
         "<span class='center-element' contenteditable='false' style='color:#94f140'>[Hit after Clash Win]</span>",
 
@@ -816,9 +861,12 @@ export const baseStatusEffect={
     "on_crit":
         "<span class='center-element' contenteditable='false' style='color:#94f140'>[On Crit]</span>",
     
-    "on_hit_without_cracking":
-        "<span class='center-element' contenteditable='false' style='color:#94f140'>[On Hit Without Cracking]</span>",
+    "on_crit_kill":
+        "<span class='center-element' contenteditable='false' style='color:#94f140'>[On Crit Kill]</span>",
     
+    "on_crit_kill_against_enemy":
+        "<span class='center-element' contenteditable='false' style='color:#94f140'>[On Crit Kill Against Enemy]</span>",
+
     "indiscriminate":
         "<span class='center-element' contenteditable='false' style='color:#ff0000'>[Indiscriminate]</span>",
     
@@ -827,6 +875,9 @@ export const baseStatusEffect={
 
     "combat_start":
         "<span class='center-element' contenteditable='false' style='color:#94f140'>[Combat Start]</span>",
+    
+    "combat_end":
+        "<span class='center-element' contenteditable='false' style='color:#94f140'>[Combat End]</span>",
     
     "clashable_counter":
         "<span class='center-element' contenteditable='false' style='color:#ff7e00'>[Clashable Counter]</span>",
