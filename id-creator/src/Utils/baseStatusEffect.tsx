@@ -350,6 +350,12 @@ export const baseStatusEffect={
     "ready_to_loose":
         "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Ready_to_Loose.png' alt='ready_to_loose_icon' />Ready to Loose</span>",
     
+    "focused_performance":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Focused_Performance.png' alt='focused_performance_icon' />Focused Performance</span>",
+    
+    "hardblood_armor":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Hardblood_Armor.png' alt='hardblood_armor_icon' />Hardblood Armor</span>",
+
     "slash_dmg_down":
         "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Slash_DMG_Down.png' alt='slash_dmg_down_icon' />Slash DMG Down</span>",
     
@@ -638,6 +644,9 @@ export const baseStatusEffect={
     "comptempt":
         "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Contempt_of_the_Gaze.png' alt='contempt_icon' />Contempt</span>",
     
+    "la_mancha_parade":
+        "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/La_Mancha_Parade.png' alt='la_mancha_parade_icon' />La Mancha Parade</span>",
+
     "aggro":
         "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Aggro.png' alt='aggro_icon' />Aggro</span>",
 
@@ -766,6 +775,9 @@ export const baseStatusEffect={
 
     "arrow-shi":
         "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Arrow-Shi.png' alt='arrow-shi_icon' />Arrow-Shi</span>",
+
+    "overcharge":
+        "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Overcharge.png' alt='overcharge_icon' />Overcharge</span>",
 
     "coin_1":
         "<span class='center-element' contenteditable='false'><img class='status-icon' src='Images/status-effect/Coin_Effect_1.png' alt='coin-effect-1' /></span>",
