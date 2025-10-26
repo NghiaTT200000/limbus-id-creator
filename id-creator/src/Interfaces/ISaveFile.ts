@@ -6,7 +6,8 @@ import IUID from "./IUID";
 
 export interface ISaveFile<info>{
     saveName:string;
-    saveTime:string;
+    saveTime: string;
+    updateTime: string;
     saveInfo:info;
     previewImg?:string;//This is optional because some user may not have this property in their local storage
     id:string
@@ -15,7 +16,8 @@ export interface ISaveFile<info>{
 export class SaveFile<info> implements ISaveFile<info>{
     id:string;
     saveName: string="New save file";
-    saveTime: string= new Date().toLocaleString();
+    saveTime: string = new Date().toLocaleString();
+    updateTime: string = new Date().toLocaleString();
     saveInfo: info;
     previewImg: string="";
     public constructor(saveInfo:info,saveName:string,previewImg?:string,tags?:string[]){

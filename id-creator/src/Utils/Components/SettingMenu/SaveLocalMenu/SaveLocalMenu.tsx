@@ -56,7 +56,8 @@ const SaveLocalMenu=({localSaveName,saveObjInfoValue,loadObjInfoValueCb,isActive
                         else{
                             saveObjInfoValue.id = uuid()
                             saveObjInfoValue.saveName = newSaveName
-                            createSave(saveObjInfoValue)
+                            const createdDate = new Date().toLocaleString()
+                            createSave({...saveObjInfoValue, updateTime:createdDate, saveTime: createdDate})
                         }
                         closePopup()
                     }}/>
@@ -65,10 +66,16 @@ const SaveLocalMenu=({localSaveName,saveObjInfoValue,loadObjInfoValueCb,isActive
         </div>
         <div className="save-menu-list local">
             {saveData.length>0?<>
-                {saveData.map((data)=>
+                {saveData.sort((a,b)=>{
+                    const prevDate = new Date(a.saveTime)
+                    const nextDate = new Date(b.saveTime)
+
+                    return prevDate < nextDate ? 1 : -1
+                }).map((data)=>
                     <div className={`save-tab center-element-vertically`} key={data.id}>
                         {data.previewImg?<img className="save-preview-img" src={data.previewImg} alt="preview-save" />:<></>}
-                        <p className="created-time">Last updated: {data.saveTime}</p>
+                        <p className="created-time">Last updated: {data.updateTime}</p>
+                        <p className="created-time">Created: {data.saveTime}</p>
                         <div className="center-element save-tab-input-container">
                             <p>{data.saveName}</p>
                             <div onClick={()=>{

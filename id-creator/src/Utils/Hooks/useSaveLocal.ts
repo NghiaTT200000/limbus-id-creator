@@ -39,20 +39,20 @@ export default function useSaveLocal<SaveObj>(LocalSaveDataName:string){
 
     const getAllSaves = useCallback(async () => {
         if (!saveDataTable) return null
-        return await saveDataTable?.toArray()
+        return await saveDataTable.toArray()
     }, [saveDataTable])
 
     const loadSave = useCallback(async (id: string)=>{
         if(!saveDataTable) return null
-        return await saveDataTable?.get(id) as ISaveFile<SaveObj>
+        return await saveDataTable.get(id) as ISaveFile<SaveObj>
     },[saveDataTable])
 
     const changeSaveName = useCallback(async(id:string,newName:string)=>{
         if(!saveDataTable) return null
         try{
-            await saveDataTable.update(id, {saveName: newName, saveTime: new Date().toLocaleString()})
+            await saveDataTable.update(id, {saveName: newName, updateTime: new Date().toLocaleString()})
             setSaveData(saveData.map(item=>item.id===id?
-                {...item, saveName: newName, saveTime: new Date().toLocaleString()}:
+                {...item, saveName: newName, updateTime: new Date().toLocaleString()}:
                 item
             ))
         }
@@ -65,9 +65,9 @@ export default function useSaveLocal<SaveObj>(LocalSaveDataName:string){
         if(!saveDataTable) return null
         try {
             setIsLoading(true)
-            await saveDataTable.update(id, {saveInfo: saveObj, saveTime: new Date().toLocaleString()})            
+            await saveDataTable.update(id, {saveInfo: saveObj, updateTime: new Date().toLocaleString()})            
             setSaveData(saveData.map(item=>item.id===id?
-                {...item, saveInfo: saveObj, saveTime: new Date().toLocaleString()}:
+                {...item, saveInfo: saveObj, updateTime: new Date().toLocaleString()}:
                 item
             ))
         } catch (error) {
