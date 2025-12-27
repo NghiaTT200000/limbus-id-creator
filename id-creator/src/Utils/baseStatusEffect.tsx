@@ -294,7 +294,7 @@ export const baseStatusEffect={
         "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Love-Hate.png' alt='love-hate_icon' />Love-Hate</span>",
     
     "magical_girl's_chant":
-        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Magical_Girl's_Chant.png' alt='magical_girl's_chant_icon' />Magical Girl's Chant</span>",
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Magical_Girl&#39;s_Chant.png' alt='magical_girl&#39;s_chant_icon' />Magical Girl's Chant</span>",
 
     "here_comes_magical_girl!":
         "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Here_Comes_Magical_Girl!.png' alt='here_comes_magical_girl_icon' />Here Comes Magical Girl!</span>",
@@ -355,6 +355,22 @@ export const baseStatusEffect={
     
     "hardblood_armor":
         "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Hardblood_Armor.png' alt='hardblood_armor_icon' />Hardblood Armor</span>",
+    
+    "bright_-光-":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Bright_-光-.png' alt='bright_light_icon' />Bright -光-</span>",
+    
+    "bloodflame_-血炎-":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Bloodflame_-血炎-.png' alt='bloodflame_-血炎-_icon' />Bloodflame -血炎-</span>",
+
+    "battleblood_instinct":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Battleblood_Instinct.png' alt='Battleblood_Instinct_icon' />Battleblood Instinct</span>",
+
+    "burgeoning_of_horns_-發角-":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Burgeoning_of_Horns_-發角-.png' alt='burgeoning_of_horns_-發角-_icon' />Burgeoning of Horns -發角-</span>",
+
+    "protector's_stance":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Protector&#39;s_Stance.png' alt='protector&#39;s_stance_icon' />Protector&#39;s Stance</span>",
+
 
     "slash_dmg_down":
         "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Slash_DMG_Down.png' alt='slash_dmg_down_icon' />Slash DMG Down</span>",
@@ -539,6 +555,9 @@ export const baseStatusEffect={
     "tremor_-_chain":
         "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Tremor_-_Chain.png' alt='tremor_chain_icon' />Tremor - Chain</span>",
 
+    "tremor_-_hemorrhage":
+        "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Tremor_-_Hemorrhage.png' alt='tremor_hemorrhage_icon' />Tremor - Hemorrhage</span>",
+
     "poison":
         "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Poison.png' alt='poison_icon' />Poison</span>",
     
@@ -646,6 +665,18 @@ export const baseStatusEffect={
     
     "la_mancha_parade":
         "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/La_Mancha_Parade.png' alt='la_mancha_parade_icon' />La Mancha Parade</span>",
+    
+    "open_wound":
+        "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Open_Wound.png' alt='open_wound_icon' />Open Wound</span>",
+    
+    "fatal_wound":
+        "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Fatal_Wound.png' alt='fatal_wound_icon' />Fatal Wound</span>",
+    
+    "deep_wound":
+        "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Deep_Wound.png' alt='deep_wound_icon' />Deep Wound</span>",
+
+    "shattermark":
+        "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Shattermark.png' alt='shattermark_icon' />Shattermark</span>",
 
     "aggro":
         "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Aggro.png' alt='aggro_icon' />Aggro</span>",
@@ -744,7 +775,7 @@ export const baseStatusEffect={
         "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Assist_Defense.png' alt='assist_defense_icon' />Assist Defense</span>",
 
     "tianjiu_star's_blade":
-        "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Tianjiu_Star's_Blade.png' alt='tianjiu_star's_blade_icon' />Tianjiu Star's Blade</span>",
+        "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Tianjiu_Star&#39;s_Blade.png' alt='tianjiu_star&#39;s_blade_icon' />Tianjiu Star's Blade</span>",
     
     "launcher_-始-":
         "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Launcher_-始-.png' alt='launcher_-始-_icon' />Launcher -始-</span>",
@@ -778,6 +809,15 @@ export const baseStatusEffect={
 
     "overcharge":
         "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Overcharge.png' alt='overcharge_icon' />Overcharge</span>",
+    
+    "hand_-_pine_crane_suit":
+        "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Hand_-_Pine_Crane_Suit.png' alt='hand_pine_crane_suit_icon' />Hand - Pine Crane Suit</span>",
+
+    "hand_-_susuki_grass_suit":
+        "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Hand_-_Susuki_Grass_Suit.png' alt='hand_susuki_grass_suit_icon' />Hand - Susuki Grass Suit</span>",
+    
+    "hand_-_blue_sakura_suit":
+        "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Hand_-_Blue_Sakura_Suit.png' alt='hand_blue_sakura_suit_icon' />Hand - Blue Sakura Suit</span>",
 
     "coin_1":
         "<span class='center-element' contenteditable='false'><img class='status-icon' src='Images/status-effect/Coin_Effect_1.png' alt='coin-effect-1' /></span>",
