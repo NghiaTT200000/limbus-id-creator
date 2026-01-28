@@ -371,6 +371,41 @@ export const baseStatusEffect={
     "protector's_stance":
         "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Protector&#39;s_Stance.png' alt='protector&#39;s_stance_icon' />Protector&#39;s Stance</span>",
 
+    "entangled_life_-羅生-":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Entangled_Life_-羅生-.png' alt='entangled_life_-羅生-_icon' />Entangled Life -羅生-</span>",
+
+    "grace_of_the_prescript":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Grace_of_the_Prescript.png' alt='grace_of_the_prescript_icon' />Grace of the Prescript</span>",
+
+    "the_udjat_-vanguard-":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/The_Udjat_-Vanguard-.png' alt='the_udjat_-vanguard-_icon' />The Udjat -Vanguard-</span>",
+    
+    "unlock":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Unlock.png' alt='unlock_icon' />Unlock</span>",
+    
+    "unlock_-_I":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Unlock.png' alt='unlock_I_icon' />Unlock - I</span>",
+    
+    "unlock_-_II":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Unlock_-_II.png' alt='unlock_II_icon' />Unlock - II</span>",
+    
+    "unlock_-_III":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Unlock_-_III.png' alt='unlock_III_icon' />Unlock - III</span>",
+    
+    "shin_(心)_-_procuration":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Shin_(心)_-_Procuration.png' alt='shin_(心)_-_procuration_icon' />Shin (心) - Procuration</span>",
+    
+    "faith_beyond_question":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Faith_Beyond_Question.png' alt='faith_beyond_question_icon' />Faith Beyond Question</span>",
+    
+    "the_middle_-_grudge":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/The_Middle_-_Grudge_(Ishmael).png' alt='the_middle_-_grudge_(ishmael)_icon' />The Middle - Grudge</span>",
+    
+    "thermal_blades":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Thermal_Blades.png' alt='thermal_blades_icon' />Thermal Blades</span>",
+    
+    "the_middle_styled_augmentation_tattoos":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/The_Middle_Styled_Augmentation_Tattoos_(Ishmael).png' alt='the_middle_styled_augmentation_tattoos_(ishmael)_icon' />The Middle Styled Augmentation Tattoos</span>",
 
     "slash_dmg_down":
         "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Slash_DMG_Down.png' alt='slash_dmg_down_icon' />Slash DMG Down</span>",
@@ -678,6 +713,27 @@ export const baseStatusEffect={
     "shattermark":
         "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Shattermark.png' alt='shattermark_icon' />Shattermark</span>",
 
+    "needle":
+        "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Needle.png' alt='needle_icon' />Needle</span>",
+    
+    "resident_reg._microchip":
+        "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Resident_Reg._Microchip.png' alt='needle_icon' />Resident Reg. Microchip</span>",
+    
+    "shattered_world":
+        "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Shattered_World.png' alt='shattered_world_icon' />Shattered World</span>",
+    
+    "karmic_consequences":
+        "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Karmic_Consequence.png' alt='karmic_consequence_icon' />Karmic Consequence</span>",
+    
+    "sheut_fracture":
+        "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Sheut_Fracture.png' alt='sheut_fracture_icon' />Sheut Fracture</span>",
+
+    "blue_sand":
+        "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Blue_Sand.png' alt='blue_sand_icon' />Blue Sand</span>",
+
+    "gloom_resist_down":
+        "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Gloom_Resist_Down.png' alt='gloom_resist_down_icon' />Gloom Resist Down</span>",
+
     "aggro":
         "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Aggro.png' alt='aggro_icon' />Aggro</span>",
 
@@ -818,6 +874,45 @@ export const baseStatusEffect={
     
     "hand_-_blue_sakura_suit":
         "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Hand_-_Blue_Sakura_Suit.png' alt='hand_blue_sakura_suit_icon' />Hand - Blue Sakura Suit</span>",
+    
+    "prescript:_[paper_slip]":
+        "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Prescript_[Paper_Slip].png' alt='prescript_[paper_slip]_icon' />Prescript [Paper Slip]</span>",
+    
+    "prescript:_[paper_slip]_I":
+        "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Prescript_[Paper_Slip].png' alt='prescript_[paper_slip]_I_icon' />Prescript [Paper Slip] I</span>",
+    
+    "prescript:_[paper_slip]_II":
+        "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Prescript_[Paper_Slip].png' alt='prescript_[paper_slip]_II_icon' />Prescript [Paper Slip] II</span>",
+    
+    "prescript:_[paper_slip]_III":
+        "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Prescript_[Paper_Slip].png' alt='prescript_[paper_slip]_III_icon' />Prescript [Paper Slip] III</span>",
+    
+    "prescript:_[paper_slip]_IV":
+        "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Prescript_[Paper_Slip].png' alt='prescript_[paper_slip]_IV_icon' />Prescript [Paper Slip] IV</span>",
+    
+    "the_prescript's_target":
+        "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/The_Prescript&#39;s_Target.png' alt='the_prescript&#39;s_target_icon' />The Prescript&#39;s Target</span>",
+
+    "mark_of_the_prescript":
+        "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Mark_of_the_Prescript.png' alt='mark_of_the_prescript_icon' />Mark of the Prescript</span>",
+
+    "lca_fracture_round":
+        "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/LCA_Fracture_Round.png' alt='lca_fracture_round_icon' />LCA Fracture Round</span>",
+    
+    "prescript:_[device]":
+        "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Prescript_[Device].png' alt='prescript_[device]_icon' />Prescript [Device]</span>",
+    
+    "prescript:_[device]_I":
+        "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Prescript_[Device].png' alt='prescript_[device]_I_icon' />Prescript [Device] I</span>",
+    
+    "prescript:_[device]_II":
+        "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Prescript_[Device].png' alt='prescript_[device]_II_icon' />Prescript [Device] II</span>",
+    
+    "prescript:_[device]_III":
+        "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Prescript_[Device].png' alt='prescript_[device]_III_icon' />Prescript [Device] III</span>",
+    
+    "prescript:_[device]_IV":
+        "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='Images/status-effect/Prescript_[Device].png' alt='prescript_[device]_IV_icon' />Prescript [Device] IV</span>",
 
     "coin_1":
         "<span class='center-element' contenteditable='false'><img class='status-icon' src='Images/status-effect/Coin_Effect_1.png' alt='coin-effect-1' /></span>",
