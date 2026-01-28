@@ -27,7 +27,7 @@ export default function InputDefenseSkillPage({
         changeSkillType:(newVal:string)=>void,
         deleteSkill:(inputID:string)=>void,
         collaspPage:()=>void}):ReactElement{
-    const {onChangeFileWithName,onChangeDropDownMenu,onChangeInput,onChangeAutoCorrectInput}=useInputs(defenseSkill as any,changeSkill)
+    const {onChangeFileWithName,onChangeDropDownMenu,onChangeInput,onChangeStringInputWithNoHTML}=useInputs(defenseSkill as any,changeSkill)
 
     const{
         skillLevel,
@@ -140,7 +140,7 @@ export default function InputDefenseSkillPage({
                     <span contentEditable={false} className='center-element'><img className='status-icon' src='Images/status-effect/Coin_Effect_1.png' alt='coin-effect-1-unbreakable' /> <span contentEditable={false} className='center-element' style={{color:"var(--Neutral-color)",textDecoration:"underline"}}><img className='status-icon' src='Images/Unbreakable_Coin.png' alt='unbreakable_coin_icon' />Unbreakable Coin</span></span>
                     <span contentEditable={false} style={{color:'#c7ff94'}}>[Heads Hit]</span>
                 </p>
-                <EditableAutoCorrect inputId={"skillEffect"} content={skillEffect} changeHandler={onChangeAutoCorrectInput(keyWordList,"skillEffect")} matchList={keyWordList}/>             
+                <EditableAutoCorrect inputId={"skillEffect"} content={skillEffect} changeHandler={onChangeStringInputWithNoHTML("skillEffect")} matchList={keyWordList}/>             
             </div>
         </div>
     </div>

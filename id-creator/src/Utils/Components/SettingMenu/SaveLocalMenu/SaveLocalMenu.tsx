@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../SettingMenu.css"
-import { ISaveFile, SaveFile } from "Interfaces/ISaveFile";
+import { ISaveFile } from "Interfaces/ISaveFile";
 import MainButton from "Utils/Components/MainButton/MainButton";
 import { IIdInfo } from "Interfaces/IIdInfo";
 import { IEgoInfo } from "Interfaces/IEgoInfo";

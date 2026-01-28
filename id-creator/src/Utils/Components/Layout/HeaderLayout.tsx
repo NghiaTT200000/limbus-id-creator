@@ -49,7 +49,7 @@ function HeaderLayoutContent():ReactElement{
                     {loginUser?<Link to={"/User/"+loginUser.id}><MainButton component={"My account"} btnClass="main-button"></MainButton></Link>:
                     <MainButton component={'Login'} btnClass={"main-button nav-button"} clickHandler={()=>setIsLoginMenuActive(!isLoginMenuActive)}/>}
                     {loginUser&&<Link to={"/NewPost"}><MainButton component={"Post"} btnClass="main-button"></MainButton></Link>}
-                    <a href="https://ko-fi.com/johnlimbusidmaker" target="_blank">
+                    <a href="https://ko-fi.com/johnlimbusidmaker" target="_blank" rel="noreferrer">
                         <button className="main-button center-element">
                             <KofiIcon width="16px" height="16px"/>
                             <p>Support me</p>

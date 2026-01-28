@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import { ReactElement } from "react";
 import "./SettingMenu.css"
 import { IIdInfo } from "Interfaces/IIdInfo";

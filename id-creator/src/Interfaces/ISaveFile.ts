@@ -1,7 +1,4 @@
 import uuid from "react-uuid";
-import { IEgoInfo } from "./IEgoInfo";
-import { IIdInfo } from "./IIdInfo";
-import IUID from "./IUID";
 
 
 export interface ISaveFile<info>{

@@ -96,11 +96,17 @@ export default function useInput(propInputs:INewInput,changeInput:(newInput:INew
         }
     }
 
+    function onChangeStringInputWithNoHTML(propName: string){
+        return (v:string)=>{
+            changeInput({...inputs, [propName]:v })
+        }
+    }
+
 
     useEffect(()=>{
         if(JSON.stringify(propInputs)!==JSON.stringify(inputs)) setInputs(propInputs)
     },[propInputs])
 
-    return {inputs,onChangeInput,onChangeAutoCorrectInput,onChangeDropDownMenu,onChangeFile,onChangeFileWithName}
+    return {inputs,onChangeInput,onChangeAutoCorrectInput,onChangeDropDownMenu,onChangeFile,onChangeFileWithName,onChangeStringInputWithNoHTML}
     
 }

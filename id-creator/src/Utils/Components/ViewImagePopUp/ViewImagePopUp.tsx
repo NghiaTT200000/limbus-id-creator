@@ -15,7 +15,7 @@ export default function ViewImagePopUp({images,index=0,isActive,closeFn}:{images
     return <>
         {isActive?<div className="image-pop-up-container">
             <MapInteractionCSS>
-                {images.map((image,i)=><img key={i} src={image} alt="view-img" className={`image-pop-up ${i!=currChoice?"hidden":""}`} />)}
+                {images.map((image,i)=><img key={i} src={image} alt="view-img" className={`image-pop-up ${i!==currChoice?"hidden":""}`} />)}
             </MapInteractionCSS>
             <div className="image-pop-up-close" onClick={()=>{
                     setCurrChoice(index)

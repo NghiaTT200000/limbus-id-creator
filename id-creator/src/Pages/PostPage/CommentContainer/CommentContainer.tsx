@@ -7,7 +7,7 @@ import Comment from "./Comment";
 export default function CommentContainer({comments,getComments}:{comments:IComment[],getComments:(page:number,limit:number)=>Promise<void>}){
     const [isLoading,setIsLoading] = useState(false)
     const [page,setPage] = useState(0)
-    const [limit,setLimit] = useState(10)
+    const [limit] = useState(10)
     const loaderRef = useRef(null)
 
     useEffect(()=>{

@@ -21,7 +21,7 @@ export default function InputMentalEffect({
         changeSkillType:(newVal:string)=>void,
         deleteSkill:(inputID:string)=>void,
         collaspPage:()=>void}):ReactElement{
-    const {onChangeAutoCorrectInput} = useInputs(mentalEffect as any,changeSkill)
+    const {onChangeStringInputWithNoHTML} = useInputs(mentalEffect as any,changeSkill)
     
     const {effect,type,inputId} = mentalEffect
 
@@ -43,7 +43,7 @@ export default function InputMentalEffect({
                     <span className="center-element" contentEditable={false}><img className='status-icon' src='Images/status-effect/Coin_Effect_1.png' alt='coin-effect-1' /></span>/
                     <span className="center-element" contentEditable={false} style={{color:'#c7ff94'}}>[Heads Hit]</span>
                 </p>
-            <EditableAutoCorrect inputId={"effect"} content={effect} changeHandler={onChangeAutoCorrectInput(keyWordList,"effect")} matchList={keyWordList}/>     
+            <EditableAutoCorrect inputId={"effect"} content={effect} changeHandler={onChangeStringInputWithNoHTML("effect")} matchList={keyWordList}/>     
             </div>
         </div>
     </div>

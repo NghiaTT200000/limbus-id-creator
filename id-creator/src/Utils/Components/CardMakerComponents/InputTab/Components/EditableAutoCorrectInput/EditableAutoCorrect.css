@@ -1,5 +1,31 @@
-.editable-auto-correct{
+.editable-auto-correct-container {
+    position: relative;
+}
+
+.editable-auto-correct {
     min-height: 200px;
     white-space: break-spaces;
     padding: 5px;
+}
+
+/* TipTap editor styling */
+.editable-auto-correct .tiptap {
+    min-height: 200px;
+    outline: none;
+    padding: 5px;
+}
+
+.editable-auto-correct .tiptap:focus {
+    outline: none;
+}
+
+/* Preserve inline images and status effect styling */
+.editable-auto-correct .tiptap img.status-icon {
+    height: 1em;
+    vertical-align: middle;
+    margin: 0 2px;
+}
+
+.editable-auto-correct .tiptap p {
+    margin: 0;
 }

@@ -10,6 +10,9 @@
     "@testing-library/user-event": "^13.5.0",
     "@textcomplete/contenteditable": "^0.1.13",
     "@textcomplete/core": "^0.1.13",
+    "@tiptap/react": "^3.17.1",
+    "@tiptap/starter-kit": "^3.17.1",
+    "@tiptap/suggestion": "^3.17.1",
     "@types/react": "^18.2.57",
     "@types/react-dom": "^18.2.19",
     "@types/sanitize-html": "^2.11.0",
@@ -34,6 +37,7 @@
     "react-uuid": "^2.0.0",
     "react-zoom-pan-pinch": "^3.6.1",
     "sanitize-html": "^2.13.0",
+    "tippy.js": "^6.3.7",
     "ts-loader": "^9.5.1",
     "web-vitals": "^2.1.4",
     "webpack-cli": "^5.1.4"

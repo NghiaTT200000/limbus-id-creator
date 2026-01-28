@@ -13,7 +13,7 @@ export default function PostCarousel({postImages}:{postImages:string[]}){
             <ArrowDownIcon/>
         </div>
         :<></>}
-        {postImages.map((image,i)=><img key={i} className={`post-img ${i!=currImg?"hidden":""}`} src={image} alt="card-img" onClick={()=>{
+        {postImages.map((image,i)=><img key={i} className={`post-img ${i!==currImg?"hidden":""}`} src={image} alt="card-img" onClick={()=>{
                 setIsViewModeActive(true)
             }}/>)}
         <ViewImagePopUp images={postImages} index={currImg} isActive={isViewModeActive} closeFn={()=>{

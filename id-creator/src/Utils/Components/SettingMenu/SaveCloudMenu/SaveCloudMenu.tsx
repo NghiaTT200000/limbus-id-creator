@@ -28,7 +28,7 @@ export default function SaveCloudMenu({setIsActive,saveMode,saveObjInfoValue,loa
     saveObjInfoValue:ISaveFile<IIdInfo|IEgoInfo>,
     setSaveObjInfoValue:React.Dispatch<React.SetStateAction<ISaveFile<IIdInfo | IEgoInfo>>>,
     loadObjInfoValueCb:React.Dispatch<React.SetStateAction<IIdInfo|IEgoInfo>>}):ReactElement{
-    const {imgUrl,setImgUrlState} = useRefDownloadContext()
+    const {setImgUrlState} = useRefDownloadContext()
     const [createSaveBtnLoadState,setCreateSaveBtnLoadState] = useState<IIsLoading>({loadingMessage:"",isLoading:false})
     const [isLoadingSaveData,setIsLoadingSaveData] = useState(false)
     const [saveList,setSaveList] = useState([])
