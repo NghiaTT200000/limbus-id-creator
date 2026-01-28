@@ -77,7 +77,7 @@ export default function InputCustomEffectPage({
                     <span contentEditable={false}><img className='status-icon' src='Images/status-effect/Coin_Effect_1.png' alt='coin-effect-1' /></span>/
                     <span contentEditable={false} style={{color:'#c7ff94'}}>[Heads Hit]</span>
                 </p>
-                <EditableAutoCorrect inputId={"effect"} content={effect} changeHandler={onChangeStringInputWithNoHTML("skillEffect")} matchList={keyWordList}/>              
+                <EditableAutoCorrect inputId={"effect"} content={effect} changeHandler={onChangeStringInputWithNoHTML("effect")} matchList={keyWordList}/>              
             </div>
         </div>
     </div>
