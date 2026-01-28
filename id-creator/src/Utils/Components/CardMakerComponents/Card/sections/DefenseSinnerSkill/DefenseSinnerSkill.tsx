@@ -33,6 +33,9 @@ const DefenseSinnerSkill = forwardRef<HTMLDivElement, { defenseSkill: IDefenseSk
             if(skillEffect.includes(`alt="coin-effect-${i+1}-unbreakable"`)){
                 arr.push(<img key={i} src={"Images/Unbreakable_Coin.png"} alt="unbreakable_coin_icon" />);
             }
+            else if(skillEffect.includes(`alt="coin-effect-${i+1}-excision"`)){
+                arr.push(<img key={i} src={"Images/Excision_Coin.png"} alt="excision_coin_icon" />);
+            }
             else arr.push(<img key={i} src={"Images/Coin.png"} alt="coin_icon" />);
         }
         return arr;
