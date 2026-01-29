@@ -1,0 +1,92 @@
+.editor-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 8px;
+    background: #1a1a2e;
+    border: 1px solid #444;
+    border-bottom: none;
+    border-radius: 4px 4px 0 0;
+}
+
+.toolbar-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #e0e0e0;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.15s ease;
+}
+
+.toolbar-btn:hover {
+    background: #2a2a4e;
+    border-color: #555;
+}
+
+.toolbar-btn.active {
+    background: #3a3a6e;
+    border-color: #666;
+}
+
+.toolbar-select {
+    height: 28px;
+    padding: 2px 6px;
+    background: #2a2a4e;
+    border: 1px solid #444;
+    border-radius: 4px;
+    color: #e0e0e0;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.toolbar-select:hover {
+    border-color: #666;
+}
+
+.toolbar-select:focus {
+    outline: none;
+    border-color: #888;
+}
+
+.toolbar-select option {
+    background: #1a1a2e;
+    color: #e0e0e0;
+}
+
+.toolbar-divider {
+    width: 1px;
+    height: 20px;
+    background: #444;
+    margin: 0 4px;
+}
+
+.toolbar-color-picker {
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border: 1px solid #444;
+    border-radius: 4px;
+    cursor: pointer;
+    background: transparent;
+}
+
+.toolbar-color-picker::-webkit-color-swatch-wrapper {
+    padding: 2px;
+}
+
+.toolbar-color-picker::-webkit-color-swatch {
+    border-radius: 2px;
+    border: none;
+}
+
+.toolbar-color-select {
+    min-width: 80px;
+}

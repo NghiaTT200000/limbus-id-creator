@@ -29,3 +29,35 @@
 .editable-auto-correct .tiptap p {
     margin: 0;
 }
+
+/* When editor has toolbar, adjust border radius */
+.editable-auto-correct.with-toolbar {
+    border-radius: 0 0 4px 4px;
+}
+
+/* List styling */
+.editable-auto-correct .tiptap ul,
+.editable-auto-correct .tiptap ol {
+    padding-left: 20px;
+    margin: 4px 0;
+}
+
+.editable-auto-correct .tiptap li {
+    margin: 2px 0;
+}
+
+/* Heading styling */
+.editable-auto-correct .tiptap h1 {
+    font-size: 1.5em;
+    margin: 8px 0 4px 0;
+}
+
+.editable-auto-correct .tiptap h2 {
+    font-size: 1.3em;
+    margin: 6px 0 4px 0;
+}
+
+.editable-auto-correct .tiptap h3 {
+    font-size: 1.1em;
+    margin: 4px 0 2px 0;
+}
