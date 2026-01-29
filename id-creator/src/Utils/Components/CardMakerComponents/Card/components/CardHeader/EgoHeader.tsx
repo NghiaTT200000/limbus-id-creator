@@ -8,22 +8,22 @@ export default function EgoHeader():ReactElement{
     function egoLevel(egoLevel:string){
         switch(egoLevel){
             case "ZAYIN":{
-                return "Images/ego-level/ZAYIN_level.png"
+                return "Images/ego-level/ZAYIN_level.webp"
             }
             case "HE":{
-                return "Images/ego-level/HE_level.png"
+                return "Images/ego-level/HE_level.webp"
             }
             case "TETH":{
-                return "Images/ego-level/TETH_level.png"
+                return "Images/ego-level/TETH_level.webp"
             }
             case "WAW":{
-                return "Images/ego-level/WAW_level.png"
+                return "Images/ego-level/WAW_level.webp"
             }
             case "ALEPH":{
-                return "Images/ego-level/ALEPH_level.png"
+                return "Images/ego-level/ALEPH_level.webp"
             }
             case "UNDEFINED":{
-                return "Images/ego-level/undef.png"
+                return "Images/ego-level/undef.webp"
             }
         }
     }
@@ -43,7 +43,7 @@ export default function EgoHeader():ReactElement{
                     <p>{EgoInfoValue.name}</p>
                 </div>
                 <div className="center-element sanity-cost-container">
-                    <img className="sanity-cost-img" src="Images/Sanity.png" alt="sanity-cost-icon" />
+                    <img className="sanity-cost-img" src="Images/Sanity.webp" alt="sanity-cost-icon" />
                     <p>Sanity cost </p>
                     <p className="sanity-cost">{EgoInfoValue.sanityCost}</p>
                 </div>  

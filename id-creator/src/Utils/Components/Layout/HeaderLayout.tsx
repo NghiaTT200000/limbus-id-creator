@@ -36,12 +36,12 @@ function HeaderLayoutContent():ReactElement{
     return <div className="site-layout">
             <nav className="site-header">
                 <div className="hamburger-icon-container" onClick={()=>setActiveSideBar(!isSideBarActive)}>
-                    <img src="/Images/HamburgerIconActive.png" alt="hamburg-icon-active" className="hamburger-icon-active"/>
-                    <img src="/Images/HamburgerIcon.png" alt="hamburg-icon" className="hamburger-icon"/>
+                    <img src="/Images/HamburgerIconActive.webp" alt="hamburg-icon-active" className="hamburger-icon-active"/>
+                    <img src="/Images/HamburgerIcon.webp" alt="hamburg-icon" className="hamburger-icon"/>
                 </div>
                 <div className="site-header-content center-element">
                     <Link to={"/"}>
-                        <img src="/Images/SiteLogo.png" alt="site-logo" className="site-logo"/>
+                        <img src="/Images/SiteLogo.webp" alt="site-logo" className="site-logo"/>
                     </Link>
                     <Link to={"/IdCreator"}><MainButton component={'Create Id'} btnClass={"main-button nav-button"} /></Link>
                     <Link to={"/EgoCreator"}><MainButton component={'Create Ego'} btnClass={"main-button nav-button"} /></Link>            

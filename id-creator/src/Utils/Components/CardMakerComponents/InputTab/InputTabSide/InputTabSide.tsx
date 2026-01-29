@@ -25,19 +25,19 @@ export default function InputTabSide({sinnerIcon,
     function convertTabIcon(type:string):string{
         switch (type){
             case "OffenseSkill":{
-                return "Images/stat/stat_attack.png"
+                return "Images/stat/stat_attack.webp"
             }
             case "DefenseSkill":{
-                return "Images/stat/stat_defense.png"
+                return "Images/stat/stat_defense.webp"
             }
             case "PassiveSkill":{
-                return "Images/status-effect/Aggro.png"
+                return "Images/status-effect/Aggro.webp"
             }
             case "CustomEffect":{
-                return "Images/status-effect/Discard.png"
+                return "Images/status-effect/Discard.webp"
             }
             case "MentalEffect":{
-                return "Images/Sanity.png"
+                return "Images/Sanity.webp"
             }
         }
         return ""
@@ -85,35 +85,35 @@ export default function InputTabSide({sinnerIcon,
                     addTab(new OffenseSkill())
                     setIsAdding(false)
                 }}>
-                Add offense skill <img src="Images/stat/stat_attack.png" alt="attk_icon" />
+                Add offense skill <img src="Images/stat/stat_attack.webp" alt="attk_icon" />
             </li>
             <li className="input-tab-side-add-option"
                 onClick={()=>{
                     addTab(new DefenseSkill())
                     setIsAdding(false)
                 }}>
-                Add defense skill <img src="Images/stat/stat_defense.png" alt="defense_icon" />
+                Add defense skill <img src="Images/stat/stat_defense.webp" alt="defense_icon" />
             </li>
             <li className="input-tab-side-add-option"
                 onClick={()=>{
                     addTab(new PassiveSkill())
                     setIsAdding(false)
                 }}>
-                Add passive skill <img src="Images/status-effect/Aggro.png" alt="passive_icon" />
+                Add passive skill <img src="Images/status-effect/Aggro.webp" alt="passive_icon" />
             </li>
             <li className="input-tab-side-add-option"
                 onClick={()=>{
                     addTab(new CustomEffect())
                     setIsAdding(false)
                 }}>
-                Add custom effect <img src="Images/status-effect/Discard.png" alt="custom_icon" />
+                Add custom effect <img src="Images/status-effect/Discard.webp" alt="custom_icon" />
             </li>
             <li className="input-tab-side-add-option"
                 onClick={()=>{
                     addTab(new MentalEffect())
                     setIsAdding(false)
                 }}>
-                    Add mental effect <img src="Images/Sanity.png" alt="mental_icon" />
+                    Add mental effect <img src="Images/Sanity.webp" alt="mental_icon" />
             </li>
         </ul>:<></>}
     </ul>

@@ -16,7 +16,7 @@ export default function SideBar({isActive,setActiveSideBar}:{isActive:boolean,se
         <div className="side-bar-outline">
             <div className="side-bar">
                 <Link to={"/"}>
-                    <img src="/Images/SiteLogo.png" alt="site-logo" className="site-logo" onClick={()=>setActiveSideBar(!isActive)}/>
+                    <img src="/Images/SiteLogo.webp" alt="site-logo" className="site-logo" onClick={()=>setActiveSideBar(!isActive)}/>
                 </Link>
                 <div className="side-bar-nav">
                     <Link to={"/IdCreator"}><MainButton component={'Create Id'} btnClass={"main-button nav-button"} clickHandler={()=>setActiveSideBar(!isActive)}/></Link>

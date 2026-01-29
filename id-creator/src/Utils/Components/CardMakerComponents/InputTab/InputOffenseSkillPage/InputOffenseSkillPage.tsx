@@ -126,9 +126,9 @@ export default function InputOffenseSkillPage({
             <div className="input-container">
                 <label className="input-label" htmlFor={`skillEffect_${inputId}`}>Skill description:</label>
                 <p className="effect-guide">To enter a status effect/coin effect/special coin(Unbreakable coin)/attack effect, put them in square bracket with underscore instead of spacebar like [sinking_deluge]/[coin_1]/[coin_1_unbreakable]/[heads_hit] -{">"} 
-                    <span contentEditable={false} style={{color:"var(--Debuff-color)",textDecoration:"underline"}}><img className='status-icon' src='Images/status-effect/Sinking_Deluge.png' alt='sinking_deluge_icon' />Sinking Deluge</span>/
-                    <span contentEditable={false}><img className='status-icon' src='Images/status-effect/Coin_Effect_1.png' alt='coin-effect-1' /></span>/
-                    <span contentEditable={false} className='center-element'><img className='status-icon' src='Images/status-effect/Coin_Effect_1.png' alt='coin-effect-1-unbreakable' /> <span contentEditable={false} className='center-element' style={{color:"var(--Neutral-color)",textDecoration:"underline"}}><img className='status-icon' src='Images/Unbreakable_Coin.png' alt='unbreakable_coin_icon' />Unbreakable Coin</span></span>
+                    <span contentEditable={false} style={{color:"var(--Debuff-color)",textDecoration:"underline"}}><img className='status-icon' src='Images/status-effect/Sinking_Deluge.webp' alt='sinking_deluge_icon' />Sinking Deluge</span>/
+                    <span contentEditable={false}><img className='status-icon' src='Images/status-effect/Coin_Effect_1.webp' alt='coin-effect-1' /></span>/
+                    <span contentEditable={false} className='center-element'><img className='status-icon' src='Images/status-effect/Coin_Effect_1.webp' alt='coin-effect-1-unbreakable' /> <span contentEditable={false} className='center-element' style={{color:"var(--Neutral-color)",textDecoration:"underline"}}><img className='status-icon' src='Images/Unbreakable_Coin.webp' alt='unbreakable_coin_icon' />Unbreakable Coin</span></span>
                     <span contentEditable={false} style={{color:'#c7ff94'}}>[Heads Hit]</span>
                 </p>
                 <EditableAutoCorrect inputId={`skillEffect_${inputId}`} content={skillEffect} changeHandler={onChangeAutoCorrectInput(keyWordList,"skillEffect")} matchList={keyWordList} />            

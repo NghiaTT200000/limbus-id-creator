@@ -25,18 +25,18 @@ const OffenseSinnerSkill = forwardRef<HTMLDivElement, { offenseSkill: IOffenseSk
     } = offenseSkill;
 
     const printCoins = function (coinNo: number,skillEffect:string): (ReactElement | never)[] {
-        if (coinNo > 10) return [<img key={0} src={"Images/Coin.png"} alt="coin_icon" />];
+        if (coinNo > 10) return [<img key={0} src={"Images/Coin.webp"} alt="coin_icon" />];
 
         const arr = [];
 
         for (let i = 0; i < coinNo; i++) {
             if(skillEffect.includes(`alt="coin-effect-${i+1}-unbreakable"`)){
-                arr.push(<img key={i} src={"Images/Unbreakable_Coin.png"} alt="unbreakable_coin_icon" />);
+                arr.push(<img key={i} src={"Images/Unbreakable_Coin.webp"} alt="unbreakable_coin_icon" />);
             }
             else if(skillEffect.includes(`alt="coin-effect-${i+1}-excision"`)){
-                arr.push(<img key={i} src={"Images/Excision_Coin.png"} alt="excision_coin_icon" />);
+                arr.push(<img key={i} src={"Images/Excision_Coin.webp"} alt="excision_coin_icon" />);
             }
-            else arr.push(<img key={i} src={"Images/Coin.png"} alt="coin_icon" />);
+            else arr.push(<img key={i} src={"Images/Coin.webp"} alt="coin_icon" />);
         }
         return arr;
     }
@@ -54,7 +54,7 @@ const OffenseSinnerSkill = forwardRef<HTMLDivElement, { offenseSkill: IOffenseSk
                             {(coinPow < 0 ? "" : "+") + coinPow}
                         </div>
                         <div className="skill-level">
-                            <img src={"Images/stat/stat_attack.png"} className="skill-level-icon" alt="attack_icon" />
+                            <img src={"Images/stat/stat_attack.webp"} className="skill-level-icon" alt="attack_icon" />
                             <div>
                                 <p>Id level</p>
                                 <p>{skillLevel < 0 ? skillLevel : "+" + skillLevel}</p>

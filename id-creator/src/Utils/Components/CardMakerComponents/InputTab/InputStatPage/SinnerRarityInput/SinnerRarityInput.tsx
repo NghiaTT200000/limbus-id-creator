@@ -9,8 +9,8 @@ export default function SinnerRarityIconInput():ReactElement{
 
     
     return <div className="rarity-icon-container">
-        <img onClick={()=>setIdInfoValue((idInfo:IIdInfo)=>({...idInfo,rarity:"Images/rarity/IDNumber1.png"}))} className={`rarity-icon ${idInfoValue.rarity==="Images/rarity/IDNumber1.png"?"active":""}`} src="Images/rarity/IDNumber1.png" alt="rarity-icon-1.png" />
-        <img onClick={()=>setIdInfoValue((idInfo:IIdInfo)=>({...idInfo,rarity:"Images/rarity/IDNumber2.png"}))} className={`rarity-icon ${idInfoValue.rarity==="Images/rarity/IDNumber2.png"?"active":""}`} src="Images/rarity/IDNumber2.png" alt="rarity-icon-2.png" />
-        <img onClick={()=>setIdInfoValue((idInfo:IIdInfo)=>({...idInfo,rarity:"Images/rarity/IDNumber3.png"}))} className={`rarity-icon ${idInfoValue.rarity==="Images/rarity/IDNumber3.png"?"active":""}`} src="Images/rarity/IDNumber3.png" alt="rarity-icon-3.png" />
+        <img onClick={()=>setIdInfoValue((idInfo:IIdInfo)=>({...idInfo,rarity:"Images/rarity/IDNumber1.webp"}))} className={`rarity-icon ${idInfoValue.rarity==="Images/rarity/IDNumber1.webp"?"active":""}`} src="Images/rarity/IDNumber1.webp" alt="rarity-icon-1.webp" />
+        <img onClick={()=>setIdInfoValue((idInfo:IIdInfo)=>({...idInfo,rarity:"Images/rarity/IDNumber2.webp"}))} className={`rarity-icon ${idInfoValue.rarity==="Images/rarity/IDNumber2.webp"?"active":""}`} src="Images/rarity/IDNumber2.webp" alt="rarity-icon-2.webp" />
+        <img onClick={()=>setIdInfoValue((idInfo:IIdInfo)=>({...idInfo,rarity:"Images/rarity/IDNumber3.webp"}))} className={`rarity-icon ${idInfoValue.rarity==="Images/rarity/IDNumber3.webp"?"active":""}`} src="Images/rarity/IDNumber3.webp" alt="rarity-icon-3.webp" />
     </div>
 }

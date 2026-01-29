@@ -4,7 +4,7 @@ import "../SkillSplash.css"
 export default function OffenseSkillSplash({skillAffinity,skillImage}:{skillAffinity:string,skillImage?:string}):ReactElement{
     return(
         <div className="skill-splash">
-            <img src={`Images/skill-frame/${skillAffinity}Frame.png`} alt={skillAffinity+"Frame"} className={`sin-frame ${skillAffinity==="None"?"none-affinity":""}`} />
+            <img src={`Images/skill-frame/${skillAffinity}Frame.webp`} alt={skillAffinity+"Frame"} className={`sin-frame ${skillAffinity==="None"?"none-affinity":""}`} />
             <div className="splash-container" style={{'backgroundColor':`var(--${skillAffinity})`}}>
                 {
                 (skillImage)?
