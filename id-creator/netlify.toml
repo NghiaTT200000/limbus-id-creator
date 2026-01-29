@@ -1,6 +1,6 @@
 [build]
-  base = "id-creator"
-  publish = "id-creator/build"
+  base = "./id-creator"
+  publish = "./id-creator/build"
   command = "npm run build"
 
 # Enable Netlify's asset optimization
