@@ -1,7 +1,4 @@
 import uuid from "react-uuid";
-import { IEgoInfo } from "./IEgoInfo";
-import { IIdInfo } from "./IIdInfo";
-import IUID from "./IUID";
 
 
 export interface ISaveFile<info>{
@@ -20,7 +17,7 @@ export class SaveFile<info> implements ISaveFile<info>{
     updateTime: string = new Date().toLocaleString();
     saveInfo: info;
     previewImg: string="";
-    public constructor(saveInfo:info,saveName:string,previewImg?:string,tags?:string[]){
+    public constructor(saveInfo:info,saveName:string,previewImg?:string){
         this.saveInfo = saveInfo
         this.saveName = saveName
         this.previewImg=previewImg||''

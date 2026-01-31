@@ -1,13 +1,13 @@
 import React, { useCallback, useState } from "react";
 import { ReactElement } from "react";
 import "../User.css"
-import MainButton from "Utils/Components/MainButton/MainButton";
+import MainButton from "Components/MainButton/MainButton";
 import EditIcon from "Utils/Icons/EditIcon";
 import CheckIcon from "Utils/Icons/CheckIcon";
 import { useParams } from "react-router-dom";
 import { IUserProfile } from "Interfaces/API/OAuth/IUserProfile";
 import IResponse from "Interfaces/IResponse";
-import { useAlertContext } from "Utils/Context/AlertContext";
+import { useAlertContext } from "Context/AlertContext";
 
 
 
@@ -20,9 +20,7 @@ export default function UserProfile({userProfile,setUserProfile}:{userProfile:IU
     const [name,setName] = useState(userName)
     const {userId} = useParams()
     const {addAlert} = useAlertContext()
-    // const [userProfileImg,setUserProfileImg] = useState("")
     const [userError,setUserErr] = useState("")
-    // const {onChangeFileWithName} = useInput({userProfileImg},({userProfileImg}:{userProfileImg:string})=>setUserProfileImg(userProfileImg))
 
 
     const changeName = useCallback(async()=>{
@@ -99,8 +97,6 @@ export default function UserProfile({userProfile,setUserProfile}:{userProfile:IU
                     </>} btnClass="main-button center-element input-profile-img-button"/>}
                 </>
             :<></>}
-            
-            
         </div>
         <div className="user-name-container">
             {userProfile.owned?

@@ -1,5 +1,5 @@
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import HeaderLayout from 'Utils/Components/Layout/HeaderLayout';
+import HeaderLayout from 'Components/Layout/HeaderLayout';
 import EgoCardPage from 'Pages/EgoCardPage/EgoCardPage';
 import ForumPage from 'Pages/ForumPage/ForumPage';
 import IdCardPage from 'Pages/IdCardPage/IdCardPage';
@@ -11,7 +11,7 @@ import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { DndProvider } from 'react-dnd'
 import { TouchBackend } from 'react-dnd-touch-backend'
-import DragAndDroppableSkillPreviewLayer from 'Utils/Components/CardMakerComponents/Card/components/DragAndDroppableSkill/DragAndDroppableSkillPreviewLayer';
+import DragAndDroppableSkillPreviewLayer from 'Components/CardMakerComponents/Card/components/DragAndDroppableSkill/DragAndDroppableSkillPreviewLayer';
 import { indexDB } from 'Utils/IndexDB';
 import { ISaveFile } from 'Interfaces/ISaveFile';
 
@@ -57,12 +57,6 @@ const router = createBrowserRouter([
 
 function App():ReactElement{
     useEffect(()=>{
-        // const keyStorageName = ["currEgoSave","EgoLocalSaves","currIdSave","IdLocalSaves","customKeywords"]
-        // for (let i = 0; i < localStorage.length; i++) {
-        //     if(!keyStorageName.includes(localStorage.key(i))){
-        //         localStorage.removeItem(localStorage.key(i))
-        //     }
-        // }
         // Migrating from local storage to indexDB
         const idLocalSaves = localStorage.getItem("IdLocalSaves")
         const egoLocalSaves = localStorage.getItem("EgoLocalSaves")

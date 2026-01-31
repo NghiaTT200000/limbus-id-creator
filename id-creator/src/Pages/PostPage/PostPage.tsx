@@ -4,14 +4,36 @@ import "../PageLayout.css"
 import "./PostPage.css"
 import Post from "./Post/Post";
 import CommentContainer from "./CommentContainer/CommentContainer";
-import { useAlertContext } from "Utils/Context/AlertContext";
+import { useAlertContext } from "Context/AlertContext";
 import { useParams } from "react-router-dom";
 import { IPost } from "Interfaces/IPost/IPost";
-import PostCommentInput from "./PostCommentInput/PostCommentInput";
-import { useLoginUserContext } from "Utils/Context/LoginUserContext";
-import { useLoginMenuContext } from "Utils/Components/LoginMenu/LoginMenu";
-import MainButton from "Utils/Components/MainButton/MainButton";
+import { useLoginUserContext } from "Context/LoginUserContext";
+import { useLoginMenuContext } from "Components/LoginMenu/LoginMenu";
+import MainButton from "Components/MainButton/MainButton";
 import { IComment } from "Interfaces/IPost/IComment";
+import { Editor } from "react-simple-wysiwyg";
+
+function PostCommentInput({authorIcon,authorName,createComment}:{authorIcon:string,authorName:string,createComment:(comment:string)=>Promise<void>}){
+    const [commentValue,setCommentValue] = useState("")
+    const [isPosting,setIsPosting] = useState(false)
+
+    return<div className="center-element post-comment-content post-page-element-container">
+        <div className="center-element">
+            <img className="post-author-icon-small" src={authorIcon} alt="author-icon" />
+            <p className="post-author-name">{authorName}</p>
+        </div>
+        <Editor className="input comment-input" name="comment" id="comment" value={commentValue} onChange={(e)=>setCommentValue(e.target.value)}/>
+        {isPosting?<MainButton btnClass="main-button active" component={"Posting..."} />:
+        <MainButton btnClass="main-button" component={"Post"} clickHandler={()=>{
+            setIsPosting(true)
+            createComment(commentValue).finally(()=>{
+                setIsPosting(false)
+                setCommentValue("")
+            })
+        }}/>}
+        
+    </div>
+}
 
 export default function PostPage():ReactElement{
     const {postId} = useParams()

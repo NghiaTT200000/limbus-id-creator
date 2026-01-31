@@ -2,16 +2,16 @@ import React, { ReactElement, useEffect, useRef, useState } from 'react';
 import 'Styles/reset.css'
 import 'Styles/style.css'
 import '../EditorPage.css'
-import { StatusEffectProvider } from 'Utils/Context/StatusEffectContext';
-import { IdCard } from 'Utils/Components/CardMakerComponents/Card/IdCard';
-import { IdInfoProvider, useIdInfoContext } from 'Utils/Context/IdInfoContext';
-import InputTabIdInfoContainer from 'Utils/Components/CardMakerComponents/InputTab/InputTabContainer/InputTabIdInfoContainer/InputTabIdInfoContainer';
-import {  useRefDownloadContext } from 'Utils/Context/ImgUrlContext';
+import { StatusEffectProvider } from 'Context/StatusEffectContext';
+import { IdCard } from 'Components/CardMakerComponents/Card/IdCard';
+import { IdInfoProvider, useIdInfoContext } from 'Context/IdInfoContext';
+import InputTabIdInfoContainer from 'Components/CardMakerComponents/InputTab/InputTabContainer/InputTabIdInfoContainer/InputTabIdInfoContainer';
+import {  useRefDownloadContext } from 'Context/ImgUrlContext';
 import {  useSearchParams } from 'react-router-dom';
-import ResetMenu from 'Utils/Components/ResetMenu/ResetMenu';
+import ResetMenu from 'Components/ResetMenu/ResetMenu';
 import { IdInfo } from 'Interfaces/IIdInfo';
-import CardMakerFooter from 'Utils/Components/CardMakerComponents/CardMakerFooter/CardMakerFooter';
-import { useSettingMenuContext } from 'Utils/Components/SettingMenu/SettingMenu';
+import CardMakerFooter from 'Components/CardMakerComponents/CardMakerFooter/CardMakerFooter';
+import { useSettingMenuContext } from 'Components/SettingMenu/SettingMenu';
 import { indexDB } from 'Utils/IndexDB';
 
 
@@ -26,12 +26,12 @@ export default function IdCardPage():ReactElement{
 
 
 function IdCardContext():ReactElement{
-    const [isResetMenuActive,setResetMenuActive] = useState(false)
     const {idInfoValue,setIdInfoValue,reset} = useIdInfoContext()
     const {setLocalSaveName,changeSaveInfo,setLoadObjInfoValueCb} = useSettingMenuContext() 
     const domRef=useRef(null)
     const [query] = useSearchParams()
     const {setDomRef} = useRefDownloadContext()
+    const [isResetMenuActive,setResetMenuActive] = useState(false)
     const [activeTab,setActiveTab]=useState(-1)
 
     function changeActiveTab(i:number){

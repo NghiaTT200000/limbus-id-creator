@@ -1,7 +1,7 @@
 export default function getImageDimensions (file:File):Promise<{width:number,height:number}> {
     return new Promise((resolve,reject)=>{
         try {
-            let img = new Image()
+            const img = new Image()
     
             img.onload = () => {
                 const width  = img.naturalWidth,

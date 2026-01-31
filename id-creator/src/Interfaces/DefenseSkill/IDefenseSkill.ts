@@ -1,5 +1,4 @@
 import { IActiveSkill } from "Interfaces/ActiveSkill/IActiveSkill";
-import { IActiveSkillEffect } from "Interfaces/ActiveSkill/IActiveSkillEffect";
 import IUID from "Interfaces/IUID";
 import uuid from "react-uuid";
 

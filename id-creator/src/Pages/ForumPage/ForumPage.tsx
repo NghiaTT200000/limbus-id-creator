@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { ReactElement } from "react";
-import TagInput from "Utils/Components/TagInput/TagInput";
+import TagInput from "Components/TagInput/TagInput";
 import { ITag } from "Utils/TagList";
 import "./ForumPage.css"
-import TagsContainer from "Utils/Components/TagsContainer/TagsContainer";
-import MainButton from "Utils/Components/MainButton/MainButton";
-import { useLoginUserContext } from "Utils/Context/LoginUserContext";
-import { useLoginMenuContext } from "Utils/Components/LoginMenu/LoginMenu";
+import TagsContainer from "Components/TagsContainer/TagsContainer";
+import MainButton from "Components/MainButton/MainButton";
+import { useLoginUserContext } from "Context/LoginUserContext";
+import { useLoginMenuContext } from "Components/LoginMenu/LoginMenu";
 import { Link } from "react-router-dom";
-import DropDown from "Utils/Components/DropDown/DropDown";
-import { useAlertContext } from "Utils/Context/AlertContext";
+import DropDown from "Components/DropDown/DropDown";
+import { useAlertContext } from "Context/AlertContext";
 import { IPostDisplayCard } from "Interfaces/IPostDisplayCard/IPostDisplayCard";
-import PaginatedPost from "../PaginatedPost/PaginatedPost";
-
+import PaginatedPost from "Components/PaginatedPost/PaginatedPost";
 
 export default function ForumPage():ReactElement{
     const [postList,setPostList] = useState<IPostDisplayCard[]>([])

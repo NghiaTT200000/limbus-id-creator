@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import imageCompression from 'browser-image-compression';
-import replaceKeyWord from "Utils/Components/CardMakerComponents/InputTab/Components/EditableAutoCorrectInput/Functions/replaceKeyWord";
+import replaceKeyWord from "Components/CardMakerComponents/InputTab/Components/EditableAutoCorrectInput/Functions/replaceKeyWord";
 import getImageDimensions from "Utils/Functions/getImageDimensions";
 import isObject from "Utils/Functions/isObject";
 
@@ -19,7 +19,7 @@ export default function useInput(propInputs:INewInput,changeInput:(newInput:INew
                 const fieldPathWay = inputName.split(".")
 
                 for (let i = 0; i < fieldPathWay.length - 1; i++) {
-                    let path = changedField[fieldPathWay[i]]
+                    const path = changedField[fieldPathWay[i]]
                     if(!isObject(path)) throw new Error("The path proived is not an object");
                     else changedField = path as INewInput
                 }

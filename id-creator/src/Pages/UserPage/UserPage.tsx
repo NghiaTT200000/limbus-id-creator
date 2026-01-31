@@ -6,10 +6,10 @@ import UserProfile from "./User/UserProfile";
 import {  useNavigate, useParams } from "react-router-dom";
 import UserProfileLoading from "./User/UserProfileLoading";
 import { IUserProfile, UserProfileRes } from "Interfaces/API/OAuth/IUserProfile";
-import MainButton from "Utils/Components/MainButton/MainButton";
-import { useAlertContext } from "Utils/Context/AlertContext";
-import { useLoginUserContext } from "Utils/Context/LoginUserContext";
-import PaginatedPost from "../PaginatedPost/PaginatedPost";
+import MainButton from "Components/MainButton/MainButton";
+import { useAlertContext } from "Context/AlertContext";
+import { useLoginUserContext } from "Context/LoginUserContext";
+import PaginatedPost from "Components/PaginatedPost/PaginatedPost";
 import { IPostDisplayCard } from "Interfaces/IPostDisplayCard/IPostDisplayCard";
 
 
@@ -58,11 +58,11 @@ export default function UserPage():ReactElement{
     async function logout(){
         setIsLoggingOut(true)
         try {
-            let res=await fetch(`${process.env.REACT_APP_SERVER_URL}/API/OAuth/oauth2/logout`,{
+            const res=await fetch(`${process.env.REACT_APP_SERVER_URL}/API/OAuth/oauth2/logout`,{
                 method:"POST",
                 credentials: "include",
             })
-            let result = await res.json()
+            const result = await res.json()
             if(399<res.status&&res.status<500){
                 addAlert("Failure",result.msg)
             }

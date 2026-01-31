@@ -1,11 +1,11 @@
-import { useLoginUserContext } from "Utils/Context/LoginUserContext";
-import { useLoginMenuContext } from "Utils/Components/LoginMenu/LoginMenu";
+import { useLoginUserContext } from "Context/LoginUserContext";
+import { useLoginMenuContext } from "Components/LoginMenu/LoginMenu";
 import React, { useEffect, useState } from "react";
 import { ReactElement } from "react";
-import MainButton from "Utils/Components/MainButton/MainButton";
+import MainButton from "Components/MainButton/MainButton";
 import "./NewPostPage.css";
-import TagInput from "Utils/Components/TagInput/TagInput";
-import TagsContainer from "Utils/Components/TagsContainer/TagsContainer";
+import TagInput from "Components/TagInput/TagInput";
+import TagsContainer from "Components/TagsContainer/TagsContainer";
 import { ITag } from "Utils/TagList";
 import { ISaveFile } from "Interfaces/ISaveFile";
 import { IIdInfo } from "Interfaces/IIdInfo";
@@ -13,7 +13,7 @@ import { IEgoInfo } from "Interfaces/IEgoInfo";
 import SearchSaveInput from "./SearchSaveInput/SearchSaveInput";
 import CloseIcon from "Utils/Icons/CloseIcon";
 import Editor from 'react-simple-wysiwyg';
-import { useAlertContext } from "Utils/Context/AlertContext";
+import { useAlertContext } from "Context/AlertContext";
 import uuid from "react-uuid";
 import { useNavigate } from "react-router-dom";
 
