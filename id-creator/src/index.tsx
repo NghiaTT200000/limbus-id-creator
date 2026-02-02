@@ -1,5 +1,5 @@
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import HeaderLayout from 'Components/Layout/HeaderLayout';
+import HeaderLayout from 'components/Layout/HeaderLayout';
 import EgoCardPage from 'Pages/EgoCardPage/EgoCardPage';
 import ForumPage from 'Pages/ForumPage/ForumPage';
 import IdCardPage from 'Pages/IdCardPage/IdCardPage';
@@ -8,46 +8,71 @@ import PostPage from 'Pages/PostPage/PostPage';
 import UserPage from 'Pages/UserPage/UserPage';
 import React, { ReactElement, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import { DndProvider } from 'react-dnd'
 import { TouchBackend } from 'react-dnd-touch-backend'
-import DragAndDroppableSkillPreviewLayer from 'Components/CardMakerComponents/Card/components/DragAndDroppableSkill/DragAndDroppableSkillPreviewLayer';
+import DragAndDroppableSkillPreviewLayer from 'components/CardMakerComponents/Card/components/DragAndDroppableSkill/DragAndDroppableSkillPreviewLayer';
 import { indexDB } from 'Utils/IndexDB';
-import { ISaveFile } from 'Interfaces/ISaveFile';
+import { ISaveFile } from 'interfaces/ISaveFile';
+import { LoginUserContextProvider } from 'context/LoginUserContext';
+import { AlertContextProvider } from 'context/AlertContext';
+import { RefDownloadProvider } from 'context/ImgUrlContext';
+import { LoginMenu } from 'components/LoginMenu/LoginMenu';
+import AlertPopUp from 'components/Layout/AlertPopUp/AlertPopUp';
+import { SettingMenu } from 'components/SettingMenu/SettingMenu';
+import CardMakerFooter from 'components/CardMakerFooter/CardMakerFooter';
+import HomePage from 'Pages/HomePage/HomePage';
 
 const root = createRoot(document.getElementById('root')!);
 
 const router = createBrowserRouter([
     {
         path:'/',
-        element:<HeaderLayout/>,
+        element:<div className="site-layout">
+            <HeaderLayout/>
+            <div className="site-content">
+                <Outlet/>
+            </div>
+        </div>,
         children:[
             {
                 path:"",
-                element:<IdCardPage/>
+                element:<HomePage/>
             },
             {
-                path:"User/:userId",
+                path:"user/:userId",
                 element:<UserPage/>
             },
             {
-                path:"IdCreator",
-                element:<IdCardPage/>
+                path: "creator",
+                element: <SettingMenu>
+                    <>
+                        <Outlet/>
+                        <CardMakerFooter/>
+                    </>
+                </SettingMenu>,
+                children: [
+                    {
+                        path:"identity",
+                        element:<IdCardPage/>
+                    },
+                    {
+                        path:'ego',
+                        element:<EgoCardPage/>
+                    }
+                ],
             },
+            
             {
-                path:'EgoCreator',
-                element:<EgoCardPage/>
-            },
-            {
-                path:'Forum',
+                path:'forum',
                 element:<ForumPage/>
             },
             {
-                path:"NewPost",
+                path:"new-post",
                 element:<NewPostPage/>
             },
             {
-                path:"Post/:postId",
+                path:"post/:postId",
                 element: <PostPage/>
             }
         ]
@@ -90,7 +115,16 @@ function App():ReactElement{
         <DndProvider backend={TouchBackend}
             options={{ enableMouseEvents: true }}>
             <DragAndDroppableSkillPreviewLayer/>
-            <RouterProvider router={router}/>
+            <AlertContextProvider>
+                <LoginUserContextProvider>
+                    <RefDownloadProvider>
+                        <LoginMenu>
+                            <RouterProvider router={router}/>
+                            <AlertPopUp/>
+                        </LoginMenu>
+                    </RefDownloadProvider>
+                </LoginUserContextProvider>
+            </AlertContextProvider>
         </DndProvider>
     </GoogleOAuthProvider> 
 }

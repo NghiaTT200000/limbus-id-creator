@@ -2,11 +2,11 @@ import AddIcon from "Utils/Icons/AddIcon";
 import React, { useState } from "react";
 import "./InputTabSide.css"
 import ResetIcon from "Utils/Icons/ResetIcon";
-import { IOffenseSkill, OffenseSkill } from "Interfaces/OffenseSkill/IOffenseSkill";
-import { DefenseSkill, IDefenseSkill } from "Interfaces/DefenseSkill/IDefenseSkill";
-import { CustomEffect, ICustomEffect } from "Interfaces/CustomEffect/ICustomEffect";
-import { IMentalEffect, MentalEffect } from "Interfaces/MentalEffect/IMentalEffect";
-import { IPassiveSkill, PassiveSkill } from "Interfaces/PassiveSkill/IPassiveSkill";
+import { IOffenseSkill, OffenseSkill } from "interfaces/OffenseSkill/IOffenseSkill";
+import { DefenseSkill, IDefenseSkill } from "interfaces/DefenseSkill/IDefenseSkill";
+import { CustomEffect, ICustomEffect } from "interfaces/CustomEffect/ICustomEffect";
+import { IMentalEffect, MentalEffect } from "interfaces/MentalEffect/IMentalEffect";
+import { IPassiveSkill, PassiveSkill } from "interfaces/PassiveSkill/IPassiveSkill";
 
 export default function InputTabSide({sinnerIcon,
     skillDetails,
@@ -25,19 +25,19 @@ export default function InputTabSide({sinnerIcon,
     function convertTabIcon(type:string):string{
         switch (type){
             case "OffenseSkill":{
-                return "Images/stat/stat_attack.webp"
+                return "/Images/stat/stat_attack.webp"
             }
             case "DefenseSkill":{
-                return "Images/stat/stat_defense.webp"
+                return "/Images/stat/stat_defense.webp"
             }
             case "PassiveSkill":{
-                return "Images/status-effect/Aggro.webp"
+                return "/Images/status-effect/Aggro.webp"
             }
             case "CustomEffect":{
-                return "Images/status-effect/Discard.webp"
+                return "/Images/status-effect/Discard.webp"
             }
             case "MentalEffect":{
-                return "Images/Sanity.webp"
+                return "/Images/Sanity.webp"
             }
         }
         return ""
@@ -85,35 +85,35 @@ export default function InputTabSide({sinnerIcon,
                     addTab(new OffenseSkill())
                     setIsAdding(false)
                 }}>
-                Add offense skill <img src="Images/stat/stat_attack.webp" alt="attk_icon" />
+                Add offense skill <img src="/Images/stat/stat_attack.webp" alt="attk_icon" />
             </li>
             <li className="input-tab-side-add-option"
                 onClick={()=>{
                     addTab(new DefenseSkill())
                     setIsAdding(false)
                 }}>
-                Add defense skill <img src="Images/stat/stat_defense.webp" alt="defense_icon" />
+                Add defense skill <img src="/Images/stat/stat_defense.webp" alt="defense_icon" />
             </li>
             <li className="input-tab-side-add-option"
                 onClick={()=>{
                     addTab(new PassiveSkill())
                     setIsAdding(false)
                 }}>
-                Add passive skill <img src="Images/status-effect/Aggro.webp" alt="passive_icon" />
+                Add passive skill <img src="/Images/status-effect/Aggro.webp" alt="passive_icon" />
             </li>
             <li className="input-tab-side-add-option"
                 onClick={()=>{
                     addTab(new CustomEffect())
                     setIsAdding(false)
                 }}>
-                Add custom effect <img src="Images/status-effect/Discard.webp" alt="custom_icon" />
+                Add custom effect <img src="/Images/status-effect/Discard.webp" alt="custom_icon" />
             </li>
             <li className="input-tab-side-add-option"
                 onClick={()=>{
                     addTab(new MentalEffect())
                     setIsAdding(false)
                 }}>
-                    Add mental effect <img src="Images/Sanity.webp" alt="mental_icon" />
+                    Add mental effect <img src="/Images/Sanity.webp" alt="mental_icon" />
             </li>
         </ul>:<></>}
     </ul>

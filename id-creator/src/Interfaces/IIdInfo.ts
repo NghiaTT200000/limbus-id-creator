@@ -1,5 +1,5 @@
 import { ICustomEffect } from "./CustomEffect/ICustomEffect";
-import { DefenseSkill, IDefenseSkill } from "./DefenseSkill/IDefenseSkill";
+import { IDefenseSkill, DefenseSkill } from "./DefenseSkill/IDefenseSkill";
 import { IMentalEffect } from "./MentalEffect/IMentalEffect";
 import { IOffenseSkill, OffenseSkill } from "./OffenseSkill/IOffenseSkill";
 import { IPassiveSkill, PassiveSkill } from "./PassiveSkill/IPassiveSkill";
@@ -47,8 +47,8 @@ export class IdInfo implements IIdInfo{
     pierceResistant:number=1;
     bluntResistant:number=1;
     sinnerColor: string = "var(--Yi-Sang-color)";
-    sinnerIcon: string = "Images/sinner-icon/Yi_Sang_Icon.webp";
-    rarity: string = "Images/rarity/IDNumber1.webp";
+    sinnerIcon: string = "/Images/sinner-icon/Yi_Sang_Icon.webp";
+    rarity: string = "/Images/rarity/IDNumber1.webp";
     localSaveId:number = 1;
     skillDetails: (IOffenseSkill | IDefenseSkill | IPassiveSkill | ICustomEffect | IMentalEffect | never)[] = [
         new OffenseSkill("Skill 1", "Wrath", 3, "SKILL 1"),

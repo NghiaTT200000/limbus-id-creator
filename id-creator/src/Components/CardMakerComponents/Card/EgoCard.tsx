@@ -1,13 +1,13 @@
 import React, { forwardRef, useState } from "react";
 import { ReactElement } from "react";
 import './styles/Card.css'
-import SkillDetailContainer from "./components/SkillDetailContainer/SkillDetailContainer";
-import { useEgoInfoContext } from "Context/EgoInfoContext";
+import { useEgoInfoContext } from "context/EgoInfoContext";
+import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
 import EgoHeader from "./components/CardHeader/EgoHeader";
+import EgoSplashArt from "./components/EgoSplashArt/EgoSplashArt";
 import SinCost from "./components/SinCost/SinCost";
 import SinResistant from "./components/SinResistant/SinResistant";
-import EgoSplashArt from "./components/EgoSplashArt/EgoSplashArt";
-import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
+import SkillDetailContainer from "./components/SkillDetailContainer/SkillDetailContainer";
 
 
 const EgoCard=forwardRef<HTMLDivElement,{changeActiveTab:React.Dispatch<React.SetStateAction<number>>}>(({changeActiveTab},ref):ReactElement=>{

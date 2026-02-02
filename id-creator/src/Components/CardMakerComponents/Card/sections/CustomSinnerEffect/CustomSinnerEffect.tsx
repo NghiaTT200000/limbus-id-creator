@@ -1,8 +1,8 @@
-import { ICustomEffect } from "Interfaces/CustomEffect/ICustomEffect";
+import { ICustomEffect } from "interfaces/CustomEffect/ICustomEffect";
 import React, { forwardRef } from "react";
 import "../SinnerSkill.css"
 import "./CustomSinnerEffect.css"
-import SkillEffect from "Components/CardMakerComponents/Card/components/SkillEffect/SkillEffect";
+import SkillEffect from "components/CardMakerComponents/Card/components/SkillEffect/SkillEffect";
 
 const CustomSinnerEffect = forwardRef<HTMLDivElement, { customEffect: ICustomEffect }>(({ customEffect }, ref) => {
     const {

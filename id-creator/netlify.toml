@@ -17,6 +17,12 @@
 [build.processing.images]
   compress = true
 
+# Backward compatibility redirect for old image paths
+[[redirects]]
+  from = "/creator/Images/*"
+  to = "/Images/:splat"
+  status = 200
+
 # SPA redirect
 [[redirects]]
   from = "/*"

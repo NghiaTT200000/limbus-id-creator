@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import imageCompression from 'browser-image-compression';
-import replaceKeyWord from "Components/CardMakerComponents/InputTab/Components/EditableAutoCorrectInput/Functions/replaceKeyWord";
+import replaceKeyWord from "components/CardMakerComponents/InputTab/Components/EditableAutoCorrectInput/Functions/replaceKeyWord";
 import getImageDimensions from "Utils/Functions/getImageDimensions";
 import isObject from "Utils/Functions/isObject";
 

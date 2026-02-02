@@ -4,13 +4,13 @@ import "../PageLayout.css"
 import "./PostPage.css"
 import Post from "./Post/Post";
 import CommentContainer from "./CommentContainer/CommentContainer";
-import { useAlertContext } from "Context/AlertContext";
+import { useAlertContext } from "context/AlertContext";
 import { useParams } from "react-router-dom";
-import { IPost } from "Interfaces/IPost/IPost";
-import { useLoginUserContext } from "Context/LoginUserContext";
-import { useLoginMenuContext } from "Components/LoginMenu/LoginMenu";
-import MainButton from "Components/MainButton/MainButton";
-import { IComment } from "Interfaces/IPost/IComment";
+import { IPost } from "interfaces/IPost/IPost";
+import { useLoginUserContext } from "context/LoginUserContext";
+import { useLoginMenuContext } from "components/LoginMenu/LoginMenu";
+import MainButton from "components/MainButton/MainButton";
+import { IComment } from "interfaces/IPost/IComment";
 import { Editor } from "react-simple-wysiwyg";
 
 function PostCommentInput({authorIcon,authorName,createComment}:{authorIcon:string,authorName:string,createComment:(comment:string)=>Promise<void>}){

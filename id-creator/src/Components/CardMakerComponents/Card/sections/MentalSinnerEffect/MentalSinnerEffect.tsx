@@ -1,9 +1,9 @@
-import { IMentalEffect } from "Interfaces/MentalEffect/IMentalEffect";
+import { IMentalEffect } from "interfaces/MentalEffect/IMentalEffect";
 import React, { forwardRef } from "react";
 import "../SinnerSkill.css"
 import "./MentalSinnerEffect.css"
-import SkillEffect from "Components/CardMakerComponents/Card/components/SkillEffect/SkillEffect";
-import SkillTitle from "Components/CardMakerComponents/Card/components/SkillTitle/SkillTitle";
+import SkillEffect from "components/CardMakerComponents/Card/components/SkillEffect/SkillEffect";
+import SkillTitle from "components/CardMakerComponents/Card/components/SkillTitle/SkillTitle";
 
 const MentalSinnerEffect = forwardRef<HTMLDivElement, { mentalEffect: IMentalEffect }>(({ mentalEffect }, ref) => {
     const { effect } = mentalEffect;
@@ -13,7 +13,7 @@ const MentalSinnerEffect = forwardRef<HTMLDivElement, { mentalEffect: IMentalEff
             <p className="skill-label">SANITY</p>
             <div className="skill-section">
                 <div>
-                    <img className="sanity-img" src="Images/Sanity.webp" alt="sanity-icon" />
+                    <img className="sanity-img" src="/Images/Sanity.webp" alt="sanity-icon" />
                 </div>
                 <div>
                     <div className="mental-skill-header">

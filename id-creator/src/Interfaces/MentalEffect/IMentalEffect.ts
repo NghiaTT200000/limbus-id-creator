@@ -1,5 +1,5 @@
-import IUID from "Interfaces/IUID";
-import IEffect from "Interfaces/SkillAndEffect/IEffect";
+import IUID from "interfaces/IUID";
+import IEffect from "interfaces/SkillAndEffect/IEffect";
 import uuid from "react-uuid";
 
 export interface IMentalEffect extends IEffect,IUID{

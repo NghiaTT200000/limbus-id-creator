@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { ReactElement } from "react";
-import TagInput from "Components/TagInput/TagInput";
+import TagInput from "components/TagInput/TagInput";
 import { ITag } from "Utils/TagList";
 import "./ForumPage.css"
-import TagsContainer from "Components/TagsContainer/TagsContainer";
-import MainButton from "Components/MainButton/MainButton";
-import { useLoginUserContext } from "Context/LoginUserContext";
-import { useLoginMenuContext } from "Components/LoginMenu/LoginMenu";
+import TagsContainer from "components/TagsContainer/TagsContainer";
+import MainButton from "components/MainButton/MainButton";
+import { useLoginUserContext } from "context/LoginUserContext";
+import { useLoginMenuContext } from "components/LoginMenu/LoginMenu";
 import { Link } from "react-router-dom";
-import DropDown from "Components/DropDown/DropDown";
-import { useAlertContext } from "Context/AlertContext";
-import { IPostDisplayCard } from "Interfaces/IPostDisplayCard/IPostDisplayCard";
-import PaginatedPost from "Components/PaginatedPost/PaginatedPost";
+import DropDown from "components/DropDown/DropDown";
+import { useAlertContext } from "context/AlertContext";
+import { IPostDisplayCard } from "interfaces/IPostDisplayCard/IPostDisplayCard";
+import PaginatedPost from "components/PaginatedPost/PaginatedPost";
 
 export default function ForumPage():ReactElement{
     const [postList,setPostList] = useState<IPostDisplayCard[]>([])
@@ -109,7 +109,7 @@ export default function ForumPage():ReactElement{
             </div>
             <div className="forum-new-post-container">
                 {loginUser?
-                <Link to={"/NewPost"}><MainButton component={'Create new Post'} btnClass={"main-button"} /></Link>:
+                <Link to={"/new-post"}><MainButton component={'Create new Post'} btnClass={"main-button"} /></Link>:
                 <MainButton btnClass="main-button" component={"Login to post"} clickHandler={()=>setIsLoginMenuActive(true)}/>}
             </div>
             <PaginatedPost currPage={currPage} 

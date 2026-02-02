@@ -1,4 +1,4 @@
-import { useIdInfoContext } from "Context/IdInfoContext";
+import { useIdInfoContext } from "context/IdInfoContext";
 import React, { ReactElement } from "react";
 import "./CardHeader.css"
 

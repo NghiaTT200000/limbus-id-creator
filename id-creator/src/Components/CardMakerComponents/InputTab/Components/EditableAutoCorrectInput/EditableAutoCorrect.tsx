@@ -4,11 +4,11 @@ import ContentEditable from "react-contenteditable";
 import SuggestBox from "./SuggestBox/SuggestBox";
 import useKeyPress from "Utils/Hooks/useKeyPress";
 import "./EditableAutoCorrect.css"
-import getCaretCharacterOffsetWithin from "Components/CardMakerComponents/InputTab/Components/EditableAutoCorrectInput/Functions/getCaretCharacterOffsetWithin";
-import getCaretHTMLCharacterOffSet from "Components/CardMakerComponents/InputTab/Components/EditableAutoCorrectInput/Functions/getCaretHTMLCharacterOffSet";
-import ecapeRegExp from "Components/CardMakerComponents/InputTab/Components/EditableAutoCorrectInput/Functions/ecapeRegExp";
-import setEditableCaretPos from "Components/CardMakerComponents/InputTab/Components/EditableAutoCorrectInput/Functions/setEditableCaretPos";
-import getTextInTag from "Components/CardMakerComponents/InputTab/Components/EditableAutoCorrectInput/Functions/getTextInTag";
+import getCaretCharacterOffsetWithin from "components/CardMakerComponents/InputTab/Components/EditableAutoCorrectInput/Functions/getCaretCharacterOffsetWithin";
+import getCaretHTMLCharacterOffSet from "components/CardMakerComponents/InputTab/Components/EditableAutoCorrectInput/Functions/getCaretHTMLCharacterOffSet";
+import ecapeRegExp from "components/CardMakerComponents/InputTab/Components/EditableAutoCorrectInput/Functions/ecapeRegExp";
+import setEditableCaretPos from "components/CardMakerComponents/InputTab/Components/EditableAutoCorrectInput/Functions/setEditableCaretPos";
+import getTextInTag from "components/CardMakerComponents/InputTab/Components/EditableAutoCorrectInput/Functions/getTextInTag";
 
 
 export default function EditableAutoCorrect({inputId,content,matchList,changeHandler}:{inputId:string,content:string,changeHandler:(e:React.ChangeEvent<HTMLInputElement>)=>void,matchList:{[key:string]:string}}):ReactElement{

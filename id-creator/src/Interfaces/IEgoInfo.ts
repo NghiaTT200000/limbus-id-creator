@@ -73,7 +73,7 @@ export class EgoInfo implements IEgoInfo{
         envy_cost:0,  
     };
     sinnerColor:string = "var(--Yi-Sang-color)";
-    sinnerIcon:string = "Images/sinner-icon/Yi_Sang_Icon.webp";
+    sinnerIcon:string = "/Images/sinner-icon/Yi_Sang_Icon.webp";
     egoLevel:string = "ZAYIN";
     localSaveId:number = 1;
     skillDetails: (IOffenseSkill | IDefenseSkill | IPassiveSkill | ICustomEffect | IMentalEffect | never)[] = [

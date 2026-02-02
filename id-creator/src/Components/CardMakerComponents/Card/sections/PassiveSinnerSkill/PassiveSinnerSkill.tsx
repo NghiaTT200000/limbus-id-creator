@@ -1,9 +1,9 @@
 import React, { forwardRef } from "react";
 import "../SinnerSkill.css"
 import "./PassiveSinnerSkill.css"
-import { IPassiveSkill } from "Interfaces/PassiveSkill/IPassiveSkill";
-import SkillTitle from "Components/CardMakerComponents/Card/components/SkillTitle/SkillTitle";
-import SkillEffect from "Components/CardMakerComponents/Card/components/SkillEffect/SkillEffect";
+import { IPassiveSkill } from "interfaces/PassiveSkill/IPassiveSkill";
+import SkillTitle from "components/CardMakerComponents/Card/components/SkillTitle/SkillTitle";
+import SkillEffect from "components/CardMakerComponents/Card/components/SkillEffect/SkillEffect";
 
 const PassiveSinnerSkill = forwardRef<HTMLDivElement, { passiveSkill: IPassiveSkill }>(({ passiveSkill }, ref) => {
     const {
@@ -32,7 +32,7 @@ const PassiveSinnerSkill = forwardRef<HTMLDivElement, { passiveSkill: IPassiveSk
                                     if(ownCost[k]<1) return <></>
                                     const affinity_name = k.replace("_cost","")[0]+k.replace("_cost","").substring(1)
                                     return <span className="center-element" key={k}>
-                                        {ownCost[k]} <img className="req-sin-icon" src={`Images/sin-affinity/affinity_${affinity_name.replace("_cost","")}_big.webp`} alt={`${k}_icon`} />
+                                        {ownCost[k]} <img className="req-sin-icon" src={`/Images/sin-affinity/affinity_${affinity_name.replace("_cost","")}_big.webp`} alt={`${k}_icon`} />
                                     </span>})}
                                 </div>
                             </div>}
@@ -45,7 +45,7 @@ const PassiveSinnerSkill = forwardRef<HTMLDivElement, { passiveSkill: IPassiveSk
                                     if(resCost[k]<1) return <></>
                                     const affinity_name = k.replace("_cost","")[0]+k.replace("_cost","").substring(1)
                                     return <span className="center-element" key={k}>
-                                        {resCost[k]} <img className="req-sin-icon" src={`Images/sin-affinity/affinity_${affinity_name.replace("_cost","")}_big.webp`} alt={`${k}_icon`} />
+                                        {resCost[k]} <img className="req-sin-icon" src={`/Images/sin-affinity/affinity_${affinity_name.replace("_cost","")}_big.webp`} alt={`${k}_icon`} />
                                     </span>})}
                                 </div>
                             </div>}

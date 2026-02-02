@@ -1,7 +1,7 @@
 import React from "react";
 import { ReactElement } from "react";
 import "./SinnerStats.css"
-import { useIdInfoContext } from "Context/IdInfoContext";
+import { useIdInfoContext } from "context/IdInfoContext";
 
 export default function SinnerStats():ReactElement{
     const {idInfoValue} = useIdInfoContext()
@@ -51,19 +51,19 @@ export default function SinnerStats():ReactElement{
             <div className="sinner-stats-container">
                 <div className="stat-container">
                     <div className="stat-container-slot">
-                        <img className="stat-icon" src="Images/stat/stat_speed.webp" alt="speed_icon" />
+                        <img className="stat-icon" src="/Images/stat/stat_speed.webp" alt="speed_icon" />
                         <div className="stat-content">
                             <p>{minSpeed} - {maxSpeed}</p>
                         </div>
                     </div>
                     <div className="stat-container-slot">
-                        <img className="stat-icon" src="Images/stat/stat_hp.webp" alt="hp_icon" />
+                        <img className="stat-icon" src="/Images/stat/stat_hp.webp" alt="hp_icon" />
                         <div className="stat-content">
                             <p>{hp}</p>
                         </div>
                     </div>
                     <div className="stat-container-slot">
-                        <img className="stat-icon" src="Images/stat/stat_def.webp" alt="def_icon" />
+                        <img className="stat-icon" src="/Images/stat/stat_def.webp" alt="def_icon" />
                         <div className="stat-content">
                             <p>{defenseLevel}</p>
                         </div>
@@ -77,7 +77,7 @@ export default function SinnerStats():ReactElement{
                 </div>
                 <div className="stat-container">
                     <div className="stat-container-slot">
-                        <img className="stat-icon" src="Images/attack/attackt_slash.webp" alt="attackt_slash" />
+                        <img className="stat-icon" src="/Images/attack/attackt_slash.webp" alt="attackt_slash" />
                         <div className="stat-content">
                             <div style={{color:changeResistantColor(slashResistant)}}>
                             <p>{changeResistantText(slashResistant)}</p>
@@ -86,7 +86,7 @@ export default function SinnerStats():ReactElement{
                         </div>
                     </div>
                     <div className="stat-container-slot">
-                        <img className="stat-icon" src="Images/attack/attackt_pierce.webp" alt="attackt_pierce" />
+                        <img className="stat-icon" src="/Images/attack/attackt_pierce.webp" alt="attackt_pierce" />
                         <div className="stat-content">
                             <div style={{color:changeResistantColor(pierceResistant)}}>
                                 <p>{changeResistantText(pierceResistant)}</p>
@@ -95,7 +95,7 @@ export default function SinnerStats():ReactElement{
                         </div>
                     </div>
                     <div className="stat-container-slot">
-                        <img className="stat-icon" src="Images/attack/attackt_blunt.webp" alt="attackt_blunt" />
+                        <img className="stat-icon" src="/Images/attack/attackt_blunt.webp" alt="attackt_blunt" />
                         <div className="stat-content">
                             <div style={{color:changeResistantColor(bluntResistant)}}>
                                 <p>{changeResistantText(bluntResistant)}</p>

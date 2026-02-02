@@ -1,13 +1,13 @@
 import React, { useCallback, useState } from "react";
 import { ReactElement } from "react";
 import "../User.css"
-import MainButton from "Components/MainButton/MainButton";
+import MainButton from "components/MainButton/MainButton";
 import EditIcon from "Utils/Icons/EditIcon";
 import CheckIcon from "Utils/Icons/CheckIcon";
 import { useParams } from "react-router-dom";
-import { IUserProfile } from "Interfaces/API/OAuth/IUserProfile";
-import IResponse from "Interfaces/IResponse";
-import { useAlertContext } from "Context/AlertContext";
+import { IUserProfile } from "interfaces/API/OAuth/IUserProfile";
+import IResponse from "interfaces/IResponse";
+import { useAlertContext } from "context/AlertContext";
 
 
 

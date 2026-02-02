@@ -1,9 +1,9 @@
-import { useAlertContext } from "Context/AlertContext";
-import { useRefDownloadContext } from "Context/ImgUrlContext";
+import { useAlertContext } from "context/AlertContext";
+import { useRefDownloadContext } from "context/ImgUrlContext";
 import React, { useState } from "react";
 import DownloadImg from "Utils/Functions/DownloadImg";
 import "./CardMakerFooter.css"
-import { useSettingMenuContext } from "Components/SettingMenu/SettingMenu";
+import { useSettingMenuContext } from "components/SettingMenu/SettingMenu";
 import DownloadIcon from "Utils/Icons/DownloadIcon";
 import SettingIcon from "Utils/Icons/SettingIcon";
 

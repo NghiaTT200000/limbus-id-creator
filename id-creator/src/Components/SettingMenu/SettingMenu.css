@@ -25,7 +25,6 @@
     width: min(100%,400px);
     z-index: 2;
     position: absolute;
-    left: -999px;
 }
 
 .setting-menu-outline.active{

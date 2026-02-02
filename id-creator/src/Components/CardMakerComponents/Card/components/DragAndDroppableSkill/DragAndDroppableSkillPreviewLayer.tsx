@@ -1,13 +1,13 @@
-import CustomSinnerEffect from "Components/CardMakerComponents/Card/sections/CustomSinnerEffect/CustomSinnerEffect";
-import DefenseSinnerSkill from "Components/CardMakerComponents/Card/sections/DefenseSinnerSkill/DefenseSinnerSkill";
-import MentalSinnerEffect from "Components/CardMakerComponents/Card/sections/MentalSinnerEffect/MentalSinnerEffect";
-import OffenseSinnerSkill from "Components/CardMakerComponents/Card/sections/OffenseSinnerSkill/OffenseSinnerSkill";
-import PassiveSinnerSkill from "Components/CardMakerComponents/Card/sections/PassiveSinnerSkill/PassiveSinnerSkill";
-import { ICustomEffect } from "Interfaces/CustomEffect/ICustomEffect";
-import { IDefenseSkill } from "Interfaces/DefenseSkill/IDefenseSkill";
-import { IMentalEffect } from "Interfaces/MentalEffect/IMentalEffect";
-import { IOffenseSkill } from "Interfaces/OffenseSkill/IOffenseSkill";
-import { IPassiveSkill } from "Interfaces/PassiveSkill/IPassiveSkill";
+import CustomSinnerEffect from "components/CardMakerComponents/Card/sections/CustomSinnerEffect/CustomSinnerEffect";
+import DefenseSinnerSkill from "components/CardMakerComponents/Card/sections/DefenseSinnerSkill/DefenseSinnerSkill";
+import MentalSinnerEffect from "components/CardMakerComponents/Card/sections/MentalSinnerEffect/MentalSinnerEffect";
+import OffenseSinnerSkill from "components/CardMakerComponents/Card/sections/OffenseSinnerSkill/OffenseSinnerSkill";
+import PassiveSinnerSkill from "components/CardMakerComponents/Card/sections/PassiveSinnerSkill/PassiveSinnerSkill";
+import { ICustomEffect } from "interfaces/CustomEffect/ICustomEffect";
+import { IDefenseSkill } from "interfaces/DefenseSkill/IDefenseSkill";
+import { IMentalEffect } from "interfaces/MentalEffect/IMentalEffect";
+import { IOffenseSkill } from "interfaces/OffenseSkill/IOffenseSkill";
+import { IPassiveSkill } from "interfaces/PassiveSkill/IPassiveSkill";
 import React, { CSSProperties } from "react";
 import { useDragLayer, XYCoord } from "react-dnd";
 

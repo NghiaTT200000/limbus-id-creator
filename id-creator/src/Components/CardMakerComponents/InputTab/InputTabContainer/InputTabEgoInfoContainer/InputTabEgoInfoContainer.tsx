@@ -1,20 +1,20 @@
 import React, { ReactElement } from "react";
 import "../InputTabContainer.css"
-import { IOffenseSkill, OffenseSkill } from "Interfaces/OffenseSkill/IOffenseSkill";
-import { CustomEffect, ICustomEffect } from "Interfaces/CustomEffect/ICustomEffect";
-import { DefenseSkill, IDefenseSkill } from "Interfaces/DefenseSkill/IDefenseSkill";
-import { IMentalEffect, MentalEffect } from "Interfaces/MentalEffect/IMentalEffect";
-import { IPassiveSkill, PassiveSkill } from "Interfaces/PassiveSkill/IPassiveSkill";
-import { useStatusEffectContext } from "Context/StatusEffectContext";
-import InputCustomEffectPage from "Components/CardMakerComponents/InputTab/InputCustomEffectPage/InputCustomEffectPage";
-import InputDefenseSkillPage from "Components/CardMakerComponents/InputTab/InputDefenseSkillPage/InputDefenseSkillPage";
-import InputMentalEffect from "Components/CardMakerComponents/InputTab/InputMentalEffect/InputMentalEffect";
-import InputOffenseSkillPage from "Components/CardMakerComponents/InputTab/InputOffenseSkillPage/InputOffenseSkillPage";
-import InputPassivePage from "Components/CardMakerComponents/InputTab/InputPassivePage/InputPassivePage";
-import { useEgoInfoContext } from "Context/EgoInfoContext";
-import InputEgoInfoStatPage from "Components/CardMakerComponents/InputTab/InputStatPage/InputEgoInfoStatPage/InputEgoInfoStatPage";
-import { useAlertContext } from "Context/AlertContext";
-import InputTabSide from "Components/CardMakerComponents/InputTab/InputTabSide/InputTabSide";
+import { IOffenseSkill, OffenseSkill } from "interfaces/OffenseSkill/IOffenseSkill";
+import { CustomEffect, ICustomEffect } from "interfaces/CustomEffect/ICustomEffect";
+import { DefenseSkill, IDefenseSkill } from "interfaces/DefenseSkill/IDefenseSkill";
+import { IMentalEffect, MentalEffect } from "interfaces/MentalEffect/IMentalEffect";
+import { IPassiveSkill, PassiveSkill } from "interfaces/PassiveSkill/IPassiveSkill";
+import { useStatusEffectContext } from "context/StatusEffectContext";
+import InputCustomEffectPage from "components/CardMakerComponents/InputTab/InputCustomEffectPage/InputCustomEffectPage";
+import InputDefenseSkillPage from "components/CardMakerComponents/InputTab/InputDefenseSkillPage/InputDefenseSkillPage";
+import InputMentalEffect from "components/CardMakerComponents/InputTab/InputMentalEffect/InputMentalEffect";
+import InputOffenseSkillPage from "components/CardMakerComponents/InputTab/InputOffenseSkillPage/InputOffenseSkillPage";
+import InputPassivePage from "components/CardMakerComponents/InputTab/InputPassivePage/InputPassivePage";
+import { useEgoInfoContext } from "context/EgoInfoContext";
+import InputEgoInfoStatPage from "components/CardMakerComponents/InputTab/InputStatPage/InputEgoInfoStatPage/InputEgoInfoStatPage";
+import { useAlertContext } from "context/AlertContext";
+import InputTabSide from "components/CardMakerComponents/InputTab/InputTabSide/InputTabSide";
 
 export default function InputTabEgoInfoContainer({
         resetBtnHandler,

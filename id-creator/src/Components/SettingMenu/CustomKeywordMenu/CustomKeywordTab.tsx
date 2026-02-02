@@ -1,7 +1,7 @@
 import CheckIcon from "Utils/Icons/CheckIcon";
 import DeleteIcon from "Utils/Icons/DeleteIcon";
 import SettingIcon from "Utils/Icons/SettingIcon";
-import { ICustomKeyword } from "Interfaces/ICustomKeyword";
+import { ICustomKeyword } from "interfaces/ICustomKeyword";
 import React, { useState } from "react";
 
 

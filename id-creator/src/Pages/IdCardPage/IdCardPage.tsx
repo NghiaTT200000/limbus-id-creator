@@ -1,17 +1,16 @@
 import React, { ReactElement, useEffect, useRef, useState } from 'react';
-import 'Styles/reset.css'
-import 'Styles/style.css'
+import 'styles/reset.css'
+import 'styles/style.css'
 import '../EditorPage.css'
-import { StatusEffectProvider } from 'Context/StatusEffectContext';
-import { IdCard } from 'Components/CardMakerComponents/Card/IdCard';
-import { IdInfoProvider, useIdInfoContext } from 'Context/IdInfoContext';
-import InputTabIdInfoContainer from 'Components/CardMakerComponents/InputTab/InputTabContainer/InputTabIdInfoContainer/InputTabIdInfoContainer';
-import {  useRefDownloadContext } from 'Context/ImgUrlContext';
+import { StatusEffectProvider } from 'context/StatusEffectContext';
+import { IdCard } from 'components/CardMakerComponents/Card/IdCard';
+import { IdInfoProvider, useIdInfoContext } from 'context/IdInfoContext';
+import InputTabIdInfoContainer from 'components/CardMakerComponents/InputTab/InputTabContainer/InputTabIdInfoContainer/InputTabIdInfoContainer';
+import {  useRefDownloadContext } from 'context/ImgUrlContext';
 import {  useSearchParams } from 'react-router-dom';
-import ResetMenu from 'Components/ResetMenu/ResetMenu';
-import { IdInfo } from 'Interfaces/IIdInfo';
-import CardMakerFooter from 'Components/CardMakerComponents/CardMakerFooter/CardMakerFooter';
-import { useSettingMenuContext } from 'Components/SettingMenu/SettingMenu';
+import ResetMenu from 'components/ResetMenu/ResetMenu';
+import { IdInfo } from 'interfaces/IIdInfo';
+import { useSettingMenuContext } from 'components/SettingMenu/SettingMenu';
 import { indexDB } from 'Utils/IndexDB';
 
 
@@ -70,18 +69,15 @@ function IdCardContext():ReactElement{
     },[JSON.stringify(idInfoValue)])
 
     return <StatusEffectProvider skillDetails={idInfoValue.skillDetails}>
-        <>
-            <div className={`editor-container`}>
-                <InputTabIdInfoContainer 
-                    resetBtnHandler={()=>setResetMenuActive(!isResetMenuActive)}
-                    activeTab={activeTab}
-                    changeActiveTab={changeActiveTab} />
-                <ResetMenu isActive={isResetMenuActive} setIsActive={setResetMenuActive} confirmFn={reset} />
-                <div className='preview-container'>
-                    <IdCard ref={domRef} changeActiveTab={setActiveTab}/>
-                </div>
+        <div className={`editor-container`}>
+            <InputTabIdInfoContainer 
+                resetBtnHandler={()=>setResetMenuActive(!isResetMenuActive)}
+                activeTab={activeTab}
+                changeActiveTab={changeActiveTab} />
+            <ResetMenu isActive={isResetMenuActive} setIsActive={setResetMenuActive} confirmFn={reset} />
+            <div className='preview-container'>
+                <IdCard ref={domRef} changeActiveTab={setActiveTab}/>
             </div>
-            <CardMakerFooter/>
-        </>
+        </div>
     </StatusEffectProvider>
 }

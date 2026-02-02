@@ -2,10 +2,10 @@ import React, { forwardRef } from "react";
 import { ReactElement } from "react";
 import "./OffenseSinnerSkill.css"
 import "../SinnerSkill.css"
-import { IOffenseSkill } from "Interfaces/OffenseSkill/IOffenseSkill";
-import SkillEffect from "Components/CardMakerComponents/Card/components/SkillEffect/SkillEffect";
-import OffenseSkillSplash from "Components/CardMakerComponents/Card/components/SkillSplash/OffenseSkillSplash/OffenseSkillSplash";
-import SkillTitle from "Components/CardMakerComponents/Card/components/SkillTitle/SkillTitle";
+import { IOffenseSkill } from "interfaces/OffenseSkill/IOffenseSkill";
+import SkillEffect from "components/CardMakerComponents/Card/components/SkillEffect/SkillEffect";
+import OffenseSkillSplash from "components/CardMakerComponents/Card/components/SkillSplash/OffenseSkillSplash/OffenseSkillSplash";
+import SkillTitle from "components/CardMakerComponents/Card/components/SkillTitle/SkillTitle";
 
 
 const OffenseSinnerSkill = forwardRef<HTMLDivElement, { offenseSkill: IOffenseSkill }>(({ offenseSkill }) => {
@@ -25,18 +25,18 @@ const OffenseSinnerSkill = forwardRef<HTMLDivElement, { offenseSkill: IOffenseSk
     } = offenseSkill;
 
     const printCoins = function (coinNo: number,skillEffect:string): (ReactElement | never)[] {
-        if (coinNo > 10) return [<img key={0} src={"Images/Coin.webp"} alt="coin_icon" />];
+        if (coinNo > 10) return [<img key={0} src={"/Images/Coin.webp"} alt="coin_icon" />];
 
         const arr = [];
 
         for (let i = 0; i < coinNo; i++) {
             if(skillEffect.includes(`alt="coin-effect-${i+1}-unbreakable"`)){
-                arr.push(<img key={i} src={"Images/Unbreakable_Coin.webp"} alt="unbreakable_coin_icon" />);
+                arr.push(<img key={i} src={"/Images/Unbreakable_Coin.webp"} alt="unbreakable_coin_icon" />);
             }
             else if(skillEffect.includes(`alt="coin-effect-${i+1}-excision"`)){
-                arr.push(<img key={i} src={"Images/Excision_Coin.webp"} alt="excision_coin_icon" />);
+                arr.push(<img key={i} src={"/Images/Excision_Coin.webp"} alt="excision_coin_icon" />);
             }
-            else arr.push(<img key={i} src={"Images/Coin.webp"} alt="coin_icon" />);
+            else arr.push(<img key={i} src={"/Images/Coin.webp"} alt="coin_icon" />);
         }
         return arr;
     }
@@ -50,11 +50,11 @@ const OffenseSinnerSkill = forwardRef<HTMLDivElement, { offenseSkill: IOffenseSk
                         <OffenseSkillSplash skillAffinity={skillAffinity} skillImage={skillImage} />
                         <div className="skill-power">
                             {basePower}
-                            <img className="damage-type" src={`Images/attack/attackt_${damageType}.webp`} alt="" />
+                            <img className="damage-type" src={`/Images/attack/attackt_${damageType}.webp`} alt="" />
                             {(coinPow < 0 ? "" : "+") + coinPow}
                         </div>
                         <div className="skill-level">
-                            <img src={"Images/stat/stat_attack.webp"} className="skill-level-icon" alt="attack_icon" />
+                            <img src={"/Images/stat/stat_attack.webp"} className="skill-level-icon" alt="attack_icon" />
                             <div>
                                 <p>Id level</p>
                                 <p>{skillLevel < 0 ? skillLevel : "+" + skillLevel}</p>
@@ -64,7 +64,7 @@ const OffenseSinnerSkill = forwardRef<HTMLDivElement, { offenseSkill: IOffenseSk
                 </div>
                 <div>
                     <div className="sinner-skill-header">
-                        {skillAffinity==="None"?<></>:<img className={`sinner-skill-affinity-icon ${skillAffinity}`} src={`Images/sin-affinity/affinity_${skillAffinity}_big.webp`} alt={`sinner-skill-${skillAffinity}-icon`} />}
+                        {skillAffinity==="None"?<></>:<img className={`sinner-skill-affinity-icon ${skillAffinity}`} src={`/Images/sin-affinity/affinity_${skillAffinity}_big.webp`} alt={`sinner-skill-${skillAffinity}-icon`} />}
                         <div>
                             <div className="coin-container">
                                 {printCoins(coinNo,skillEffect)}

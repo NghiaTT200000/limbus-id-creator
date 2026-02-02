@@ -1,4 +1,4 @@
-import { useEgoInfoContext } from "Context/EgoInfoContext";
+import { useEgoInfoContext } from "context/EgoInfoContext";
 import React from "react";
 import {MapInteractionCSS} from "react-map-interaction"
 import "./EgoSplashArt.css"

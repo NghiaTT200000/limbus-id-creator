@@ -1,12 +1,12 @@
-import { useIdInfoContext } from "Context/IdInfoContext";
+import { useIdInfoContext } from "context/IdInfoContext";
 import React, { forwardRef, useState } from "react";
 import { ReactElement } from "react";
 import './styles/Card.css'
-import SinnerStats from "./components/SinnerStats/SinnerStats";
-import SinnerSplashArt from "./components/SinnerSplashArt/SinnerSplashArt";
-import IdHeader from "./components/CardHeader/IdHeader";
-import SkillDetailContainer from "./components/SkillDetailContainer/SkillDetailContainer";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch"; 
+import IdHeader from "./components/CardHeader/IdHeader";
+import SinnerSplashArt from "./components/SinnerSplashArt/SinnerSplashArt";
+import SinnerStats from "./components/SinnerStats/SinnerStats";
+import SkillDetailContainer from "./components/SkillDetailContainer/SkillDetailContainer";
 
 
 const IdCard=forwardRef<HTMLDivElement,{changeActiveTab:React.Dispatch<React.SetStateAction<number>>}>(({changeActiveTab},ref):ReactElement=>{

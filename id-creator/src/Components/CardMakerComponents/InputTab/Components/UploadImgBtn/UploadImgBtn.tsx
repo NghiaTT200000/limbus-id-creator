@@ -2,8 +2,8 @@ import React from "react";
 import { ReactElement } from "react";
 import "./UploadImgBtn.css"
 import UploadFileIcon from "Utils/Icons/UploadFileIcon";
-import MainButton from "Components/MainButton/MainButton";
-import { useAlertContext } from "Context/AlertContext";
+import MainButton from "components/MainButton/MainButton";
+import { useAlertContext } from "context/AlertContext";
 
 export default function UploadImgBtn({onFileInputChange,btnTxt,btnClass,maxSize}:{onFileInputChange:(e:React.ChangeEvent<HTMLInputElement>)=>void,btnTxt:string|ReactElement,btnClass?:string,maxSize?:number}):ReactElement{
     const {addAlert} = useAlertContext()

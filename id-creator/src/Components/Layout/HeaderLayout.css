@@ -1,9 +1,3 @@
-.site-layout{
-    display: flex;
-    flex-flow: column;
-    min-height: 100vh;
-}
-
 .site-header{
     padding: 4px var(--padding-layout-width);
     background-color: var(--red-brown);
@@ -29,9 +23,6 @@
     display: none;
 }
 
-.site-content{
-    flex: 1;
-}
 
 .site-logo{
     width: 160px;

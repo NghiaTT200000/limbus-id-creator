@@ -1,14 +1,14 @@
 import useInputs from "Utils/Hooks/useInputs";
-import { ICustomEffect } from "Interfaces/CustomEffect/ICustomEffect";
+import { ICustomEffect } from "interfaces/CustomEffect/ICustomEffect";
 import React from "react";
 import { ReactElement } from "react";
-import ChangeInputType from "../Components/ChangeInputType/ChangeInputType";
-import UploadImgBtn from "../Components/UploadImgBtn/UploadImgBtn";
 import "../InputPage.css"
-import EditableAutoCorrect from "../Components/EditableAutoCorrectInput/EditableAutoCorrect";
 import DeleteIcon from "Utils/Icons/DeleteIcon";
-import MainButton from "Components/MainButton/MainButton";
+import MainButton from "components/MainButton/MainButton";
 import ArrowDownIcon from "Utils/Icons/ArrowDownIcon";
+import ChangeInputType from "../Components/ChangeInputType/ChangeInputType";
+import EditableAutoCorrect from "../Components/EditableAutoCorrectInput/EditableAutoCorrect";
+import UploadImgBtn from "../Components/UploadImgBtn/UploadImgBtn";
 
 export default function InputCustomEffectPage({
     customEffect,
@@ -73,8 +73,8 @@ export default function InputCustomEffectPage({
             <div className="input-container">
                 <label className="input-label" htmlFor="effect">Effect description:</label>
                 <p className="effect-guide">To enter a status effect/coin effect/attack effect, put them in square bracket with underscore instead of spacebar like [sinking_deluge]/[coin_1]/[heads_hit] -{">"} 
-                    <span contentEditable={false} style={{color:"var(--Debuff-color)",textDecoration:"underline"}}><img className='status-icon' src='Images/status-effect/Sinking_Deluge.webp' alt='sinking_deluge_icon' />Sinking Deluge</span>/
-                    <span contentEditable={false}><img className='status-icon' src='Images/status-effect/Coin_Effect_1.webp' alt='coin-effect-1' /></span>/
+                    <span contentEditable={false} style={{color:"var(--Debuff-color)",textDecoration:"underline"}}><img className='status-icon' src='/Images/status-effect/Sinking_Deluge.webp' alt='sinking_deluge_icon' />Sinking Deluge</span>/
+                    <span contentEditable={false}><img className='status-icon' src='/Images/status-effect/Coin_Effect_1.webp' alt='coin-effect-1' /></span>/
                     <span contentEditable={false} style={{color:'#c7ff94'}}>[Heads Hit]</span>
                 </p>
                 <EditableAutoCorrect inputId={"effect"} content={effect} changeHandler={onChangeAutoCorrectInput(keyWordList,"effect")} matchList={keyWordList}/>              

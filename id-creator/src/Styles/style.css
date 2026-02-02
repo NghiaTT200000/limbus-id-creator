@@ -98,7 +98,7 @@ a{
 
 @font-face {
     font-family: "Mikodacs";
-    src: local("Mikodacs"),url("../Font/mikodacs/mikodacs.regular.ttf");
+    src: local("Mikodacs"),url("../font/mikodacs/mikodacs.regular.ttf");
     font-weight: normal;
 }
 
@@ -260,6 +260,16 @@ button{
 .warning-message{
     font-size: 10px;
     color: red;
+}
+
+.site-layout{
+    display: flex;
+    flex-flow: column;
+    min-height: 100vh;
+}
+
+.site-content{
+    flex: 1;
 }
 
 /* Style for the wysiwyg simple editor */

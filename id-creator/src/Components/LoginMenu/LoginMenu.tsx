@@ -1,13 +1,13 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import React from "react";
 import "./LoginMenu.css"
-import MainButton from "Components/MainButton/MainButton";
+import MainButton from "components/MainButton/MainButton";
 import { TokenResponse, useGoogleLogin } from "@react-oauth/google";
-import PopUpMenu from "Components/PopUpMenu/PopUpMenu";
-import { useAlertContext } from "Context/AlertContext";
-import { useLoginUserContext } from "Context/LoginUserContext";
-import IResponse from "Interfaces/IResponse";
-import ILoginUser from "Interfaces/ILoginUser";
+import PopUpMenu from "components/PopUpMenu/PopUpMenu";
+import { useAlertContext } from "context/AlertContext";
+import { useLoginUserContext } from "context/LoginUserContext";
+import IResponse from "interfaces/IResponse";
+import ILoginUser from "interfaces/ILoginUser";
 import GoogleIcon from "Utils/Icons/GoogleIcon";
 
 const loginMenuContext = createContext(null)

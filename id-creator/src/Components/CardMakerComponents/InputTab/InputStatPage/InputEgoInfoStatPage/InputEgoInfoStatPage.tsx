@@ -2,14 +2,14 @@ import React from "react";
 import { ReactElement } from "react";
 import "../../InputPage.css"
 import "../InputStatPage.css"
-import UploadImgBtn from "../../Components/UploadImgBtn/UploadImgBtn";
-import SinnerSplashArtRepositionInput from "../SinnerSplashArtRepositionInput/SinnerSplashArtRepositionInput";
-import { useEgoInfoContext } from "Context/EgoInfoContext";
+import { useEgoInfoContext } from "context/EgoInfoContext";
 import useInput from "Utils/Hooks/useInputs";
-import SinnerEgoIconInput from "../SinnerEgoIconInput/SinnerEgoIconInput";
-import DropDown from "Components/DropDown/DropDown";
-import { EgoLevelDropDown } from "../EgoLevelDropDown/EgoLevelDropDown";
+import DropDown from "components/DropDown/DropDown";
 import ArrowDownIcon from "Utils/Icons/ArrowDownIcon";
+import { EgoLevelDropDown } from "../EgoLevelDropDown/EgoLevelDropDown";
+import SinnerEgoIconInput from "../SinnerEgoIconInput/SinnerEgoIconInput";
+import SinnerSplashArtRepositionInput from "../SinnerSplashArtRepositionInput/SinnerSplashArtRepositionInput";
+import UploadImgBtn from "../../Components/UploadImgBtn/UploadImgBtn";
 
 export default function InputStatPage({collaspPage}:{collaspPage:()=>void}):ReactElement{
     const {EgoInfoValue,setEgoInfoValue} = useEgoInfoContext()
@@ -111,7 +111,7 @@ export default function InputStatPage({collaspPage}:{collaspPage:()=>void}):Reac
         <p>Sin cost:</p>
         <div className="sinner-stat-inputs">
             <div className="stat-input-container">
-                <label htmlFor="wrath_cost"><img className="stat-icon" src="Images/sin-affinity/affinity_Wrath_big.webp" alt="wrath-input-resistant-icon" /></label>
+                <label htmlFor="wrath_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Wrath_big.webp" alt="wrath-input-resistant-icon" /></label>
                 <div className="resistant-content">
                     <div>
                         <input type="number" className="input stat-page-input-border input-number" value={wrath_cost} onChange={changeSinCost.onChangeInput()} name="wrath_cost" id="wrath_cost"/>
@@ -119,7 +119,7 @@ export default function InputStatPage({collaspPage}:{collaspPage:()=>void}):Reac
                 </div>
             </div>
             <div className="stat-input-container">
-                <label htmlFor="lust_cost"><img className="stat-icon" src="Images/sin-affinity/affinity_Lust_big.webp" alt="Lust-input-resistant-icon" /></label>
+                <label htmlFor="lust_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Lust_big.webp" alt="Lust-input-resistant-icon" /></label>
                 <div className="resistant-content">
                     <div>
                         <input type="number" className="input stat-page-input-border input-number" value={lust_cost} onChange={changeSinCost.onChangeInput()} name="lust_cost" id="lust_cost"/>
@@ -127,7 +127,7 @@ export default function InputStatPage({collaspPage}:{collaspPage:()=>void}):Reac
                 </div>
             </div>
             <div className="stat-input-container">
-                <label htmlFor="sloth_cost"><img className="stat-icon" src="Images/sin-affinity/affinity_Sloth_big.webp" alt="Sloth-input-resistant-icon" /></label>
+                <label htmlFor="sloth_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Sloth_big.webp" alt="Sloth-input-resistant-icon" /></label>
                 <div className="resistant-content">
                     <div>
                         <input type="number" className="input stat-page-input-border input-number" value={sloth_cost} onChange={changeSinCost.onChangeInput()} name="sloth_cost" id="sloth_cost"/>
@@ -135,7 +135,7 @@ export default function InputStatPage({collaspPage}:{collaspPage:()=>void}):Reac
                 </div>
             </div>
             <div className="stat-input-container">
-                <label htmlFor="gluttony_cost"><img className="stat-icon" src="Images/sin-affinity/affinity_Gluttony_big.webp" alt="Gluttony-input-resistant-icon" /></label>
+                <label htmlFor="gluttony_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Gluttony_big.webp" alt="Gluttony-input-resistant-icon" /></label>
                 <div className="resistant-content">
                     <div>
                         <input type="number" className="input stat-page-input-border input-number" value={gluttony_cost} onChange={changeSinCost.onChangeInput()} name="gluttony_cost" id="gluttony_cost"/>
@@ -143,7 +143,7 @@ export default function InputStatPage({collaspPage}:{collaspPage:()=>void}):Reac
                 </div>
             </div>
             <div className="stat-input-container">
-                <label htmlFor="gloom_cost"><img className="stat-icon" src="Images/sin-affinity/affinity_Gloom_big.webp" alt="Gloom-input-resistant-icon" /></label>
+                <label htmlFor="gloom_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Gloom_big.webp" alt="Gloom-input-resistant-icon" /></label>
                 <div className="resistant-content">
                     <div>
                         <input type="number" className="input stat-page-input-border input-number" value={gloom_cost} onChange={changeSinCost.onChangeInput()} name="gloom_cost" id="gloom_cost"/>
@@ -151,7 +151,7 @@ export default function InputStatPage({collaspPage}:{collaspPage:()=>void}):Reac
                 </div>
             </div>
             <div className="stat-input-container">
-                <label htmlFor="pride_cost"><img className="stat-icon" src="Images/sin-affinity/affinity_Pride_big.webp" alt="Pride-input-resistant-icon" /></label>
+                <label htmlFor="pride_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Pride_big.webp" alt="Pride-input-resistant-icon" /></label>
                 <div className="resistant-content">
                     <div>
                         <input type="number" className="input stat-page-input-border input-number" value={pride_cost} onChange={changeSinCost.onChangeInput()} name="pride_cost" id="pride_cost"/>
@@ -159,7 +159,7 @@ export default function InputStatPage({collaspPage}:{collaspPage:()=>void}):Reac
                 </div>
             </div>
             <div className="stat-input-container">
-                <label htmlFor="envy_cost"><img className="stat-icon" src="Images/sin-affinity/affinity_Envy_big.webp" alt="Envy-input-resistant-icon" /></label>
+                <label htmlFor="envy_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Envy_big.webp" alt="Envy-input-resistant-icon" /></label>
                 <div className="resistant-content">
                     <div>
                         <input type="number" className="input stat-page-input-border input-number" value={envy_cost} onChange={changeSinCost.onChangeInput()} name="envy_cost" id="envy_cost"/>
@@ -170,7 +170,7 @@ export default function InputStatPage({collaspPage}:{collaspPage:()=>void}):Reac
         <p>Sin resistant:</p>
         <div className="sinner-stat-inputs">
             <div className="stat-input-container">
-                <label htmlFor="wrath_resistant"><img className="stat-icon" src="Images/sin-affinity/affinity_Wrath_big.webp" alt="wrath-input-resistant-icon" /></label>
+                <label htmlFor="wrath_resistant"><img className="stat-icon" src="/Images/sin-affinity/affinity_Wrath_big.webp" alt="wrath-input-resistant-icon" /></label>
                 <div className="resistant-content">
                     <div>
                         <p  style={{color:changeResistantColor(wrath_resistant)}}>{changeResistantText(wrath_resistant)}</p>
@@ -179,7 +179,7 @@ export default function InputStatPage({collaspPage}:{collaspPage:()=>void}):Reac
                 </div>
             </div>
             <div className="stat-input-container">
-                <label htmlFor="lust_resistant"><img className="stat-icon" src="Images/sin-affinity/affinity_Lust_big.webp" alt="Lust-input-resistant-icon" /></label>
+                <label htmlFor="lust_resistant"><img className="stat-icon" src="/Images/sin-affinity/affinity_Lust_big.webp" alt="Lust-input-resistant-icon" /></label>
                 <div className="resistant-content">
                     <div>
                         <p style={{color:changeResistantColor(lust_resistant)}}>{changeResistantText(lust_resistant)}</p>
@@ -188,7 +188,7 @@ export default function InputStatPage({collaspPage}:{collaspPage:()=>void}):Reac
                 </div>
             </div>
             <div className="stat-input-container">
-                <label htmlFor="sloth_resistant"><img className="stat-icon" src="Images/sin-affinity/affinity_Sloth_big.webp" alt="Sloth-input-resistant-icon" /></label>
+                <label htmlFor="sloth_resistant"><img className="stat-icon" src="/Images/sin-affinity/affinity_Sloth_big.webp" alt="Sloth-input-resistant-icon" /></label>
                 <div className="resistant-content">
                     <div>
                         <p style={{color:changeResistantColor(sloth_resistant)}}>{changeResistantText(sloth_resistant)}</p>
@@ -197,7 +197,7 @@ export default function InputStatPage({collaspPage}:{collaspPage:()=>void}):Reac
                 </div>
             </div>
             <div className="stat-input-container">
-                <label htmlFor="gluttony_resistant"><img className="stat-icon" src="Images/sin-affinity/affinity_Gluttony_big.webp" alt="Gluttony-input-resistant-icon" /></label>
+                <label htmlFor="gluttony_resistant"><img className="stat-icon" src="/Images/sin-affinity/affinity_Gluttony_big.webp" alt="Gluttony-input-resistant-icon" /></label>
                 <div className="resistant-content">
                     <div>
                         <p style={{color:changeResistantColor(gluttony_resistant)}}>{changeResistantText(gluttony_resistant)}</p>
@@ -206,7 +206,7 @@ export default function InputStatPage({collaspPage}:{collaspPage:()=>void}):Reac
                 </div>
             </div>
             <div className="stat-input-container">
-                <label htmlFor="gloom_resistant"><img className="stat-icon" src="Images/sin-affinity/affinity_Gloom_big.webp" alt="Gloom-input-resistant-icon" /></label>
+                <label htmlFor="gloom_resistant"><img className="stat-icon" src="/Images/sin-affinity/affinity_Gloom_big.webp" alt="Gloom-input-resistant-icon" /></label>
                 <div className="resistant-content">
                     <div>
                         <p style={{color:changeResistantColor(gloom_resistant)}}>{changeResistantText(gloom_resistant)}</p>
@@ -215,7 +215,7 @@ export default function InputStatPage({collaspPage}:{collaspPage:()=>void}):Reac
                 </div>
             </div>
             <div className="stat-input-container">
-                <label htmlFor="pride_resistant"><img className="stat-icon" src="Images/sin-affinity/affinity_Pride_big.webp" alt="Pride-input-resistant-icon" /></label>
+                <label htmlFor="pride_resistant"><img className="stat-icon" src="/Images/sin-affinity/affinity_Pride_big.webp" alt="Pride-input-resistant-icon" /></label>
                 <div className="resistant-content">
                     <div>
                         <p style={{color:changeResistantColor(pride_resistant)}}>{changeResistantText(pride_resistant)}</p>
@@ -224,7 +224,7 @@ export default function InputStatPage({collaspPage}:{collaspPage:()=>void}):Reac
                 </div>
             </div>
             <div className="stat-input-container">
-                <label htmlFor="envy_resistant"><img className="stat-icon" src="Images/sin-affinity/affinity_Envy_big.webp" alt="Envy-input-resistant-icon" /></label>
+                <label htmlFor="envy_resistant"><img className="stat-icon" src="/Images/sin-affinity/affinity_Envy_big.webp" alt="Envy-input-resistant-icon" /></label>
                 <div className="resistant-content">
                     <div>
                         <p style={{color:changeResistantColor(envy_resistant)}}>{changeResistantText(envy_resistant)}</p>

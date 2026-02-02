@@ -5,12 +5,12 @@ import "./User.css"
 import UserProfile from "./User/UserProfile";
 import {  useNavigate, useParams } from "react-router-dom";
 import UserProfileLoading from "./User/UserProfileLoading";
-import { IUserProfile, UserProfileRes } from "Interfaces/API/OAuth/IUserProfile";
-import MainButton from "Components/MainButton/MainButton";
-import { useAlertContext } from "Context/AlertContext";
-import { useLoginUserContext } from "Context/LoginUserContext";
-import PaginatedPost from "Components/PaginatedPost/PaginatedPost";
-import { IPostDisplayCard } from "Interfaces/IPostDisplayCard/IPostDisplayCard";
+import { IUserProfile, UserProfileRes } from "interfaces/API/OAuth/IUserProfile";
+import MainButton from "components/MainButton/MainButton";
+import { useAlertContext } from "context/AlertContext";
+import { useLoginUserContext } from "context/LoginUserContext";
+import PaginatedPost from "components/PaginatedPost/PaginatedPost";
+import { IPostDisplayCard } from "interfaces/IPostDisplayCard/IPostDisplayCard";
 
 
 

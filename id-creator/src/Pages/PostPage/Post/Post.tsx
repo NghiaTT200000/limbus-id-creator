@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ReactElement } from "react";
 import CardTag from "./CardTag/CardTag";
 import PostCarousel from "./PostCarousel/PostCarousel";
-import { IPost } from "Interfaces/IPost/IPost";
+import { IPost } from "interfaces/IPost/IPost";
 import UserProfileLoading from "Pages/UserPage/User/UserProfileLoading";
 import { TagList } from "Utils/TagList";
 import { Link } from "react-router-dom";

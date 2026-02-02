@@ -1,7 +1,7 @@
 import React, { ReactElement, useRef } from "react";
 import "./PaginatedPost.css"
 import ReactPaginate from "react-paginate";
-import { IPostDisplayCard } from "Interfaces/IPostDisplayCard/IPostDisplayCard";
+import { IPostDisplayCard } from "interfaces/IPostDisplayCard/IPostDisplayCard";
 import { Link } from "react-router-dom";
 import CommentIcon from "Utils/Icons/CommentIcon";
 import ViewIcon from "Utils/Icons/ViewIcon";
@@ -9,7 +9,7 @@ import { TagList } from "Utils/TagList";
 
 function PostDisplayCard({id,title,cardImg,userIcon,userName,userId,created,tags,viewCount,commentCount}:IPostDisplayCard){
     return <div className="post-display-card">
-        <Link to={"/Post/"+id}>
+        <Link to={"/post/"+id}>
             <div className="post-display-card-img-container">
                 <img className="post-display-card-img" src={cardImg} alt={title} />
             </div>

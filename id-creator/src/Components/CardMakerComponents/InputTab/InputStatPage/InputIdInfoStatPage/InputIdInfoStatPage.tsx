@@ -1,17 +1,17 @@
-import { useIdInfoContext } from "Context/IdInfoContext";
+import { useIdInfoContext } from "context/IdInfoContext";
 import React from "react";
 import { ReactElement } from "react";
 import "../../InputPage.css"
 import "../InputStatPage.css"
-import UploadImgBtn from "../../Components/UploadImgBtn/UploadImgBtn";
-import SinnerIconInput from "../SinnerIconInput/SinnerIconInput";
-import SinnerSplashArtRepositionInput from "../SinnerSplashArtRepositionInput/SinnerSplashArtRepositionInput";
-import SinnerRarityIconInput from "../SinnerRarityInput/SinnerRarityInput";
 import DeleteIcon from "Utils/Icons/DeleteIcon";
-import MainButton from "Components/MainButton/MainButton";
+import MainButton from "components/MainButton/MainButton";
 import ArrowDownIcon from "Utils/Icons/ArrowDownIcon";
 import imageCompression from 'browser-image-compression'
 import getImageDimensions from "Utils/Functions/getImageDimensions";
+import SinnerIconInput from "../SinnerIconInput/SinnerIconInput";
+import SinnerRarityIconInput from "../SinnerRarityInput/SinnerRarityInput";
+import SinnerSplashArtRepositionInput from "../SinnerSplashArtRepositionInput/SinnerSplashArtRepositionInput";
+import UploadImgBtn from "../../Components/UploadImgBtn/UploadImgBtn";
 
 export default function InputIdInfoStatPage({collaspPage}:{collaspPage:()=>void}):ReactElement{
     const {idInfoValue,setIdInfoValue} = useIdInfoContext()
@@ -122,18 +122,18 @@ export default function InputIdInfoStatPage({collaspPage}:{collaspPage:()=>void}
         </div>
         <div className="sinner-stat-inputs">
             <div className="stat-input-container">
-                <label htmlFor="minSpeed"><img className="stat-icon" src="Images/stat/stat_speed.webp" alt="speed_icon" /></label>
+                <label htmlFor="minSpeed"><img className="stat-icon" src="/Images/stat/stat_speed.webp" alt="speed_icon" /></label>
                 <div>
                     <input className="input stat-page-input-border input-number" type="number" name="minSpeed" id="minSpeed" value={minSpeed} onChange={onChangeInput}/> - 
                     <input className="input stat-page-input-border input-number" type="number" name="maxSpeed" id="maxSpeed" value={maxSpeed} onChange={onChangeInput}/>
                 </div>
             </div>
             <div className="stat-input-container">
-                <label htmlFor="hp"><img className="stat-icon" src="Images/stat/stat_hp.webp" alt="hp_icon" /></label>
+                <label htmlFor="hp"><img className="stat-icon" src="/Images/stat/stat_hp.webp" alt="hp_icon" /></label>
                 <input type="number" className="input stat-page-input-border input-number" name="hp" id="hp" value={hp} onChange={onChangeInput}/>
             </div>
             <div className="stat-input-container">
-                <label htmlFor="defenseLevel"><img className="stat-icon" src="Images/stat/stat_def.webp" alt="def_icon" /></label>
+                <label htmlFor="defenseLevel"><img className="stat-icon" src="/Images/stat/stat_def.webp" alt="def_icon" /></label>
                 <input type="number" className="input stat-page-input-border input-number" name="defenseLevel" id="defenseLevel" value={defenseLevel} onChange={onChangeInput}/>
             </div>
             <div className="stat-input-container">
@@ -143,7 +143,7 @@ export default function InputIdInfoStatPage({collaspPage}:{collaspPage:()=>void}
         </div>
         <div  className="sinner-stat-inputs">
             <div className="stat-input-container">
-                <label htmlFor="slashResistant"><img className="stat-icon" src="Images/attack/attackt_slash.webp" alt="attackt_slash" /></label>
+                <label htmlFor="slashResistant"><img className="stat-icon" src="/Images/attack/attackt_slash.webp" alt="attackt_slash" /></label>
                 <div className="resistant-content">
                     <div>
                         <p style={{color:changeResistantColor(slashResistant)}}>{changeResistantText(slashResistant)}</p>
@@ -152,7 +152,7 @@ export default function InputIdInfoStatPage({collaspPage}:{collaspPage:()=>void}
                 </div>
             </div>
             <div className="stat-input-container">
-                <label htmlFor="pierceResistant"><img className="stat-icon" src="Images/attack/attackt_pierce.webp" alt="attackt_pierce" /></label>
+                <label htmlFor="pierceResistant"><img className="stat-icon" src="/Images/attack/attackt_pierce.webp" alt="attackt_pierce" /></label>
                 <div className="resistant-content">
                     <div>
                         <p style={{color:changeResistantColor(pierceResistant)}}>{changeResistantText(pierceResistant)}</p>
@@ -161,7 +161,7 @@ export default function InputIdInfoStatPage({collaspPage}:{collaspPage:()=>void}
                 </div>
             </div>
             <div className="stat-input-container">
-                <label htmlFor="bluntResistant"><img className="stat-icon" src="Images/attack/attackt_blunt.webp" alt="attackt_blunt" /></label>
+                <label htmlFor="bluntResistant"><img className="stat-icon" src="/Images/attack/attackt_blunt.webp" alt="attackt_blunt" /></label>
                 <div className="resistant-content">
                     <div>
                         <p style={{color:changeResistantColor(bluntResistant)}}>{changeResistantText(bluntResistant)}</p>

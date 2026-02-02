@@ -1,7 +1,7 @@
 import React from "react";
-import PopUpMenu from "Components/PopUpMenu/PopUpMenu";
+import PopUpMenu from "components/PopUpMenu/PopUpMenu";
 import "./ResetMenu.css"
-import MainButton from "Components/MainButton/MainButton";
+import MainButton from "components/MainButton/MainButton";
 import CheckIcon from "Utils/Icons/CheckIcon";
 
 export default function ResetMenu({isActive,setIsActive,confirmFn}:{isActive:boolean,setIsActive:(isActive:boolean)=>void,confirmFn:()=>void}){
