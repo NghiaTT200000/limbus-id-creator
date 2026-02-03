@@ -1,7 +1,7 @@
 import React from 'react'
 import { ReactElement, createContext, useContext, useState } from "react";
-import { EgoInfo, IEgoInfo } from 'interfaces/IEgoInfo';
-import { PassiveSkill } from 'interfaces/PassiveSkill/IPassiveSkill';
+import { EgoInfo, IEgoInfo } from 'Types/IEgoInfo';
+import { PassiveSkill } from 'Types/PassiveSkill/IPassiveSkill';
 
 const egoInfo = createContext(null)
 

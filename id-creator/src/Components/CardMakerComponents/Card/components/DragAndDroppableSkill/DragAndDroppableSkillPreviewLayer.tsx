@@ -3,11 +3,11 @@ import DefenseSinnerSkill from "components/CardMakerComponents/Card/sections/Def
 import MentalSinnerEffect from "components/CardMakerComponents/Card/sections/MentalSinnerEffect/MentalSinnerEffect";
 import OffenseSinnerSkill from "components/CardMakerComponents/Card/sections/OffenseSinnerSkill/OffenseSinnerSkill";
 import PassiveSinnerSkill from "components/CardMakerComponents/Card/sections/PassiveSinnerSkill/PassiveSinnerSkill";
-import { ICustomEffect } from "interfaces/CustomEffect/ICustomEffect";
-import { IDefenseSkill } from "interfaces/DefenseSkill/IDefenseSkill";
-import { IMentalEffect } from "interfaces/MentalEffect/IMentalEffect";
-import { IOffenseSkill } from "interfaces/OffenseSkill/IOffenseSkill";
-import { IPassiveSkill } from "interfaces/PassiveSkill/IPassiveSkill";
+import { ICustomEffect } from "Types/CustomEffect/ICustomEffect";
+import { IDefenseSkill } from "Types/DefenseSkill/IDefenseSkill";
+import { IMentalEffect } from "Types/MentalEffect/IMentalEffect";
+import { IOffenseSkill } from "Types/OffenseSkill/IOffenseSkill";
+import { IPassiveSkill } from "Types/PassiveSkill/IPassiveSkill";
 import React, { CSSProperties } from "react";
 import { useDragLayer, XYCoord } from "react-dnd";
 

@@ -1,5 +1,5 @@
 import React, { createContext } from 'react'
-import { Alert, IAlert } from "interfaces/Utils/IAlert";
+import { Alert, IAlert } from "Types/Utils/IAlert";
 import { ReactElement, useContext, useState } from "react";
 
 

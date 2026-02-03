@@ -1,4 +1,4 @@
-import { ICustomEffect } from "interfaces/CustomEffect/ICustomEffect";
+import { ICustomEffect } from "Types/CustomEffect/ICustomEffect";
 import React, { forwardRef } from "react";
 import "../SinnerSkill.css"
 import "./CustomSinnerEffect.css"

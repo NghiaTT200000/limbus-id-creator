@@ -1,7 +1,7 @@
 import React from "react";
 import { ReactElement } from "react";
 import "./SinnerStats.css"
-import { useIdInfoContext } from "context/IdInfoContext";
+import { useIdInfoContext } from "@/Context/IdInfoContext";
 
 export default function SinnerStats():ReactElement{
     const {idInfoValue} = useIdInfoContext()

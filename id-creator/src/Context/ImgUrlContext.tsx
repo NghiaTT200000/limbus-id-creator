@@ -1,5 +1,5 @@
 import React, { createContext, ReactElement, useCallback, useContext, useState } from "react";
-import TurnRefToImg from "Utils/Functions/TurnRefToImg";
+import TurnRefToImg from "@/Utils/TurnRefToImg";
 
 
 const refDownload = createContext(null)

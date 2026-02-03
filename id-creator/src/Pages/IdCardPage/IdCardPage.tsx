@@ -2,16 +2,16 @@ import React, { ReactElement, useEffect, useRef, useState } from 'react';
 import 'styles/reset.css'
 import 'styles/style.css'
 import '../EditorPage.css'
-import { StatusEffectProvider } from 'context/StatusEffectContext';
+import { StatusEffectProvider } from '@/Context/StatusEffectContext';
 import { IdCard } from 'components/CardMakerComponents/Card/IdCard';
-import { IdInfoProvider, useIdInfoContext } from 'context/IdInfoContext';
+import { IdInfoProvider, useIdInfoContext } from '@/Context/IdInfoContext';
 import InputTabIdInfoContainer from 'components/CardMakerComponents/InputTab/InputTabContainer/InputTabIdInfoContainer/InputTabIdInfoContainer';
-import {  useRefDownloadContext } from 'context/ImgUrlContext';
+import {  useRefDownloadContext } from '@/Context/ImgUrlContext';
 import {  useSearchParams } from 'react-router-dom';
 import ResetMenu from 'components/ResetMenu/ResetMenu';
-import { IdInfo } from 'interfaces/IIdInfo';
+import { IdInfo } from 'Types/IIdInfo';
 import { useSettingMenuContext } from 'components/SettingMenu/SettingMenu';
-import { indexDB } from 'Utils/IndexDB';
+import { indexDB } from '@/Lib/IndexDB';
 
 
 

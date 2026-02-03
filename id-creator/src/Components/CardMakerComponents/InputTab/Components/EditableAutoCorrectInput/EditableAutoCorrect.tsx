@@ -2,7 +2,7 @@ import React, { useMemo, useState } from "react";
 import { ReactElement, useEffect, useRef } from "react";
 import ContentEditable from "react-contenteditable";
 import SuggestBox from "./SuggestBox/SuggestBox";
-import useKeyPress from "Utils/Hooks/useKeyPress";
+import useKeyPress from "@/Hooks/useKeyPress";
 import "./EditableAutoCorrect.css"
 import getCaretCharacterOffsetWithin from "components/CardMakerComponents/InputTab/Components/EditableAutoCorrectInput/Functions/getCaretCharacterOffsetWithin";
 import getCaretHTMLCharacterOffSet from "components/CardMakerComponents/InputTab/Components/EditableAutoCorrectInput/Functions/getCaretHTMLCharacterOffSet";

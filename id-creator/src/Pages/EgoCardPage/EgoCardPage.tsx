@@ -2,16 +2,16 @@ import React, { ReactElement, useEffect, useRef, useState } from 'react';
 import 'styles/reset.css'
 import 'styles/style.css'
 import '../EditorPage.css'
-import { StatusEffectProvider } from 'context/StatusEffectContext';
-import { useRefDownloadContext } from 'context/ImgUrlContext';
-import { EgoInfoProvider, useEgoInfoContext } from 'context/EgoInfoContext';
+import { StatusEffectProvider } from '@/Context/StatusEffectContext';
+import { useRefDownloadContext } from '@/Context/ImgUrlContext';
+import { EgoInfoProvider, useEgoInfoContext } from '@/Context/EgoInfoContext';
 import { EgoCard } from 'components/CardMakerComponents/Card/EgoCard';
 import InputTabEgoInfoContainer from 'components/CardMakerComponents/InputTab/InputTabContainer/InputTabEgoInfoContainer/InputTabEgoInfoContainer';
 import { useSearchParams } from 'react-router-dom';
 import ResetMenu from 'components/ResetMenu/ResetMenu';
 import { useSettingMenuContext } from 'components/SettingMenu/SettingMenu';
-import { indexDB } from 'Utils/IndexDB';
-import { EgoInfo } from 'interfaces/IEgoInfo';
+import { indexDB } from '@/Lib/IndexDB';
+import { EgoInfo } from 'Types/IEgoInfo';
 
 
 

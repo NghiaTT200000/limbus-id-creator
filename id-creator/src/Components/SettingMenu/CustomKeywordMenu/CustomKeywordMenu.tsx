@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import "./CustomKeywordMenu.css"
-import { ICustomKeyword } from "interfaces/ICustomKeyword";
+import { ICustomKeyword } from "Types/ICustomKeyword";
 import uuid from "react-uuid";
 import CustomKeywordTab from "./CustomKeywordTab";
 

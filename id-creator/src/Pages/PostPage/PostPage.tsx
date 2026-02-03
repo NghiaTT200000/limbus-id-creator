@@ -3,12 +3,12 @@ import { ReactElement } from "react";
 import "../PageLayout.css"
 import "./PostPage.css"
 import Post from "./Post/Post";
-import { useAlertContext } from "context/AlertContext";
+import { useAlertContext } from "@/Context/AlertContext";
 import { Link, useParams } from "react-router-dom";
-import { IPost } from "interfaces/IPost/IPost";
-import { useLoginUserContext } from "context/LoginUserContext";
+import { IPost } from "Types/IPost/IPost";
+import { useLoginUserContext } from "@/Context/LoginUserContext";
 import { useLoginMenuContext } from "components/LoginMenu/LoginMenu";
-import { IComment } from "interfaces/IPost/IComment";
+import { IComment } from "Types/IPost/IComment";
 import { Editor } from "react-simple-wysiwyg";
 
 function Comment({comment}:{comment:IComment}){

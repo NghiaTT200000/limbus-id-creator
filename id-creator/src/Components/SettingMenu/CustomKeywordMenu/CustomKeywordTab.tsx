@@ -1,7 +1,7 @@
-import CheckIcon from "Utils/Icons/CheckIcon";
-import DeleteIcon from "Utils/Icons/DeleteIcon";
-import SettingIcon from "Utils/Icons/SettingIcon";
-import { ICustomKeyword } from "interfaces/ICustomKeyword";
+import CheckIcon from "@/Assets/Icons/CheckIcon";
+import DeleteIcon from "@/Assets/Icons/DeleteIcon";
+import SettingIcon from "@/Assets/Icons/SettingIcon";
+import { ICustomKeyword } from "Types/ICustomKeyword";
 import React, { useState } from "react";
 
 

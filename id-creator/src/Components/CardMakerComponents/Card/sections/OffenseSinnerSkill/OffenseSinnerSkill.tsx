@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
 import { ReactElement } from "react";
 import "../SinnerSkill.css"
-import { IOffenseSkill } from "interfaces/OffenseSkill/IOffenseSkill";
+import { IOffenseSkill } from "Types/OffenseSkill/IOffenseSkill";
 import SkillEffect from "components/CardMakerComponents/Card/components/SkillEffect/SkillEffect";
 import SkillTitle from "components/CardMakerComponents/Card/components/SkillTitle/SkillTitle";
 

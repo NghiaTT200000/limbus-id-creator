@@ -2,10 +2,10 @@ import React from "react";
 import { ReactElement } from "react";
 import "../../InputPage.css"
 import "../InputStatPage.css"
-import { useEgoInfoContext } from "context/EgoInfoContext";
-import useInput from "Utils/Hooks/useInputs";
+import { useEgoInfoContext } from "@/Context/EgoInfoContext";
+import useInput from "@/Hooks/useInputs";
 import DropDown from "components/DropDown/DropDown";
-import ArrowDownIcon from "Utils/Icons/ArrowDownIcon";
+import ArrowDownIcon from "@/Assets/Icons/ArrowDownIcon";
 import { EgoLevelDropDown } from "../EgoLevelDropDown/EgoLevelDropDown";
 import SinnerEgoIconInput from "../SinnerEgoIconInput/SinnerEgoIconInput";
 import SinnerSplashArtRepositionInput from "../SinnerSplashArtRepositionInput/SinnerSplashArtRepositionInput";

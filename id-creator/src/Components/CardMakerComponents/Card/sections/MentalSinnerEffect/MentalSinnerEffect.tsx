@@ -1,4 +1,4 @@
-import { IMentalEffect } from "interfaces/MentalEffect/IMentalEffect";
+import { IMentalEffect } from "Types/MentalEffect/IMentalEffect";
 import React, { forwardRef } from "react";
 import "../SinnerSkill.css"
 import "./MentalSinnerEffect.css"

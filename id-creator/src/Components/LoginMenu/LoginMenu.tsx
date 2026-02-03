@@ -1,17 +1,17 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, ReactElement, useContext, useEffect, useState } from "react";
 import React from "react";
 import "./LoginMenu.css"
 import { TokenResponse, useGoogleLogin } from "@react-oauth/google";
 import PopUpMenu from "components/PopUpMenu/PopUpMenu";
-import { useAlertContext } from "context/AlertContext";
-import { useLoginUserContext } from "context/LoginUserContext";
-import IResponse from "interfaces/IResponse";
-import ILoginUser from "interfaces/ILoginUser";
-import GoogleIcon from "Utils/Icons/GoogleIcon";
+import { useAlertContext } from "@/Context/AlertContext";
+import { useLoginUserContext } from "@/Context/LoginUserContext";
+import IResponse from "Types/IResponse";
+import ILoginUser from "Types/ILoginUser";
+import GoogleIcon from "@/Assets/Icons/GoogleIcon";
 
 const loginMenuContext = createContext(null)
 
-function LoginMenu({children}){
+function LoginMenu({children}:{children:ReactElement}){
     const [isLoginMenuActive,setIsLoginMenuActive] = useState(false)
     const [isLoggingIn,setIsLogginIn] = useState(false)
     const [user,setUser] = useState<Omit<TokenResponse, "error" | "error_description" | "error_uri">>()

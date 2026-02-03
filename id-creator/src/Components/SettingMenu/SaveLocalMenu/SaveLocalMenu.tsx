@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "../SettingMenu.css"
-import { ISaveFile } from "interfaces/ISaveFile";
-import { IIdInfo } from "interfaces/IIdInfo";
-import { IEgoInfo } from "interfaces/IEgoInfo";
-import useSaveLocal from "Utils/Hooks/useSaveLocal";
+import { ISaveFile } from "Types/ISaveFile";
+import { IIdInfo } from "Types/IIdInfo";
+import { IEgoInfo } from "Types/IEgoInfo";
+import useSaveLocal from "@/Hooks/useSaveLocal";
 import uuid from "react-uuid";
 import PopUpMenu from "components/PopUpMenu/PopUpMenu";
-import EditIcon from "Utils/Icons/EditIcon";
+import EditIcon from "@/Assets/Icons/EditIcon";
 
 
 

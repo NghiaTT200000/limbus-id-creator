@@ -1,12 +1,12 @@
-import { useIdInfoContext } from "context/IdInfoContext";
+import { useIdInfoContext } from "@/Context/IdInfoContext";
 import React from "react";
 import { ReactElement } from "react";
 import "../../InputPage.css"
 import "../InputStatPage.css"
-import DeleteIcon from "Utils/Icons/DeleteIcon";
-import ArrowDownIcon from "Utils/Icons/ArrowDownIcon";
+import DeleteIcon from "@/Assets/Icons/DeleteIcon";
+import ArrowDownIcon from "@/Assets/Icons/ArrowDownIcon";
 import imageCompression from 'browser-image-compression'
-import getImageDimensions from "Utils/Functions/getImageDimensions";
+import getImageDimensions from "@/Utils/getImageDimensions";
 import SinnerIconInput from "../SinnerIconInput/SinnerIconInput";
 import SinnerRarityIconInput from "../SinnerRarityInput/SinnerRarityInput";
 import SinnerSplashArtRepositionInput from "../SinnerSplashArtRepositionInput/SinnerSplashArtRepositionInput";

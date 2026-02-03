@@ -12,11 +12,11 @@ import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import { DndProvider } from 'react-dnd'
 import { TouchBackend } from 'react-dnd-touch-backend'
 import DragAndDroppableSkillPreviewLayer from 'components/CardMakerComponents/Card/components/DragAndDroppableSkill/DragAndDroppableSkillPreviewLayer';
-import { indexDB } from 'Utils/IndexDB';
-import { ISaveFile } from 'interfaces/ISaveFile';
-import { LoginUserContextProvider } from 'context/LoginUserContext';
-import { AlertContextProvider } from 'context/AlertContext';
-import { RefDownloadProvider } from 'context/ImgUrlContext';
+import { indexDB } from '@/Lib/IndexDB';
+import { ISaveFile } from 'Types/ISaveFile';
+import { LoginUserContextProvider } from '@/Context/LoginUserContext';
+import { AlertContextProvider } from '@/Context/AlertContext';
+import { RefDownloadProvider } from '@/Context/ImgUrlContext';
 import { LoginMenu } from 'components/LoginMenu/LoginMenu';
 import AlertPopUp from 'components/Layout/AlertPopUp/AlertPopUp';
 import { SettingMenu } from 'components/SettingMenu/SettingMenu';

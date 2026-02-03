@@ -1,11 +1,11 @@
 import React, { ReactNode, useEffect, useRef, useState } from "react";
 import { useDrag, useDrop } from "react-dnd";
 import "./DragAndDroppableSkill.css"
-import { ICustomEffect } from "interfaces/CustomEffect/ICustomEffect";
-import { IDefenseSkill } from "interfaces/DefenseSkill/IDefenseSkill";
-import { IMentalEffect } from "interfaces/MentalEffect/IMentalEffect";
-import { IOffenseSkill } from "interfaces/OffenseSkill/IOffenseSkill";
-import { IPassiveSkill } from "interfaces/PassiveSkill/IPassiveSkill";
+import { ICustomEffect } from "Types/CustomEffect/ICustomEffect";
+import { IDefenseSkill } from "Types/DefenseSkill/IDefenseSkill";
+import { IMentalEffect } from "Types/MentalEffect/IMentalEffect";
+import { IOffenseSkill } from "Types/OffenseSkill/IOffenseSkill";
+import { IPassiveSkill } from "Types/PassiveSkill/IPassiveSkill";
 
 
 export default function DragAndDroppableSkill({skill,isDraggingHandler,dropHandler,children}:{

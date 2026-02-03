@@ -1,10 +1,10 @@
 import React from "react";
 import { ReactElement } from "react";
 import "../InputPage.css"
-import useInputs from "Utils/Hooks/useInputs";
-import { IOffenseSkill } from "interfaces/OffenseSkill/IOffenseSkill";
-import DeleteIcon from "Utils/Icons/DeleteIcon";
-import ArrowDownIcon from "Utils/Icons/ArrowDownIcon";
+import useInputs from "@/Hooks/useInputs";
+import { IOffenseSkill } from "Types/OffenseSkill/IOffenseSkill";
+import DeleteIcon from "@/Assets/Icons/DeleteIcon";
+import ArrowDownIcon from "@/Assets/Icons/ArrowDownIcon";
 import ChangeInputType from "../Components/ChangeInputType/ChangeInputType";
 import DamageTypeInput from "../Components/DamageTypeInput/DamageTypeInput";
 import EditableAutoCorrect from "../Components/EditableAutoCorrectInput/EditableAutoCorrect";

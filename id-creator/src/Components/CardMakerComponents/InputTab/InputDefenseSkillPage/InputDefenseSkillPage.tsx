@@ -1,11 +1,11 @@
 import React from "react";
 import { ReactElement } from "react";
 import "../InputPage.css"
-import useInputs from "Utils/Hooks/useInputs";
+import useInputs from "@/Hooks/useInputs";
 import "../InputPage.css"
-import { IDefenseSkill } from "interfaces/DefenseSkill/IDefenseSkill";
-import DeleteIcon from "Utils/Icons/DeleteIcon";
-import ArrowDownIcon from "Utils/Icons/ArrowDownIcon";
+import { IDefenseSkill } from "Types/DefenseSkill/IDefenseSkill";
+import DeleteIcon from "@/Assets/Icons/DeleteIcon";
+import ArrowDownIcon from "@/Assets/Icons/ArrowDownIcon";
 import SinAffinityInput from "../Components/SinAffinityInput/SinAffinityInput";
 import DamageTypeInput from "../Components/DamageTypeInput/DamageTypeInput";
 import DefenseTypeInput from "../Components/DefenseTypeInput/DefenseTypeInput";

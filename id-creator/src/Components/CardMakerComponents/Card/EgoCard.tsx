@@ -1,7 +1,7 @@
 import React, { forwardRef, useState } from "react";
 import { ReactElement } from "react";
 import './styles/Card.css'
-import { useEgoInfoContext } from "context/EgoInfoContext";
+import { useEgoInfoContext } from "@/Context/EgoInfoContext";
 import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
 import EgoHeader from "./components/CardHeader/EgoHeader";
 import EgoSplashArt from "./components/EgoSplashArt/EgoSplashArt";

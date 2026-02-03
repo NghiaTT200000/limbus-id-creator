@@ -1,7 +1,7 @@
 import { dropDownEl } from "components/DropDown/DropDown";
 import React from "react";
 
-export const damageTypeDropDown:{[key:string]:dropDownEl}={
+export const DamageTypeDropDown:{[key:string]:dropDownEl}={
     Slash:{
         el:
         <div className="damage-type-drop-down">

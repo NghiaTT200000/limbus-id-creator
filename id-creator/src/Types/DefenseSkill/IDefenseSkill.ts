@@ -1,5 +1,5 @@
-import { IActiveSkill } from "interfaces/ActiveSkill/IActiveSkill";
-import IUID from "interfaces/IUID";
+import { IActiveSkill } from "Types/ActiveSkill/IActiveSkill";
+import IUID from "Types/IUID";
 import uuid from "react-uuid";
 
 export interface IDefenseSkill extends IActiveSkill,IUID{

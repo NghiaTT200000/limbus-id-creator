@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { ReactElement } from "react";
 import TagInput from "components/TagInput/TagInput";
-import { ITag } from "Utils/TagList";
+import { ITag } from "@/Utils/TagList";
 import "./ForumPage.css"
 import TagsContainer from "components/TagsContainer/TagsContainer";
-import { useLoginUserContext } from "context/LoginUserContext";
+import { useLoginUserContext } from "@/Context/LoginUserContext";
 import { useLoginMenuContext } from "components/LoginMenu/LoginMenu";
 import { Link } from "react-router-dom";
 import DropDown from "components/DropDown/DropDown";
-import { useAlertContext } from "context/AlertContext";
-import { IPostDisplayCard } from "interfaces/IPostDisplayCard/IPostDisplayCard";
+import { useAlertContext } from "@/Context/AlertContext";
+import { IPostDisplayCard } from "Types/IPostDisplayCard/IPostDisplayCard";
 import PaginatedPost from "components/PaginatedPost/PaginatedPost";
 
 export default function ForumPage():ReactElement{

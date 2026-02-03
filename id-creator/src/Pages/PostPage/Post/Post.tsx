@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { ReactElement } from "react";
-import { IPost } from "interfaces/IPost/IPost";
+import { IPost } from "Types/IPost/IPost";
 import UserProfileLoading from "Pages/UserPage/User/UserProfileLoading";
-import { ITag, TagList } from "Utils/TagList";
+import { ITag, TagList } from "@/Utils/TagList";
 import { Link } from "react-router-dom";
-import ViewIcon from "Utils/Icons/ViewIcon";
-import CommentIcon from "Utils/Icons/CommentIcon";
+import ViewIcon from "@/Assets/Icons/ViewIcon";
+import CommentIcon from "@/Assets/Icons/CommentIcon";
 import "./Post.css";
-import ArrowDownIcon from "Utils/Icons/ArrowDownIcon";
-import ArrowUpIcon from "Utils/Icons/ArrowUpIcon";
-import CloseIcon from "Utils/Icons/CloseIcon";
+import ArrowDownIcon from "@/Assets/Icons/ArrowDownIcon";
+import ArrowUpIcon from "@/Assets/Icons/ArrowUpIcon";
+import CloseIcon from "@/Assets/Icons/CloseIcon";
 import {MapInteractionCSS} from "react-map-interaction"
 
 function CardTag({card}:{card:ITag}):ReactElement{

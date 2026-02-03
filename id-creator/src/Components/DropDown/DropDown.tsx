@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ReactElement } from "react";
 import "./DropDown.css"
-import ArrowDownIcon from "Utils/Icons/ArrowDownIcon";
+import ArrowDownIcon from "@/Assets/Icons/ArrowDownIcon";
 
 export interface dropDownEl{
     el:ReactElement,

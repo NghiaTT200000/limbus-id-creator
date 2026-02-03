@@ -1,12 +1,12 @@
-import AddIcon from "Utils/Icons/AddIcon";
+import AddIcon from "@/Assets/Icons/AddIcon";
 import React, { useState } from "react";
 import "./InputTabSide.css"
-import ResetIcon from "Utils/Icons/ResetIcon";
-import { IOffenseSkill, OffenseSkill } from "interfaces/OffenseSkill/IOffenseSkill";
-import { DefenseSkill, IDefenseSkill } from "interfaces/DefenseSkill/IDefenseSkill";
-import { CustomEffect, ICustomEffect } from "interfaces/CustomEffect/ICustomEffect";
-import { IMentalEffect, MentalEffect } from "interfaces/MentalEffect/IMentalEffect";
-import { IPassiveSkill, PassiveSkill } from "interfaces/PassiveSkill/IPassiveSkill";
+import ResetIcon from "@/Assets/Icons/ResetIcon";
+import { IOffenseSkill, OffenseSkill } from "Types/OffenseSkill/IOffenseSkill";
+import { DefenseSkill, IDefenseSkill } from "Types/DefenseSkill/IDefenseSkill";
+import { CustomEffect, ICustomEffect } from "Types/CustomEffect/ICustomEffect";
+import { IMentalEffect, MentalEffect } from "Types/MentalEffect/IMentalEffect";
+import { IPassiveSkill, PassiveSkill } from "Types/PassiveSkill/IPassiveSkill";
 
 export default function InputTabSide({sinnerIcon,
     skillDetails,

@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
 import "../SinnerSkill.css"
 import "./PassiveSinnerSkill.css"
-import { IPassiveSkill } from "interfaces/PassiveSkill/IPassiveSkill";
+import { IPassiveSkill } from "Types/PassiveSkill/IPassiveSkill";
 import SkillTitle from "components/CardMakerComponents/Card/components/SkillTitle/SkillTitle";
 import SkillEffect from "components/CardMakerComponents/Card/components/SkillEffect/SkillEffect";
 

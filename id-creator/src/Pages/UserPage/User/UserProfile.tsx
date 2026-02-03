@@ -1,12 +1,12 @@
 import React, { useCallback, useState } from "react";
 import { ReactElement } from "react";
 import "../User.css"
-import EditIcon from "Utils/Icons/EditIcon";
-import CheckIcon from "Utils/Icons/CheckIcon";
+import EditIcon from "@/Assets/Icons/EditIcon";
+import CheckIcon from "@/Assets/Icons/CheckIcon";
 import { useParams } from "react-router-dom";
-import { IUserProfile } from "interfaces/API/OAuth/IUserProfile";
-import IResponse from "interfaces/IResponse";
-import { useAlertContext } from "context/AlertContext";
+import { IUserProfile } from "Types/API/OAuth/IUserProfile";
+import IResponse from "Types/IResponse";
+import { useAlertContext } from "@/Context/AlertContext";
 
 
 

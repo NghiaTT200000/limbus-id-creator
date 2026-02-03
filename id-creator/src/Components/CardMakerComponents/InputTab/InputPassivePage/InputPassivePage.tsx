@@ -1,11 +1,11 @@
-import useInputs from "Utils/Hooks/useInputs";
-import { IPassiveSkill } from "interfaces/PassiveSkill/IPassiveSkill";
+import useInputs from "@/Hooks/useInputs";
+import { IPassiveSkill } from "Types/PassiveSkill/IPassiveSkill";
 import React from "react";
 import { ReactElement } from "react";
 import DropDown from "components/DropDown/DropDown";
 import "../InputPage.css"
-import DeleteIcon from "Utils/Icons/DeleteIcon";
-import ArrowDownIcon from "Utils/Icons/ArrowDownIcon";
+import DeleteIcon from "@/Assets/Icons/DeleteIcon";
+import ArrowDownIcon from "@/Assets/Icons/ArrowDownIcon";
 import ChangeInputType from "../Components/ChangeInputType/ChangeInputType";
 import EditableAutoCorrect from "../Components/EditableAutoCorrectInput/EditableAutoCorrect";
 

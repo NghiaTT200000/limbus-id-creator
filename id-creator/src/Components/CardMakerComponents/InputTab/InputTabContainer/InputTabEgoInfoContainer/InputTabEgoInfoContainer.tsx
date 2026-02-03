@@ -1,19 +1,19 @@
 import React, { ReactElement } from "react";
 import "../InputTabContainer.css"
-import { IOffenseSkill, OffenseSkill } from "interfaces/OffenseSkill/IOffenseSkill";
-import { CustomEffect, ICustomEffect } from "interfaces/CustomEffect/ICustomEffect";
-import { DefenseSkill, IDefenseSkill } from "interfaces/DefenseSkill/IDefenseSkill";
-import { IMentalEffect, MentalEffect } from "interfaces/MentalEffect/IMentalEffect";
-import { IPassiveSkill, PassiveSkill } from "interfaces/PassiveSkill/IPassiveSkill";
-import { useStatusEffectContext } from "context/StatusEffectContext";
+import { IOffenseSkill, OffenseSkill } from "Types/OffenseSkill/IOffenseSkill";
+import { CustomEffect, ICustomEffect } from "Types/CustomEffect/ICustomEffect";
+import { DefenseSkill, IDefenseSkill } from "Types/DefenseSkill/IDefenseSkill";
+import { IMentalEffect, MentalEffect } from "Types/MentalEffect/IMentalEffect";
+import { IPassiveSkill, PassiveSkill } from "Types/PassiveSkill/IPassiveSkill";
+import { useStatusEffectContext } from "@/Context/StatusEffectContext";
 import InputCustomEffectPage from "components/CardMakerComponents/InputTab/InputCustomEffectPage/InputCustomEffectPage";
 import InputDefenseSkillPage from "components/CardMakerComponents/InputTab/InputDefenseSkillPage/InputDefenseSkillPage";
 import InputMentalEffect from "components/CardMakerComponents/InputTab/InputMentalEffect/InputMentalEffect";
 import InputOffenseSkillPage from "components/CardMakerComponents/InputTab/InputOffenseSkillPage/InputOffenseSkillPage";
 import InputPassivePage from "components/CardMakerComponents/InputTab/InputPassivePage/InputPassivePage";
-import { useEgoInfoContext } from "context/EgoInfoContext";
+import { useEgoInfoContext } from "@/Context/EgoInfoContext";
 import InputEgoInfoStatPage from "components/CardMakerComponents/InputTab/InputStatPage/InputEgoInfoStatPage/InputEgoInfoStatPage";
-import { useAlertContext } from "context/AlertContext";
+import { useAlertContext } from "@/Context/AlertContext";
 import InputTabSide from "components/CardMakerComponents/InputTab/InputTabSide/InputTabSide";
 
 export default function InputTabEgoInfoContainer({

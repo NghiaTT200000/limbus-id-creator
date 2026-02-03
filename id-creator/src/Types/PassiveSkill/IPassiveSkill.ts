@@ -1,5 +1,5 @@
-import IUID from "interfaces/IUID";
-import ISkill from "interfaces/SkillAndEffect/ISkill"
+import IUID from "Types/IUID";
+import ISkill from "Types/SkillAndEffect/ISkill"
 import uuid from "react-uuid";
 
 interface ISinCost{

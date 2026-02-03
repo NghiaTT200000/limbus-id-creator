@@ -1,10 +1,10 @@
 import React, { createContext, useContext, useState } from "react";
 import { ReactElement } from "react";
 import "./SettingMenu.css"
-import { IIdInfo } from "interfaces/IIdInfo";
-import { IEgoInfo } from "interfaces/IEgoInfo";
-import { ISaveFile, SaveFile } from "interfaces/ISaveFile";
-import CloseIcon from "Utils/Icons/CloseIcon";
+import { IIdInfo } from "Types/IIdInfo";
+import { IEgoInfo } from "Types/IEgoInfo";
+import { ISaveFile, SaveFile } from "Types/ISaveFile";
+import CloseIcon from "@/Assets/Icons/CloseIcon";
 import CustomKeywordMenu from "./CustomKeywordMenu/CustomKeywordMenu";
 import SaveCloudMenu from "./SaveCloudMenu/SaveCloudMenu";
 import { SaveLocalMenu } from "./SaveLocalMenu/SaveLocalMenu";

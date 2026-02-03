@@ -1,11 +1,11 @@
-import useInputs from "Utils/Hooks/useInputs";
-import { IMentalEffect } from "interfaces/MentalEffect/IMentalEffect";
+import useInputs from "@/Hooks/useInputs";
+import { IMentalEffect } from "Types/MentalEffect/IMentalEffect";
 import React from "react";
 import { ReactElement } from "react";
 import ChangeInputType from "../Components/ChangeInputType/ChangeInputType";
 import EditableAutoCorrect from "../Components/EditableAutoCorrectInput/EditableAutoCorrect";
-import DeleteIcon from "Utils/Icons/DeleteIcon";
-import ArrowDownIcon from "Utils/Icons/ArrowDownIcon";
+import DeleteIcon from "@/Assets/Icons/DeleteIcon";
+import ArrowDownIcon from "@/Assets/Icons/ArrowDownIcon";
 
 
 export default function InputMentalEffect({
