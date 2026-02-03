@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../SettingMenu.css"
 import { ISaveFile } from "interfaces/ISaveFile";
-import MainButton from "components/MainButton/MainButton";
 import { IIdInfo } from "interfaces/IIdInfo";
 import { IEgoInfo } from "interfaces/IEgoInfo";
 import useSaveLocal from "Utils/Hooks/useSaveLocal";
@@ -27,6 +26,30 @@ const SaveLocalMenu=({localSaveName,saveObjInfoValue,loadObjInfoValueCb,isActive
         setNamePopup(false)
         setPopupMode("create")
     }
+
+    const createNewSave = ()=>{
+        if(!isLoading){
+            const maxLenStr = process.env.REACT_APP_LOCAL_SAVE_MAX_LEN
+            const maxLen = Number(maxLenStr ?? 10)
+            if(saveData.length<maxLen){
+                openPopup()
+            }
+        }
+    }
+
+    const saveSubmit = ()=>{
+        if(popupMode==="overwrite"){
+            if(nameChangingSaveId) changeSaveName(nameChangingSaveId,newSaveName)
+        }
+        else{
+            saveObjInfoValue.id = uuid()
+            saveObjInfoValue.saveName = newSaveName
+            const createdDate = new Date().toLocaleString()
+            createSave({...saveObjInfoValue, updateTime:createdDate, saveTime: createdDate})
+        }
+        closePopup()
+    }
+
     //Some of the save can have the same id
     //This is to create new save for some 
     //of the save with same id
@@ -49,18 +72,7 @@ const SaveLocalMenu=({localSaveName,saveObjInfoValue,loadObjInfoValueCb,isActive
                     onChange={(e)=>{
                         setNewSaveName(e.target.value)
                     }}/>
-                    <MainButton component={popupMode==="overwrite"?"Update":"Create"} btnClass={"main-button create-new-save-btn"} clickHandler={()=>{
-                        if(popupMode==="overwrite"){
-                            if(nameChangingSaveId) changeSaveName(nameChangingSaveId,newSaveName)
-                        }
-                        else{
-                            saveObjInfoValue.id = uuid()
-                            saveObjInfoValue.saveName = newSaveName
-                            const createdDate = new Date().toLocaleString()
-                            createSave({...saveObjInfoValue, updateTime:createdDate, saveTime: createdDate})
-                        }
-                        closePopup()
-                    }}/>
+                    <button className="main-button create-new-save-btn" onClick={saveSubmit}>{popupMode==="overwrite"?"Update":"Create"}</button>
                 </div>
             </PopUpMenu>
         </div>
@@ -87,32 +99,29 @@ const SaveLocalMenu=({localSaveName,saveObjInfoValue,loadObjInfoValueCb,isActive
                             </div>
                         </div>
                         <div className="center-element">
-                            <MainButton component={"Delete"} clickHandler={()=>{
-                                deleteSave(data.id)
-                            }} btnClass={"main-button"}/>
-                            <MainButton component={"Overwrite"} clickHandler={()=>{
+                            <button className="main-button" onClick={()=>deleteSave(data.id)}>
+                                Delete
+                            </button>
+                            <button className="main-button" onClick={()=>{
                                 saveObjInfoValue.saveTime = new Date().toLocaleString()
                                 overwriteSave(data.id,saveObjInfoValue.saveInfo)
-                            }} btnClass={"main-button"}/>
-                            <MainButton component={"Load"} clickHandler={async ()=>{
+                            }}>
+                                Overwrite
+                            </button>
+                            <button className="main-button" onClick={async ()=>{
                                 const save = await loadSave(data.id)
                                 loadObjInfoValueCb(save.saveInfo)
                                 setIsActive(!isActive)
-                            }} btnClass={"main-button"}/>
+                            }}>
+                                Load
+                            </button>
                         </div>
                     </div>
                 )}
             </>:<p style={{fontFamily:"'Mikodacs' , 'Rubik', sans-serif"}}></p>}
         </div>
         <p>Current local save: {saveData.length}/{process.env.REACT_APP_LOCAL_SAVE_MAX_LEN??10}</p>
-        {isLoading?<MainButton component={"Loading..."} btnClass="main-button create-new-save-btn"/>:<MainButton component={"Create a new save"} clickHandler={()=>{
-                const maxLenStr = process.env.REACT_APP_LOCAL_SAVE_MAX_LEN
-                const maxLen = Number(maxLenStr ?? 10)
-                if(saveData.length<maxLen){
-                    openPopup()
-                }
-            }
-        } btnClass={"main-button create-new-save-btn"}/>}
+        <button className="main-button create-new-save-btn" onClick={createNewSave}>{isLoading?"Loading...":"Create a new save"}</button>
     </>
 }
 

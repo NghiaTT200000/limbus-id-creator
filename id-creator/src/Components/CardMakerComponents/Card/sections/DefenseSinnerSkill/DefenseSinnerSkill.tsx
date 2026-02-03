@@ -1,10 +1,24 @@
 import React, { forwardRef } from "react";
 import { ReactElement } from "react";
-import "../SinnerSkill.css"
+import "../SinnerSkill.css";
+import "./DefenseSinnerSkill.css";
 import { IDefenseSkill } from "interfaces/DefenseSkill/IDefenseSkill";
 import SkillEffect from "components/CardMakerComponents/Card/components/SkillEffect/SkillEffect";
-import DefenseSkillSplash from "components/CardMakerComponents/Card/components/SkillSplash/DefenseSkillSplash/DefenseSkillSplash";
 import SkillTitle from "components/CardMakerComponents/Card/components/SkillTitle/SkillTitle";
+
+const DefenseSkillSplash = ({skillAffinity,skillImage,defenseType}:{skillAffinity:string,skillImage?:string,defenseType:string}):ReactElement => {
+    return(
+        <div className="skill-splash">
+            <img src={`/Images/skill-frame/${skillAffinity}Frame.webp`} alt={skillAffinity+"Frame"} className={`sin-frame ${skillAffinity==="None"?"none-affinity":""}`} />
+            <div className="splash-container" style={{'backgroundColor':`var(--${skillAffinity})`}}>
+                <div className="defense-icon-container">
+                    <img src={`/Images/defense/defense_${defenseType}.webp`} alt={`defense_${defenseType}`} />
+                </div>
+                { skillImage && <img className="skill-image" src={skillImage} alt="skill image" />}
+            </div>
+        </div>
+    )
+}
 
 const DefenseSinnerSkill = forwardRef<HTMLDivElement, { defenseSkill: IDefenseSkill }>(({ defenseSkill }, ref) => {
     const {

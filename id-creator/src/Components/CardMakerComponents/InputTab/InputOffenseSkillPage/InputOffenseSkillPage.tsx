@@ -3,7 +3,6 @@ import { ReactElement } from "react";
 import "../InputPage.css"
 import useInputs from "Utils/Hooks/useInputs";
 import { IOffenseSkill } from "interfaces/OffenseSkill/IOffenseSkill";
-import MainButton from "components/MainButton/MainButton";
 import DeleteIcon from "Utils/Icons/DeleteIcon";
 import ArrowDownIcon from "Utils/Icons/ArrowDownIcon";
 import ChangeInputType from "../Components/ChangeInputType/ChangeInputType";
@@ -59,7 +58,9 @@ export default function InputOffenseSkillPage({
             <div className="input-group-container">
                 <div className="center-element-vertically">
                     <img className="preview-skill-image" src={skillImage} alt="custom-skill-img" />
-                    <MainButton component={<p className="center-element delete-txt"><DeleteIcon/> Delete</p>} clickHandler={()=>changeSkill({...offenseSkill,skillImage:""})} btnClass="main-button"/>
+                    <button className="main-button" onClick={()=>changeSkill({...offenseSkill,skillImage:""})}>
+                        <p className="center-element delete-txt"><DeleteIcon/> Delete</p>
+                    </button>
                 </div>
             </div>
         :<></>}

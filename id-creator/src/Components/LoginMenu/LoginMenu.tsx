@@ -1,7 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import React from "react";
 import "./LoginMenu.css"
-import MainButton from "components/MainButton/MainButton";
 import { TokenResponse, useGoogleLogin } from "@react-oauth/google";
 import PopUpMenu from "components/PopUpMenu/PopUpMenu";
 import { useAlertContext } from "context/AlertContext";
@@ -64,14 +63,14 @@ function LoginMenu({children}){
                 <div className="login-menu">
                     <h1 className="login-menu-header">Login/Register</h1>
                     {isLoggingIn?
-                    <MainButton component={<>
+                    <button className="main-button active center-element">
                         Logging in...
                         <GoogleIcon/>
-                    </>} btnClass="main-button active center-element"/>:
-                    <MainButton clickHandler={() => login()} component={<>
+                    </button>:
+                    <button onClick={() => login()} className="main-button center-element">
                         Login/Register with Google
                         <GoogleIcon/>
-                    </>} btnClass={"main-button center-element"}/>}
+                    </button>}
                 </div>
             </PopUpMenu>
         </div>

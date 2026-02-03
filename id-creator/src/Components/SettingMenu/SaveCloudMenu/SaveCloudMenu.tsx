@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { ReactElement } from "react";
-import MainButton from "components/MainButton/MainButton";
 import { IEgoInfo } from "interfaces/IEgoInfo";
 import { IIdInfo } from "interfaces/IIdInfo";
 import { ISaveFile } from "interfaces/ISaveFile";
@@ -28,7 +27,7 @@ export default function SaveCloudMenu({setIsActive,saveMode,saveObjInfoValue,loa
     saveObjInfoValue:ISaveFile<IIdInfo|IEgoInfo>,
     setSaveObjInfoValue:React.Dispatch<React.SetStateAction<ISaveFile<IIdInfo | IEgoInfo>>>,
     loadObjInfoValueCb:React.Dispatch<React.SetStateAction<IIdInfo|IEgoInfo>>}):ReactElement{
-    const {imgUrl,setImgUrlState} = useRefDownloadContext()
+    const {setImgUrlState} = useRefDownloadContext()
     const [createSaveBtnLoadState,setCreateSaveBtnLoadState] = useState<IIsLoading>({loadingMessage:"",isLoading:false})
     const [isLoadingSaveData,setIsLoadingSaveData] = useState(false)
     const [saveList,setSaveList] = useState([])
@@ -210,9 +209,9 @@ export default function SaveCloudMenu({setIsActive,saveMode,saveObjInfoValue,loa
     }
 
     const loadCreateNewSaveButton = ()=>{
-        if(!loginUser) return <MainButton component={"Login"} btnClass="main-button create-new-save-btn" clickHandler={()=>{setIsLoginMenuActive(true)}}/>
-        if(createSaveBtnLoadState.isLoading) return <MainButton component={createSaveBtnLoadState.loadingMessage} btnClass={"main-button active create-new-save-btn"}/>
-        return <MainButton component={"Create a new save"} btnClass={"main-button create-new-save-btn"} clickHandler={()=>setNamePopup(true)}/>
+        if(!loginUser) return <button className="main-button create-new-save-btn" onClick={()=>{setIsLoginMenuActive(true)}}>Login</button>
+        if(createSaveBtnLoadState.isLoading) return <button className="main-button active create-new-save-btn">{createSaveBtnLoadState.loadingMessage}</button>
+        return <button className="main-button create-new-save-btn" onClick={()=>setNamePopup(true)}>Create a new save</button> 
     }
 
     useEffect(()=>{
@@ -230,10 +229,12 @@ export default function SaveCloudMenu({setIsActive,saveMode,saveObjInfoValue,loa
                     onChange={(e)=>{
                         setSaveObjInfoValue({...saveObjInfoValue,saveName:e.target.value})
                     }}/>
-                    <MainButton component={"Create"} btnClass={"main-button create-new-save-btn"} clickHandler={()=>{
+                    <button className="main-button create-new-save-btn" onClick={()=>{
                         createNewSaveFile()
                         setNamePopup(false)
-                    }}/>
+                    }}>
+                        Create
+                    </button>
                 </div>
             </PopUpMenu>
         </div>
@@ -250,7 +251,7 @@ export default function SaveCloudMenu({setIsActive,saveMode,saveObjInfoValue,loa
                 </>:
                     <div className="save-cloud-login-remainder">
                         <p>Please login to save to the cloud</p>
-                        <MainButton component={"Login"} btnClass={"main-button"} clickHandler={()=>{setIsLoginMenuActive(true)}} />
+                        <button className="main-button" onClick={()=>{setIsLoginMenuActive(true)}}>Login</button>
                     </div>
                 }
             </div>

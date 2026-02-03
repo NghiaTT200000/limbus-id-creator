@@ -5,7 +5,6 @@ import useInputs from "Utils/Hooks/useInputs";
 import "../InputPage.css"
 import { IDefenseSkill } from "interfaces/DefenseSkill/IDefenseSkill";
 import DeleteIcon from "Utils/Icons/DeleteIcon";
-import MainButton from "components/MainButton/MainButton";
 import ArrowDownIcon from "Utils/Icons/ArrowDownIcon";
 import SinAffinityInput from "../Components/SinAffinityInput/SinAffinityInput";
 import DamageTypeInput from "../Components/DamageTypeInput/DamageTypeInput";
@@ -64,7 +63,9 @@ export default function InputDefenseSkillPage({
             <div className="input-group-container">
                 <div className="center-element-vertically">
                     <img className="preview-skill-image" src={skillImage} alt="custom-skill-img" />
-                    <MainButton component={<p className="center-element delete-txt"><DeleteIcon/> Delete</p>} clickHandler={()=>changeSkill({...defenseSkill,skillImage:""})} btnClass="main-button"/>
+                    <button className="main-button" onClick={()=>changeSkill({...defenseSkill,skillImage:""})}>
+                        <p className="center-element delete-txt"><DeleteIcon/> Delete</p>
+                    </button>
                 </div>
             </div>
         :<></>}

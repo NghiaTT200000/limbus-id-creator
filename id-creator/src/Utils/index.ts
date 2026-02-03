@@ -1,6 +1,0 @@
-export { default as base64ToFile } from './base64-to-file'
-export { default as checkBase64Image } from './check-base64-image'
-export { default as downloadImg } from './download-img'
-export { default as getImageDimensions } from './get-image-dimensions'
-export { default as isObject } from './is-object'
-export { default as turnRefToImg } from './turn-ref-to-img'

@@ -1,21 +1,82 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ReactElement } from "react";
 import "../PageLayout.css"
 import "./PostPage.css"
 import Post from "./Post/Post";
-import CommentContainer from "./CommentContainer/CommentContainer";
 import { useAlertContext } from "context/AlertContext";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { IPost } from "interfaces/IPost/IPost";
 import { useLoginUserContext } from "context/LoginUserContext";
 import { useLoginMenuContext } from "components/LoginMenu/LoginMenu";
-import MainButton from "components/MainButton/MainButton";
 import { IComment } from "interfaces/IPost/IComment";
 import { Editor } from "react-simple-wysiwyg";
+
+function Comment({comment}:{comment:IComment}){
+    return <div className="post-comment-container post-page-element-container">
+    <div className="center-element post-comment-content">
+        <div className="center-element post-comment-header">
+            <div className="center-element">
+                <Link to={"/User/"+comment.userId}><img className="post-author-icon-small" src={comment.userIcon} alt="author-icon" /></Link>
+                <Link to={"/User/"+comment.userId}><p className="post-author-name">{comment.userName}</p></Link>
+            </div>
+        </div>
+        <p className="post-date">Posted: {comment.date.split(" ")[0]}</p>
+        <p className="description-txt" dangerouslySetInnerHTML={{__html:comment.comment}}></p>
+    </div>
+</div>
+}
+
+function CommentContainer({comments,getComments}:{comments:IComment[],getComments:(page:number,limit:number)=>Promise<void>}){
+    const [isLoading,setIsLoading] = useState(false)
+    const [page,setPage] = useState(0)
+    const [limit] = useState(10)
+    const loaderRef = useRef(null)
+
+    useEffect(()=>{
+        const observer = new IntersectionObserver((entries)=>{
+            const target = entries[0]
+            if(target.isIntersecting&&isLoading)
+            {
+                setPage(page+1)
+            }
+        })
+
+        if(loaderRef.current){
+            observer.observe(loaderRef.current)
+        }
+        return () => {
+            if (loaderRef.current) {
+              observer.unobserve(loaderRef.current);
+            }
+          };
+    },[getComments])
+
+    useEffect(()=>{
+        if(!isLoading){
+            setIsLoading(true)
+            getComments(page,limit).finally(()=>setIsLoading(false))
+        }
+    },[page])
+    
+    return <>
+        {comments.map((comment,i)=><Comment key={i} comment={comment}/>)}
+        <div ref={loaderRef}>{isLoading&&<div className="loader"></div>}</div>
+    </>
+}
 
 function PostCommentInput({authorIcon,authorName,createComment}:{authorIcon:string,authorName:string,createComment:(comment:string)=>Promise<void>}){
     const [commentValue,setCommentValue] = useState("")
     const [isPosting,setIsPosting] = useState(false)
+
+    const postFnc = ()=>{
+        if(!isPosting){
+            setIsPosting(true)
+            createComment(commentValue).finally(()=>{
+                setIsPosting(false)
+                setCommentValue("")
+            })
+        }
+    }
 
     return<div className="center-element post-comment-content post-page-element-container">
         <div className="center-element">
@@ -23,15 +84,9 @@ function PostCommentInput({authorIcon,authorName,createComment}:{authorIcon:stri
             <p className="post-author-name">{authorName}</p>
         </div>
         <Editor className="input comment-input" name="comment" id="comment" value={commentValue} onChange={(e)=>setCommentValue(e.target.value)}/>
-        {isPosting?<MainButton btnClass="main-button active" component={"Posting..."} />:
-        <MainButton btnClass="main-button" component={"Post"} clickHandler={()=>{
-            setIsPosting(true)
-            createComment(commentValue).finally(()=>{
-                setIsPosting(false)
-                setCommentValue("")
-            })
-        }}/>}
-        
+        <button className={`main-button ${isPosting && "active"}`} onClick={postFnc}>
+            {isPosting ? "Posting...": "Post"}
+        </button>
     </div>
 }
 
@@ -122,7 +177,7 @@ export default function PostPage():ReactElement{
         <div className="page-content">
             {(()=>{
                 if(loginUser && post) return <PostCommentInput authorIcon={loginUser.userIcon} authorName={loginUser.userName} createComment={createNewComment}/>
-                if(post) <MainButton btnClass="main-button" component={"Login to comment"} clickHandler={()=>setIsLoginMenuActive(true)}/>
+                if(post) return <button className="main-button" onClick={()=>setIsLoginMenuActive(true)}></button>
                 return <></>
             })()}
         </div>

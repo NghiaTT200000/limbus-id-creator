@@ -2,7 +2,6 @@ import { useLoginUserContext } from "context/LoginUserContext";
 import { useLoginMenuContext } from "components/LoginMenu/LoginMenu";
 import React, { useEffect, useState } from "react";
 import { ReactElement } from "react";
-import MainButton from "components/MainButton/MainButton";
 import "./NewPostPage.css";
 import TagInput from "components/TagInput/TagInput";
 import TagsContainer from "components/TagsContainer/TagsContainer";
@@ -37,40 +36,42 @@ export default function NewPostPage():ReactElement{
     const navigate = useNavigate()
 
     async function createPost(){
-        if(!postName) return addAlert("Failure","Post name length must be between 1 and 200")
-        if(choosenSave.length<1) return addAlert("Failure","Post must have between 1 and 8 images")
-        if(loginUser){
-            try {
-                setIsPosting(true)
-                const uploadTags = tags.map(t=>(t.tagName))
-                if(choosenSave.some(s=>s.SaveType==="Identity")&&!tags.some(t=>t.tagName==="Identity")) uploadTags.push("Identity")
-                if(choosenSave.some(s=>s.SaveType==="Ego")&&!tags.some(t=>t.tagName==="Ego")) uploadTags.push("Ego")
-                const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/API/Post/create`,{
-                    method: "POST",
-                    credentials: "include",
-                    headers:{
-                        "Content-type":"application/json"
-                    },
-                    body: JSON.stringify({
-                        id: uuid(),
-                        title:postName,
-                        description: description,
-                        imagesAttach: choosenSave.map(s=>s.PreviewUrl),
-                        userId: loginUser.id,
-                        tags: uploadTags
+        if(!isPosting){
+            if(!postName) return addAlert("Failure","Post name length must be between 1 and 200")
+            if(choosenSave.length<1) return addAlert("Failure","Post must have between 1 and 8 images")
+            if(loginUser){
+                try {
+                    setIsPosting(true)
+                    const uploadTags = tags.map(t=>(t.tagName))
+                    if(choosenSave.some(s=>s.SaveType==="Identity")&&!tags.some(t=>t.tagName==="Identity")) uploadTags.push("Identity")
+                    if(choosenSave.some(s=>s.SaveType==="Ego")&&!tags.some(t=>t.tagName==="Ego")) uploadTags.push("Ego")
+                    const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/API/Post/create`,{
+                        method: "POST",
+                        credentials: "include",
+                        headers:{
+                            "Content-type":"application/json"
+                        },
+                        body: JSON.stringify({
+                            id: uuid(),
+                            title:postName,
+                            description: description,
+                            imagesAttach: choosenSave.map(s=>s.PreviewUrl),
+                            userId: loginUser.id,
+                            tags: uploadTags
+                        })
                     })
-                })
-                const result = await response.json()
-                if(!response.ok) addAlert("Failure",result.msg)
-                else{
-                    navigate("/Post/"+result.response.id)
+                    const result = await response.json()
+                    if(!response.ok) addAlert("Failure",result.msg)
+                    else{
+                        navigate("/Post/"+result.response.id)
+                    }
+                } catch (error) {
+                    console.log(error)
+                    addAlert("Failure","Something went wrong with the server")
                 }
-            } catch (error) {
-                console.log(error)
-                addAlert("Failure","Something went wrong with the server")
             }
+            setIsPosting(false)
         }
-        setIsPosting(false)
     }
 
     async function searchSave(searchName:string="") {
@@ -150,12 +151,11 @@ export default function NewPostPage():ReactElement{
                 <label htmlFor="description">Description:</label>
                 <Editor className="input post-description-input" name="description" id="description" value={description} onChange={(e)=>setDescription(e.target.value)}/>
             </div>
-            {isPosting?<MainButton btnClass="main-button active" component={"Posting..."}/>:
-            <MainButton btnClass="main-button" component={"Post"} clickHandler={createPost}/>}
+            {isPosting && <button className={`main-button ${isPosting??"active"}`} onClick={createPost}>{isPosting?"Posting...":"Post"}</button>}
         </div>:
             <div className="page-content">
                 Please login to post
-                <MainButton btnClass="main-button" component={"Login"} clickHandler={()=>setIsLoginMenuActive(true)}/>
+                <button className="main-button" onClick={()=>setIsLoginMenuActive(true)}>Login</button>
             </div>}
     </div>
 }

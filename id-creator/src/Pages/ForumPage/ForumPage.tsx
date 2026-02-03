@@ -4,7 +4,6 @@ import TagInput from "components/TagInput/TagInput";
 import { ITag } from "Utils/TagList";
 import "./ForumPage.css"
 import TagsContainer from "components/TagsContainer/TagsContainer";
-import MainButton from "components/MainButton/MainButton";
 import { useLoginUserContext } from "context/LoginUserContext";
 import { useLoginMenuContext } from "components/LoginMenu/LoginMenu";
 import { Link } from "react-router-dom";
@@ -109,8 +108,13 @@ export default function ForumPage():ReactElement{
             </div>
             <div className="forum-new-post-container">
                 {loginUser?
-                <Link to={"/new-post"}><MainButton component={'Create new Post'} btnClass={"main-button"} /></Link>:
-                <MainButton btnClass="main-button" component={"Login to post"} clickHandler={()=>setIsLoginMenuActive(true)}/>}
+                    <Link to={"/new-post"}>
+                        <button className="main-button">Create new Post</button>
+                    </Link>:
+                    <button className="main-button" onClick={()=>setIsLoginMenuActive(true)}>
+                        Login to post
+                    </button>
+                }
             </div>
             <PaginatedPost currPage={currPage} 
                 maxCount={maxCount} 

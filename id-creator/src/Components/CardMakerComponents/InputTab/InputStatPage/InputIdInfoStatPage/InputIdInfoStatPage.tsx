@@ -4,7 +4,6 @@ import { ReactElement } from "react";
 import "../../InputPage.css"
 import "../InputStatPage.css"
 import DeleteIcon from "Utils/Icons/DeleteIcon";
-import MainButton from "components/MainButton/MainButton";
 import ArrowDownIcon from "Utils/Icons/ArrowDownIcon";
 import imageCompression from 'browser-image-compression'
 import getImageDimensions from "Utils/Functions/getImageDimensions";
@@ -97,7 +96,9 @@ export default function InputIdInfoStatPage({collaspPage}:{collaspPage:()=>void}
                     <SinnerSplashArtRepositionInput scale={splashArtScale} translation={splashArtTranslation} onChange={(value:{scale:number,translation:{x:number,y:number}})=>{setIdInfoValue({...idInfoValue,splashArtScale:value.scale,splashArtTranslation:value.translation})}}/>
                 </div>
                 <div className="input-group-container">
-                    <MainButton component={<p className="center-element delete-txt"><DeleteIcon/> Delete splash art</p>} clickHandler={()=>{setIdInfoValue({...idInfoValue,splashArt:""})}} btnClass="main-button"/>
+                    <button onClick={()=>{setIdInfoValue({...idInfoValue,splashArt:""})}} className="main-button">
+                        <p className="center-element delete-txt"><DeleteIcon/> Delete splash art</p>
+                    </button>
                 </div>
             </>
            :<></>}

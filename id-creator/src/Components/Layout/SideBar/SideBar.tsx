@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./SideBar.css"
-import MainButton from "components/MainButton/MainButton";
 import { useLoginMenuContext } from "components/LoginMenu/LoginMenu";
 import { useLoginUserContext } from "context/LoginUserContext";
 import KofiIcon from "Utils/Icons/KofiIcon";
@@ -19,12 +18,26 @@ export default function SideBar({isActive,setActiveSideBar}:{isActive:boolean,se
                     <img src="/Images/SiteLogo.webp" alt="site-logo" className="site-logo" onClick={()=>setActiveSideBar(!isActive)}/>
                 </Link>
                 <div className="side-bar-nav">
-                    <Link to={"/IdCreator"}><MainButton component={'Create Id'} btnClass={"main-button nav-button"} clickHandler={()=>setActiveSideBar(!isActive)}/></Link>
-                    <Link to={"/EgoCreator"}><MainButton component={'Create Ego'} btnClass={"main-button nav-button"} clickHandler={()=>setActiveSideBar(!isActive)}/></Link>            
-                    <Link to={"/Forum"}><MainButton component={'Forum'} btnClass={"main-button nav-button"} clickHandler={()=>setActiveSideBar(!isActive)}/></Link>
-                    {loginUser?<Link to={"/User/"+loginUser.id}><MainButton component={"My account"} btnClass="main-button" clickHandler={()=>setActiveSideBar(!isActive)}></MainButton></Link>:
-                    <MainButton component={'Login'} btnClass={"main-button nav-button"} clickHandler={()=>setIsLoginMenuActive(!isLoginMenuActive)}/>}
-                    {loginUser&&<Link to={"/NewPost"}><MainButton component={"Post"} btnClass="main-button" clickHandler={()=>setActiveSideBar(!isActive)}></MainButton></Link>}
+                    <Link to={"/creator/identity"}>
+                        <button onClick={()=>setActiveSideBar(!isActive)} className="main-button nav-button">
+                            Create Id
+                        </button>
+                    </Link>
+                    <Link to={"/creator/ego"}>
+                        <button onClick={()=>setActiveSideBar(!isActive)} className="main-button nav-button">
+                            Create Ego
+                        </button>
+                    </Link>            
+                    <Link to={"/forum"}>
+                        <button onClick={()=>setActiveSideBar(!isActive)} className="main-button nav-button">
+                            Forum
+                        </button>
+                    </Link>
+                    {loginUser?<Link to={"/user/"+loginUser.id}>
+                        <button onClick={()=>setActiveSideBar(!isActive)} className="main-button">My account</button>
+                    </Link>:
+                    <button className={"main-button nav-button"} onClick={()=>setIsLoginMenuActive(!isLoginMenuActive)}>Login</button>}
+                    {loginUser&&<Link to={"/new-post"}><button className="main-button">Post</button></Link>}
                     <Link to="https://ko-fi.com/johnlimbusidmaker" target="_blank">
                         <button style={{justifyContent:"center"}} className="main-button center-element">
                             <KofiIcon width="16px" height="16px"/>

@@ -1,6 +1,5 @@
 import React from "react";
 import { ReactElement } from "react";
-import MainButton from "components/MainButton/MainButton";
 import "./SaveCloudMenu.css"
 
 export default function SaveCloudTab({saveName,saveDate,previewUrl,deleteSave,loadSave,overwriteSave}:{saveName:string,saveDate:string,previewUrl:string,deleteSave:()=>void,loadSave:()=>void,overwriteSave:()=>void}):ReactElement{
@@ -13,9 +12,15 @@ export default function SaveCloudTab({saveName,saveDate,previewUrl,deleteSave,lo
             </div>
         </div>
         <div className="center-element save-cloud-tab-button-container">
-            <MainButton component={"Delete"} btnClass={"main-button"} clickHandler={deleteSave}/>
-            <MainButton component={"Overwrite"} btnClass={"main-button"} clickHandler={overwriteSave}/>
-            <MainButton component={"Load"} btnClass={"main-button"} clickHandler={loadSave}/>
+            <button className="main-button" onClick={deleteSave}>
+                Delete
+            </button>
+            <button className="main-button" onClick={overwriteSave}>
+                Overwrite
+            </button>
+            <button className="main-button" onClick={loadSave}>
+                Load
+            </button>
         </div>
     </div>
 }

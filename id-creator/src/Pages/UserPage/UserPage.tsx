@@ -6,7 +6,6 @@ import UserProfile from "./User/UserProfile";
 import {  useNavigate, useParams } from "react-router-dom";
 import UserProfileLoading from "./User/UserProfileLoading";
 import { IUserProfile, UserProfileRes } from "interfaces/API/OAuth/IUserProfile";
-import MainButton from "components/MainButton/MainButton";
 import { useAlertContext } from "context/AlertContext";
 import { useLoginUserContext } from "context/LoginUserContext";
 import PaginatedPost from "components/PaginatedPost/PaginatedPost";
@@ -110,18 +109,18 @@ export default function UserPage():ReactElement{
                         <p className="user-meta-txt">Created at: {user.createdAt.split(" ")[0]}</p>
                         {isFetchingUser?<UserProfileLoading/>:<UserProfile userProfile={user} setUserProfile={setUser} />}
                         <div className="user-log-out-container">
-                            {user.owned?<MainButton btnClass={isLoggingOut?"main-button active":"main-button"} component={isLoggingOut?"Logging out...":"Logout"} clickHandler={logout}/>:<></>}
+                            {user.owned && <button className={isLoggingOut?"main-button active":"main-button"} onClick={logout}>{isLoggingOut?"Logging out...":"Logout"}</button>}
                         </div>
                     </div>
                     
                 </div>
                 <div className="page-content">
                     <PaginatedPost currPage={currPage}
-                                maxCount={maxCount}
-                                pageLimit={10}
-                                postList={postList}
-                                fetchPost={setCurrPage}
-                                isLoading={isLoadingPosts}/>
+                        maxCount={maxCount}
+                        pageLimit={10}
+                        postList={postList}
+                        fetchPost={setCurrPage}
+                        isLoading={isLoadingPosts}/>
                 </div>
             </>
         :<p>User not found</p>}

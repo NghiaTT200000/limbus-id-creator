@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { ReactElement } from "react";
 import {Link} from "react-router-dom";
 import "./HeaderLayout.css"
-import MainButton from "components/MainButton/MainButton";
 import { useLoginMenuContext } from "components/LoginMenu/LoginMenu";
 import {  useLoginUserContext } from "context/LoginUserContext";
 import KofiIcon from "Utils/Icons/KofiIcon";
@@ -23,12 +22,26 @@ export default function HeaderLayout():ReactElement{
                 <Link to={"/"}>
                     <img src="/Images/SiteLogo.webp" alt="site-logo" className="site-logo"/>
                 </Link>
-                <Link to={"/creator/identity"}><MainButton component={'Create Id'} btnClass={"main-button nav-button"} /></Link>
-                <Link to={"/creator/ego"}><MainButton component={'Create Ego'} btnClass={"main-button nav-button"} /></Link>            
-                <Link to={"/forum"}><MainButton component={'Forum'} btnClass={"main-button nav-button"} /></Link>
-                {loginUser?<Link to={"/user/"+loginUser.id}><MainButton component={"My account"} btnClass="main-button"></MainButton></Link>:
-                <MainButton component={'Login'} btnClass={"main-button nav-button"} clickHandler={()=>setIsLoginMenuActive(!isLoginMenuActive)}/>}
-                {loginUser&&<Link to={"/new-post"}><MainButton component={"Post"} btnClass="main-button"></MainButton></Link>}
+                <Link to={"/creator/identity"}>
+                    <button className="main-button nav-button">
+                        Create Id
+                    </button>
+                </Link>
+                <Link to={"/creator/ego"}>
+                    <button className="main-button nav-button">
+                        Create Ego
+                    </button>
+                </Link>            
+                <Link to={"/forum"}>
+                    <button className="main-button nav-button">
+                        Forum
+                    </button>
+                </Link>
+                {loginUser?<Link to={"/user/"+loginUser.id}>
+                    <button className="main-button">My account</button>
+                </Link>:
+                <button className={"main-button nav-button"} onClick={()=>setIsLoginMenuActive(!isLoginMenuActive)}>Login</button>}
+                {loginUser&&<Link to={"/new-post"}><button className="main-button">Post</button></Link>}
                 <a href="https://ko-fi.com/johnlimbusidmaker" target="_blank" rel="noreferrer">
                     <button className="main-button center-element">
                         <KofiIcon width="16px" height="16px"/>

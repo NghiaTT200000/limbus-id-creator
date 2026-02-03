@@ -4,7 +4,6 @@ import React from "react";
 import { ReactElement } from "react";
 import "../InputPage.css"
 import DeleteIcon from "Utils/Icons/DeleteIcon";
-import MainButton from "components/MainButton/MainButton";
 import ArrowDownIcon from "Utils/Icons/ArrowDownIcon";
 import ChangeInputType from "../Components/ChangeInputType/ChangeInputType";
 import EditableAutoCorrect from "../Components/EditableAutoCorrectInput/EditableAutoCorrect";
@@ -48,7 +47,9 @@ export default function InputCustomEffectPage({
             <div className="input-group-container">
                 <div className="input-container center-element">
                     <img className="status-icon" src={customImg} alt="custom-status-img" />
-                    <MainButton component={<p className="center-element delete-txt"><DeleteIcon/> Delete</p>} clickHandler={()=>changeSkill({...customEffect,customImg:""})} btnClass="main-button"/>
+                    <button className="main-button" onClick={()=>changeSkill({...customEffect,customImg:""})}>
+                        <p className="center-element delete-txt"><DeleteIcon/> Delete</p>
+                    </button>
                 </div>
             </div>     
         :<></>}

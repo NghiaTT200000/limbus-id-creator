@@ -3,7 +3,6 @@ import { ReactElement } from "react";
 import "./SettingMenu.css"
 import { IIdInfo } from "interfaces/IIdInfo";
 import { IEgoInfo } from "interfaces/IEgoInfo";
-import MainButton from "components/MainButton/MainButton";
 import { ISaveFile, SaveFile } from "interfaces/ISaveFile";
 import CloseIcon from "Utils/Icons/CloseIcon";
 import CustomKeywordMenu from "./CustomKeywordMenu/CustomKeywordMenu";
@@ -41,9 +40,15 @@ const SettingMenu: React.FC<{children:ReactElement}>=({children})=>{
                         <span className="close-setting-menu" onClick={()=>setIsActive(false)}><CloseIcon/></span>
                         <h1 className="setting-header">Settings</h1>
                         <div className="center-element">
-                            <MainButton component={"Cloud saves"} btnClass={`main-button ${displayMode==="Cloud"?"active":""}`} clickHandler={()=>setDisplayMode("Cloud")}/>
-                            <MainButton component={"Local saves"} btnClass={`main-button ${displayMode==="Local"?"active":""}`} clickHandler={()=>setDisplayMode("Local")}/>
-                            <MainButton component={"Custom keywords"} btnClass={`main-button ${displayMode==="Custom keywords"?"active":""}`} clickHandler={()=>setDisplayMode("Custom keywords")}/>
+                            <button className={`main-button ${displayMode==="Cloud"?"active":""}`} onClick={()=>setDisplayMode("Cloud")}>
+                                Cloud saves
+                            </button>
+                            <button className={`main-button ${displayMode==="Local"?"active":""}`} onClick={()=>setDisplayMode("Local")}>
+                                Local saves
+                            </button>
+                            <button className={`main-button ${displayMode==="Custom keywords"?"active":""}`} onClick={()=>setDisplayMode("Custom keywords")}>
+                                Custom keywords
+                            </button>
                         </div>
                         <div className="setting-menu-content center-element-vertically">
                             {displaySettings()}
