@@ -22,6 +22,7 @@ import AlertPopUp from 'components/Layout/AlertPopUp/AlertPopUp';
 import { SettingMenu } from 'components/SettingMenu/SettingMenu';
 import CardMakerFooter from 'components/CardMakerFooter/CardMakerFooter';
 import HomePage from 'Pages/HomePage/HomePage';
+import NotFoundPage from 'Pages/NotFoundPage/NotFoundPage';
 
 const root = createRoot(document.getElementById('root')!);
 
@@ -74,9 +75,13 @@ const router = createBrowserRouter([
             {
                 path:"post/:postId",
                 element: <PostPage/>
+            },
+            {
+                path: "*",
+                element: <NotFoundPage/>
             }
-        ]
-    },
+        ],
+    }
 ])
 
 
