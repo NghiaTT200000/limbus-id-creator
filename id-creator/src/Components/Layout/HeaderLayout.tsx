@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { ReactElement } from "react";
 import {Link} from "react-router-dom";
 import "./HeaderLayout.css"
-import { useLoginMenuContext } from "components/LoginMenu/LoginMenu";
-import {  useLoginUserContext } from "@/Context/LoginUserContext";
-import KofiIcon from "@/Assets/Icons/KofiIcon";
+import {  useLoginUserContext } from "Context/LoginUserContext";
+import KofiIcon from "Assets/Icons/KofiIcon";
 import SideBar from "./SideBar/SideBar";
+import { useLoginMenuContext } from "../LoginMenu/LoginMenu";
 
 export default function HeaderLayout():ReactElement{
     const [isSideBarActive,setActiveSideBar] = useState(false)

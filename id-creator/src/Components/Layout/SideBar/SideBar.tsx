@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./SideBar.css"
-import { useLoginMenuContext } from "components/LoginMenu/LoginMenu";
-import { useLoginUserContext } from "@/Context/LoginUserContext";
-import KofiIcon from "@/Assets/Icons/KofiIcon";
+import { useLoginUserContext } from "Context/LoginUserContext";
+import KofiIcon from "Assets/Icons/KofiIcon";
+import { useLoginMenuContext } from "Components/LoginMenu/LoginMenu";
 
 
 export default function SideBar({isActive,setActiveSideBar}:{isActive:boolean,setActiveSideBar:(a:boolean)=>void}){

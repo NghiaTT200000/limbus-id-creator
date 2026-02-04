@@ -8,9 +8,6 @@
     "types": ["node", "react"],
     "target": "ES2015",
     "ignoreDeprecations": "6.0",
-    "paths": {
-      "@/*": ["./*"]
-    }
   },
   "include": ["src", "./module.css.d.ts"],
   "exclude": ["build"],

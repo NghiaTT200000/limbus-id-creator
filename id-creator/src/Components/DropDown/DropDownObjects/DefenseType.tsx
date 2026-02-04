@@ -1,5 +1,5 @@
 import React from "react";
-import { dropDownEl } from "components/DropDown/DropDown";
+import { dropDownEl } from "Components/DropDown/DropDown";
 
 
 export const DefenseType:{[key:string]:dropDownEl}={
