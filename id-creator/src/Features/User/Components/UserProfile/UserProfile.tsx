@@ -7,6 +7,7 @@ import { IUserProfile } from "Types/API/OAuth/IUserProfile";
 import IResponse from "Types/IResponse";
 import { useAlertContext } from "Context/AlertContext";
 import "./UserProfile.css";
+import { EnvironmentVariables } from "Config/Environments";
 
 export function UserProfile({userProfile,setUserProfile}:{userProfile:IUserProfile,setUserProfile:React.Dispatch<React.SetStateAction<IUserProfile>>}):ReactElement{
     const {userName,userIcon} = userProfile
@@ -25,7 +26,7 @@ export function UserProfile({userProfile,setUserProfile}:{userProfile:IUserProfi
         setIsChangingName(true)
         try {
             console.log(name)
-            const req = await fetch(`${process.env.REACT_APP_SERVER_URL}/API/User/change/name/${userId}`,{
+            const req = await fetch(`${EnvironmentVariables.REACT_APP_SERVER_URL}/API/User/change/name/${userId}`,{
                 method: "POST",
                 credentials: "include",
                 headers:{
@@ -55,7 +56,7 @@ export function UserProfile({userProfile,setUserProfile}:{userProfile:IUserProfi
             const form = new FormData()
             form.append('newProfile',e.currentTarget.files[0])
             console.log(e.currentTarget.files[0])
-            const req = await fetch(`${process.env.REACT_APP_SERVER_URL}/API/User/change/profile/${userId}`,{
+            const req = await fetch(`${EnvironmentVariables.REACT_APP_SERVER_URL}/API/User/change/profile/${userId}`,{
                 method: "POST",
                 credentials: "include",
                 body:form

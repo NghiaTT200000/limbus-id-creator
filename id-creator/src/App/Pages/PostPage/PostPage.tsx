@@ -9,6 +9,7 @@ import { useLoginMenuContext } from "Components/LoginMenu/LoginMenu";
 import { IComment } from "Types/IPost/IComment";
 import { CommentContainer, PostCommentInput } from "Features/Post/Components/Comment/Comment";
 import "../Shared/Styles/PageLayout.css"
+import { EnvironmentVariables } from "Config/Environments";
 
 export default function PostPage():ReactElement{
     const {postId} = useParams()
@@ -32,7 +33,7 @@ export default function PostPage():ReactElement{
 
     async function getPost(){
         try {
-            const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/API/Post/${postId}`,{
+            const response = await fetch(`${EnvironmentVariables.REACT_APP_SERVER_URL}/API/Post/${postId}`,{
                 credentials: "include"
             })
             const result = await response.json()
@@ -51,7 +52,7 @@ export default function PostPage():ReactElement{
     async function createNewComment(comment:string){
         try {
             if(!comment) return addAlert("Failure","Comment cannot be emptied")
-            const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/API/Comment/create`,{
+            const response = await fetch(`${EnvironmentVariables.REACT_APP_SERVER_URL}/API/Comment/create`,{
                 method: "POST",
                 credentials: "include",
                 headers:{
@@ -75,7 +76,7 @@ export default function PostPage():ReactElement{
     }
     async function getComments(page:number,limit:number){
         try {
-            const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/API/Comment?PostId=${postId}&page=${page}&limit=${limit}`,{
+            const response = await fetch(`${EnvironmentVariables.REACT_APP_SERVER_URL}/API/Comment?PostId=${postId}&page=${page}&limit=${limit}`,{
                 credentials: "include"
             })
             const result = await response.json()

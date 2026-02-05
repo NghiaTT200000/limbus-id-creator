@@ -7,6 +7,7 @@ import PopUpMenu from "Components/PopUpMenu/PopUpMenu";
 import EditIcon from "Assets/Icons/EditIcon";
 import { IEgoInfo } from "Features/CardCreator/Types/IEgoInfo";
 import { IIdInfo } from "Features/CardCreator/Types/IIdInfo";
+import { EnvironmentVariables } from "Config/Environments";
 
 
 
@@ -29,7 +30,7 @@ const SaveLocalMenu=({localSaveName,saveObjInfoValue,loadObjInfoValueCb,isActive
 
     const createNewSave = ()=>{
         if(!isLoading){
-            const maxLenStr = process.env.REACT_APP_LOCAL_SAVE_MAX_LEN
+            const maxLenStr = EnvironmentVariables.REACT_APP_LOCAL_SAVE_MAX_LEN
             const maxLen = Number(maxLenStr ?? 10)
             if(saveData.length<maxLen){
                 openPopup()
@@ -120,7 +121,7 @@ const SaveLocalMenu=({localSaveName,saveObjInfoValue,loadObjInfoValueCb,isActive
                 )}
             </>:<p style={{fontFamily:"'Mikodacs' , 'Rubik', sans-serif"}}></p>}
         </div>
-        <p>Current local save: {saveData.length}/{process.env.REACT_APP_LOCAL_SAVE_MAX_LEN??10}</p>
+        <p>Current local save: {saveData.length}/{EnvironmentVariables.REACT_APP_LOCAL_SAVE_MAX_LEN??10}</p>
         <button className="main-button create-new-save-btn" onClick={createNewSave}>{isLoading?"Loading...":"Create a new save"}</button>
     </>
 }

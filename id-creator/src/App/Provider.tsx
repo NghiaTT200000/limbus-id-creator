@@ -8,11 +8,12 @@ import React from "react";
 import { ReactNode } from "react";
 import { DndProvider } from "react-dnd";
 import { TouchBackend } from "react-dnd-touch-backend";
+import { EnvironmentVariables } from "Config/Environments";
 
 
 export default function Provider({children}:{children: ReactNode}){
      return (
-         <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID!}>
+         <GoogleOAuthProvider clientId={EnvironmentVariables.REACT_APP_GOOGLE_CLIENT_ID!}>
              <DndProvider backend={TouchBackend} options={{ enableMouseEvents: true }}>
                  <AlertContextProvider>
                      <LoginUserContextProvider>

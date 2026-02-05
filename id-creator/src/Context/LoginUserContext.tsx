@@ -1,3 +1,4 @@
+import { EnvironmentVariables } from "Config/Environments";
 import ILoginUser from "Types/ILoginUser";
 import IResponse from "Types/IResponse";
 import React, { createContext, ReactElement, useContext, useEffect, useState } from "react";
@@ -13,7 +14,7 @@ const LoginUserContextProvider: React.FC<{children:ReactElement}>=({children})=>
     }
     
     useEffect(()=>{
-        fetch(`${process.env.REACT_APP_SERVER_URL}/API/OAuth/oauth2/login`, {
+        fetch(`${EnvironmentVariables.REACT_APP_SERVER_URL}/API/OAuth/oauth2/login`, {
             method: "POST",
             credentials: "include",})
             .then((res)=>res.json())

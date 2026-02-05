@@ -8,6 +8,7 @@ import IResponse from "Types/IResponse";
 import ILoginUser from "Types/ILoginUser";
 import GoogleIcon from "Assets/Icons/GoogleIcon";
 import PopUpMenu from "../PopUpMenu/PopUpMenu";
+import { EnvironmentVariables } from "Config/Environments";
 
 const loginMenuContext = createContext(null)
 
@@ -31,7 +32,7 @@ function LoginMenu({children}:{children:ReactNode}){
         () => {
             if (user) {
                 setIsLogginIn(true)
-                fetch(`${process.env.REACT_APP_SERVER_URL}/API/OAuth/oauth2/register`, {
+                fetch(`${EnvironmentVariables.REACT_APP_SERVER_URL}/API/OAuth/oauth2/register`, {
                         method: "POST",
                         credentials: "include",
                         headers:{

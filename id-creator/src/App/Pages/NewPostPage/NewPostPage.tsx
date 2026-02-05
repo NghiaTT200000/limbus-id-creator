@@ -15,6 +15,7 @@ import Editor from 'react-simple-wysiwyg';
 import { useAlertContext } from "Context/AlertContext";
 import uuid from "react-uuid";
 import { useNavigate } from "react-router-dom";
+import { EnvironmentVariables } from "Config/Environments";
 
 
 interface IChoosenSave{
@@ -45,7 +46,7 @@ export default function NewPostPage():ReactElement{
                     const uploadTags = tags.map(t=>(t.tagName))
                     if(choosenSave.some(s=>s.SaveType==="Identity")&&!tags.some(t=>t.tagName==="Identity")) uploadTags.push("Identity")
                     if(choosenSave.some(s=>s.SaveType==="Ego")&&!tags.some(t=>t.tagName==="Ego")) uploadTags.push("Ego")
-                    const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/API/Post/create`,{
+                    const response = await fetch(`${EnvironmentVariables.REACT_APP_SERVER_URL}/API/Post/create`,{
                         method: "POST",
                         credentials: "include",
                         headers:{
@@ -76,7 +77,7 @@ export default function NewPostPage():ReactElement{
 
     async function searchSave(searchName:string="") {
         try {
-            const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/API/${saveMode==="Identity"?"SaveIDInfo":"SaveEGOInfo"}?userId=${loginUser.id}&searchName=${searchName}`,{
+            const response = await fetch(`${EnvironmentVariables.REACT_APP_SERVER_URL}/API/${saveMode==="Identity"?"SaveIDInfo":"SaveEGOInfo"}?userId=${loginUser.id}&searchName=${searchName}`,{
                 credentials: "include"
             })
             const result = await response.json()

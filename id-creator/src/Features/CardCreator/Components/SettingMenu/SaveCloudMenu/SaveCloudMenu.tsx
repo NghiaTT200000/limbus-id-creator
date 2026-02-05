@@ -20,6 +20,7 @@ import "../SettingMenu.css";
 import { IEgoInfo } from "Features/CardCreator/Types/IEgoInfo";
 import { IIdInfo } from "Features/CardCreator/Types/IIdInfo";
 import { useLoginMenuContext } from "Components/LoginMenu/LoginMenu";
+import { EnvironmentVariables } from "Config/Environments";
 
 export default function SaveCloudMenu({setIsActive,saveMode,saveObjInfoValue,loadObjInfoValueCb,setSaveObjInfoValue}:{
     setIsActive:(a:boolean)=>void,
@@ -105,7 +106,7 @@ export default function SaveCloudMenu({setIsActive,saveMode,saveObjInfoValue,loa
             saveObjInfoValue.id = uuid()
             const form = await createForm(saveObjInfoValue)
             setCreateSaveBtnLoadState({loadingMessage:"Creating new save",isLoading:true})
-            const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/API/${saveMode==="ID"?"SaveIDInfo":"SaveEGOInfo"}/create`,{
+            const response = await fetch(`${EnvironmentVariables.REACT_APP_SERVER_URL}/API/${saveMode==="ID"?"SaveIDInfo":"SaveEGOInfo"}/create`,{
                 method: "POST",
                 credentials: "include",
                 body:form
@@ -127,7 +128,7 @@ export default function SaveCloudMenu({setIsActive,saveMode,saveObjInfoValue,loa
     async function deleteSave(saveId:string){
         try {
             setIsLoadingSaveData(true)
-            const req = await fetch(`${process.env.REACT_APP_SERVER_URL}/API/${saveMode==="ID"?"SaveIDInfo":"SaveEGOInfo"}/delete`,{
+            const req = await fetch(`${EnvironmentVariables.REACT_APP_SERVER_URL}/API/${saveMode==="ID"?"SaveIDInfo":"SaveEGOInfo"}/delete`,{
                 method: "POST",
                 credentials: "include",
                 headers:{
@@ -151,7 +152,7 @@ export default function SaveCloudMenu({setIsActive,saveMode,saveObjInfoValue,loa
     async function loadSaveList(){
         try {
             setIsLoadingSaveData(true)
-            const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/API/${saveMode==="ID"?"SaveIDInfo":"SaveEGOInfo"}?userId=${loginUser.id}&searchName=${searchSaveName}`,{
+            const response = await fetch(`${EnvironmentVariables.REACT_APP_SERVER_URL}/API/${saveMode==="ID"?"SaveIDInfo":"SaveEGOInfo"}?userId=${loginUser.id}&searchName=${searchSaveName}`,{
                 credentials: "include"
             })
             const result = await response.json()
@@ -167,7 +168,7 @@ export default function SaveCloudMenu({setIsActive,saveMode,saveObjInfoValue,loa
     async function loadSave(SaveId:string){
         try{
             setIsLoadingSaveData(true)
-            const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/API/${saveMode==="ID"?"SaveIDInfo":"SaveEGOInfo"}/${SaveId}?includeSkill=true`,{
+            const response = await fetch(`${EnvironmentVariables.REACT_APP_SERVER_URL}/API/${saveMode==="ID"?"SaveIDInfo":"SaveEGOInfo"}/${SaveId}?includeSkill=true`,{
                 credentials: "include"
             })
             const result = await response.json()
@@ -190,7 +191,7 @@ export default function SaveCloudMenu({setIsActive,saveMode,saveObjInfoValue,loa
             setCreateSaveBtnLoadState({loadingMessage:"Waiting for save image to load...",isLoading:true})
             saveObjInfoValue.id = SaveId
             const form = await createForm(saveObjInfoValue)
-            const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/API/${saveMode==="ID"?"SaveIDInfo":"SaveEGOInfo"}/update`,{
+            const response = await fetch(`${EnvironmentVariables.REACT_APP_SERVER_URL}/API/${saveMode==="ID"?"SaveIDInfo":"SaveEGOInfo"}/update`,{
                 credentials: "include",
                 method: "POST",
                 body:form

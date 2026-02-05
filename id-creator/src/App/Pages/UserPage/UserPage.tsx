@@ -10,6 +10,7 @@ import { UserProfile } from "Features/User/Components/UserProfile/UserProfile";
 import UserProfileLoading from "Components/UserProfileLoading/UserProfileLoading";
 import "../Shared/Styles/PageLayout.css"
 import "./User.css"
+import { EnvironmentVariables } from "Config/Environments";
 
 
 
@@ -29,7 +30,7 @@ export default function UserPage():ReactElement{
     async function getPosts(page:number){
         setIsLoadingPosts(true)
         try {
-            const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/API/Post?page=${page}&UserId=${userId}`,{
+            const response = await fetch(`${EnvironmentVariables.REACT_APP_SERVER_URL}/API/Post?page=${page}&UserId=${userId}`,{
                 credentials: "include"
             })
             const result = await response.json()
@@ -57,7 +58,7 @@ export default function UserPage():ReactElement{
     async function logout(){
         setIsLoggingOut(true)
         try {
-            const res=await fetch(`${process.env.REACT_APP_SERVER_URL}/API/OAuth/oauth2/logout`,{
+            const res=await fetch(`${EnvironmentVariables.REACT_APP_SERVER_URL}/API/OAuth/oauth2/logout`,{
                 method:"POST",
                 credentials: "include",
             })
@@ -81,7 +82,7 @@ export default function UserPage():ReactElement{
 
 
     useEffect(()=>{
-        fetch(`${process.env.REACT_APP_SERVER_URL}/API/User/${userId}`,{
+        fetch(`${EnvironmentVariables.REACT_APP_SERVER_URL}/API/User/${userId}`,{
             credentials: "include",
         })
         .then(res=>res.json())
