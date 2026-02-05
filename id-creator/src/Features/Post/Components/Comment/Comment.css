@@ -1,0 +1,32 @@
+.post-comment-container{
+    border: 1px solid var(--brown-pale);
+    background-color: var(--post-background);
+    padding: 12px 8px;
+    width: 100%;
+    min-height: 200px;
+}
+
+.post-comment-content{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.post-comment-header{
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.rsw-editor{
+    width: 100%;
+    border-color: var(--brown-pale);
+}
+
+
+.post-author-icon-small{
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+}

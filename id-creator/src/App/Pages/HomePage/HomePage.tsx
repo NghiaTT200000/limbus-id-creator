@@ -1,6 +1,6 @@
 import React from "react";
 import "./HomePage.css"
-import "../PageLayout.css";
+import "../Shared/Styles/PageLayout.css";
 import { Link } from "react-router-dom";
 
 export default function HomePage(){

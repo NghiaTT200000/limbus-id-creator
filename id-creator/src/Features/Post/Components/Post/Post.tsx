@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { ReactElement } from "react";
 import { IPost } from "Types/IPost/IPost";
-import UserProfileLoading from "App/Pages/UserPage/User/UserProfileLoading";
 import { ITag, TagList } from "Utils/TagList";
 import { Link } from "react-router-dom";
 import ViewIcon from "Assets/Icons/ViewIcon";
 import CommentIcon from "Assets/Icons/CommentIcon";
-import "./Post.css";
 import ArrowDownIcon from "Assets/Icons/ArrowDownIcon";
 import ArrowUpIcon from "Assets/Icons/ArrowUpIcon";
 import CloseIcon from "Assets/Icons/CloseIcon";
+import UserProfileLoading from "Components/UserProfileLoading/UserProfileLoading";
 import {MapInteractionCSS} from "react-map-interaction"
+import "./Post.css";
+import "../Shared/Style.css"
 
 function CardTag({card}:{card:ITag}):ReactElement{
     return <div className="card-tag center-element">

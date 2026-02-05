@@ -1,7 +1,7 @@
 import React, { ReactElement, useEffect, useRef, useState } from 'react';
 import 'Styles/reset.css'
 import 'Styles/style.css'
-import '../EditorPage.css'
+import '../Shared/Styles/EditorPage.css'
 import { StatusEffectProvider } from 'Features/CardCreator/Stores/StatusEffectContext';
 import { useRefDownloadContext } from 'Context/ImgUrlContext';
 import { EgoInfoProvider, useEgoInfoContext } from 'Features/CardCreator/Stores/EgoInfoContext';

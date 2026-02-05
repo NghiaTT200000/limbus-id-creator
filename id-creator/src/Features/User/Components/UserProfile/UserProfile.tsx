@@ -1,16 +1,14 @@
 import React, { useCallback, useState } from "react";
 import { ReactElement } from "react";
-import "../User.css"
 import EditIcon from "Assets/Icons/EditIcon";
 import CheckIcon from "Assets/Icons/CheckIcon";
 import { useParams } from "react-router-dom";
 import { IUserProfile } from "Types/API/OAuth/IUserProfile";
 import IResponse from "Types/IResponse";
 import { useAlertContext } from "Context/AlertContext";
+import "./UserProfile.css";
 
-
-
-export default function UserProfile({userProfile,setUserProfile}:{userProfile:IUserProfile,setUserProfile:React.Dispatch<React.SetStateAction<IUserProfile>>}):ReactElement{
+export function UserProfile({userProfile,setUserProfile}:{userProfile:IUserProfile,setUserProfile:React.Dispatch<React.SetStateAction<IUserProfile>>}):ReactElement{
     const {userName,userIcon} = userProfile
     const [isChangeName,setIsChangeName] = useState(false)
     const [isChangingName,setIsChangingName] = useState(false)

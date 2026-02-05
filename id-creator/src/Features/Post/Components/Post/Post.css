@@ -10,10 +10,36 @@
     position: relative;
 }
 
+.post-container{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.post-title{
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.post-author-icon{
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+}
+
 .post-img{
     max-width: 100%;
     object-fit: contain;
     cursor: pointer;
+}
+
+.post-img-loader{
+    width: 100%;
+    height: 500px;
+    background-color: var(--loading-background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .post-carousel-arrow{

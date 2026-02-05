@@ -1,8 +1,5 @@
-import React from "react";
-import { ReactElement } from "react";
-import "../User.css"
-
-
+import React, { ReactElement } from "react";
+import "./UserProfileLoading.css"
 
 export default function UserProfileLoading():ReactElement{
     return <div className="user-personal-container center-element">

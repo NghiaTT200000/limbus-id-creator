@@ -9,7 +9,7 @@ import { ITag } from "Utils/TagList";
 import { ISaveFile } from "Types/ISaveFile";
 import { IIdInfo } from "Features/CardCreator/Types/IIdInfo";
 import { IEgoInfo } from "Features/CardCreator/Types/IEgoInfo";
-import SearchSaveInput from "./SearchSaveInput/SearchSaveInput";
+import SearchSaveInput from "../../../Features/CardCreator/Components/SearchSaveInput/SearchSaveInput";
 import CloseIcon from "Assets/Icons/CloseIcon";
 import Editor from 'react-simple-wysiwyg';
 import { useAlertContext } from "Context/AlertContext";
