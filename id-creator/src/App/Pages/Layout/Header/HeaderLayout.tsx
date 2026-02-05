@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ReactElement } from "react";
 import {Link} from "react-router-dom";
 import "./HeaderLayout.css"
-import {  useLoginUserContext } from "Context/LoginUserContext";
+import {  useLoginUserContext } from "Stores/LoginUserContext";
 import KofiIcon from "Assets/Icons/KofiIcon";
 import SideBar from "Components/SideBar/SideBar";
 import { useLoginMenuContext } from "Components/LoginMenu/LoginMenu";

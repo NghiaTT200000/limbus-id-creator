@@ -1,4 +1,4 @@
-import { useAlertContext } from "Context/AlertContext";
+import { useAlertContext } from "Stores/AlertContext";
 import React, { useEffect, useState } from "react";
 import { ReactElement } from "react";
 import "./AlertPopUp.css"

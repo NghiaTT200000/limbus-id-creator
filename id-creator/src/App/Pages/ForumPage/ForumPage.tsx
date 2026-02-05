@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { ReactElement } from "react";
 import { ITag } from "Utils/TagList";
 import "./ForumPage.css"
-import { useLoginUserContext } from "Context/LoginUserContext";
+import { useLoginUserContext } from "Stores/LoginUserContext";
 import { Link } from "react-router-dom";
 import DropDown from "Components/DropDown/DropDown";
-import { useAlertContext } from "Context/AlertContext";
+import { useAlertContext } from "Stores/AlertContext";
 import { IPostDisplayCard } from "Types/IPostDisplayCard/IPostDisplayCard";
 import { useLoginMenuContext } from "Components/LoginMenu/LoginMenu";
 import PaginatedPost from "Components/PaginatedPost/PaginatedPost";

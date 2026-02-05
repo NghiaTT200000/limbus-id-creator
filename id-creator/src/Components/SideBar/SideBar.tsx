@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./SideBar.css"
-import { useLoginUserContext } from "Context/LoginUserContext";
+import { useLoginUserContext } from "Stores/LoginUserContext";
 import KofiIcon from "Assets/Icons/KofiIcon";
 import { useLoginMenuContext } from "Components/LoginMenu/LoginMenu";
 

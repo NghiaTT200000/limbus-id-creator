@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { ReactElement } from "react";
 import Post from "Features/Post/Components/Post/Post";
-import { useAlertContext } from "Context/AlertContext";
+import { useAlertContext } from "Stores/AlertContext";
 import { useParams } from "react-router-dom";
 import { IPost } from "Types/IPost/IPost";
-import { useLoginUserContext } from "Context/LoginUserContext";
+import { useLoginUserContext } from "Stores/LoginUserContext";
 import { useLoginMenuContext } from "Components/LoginMenu/LoginMenu";
 import { IComment } from "Types/IPost/IComment";
 import { CommentContainer, PostCommentInput } from "Features/Post/Components/Comment/Comment";

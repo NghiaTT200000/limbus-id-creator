@@ -6,7 +6,7 @@ import { DefenseSkill, IDefenseSkill } from "Features/CardCreator/Types/Skills/D
 import { IMentalEffect, MentalEffect } from "Features/CardCreator/Types/Skills/MentalEffect/IMentalEffect";
 import { IPassiveSkill, PassiveSkill } from "Features/CardCreator/Types/Skills/PassiveSkill/IPassiveSkill";
 import { useStatusEffectContext } from "Features/CardCreator/Stores/StatusEffectContext";
-import { useAlertContext } from "Context/AlertContext";
+import { useAlertContext } from "Stores/AlertContext";
 import { useEgoInfoContext } from "Features/CardCreator/Stores/EgoInfoContext";
 import InputCustomEffectPage from "../../InputCustomEffectPage/InputCustomEffectPage";
 import InputDefenseSkillPage from "../../InputDefenseSkillPage/InputDefenseSkillPage";

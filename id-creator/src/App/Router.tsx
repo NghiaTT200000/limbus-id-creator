@@ -1,4 +1,5 @@
-import HeaderLayout from "App/Pages/Layout/HeaderLayout";
+import HeaderLayout from "App/Pages/Layout/Header/HeaderLayout";
+import FooterLayout from "App/Pages/Layout/Footer/FooterLayout";
 import EgoCardPage from "./Pages/Creators/EgoCardPage/EgoCardPage";
 import ForumPage from "./Pages/ForumPage/ForumPage";
 import HomePage from "./Pages/HomePage/HomePage";
@@ -10,15 +11,33 @@ import UserPage from "./Pages/UserPage/UserPage";
 import React from "react";
 import { createBrowserRouter, Outlet } from "react-router-dom";
 
-export const router = createBrowserRouter([
-    {
-        path:'/',
-        element:<div className="site-layout">
+function MainLayout() {
+    return (
+        <div className="site-layout">
             <HeaderLayout/>
             <div className="site-content">
                 <Outlet/>
             </div>
-        </div>,
+            <FooterLayout/>
+        </div>
+    );
+}
+
+function CreatorLayout() {
+    return (
+        <div className="site-layout">
+            <HeaderLayout/>
+            <div className="site-content">
+                <Outlet/>
+            </div>
+        </div>
+    );
+}
+
+export const router = createBrowserRouter([
+    {
+        path:'/',
+        element:<MainLayout/>,
         children:[
             {
                 path:"",
@@ -28,20 +47,6 @@ export const router = createBrowserRouter([
                 path:"user/:userId",
                 element:<UserPage/>
             },
-            {
-                path: "creator",
-                children: [
-                    {
-                        path:"identity",
-                        element:<IdCardPage/>
-                    },
-                    {
-                        path:'ego',
-                        element:<EgoCardPage/>
-                    }
-                ],
-            },
-            
             {
                 path:'forum',
                 element:<ForumPage/>
@@ -57,6 +62,20 @@ export const router = createBrowserRouter([
             {
                 path: "*",
                 element: <NotFoundPage/>
+            }
+        ],
+    },
+    {
+        path:'/creator',
+        element:<CreatorLayout/>,
+        children:[
+            {
+                path:"identity",
+                element:<IdCardPage/>
+            },
+            {
+                path:'ego',
+                element:<EgoCardPage/>
             }
         ],
     }

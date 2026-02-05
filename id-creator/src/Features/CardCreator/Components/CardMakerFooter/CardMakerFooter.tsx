@@ -1,5 +1,5 @@
-import { useAlertContext } from "Context/AlertContext";
-import { useRefDownloadContext } from "Context/ImgUrlContext";
+import { useAlertContext } from "Stores/AlertContext";
+import { useRefDownloadContext } from "Stores/ImgUrlContext";
 import React, { useState } from "react";
 import DownloadImg from "Utils/DownloadImg";
 import "./CardMakerFooter.css"

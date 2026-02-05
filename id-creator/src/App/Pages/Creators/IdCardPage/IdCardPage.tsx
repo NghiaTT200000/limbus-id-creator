@@ -4,7 +4,7 @@ import 'Styles/style.css'
 import '../Shared/Styles/EditorPage.css'
 import { StatusEffectProvider } from 'Features/CardCreator/Stores/StatusEffectContext';
 import { IdInfoProvider, useIdInfoContext } from 'Features/CardCreator/Stores/IdInfoContext';
-import {  useRefDownloadContext } from 'Context/ImgUrlContext';
+import {  useRefDownloadContext } from 'Stores/ImgUrlContext';
 import {  useSearchParams } from 'react-router-dom';
 import { indexDB } from 'Features/CardCreator/Utils/IndexDB';
 import DragAndDroppableSkillPreviewLayer from 'Features/CardCreator/Components/Card/components/DragAndDroppableSkill/DragAndDroppableSkillPreviewLayer';

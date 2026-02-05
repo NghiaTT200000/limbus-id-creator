@@ -1,4 +1,4 @@
-import { useLoginUserContext } from "Context/LoginUserContext";
+import { useLoginUserContext } from "Stores/LoginUserContext";
 import { useLoginMenuContext } from "Components/LoginMenu/LoginMenu";
 import React, { useEffect, useState } from "react";
 import { ReactElement } from "react";
@@ -12,7 +12,7 @@ import { IEgoInfo } from "Features/CardCreator/Types/IEgoInfo";
 import SearchSaveInput from "../../../Features/CardCreator/Components/SearchSaveInput/SearchSaveInput";
 import CloseIcon from "Assets/Icons/CloseIcon";
 import Editor from 'react-simple-wysiwyg';
-import { useAlertContext } from "Context/AlertContext";
+import { useAlertContext } from "Stores/AlertContext";
 import uuid from "react-uuid";
 import { useNavigate } from "react-router-dom";
 import { EnvironmentVariables } from "Config/Environments";

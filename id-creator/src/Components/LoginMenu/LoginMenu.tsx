@@ -2,8 +2,8 @@ import { createContext, ReactNode, useContext, useEffect, useState } from "react
 import React from "react";
 import "./LoginMenu.css"
 import { TokenResponse, useGoogleLogin } from "@react-oauth/google";
-import { useAlertContext } from "Context/AlertContext";
-import { useLoginUserContext } from "Context/LoginUserContext";
+import { useAlertContext } from "Stores/AlertContext";
+import { useLoginUserContext } from "Stores/LoginUserContext";
 import IResponse from "Types/IResponse";
 import ILoginUser from "Types/ILoginUser";
 import GoogleIcon from "Assets/Icons/GoogleIcon";

@@ -5,7 +5,7 @@ import CheckIcon from "Assets/Icons/CheckIcon";
 import { useParams } from "react-router-dom";
 import { IUserProfile } from "Types/API/OAuth/IUserProfile";
 import IResponse from "Types/IResponse";
-import { useAlertContext } from "Context/AlertContext";
+import { useAlertContext } from "Stores/AlertContext";
 import "./UserProfile.css";
 import { EnvironmentVariables } from "Config/Environments";
 

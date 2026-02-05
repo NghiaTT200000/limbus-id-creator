@@ -5,11 +5,13 @@
   "homepage": "./",
   "dependencies": {
     "@react-oauth/google": "^0.12.1",
+    "@reduxjs/toolkit": "^2.11.2",
     "@types/react": "^18.2.57",
     "@types/react-dom": "^18.2.19",
     "browser-image-compression": "^2.0.2",
     "dexie": "^4.2.0",
     "dexie-react-hooks": "^4.2.0",
+    "formik": "^2.4.9",
     "html-to-image": "^1.11.11",
     "id-creator": "file:",
     "react": "^18.2.0",
@@ -20,6 +22,7 @@
     "react-dom": "^18.2.0",
     "react-map-interaction": "^2.1.0",
     "react-paginate": "^8.2.0",
+    "react-redux": "^9.2.0",
     "react-router-dom": "^6.23.0",
     "react-scripts": "^5.0.1",
     "react-simple-wysiwyg": "^3.1.1",
@@ -27,7 +30,8 @@
     "react-zoom-pan-pinch": "^3.6.1",
     "ts-loader": "^9.5.1",
     "web-vitals": "^2.1.4",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "yup": "^1.7.1"
   },
   "scripts": {
     "start": "react-scripts start",

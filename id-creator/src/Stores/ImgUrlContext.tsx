@@ -2,7 +2,7 @@ import React, { createContext, ReactElement, useCallback, useContext, useState }
 import TurnRefToImg from "Utils/TurnRefToImg";
 
 
-const refDownload = createContext(null)
+const refDownload = createContext(null);
 
 const RefDownloadProvider: React.FC<{children:ReactElement}>=({children})=>{
     const [imgUrl,setImgUrl] = useState("")

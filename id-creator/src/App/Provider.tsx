@@ -1,8 +1,8 @@
 import AlertPopUp from "Components/AlertPopUp/AlertPopUp";
 import { LoginMenu } from "Components/LoginMenu/LoginMenu";
-import { AlertContextProvider } from "Context/AlertContext";
-import { RefDownloadProvider } from "Context/ImgUrlContext";
-import { LoginUserContextProvider } from "Context/LoginUserContext";
+import { AlertContextProvider } from "Stores/AlertContext";
+import { RefDownloadProvider } from "Stores/ImgUrlContext";
+import { LoginUserContextProvider } from "Stores/LoginUserContext";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import React from "react";
 import { ReactNode } from "react";

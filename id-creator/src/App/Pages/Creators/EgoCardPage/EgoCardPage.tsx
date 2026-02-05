@@ -3,7 +3,7 @@ import 'Styles/reset.css'
 import 'Styles/style.css'
 import '../Shared/Styles/EditorPage.css'
 import { StatusEffectProvider } from 'Features/CardCreator/Stores/StatusEffectContext';
-import { useRefDownloadContext } from 'Context/ImgUrlContext';
+import { useRefDownloadContext } from 'Stores/ImgUrlContext';
 import { EgoInfoProvider, useEgoInfoContext } from 'Features/CardCreator/Stores/EgoInfoContext';
 import { useSearchParams } from 'react-router-dom';
 import { indexDB } from 'Features/CardCreator/Utils/IndexDB';
@@ -13,6 +13,7 @@ import InputTabEgoInfoContainer from 'Features/CardCreator/Components/InputTab/I
 import ResetMenu from 'Features/CardCreator/Components/ResetMenu/ResetMenu';
 import { SettingMenu, useSettingMenuContext } from 'Features/CardCreator/Components/SettingMenu/SettingMenu';
 import { EgoInfo } from 'Features/CardCreator/Types/IEgoInfo';
+import CardMakerFooter from 'Features/CardCreator/Components/CardMakerFooter/CardMakerFooter';
 
 
 
@@ -82,5 +83,6 @@ function EgoCardContent():ReactElement{
                 <EgoCard ref={domRef} changeActiveTab={setActiveTab}/>
             </div>
         </div>
+        <CardMakerFooter/>
     </StatusEffectProvider>
 }
