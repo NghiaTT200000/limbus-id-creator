@@ -1,4 +1,4 @@
-import HeaderLayout from "Components/Layout/HeaderLayout";
+import HeaderLayout from "App/Pages/Layout/HeaderLayout";
 import EgoCardPage from "./Pages/EgoCardPage/EgoCardPage";
 import ForumPage from "./Pages/ForumPage/ForumPage";
 import HomePage from "./Pages/HomePage/HomePage";

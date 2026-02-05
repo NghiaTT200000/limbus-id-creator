@@ -1,4 +1,4 @@
-import AlertPopUp from "Components/Layout/AlertPopUp/AlertPopUp";
+import AlertPopUp from "Components/AlertPopUp/AlertPopUp";
 import { LoginMenu } from "Components/LoginMenu/LoginMenu";
 import { AlertContextProvider } from "Context/AlertContext";
 import { RefDownloadProvider } from "Context/ImgUrlContext";

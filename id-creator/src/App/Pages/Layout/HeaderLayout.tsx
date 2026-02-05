@@ -4,8 +4,8 @@ import {Link} from "react-router-dom";
 import "./HeaderLayout.css"
 import {  useLoginUserContext } from "Context/LoginUserContext";
 import KofiIcon from "Assets/Icons/KofiIcon";
-import SideBar from "./SideBar/SideBar";
-import { useLoginMenuContext } from "../LoginMenu/LoginMenu";
+import SideBar from "Components/SideBar/SideBar";
+import { useLoginMenuContext } from "Components/LoginMenu/LoginMenu";
 
 export default function HeaderLayout():ReactElement{
     const [isSideBarActive,setActiveSideBar] = useState(false)
