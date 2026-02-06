@@ -17,6 +17,12 @@
 [build.processing.images]
   compress = true
 
+# Proxy API requests to backend
+[[redirects]]
+  from = "/API/*"
+  to = "https://relative-alexandrina-limbus-2a826726.koyeb.app/API/:splat"
+  status = 200
+
 # Redirect netlify subdomain to custom domain
 [[redirects]]
   from = "https://limbus-company-id-creator.netlify.app/*"
