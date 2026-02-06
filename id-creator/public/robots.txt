@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://limbus-company-id-creator.netlify.app/sitemap.xml

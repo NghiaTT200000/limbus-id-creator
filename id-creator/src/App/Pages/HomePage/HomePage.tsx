@@ -1,9 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./HomePage.css"
 import "../Shared/Styles/PageLayout.css";
+import "Components/PaginatedPost/PaginatedPost.css";
 import { Link } from "react-router-dom";
+import { IPostDisplayCard } from "Types/IPostDisplayCard/IPostDisplayCard";
+import { PostDisplayCard, PostDisplayCardLoading } from "Components/PaginatedPost/PaginatedPost";
 
 export default function HomePage(){
+    const [latestPosts, setLatestPosts] = useState<IPostDisplayCard[]>([])
+    const [isLoading, setIsLoading] = useState(true)
+
+    useEffect(()=>{
+        async function fetchLatestPosts(){
+            try {
+                const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/API/Post?Title=&Tag=&SortedBy=Latest&page=0&limit=4`,{
+                    credentials: "include"
+                })
+                const result = await response.json()
+                if(response.ok){
+                    setLatestPosts(result.response.list.map((p)=>({
+                        ...p,
+                        cardImg: p.imagesAttach[0]
+                    })))
+                }
+            } catch (error) {
+                console.log(error)
+            }
+            setIsLoading(false)
+        }
+        fetchLatestPosts()
+    },[])
+
     return <div className="page-container home-page-container">
         <div className="page-content home-page-content">
             <img src="/Images/SiteLogo.webp" alt="limbus-id-maker-logog" className="hero-site-logo"></img>
@@ -18,12 +45,33 @@ export default function HomePage(){
                     <button className="main-button nav-button">
                         Create Ego
                     </button>
-                </Link>            
+                </Link>
                 <Link to={"/forum"}>
                     <button className="main-button nav-button">
                         Forum
                     </button>
                 </Link>
+            </div>
+        </div>
+        <div className="page-content latest-posts-section">
+            <div className="latest-posts-header">
+                <h2 className="page-title">Latest Posts</h2>
+                <Link to="/forum" className="latest-posts-view-all">View all</Link>
+            </div>
+            <div className="post-display-list">
+                {isLoading?
+                    <>
+                        <PostDisplayCardLoading/>
+                        <PostDisplayCardLoading/>
+                        <PostDisplayCardLoading/>
+                        <PostDisplayCardLoading/>
+                    </>
+                    :
+                    latestPosts.length>0?
+                        latestPosts.map((post)=><PostDisplayCard key={post.id} {...post}/>)
+                        :
+                        <p className="latest-posts-empty">No posts yet. Be the first to share your creation!</p>
+                }
             </div>
         </div>
     </div>

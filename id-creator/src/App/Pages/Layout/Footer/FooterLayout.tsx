@@ -8,6 +8,7 @@ export default function FooterLayout(): ReactElement {
         <footer className="site-footer">
             <div className="site-footer-content">
                 <nav className="footer-links">
+                    <Link to="/" className="footer-link">Home</Link>
                     <Link to="/about" className="footer-link">About</Link>
                     <Link to="/blog" className="footer-link">Blog</Link>
                     <Link to="/contact" className="footer-link">Contact</Link>

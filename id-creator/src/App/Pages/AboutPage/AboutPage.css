@@ -1,0 +1,9 @@
+.about-page-content {
+    gap: 8px;
+}
+
+.about-intro {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--white-neutral-weak);
+}

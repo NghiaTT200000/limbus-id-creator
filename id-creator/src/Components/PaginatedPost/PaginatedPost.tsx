@@ -7,7 +7,7 @@ import CommentIcon from "Assets/Icons/CommentIcon";
 import ViewIcon from "Assets/Icons/ViewIcon";
 import { TagList } from "Utils/TagList";
 
-function PostDisplayCard({id,title,cardImg,userIcon,userName,userId,created,tags,viewCount,commentCount}:IPostDisplayCard){
+export function PostDisplayCard({id,title,cardImg,userIcon,userName,userId,created,tags,viewCount,commentCount}:IPostDisplayCard){
     return <div className="post-display-card">
         <Link to={"/post/"+id}>
             <div className="post-display-card-img-container">
@@ -50,7 +50,7 @@ function PostDisplayCard({id,title,cardImg,userIcon,userName,userId,created,tags
     </div>
 }
 
-function PostDisplayCardLoading():ReactElement{
+export function PostDisplayCardLoading():ReactElement{
     return <div className="post-display-card-loading">
         <div className="loader"></div>
     </div>
