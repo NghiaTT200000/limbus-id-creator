@@ -2,7 +2,7 @@
   "name": "id-creator",
   "version": "0.1.0",
   "private": true,
-  "homepage": "./",
+  "homepage": "/",
   "dependencies": {
     "@react-oauth/google": "^0.12.1",
     "@reduxjs/toolkit": "^2.11.2",

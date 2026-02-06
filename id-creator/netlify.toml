@@ -17,6 +17,12 @@
 [build.processing.images]
   compress = true
 
+# Serve static assets correctly from nested routes
+[[redirects]]
+  from = "/creator/static/*"
+  to = "/static/:splat"
+  status = 200
+
 # Backward compatibility redirect for old image paths
 [[redirects]]
   from = "/creator/Images/*"
