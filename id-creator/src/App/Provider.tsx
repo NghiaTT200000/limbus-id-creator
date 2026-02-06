@@ -9,6 +9,7 @@ import { ReactNode } from "react";
 import { DndProvider } from "react-dnd";
 import { TouchBackend } from "react-dnd-touch-backend";
 import { EnvironmentVariables } from "Config/Environments";
+import { EditorProvider } from "react-simple-wysiwyg";
 
 
 export default function Provider({children}:{children: ReactNode}){
@@ -17,12 +18,14 @@ export default function Provider({children}:{children: ReactNode}){
              <DndProvider backend={TouchBackend} options={{ enableMouseEvents: true }}>
                  <AlertContextProvider>
                      <LoginUserContextProvider>
+                        <EditorProvider>
                          <RefDownloadProvider>
                              <LoginMenu>
                                  {children}
                                  <AlertPopUp />
                              </LoginMenu>
                          </RefDownloadProvider>
+                        </EditorProvider>
                      </LoginUserContextProvider>
                  </AlertContextProvider>
              </DndProvider>

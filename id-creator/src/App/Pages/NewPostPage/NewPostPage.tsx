@@ -152,7 +152,7 @@ export default function NewPostPage():ReactElement{
                 <label htmlFor="description">Description:</label>
                 <Editor className="input post-description-input" name="description" id="description" value={description} onChange={(e)=>setDescription(e.target.value)}/>
             </div>
-            {isPosting && <button className={`main-button ${isPosting??"active"}`} onClick={createPost}>{isPosting?"Posting...":"Post"}</button>}
+            <button className={`main-button ${isPosting??"active"}`} onClick={createPost}>{isPosting?"Posting...":"Post"}</button>
         </div>:
             <div className="page-content">
                 Please login to post
