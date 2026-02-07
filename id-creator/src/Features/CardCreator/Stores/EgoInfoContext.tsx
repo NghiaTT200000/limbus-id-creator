@@ -37,7 +37,7 @@ const EgoInfoProvider: React.FC<{children:ReactElement}>=({children})=>{
             if(oldSinnerIconPath) newEgoInfo.sinnerIcon = "/" + EgoInfoValue.sinnerIcon;
             changeEgoInfoValue(newEgoInfo);
         }
-    },[EgoInfoValue])
+    },[EgoInfoValue?.sinnerIcon])
 
     return <egoInfo.Provider value={{EgoInfoValue,setEgoInfoValue,reset}}>
             {children}

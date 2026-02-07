@@ -39,7 +39,7 @@ const IdInfoProvider: React.FC<{children:ReactElement}>=({children})=>{
             if(oldSinnerRarityPath) newIdInfo.rarity = "/" + idInfo.rarity;
             changeIdInfoValue(newIdInfo);
         }
-    },[idInfo])
+    },[idInfo?.rarity, idInfo?.sinnerIcon])
 
     return <idInfoContext.Provider value={{idInfoValue:idInfo,setIdInfoValue,reset}}>
         {children}
