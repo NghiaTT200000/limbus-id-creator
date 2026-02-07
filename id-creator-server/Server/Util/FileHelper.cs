@@ -49,7 +49,7 @@ namespace Server.Util
             using (HttpClient client = new HttpClient())
             {
                 // Send a HEAD request to get the headers
-                Console.WriteLine("" + url);
+                Console.WriteLine("Url: "+url);
                 HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Head, url);
                 HttpResponseMessage response = await client.SendAsync(request);
 
