@@ -33,10 +33,14 @@ const IdInfoProvider: React.FC<{children:ReactElement}>=({children})=>{
         // Backward compatibility
         const oldSinnerIconPath = idInfo.sinnerIcon.startsWith("Images");
         const oldSinnerRarityPath = idInfo.rarity.startsWith("Images");
-        if(oldSinnerIconPath || oldSinnerRarityPath){
+        const sinnerIconPng = (idInfo.sinnerIcon.startsWith("Images") || idInfo.sinnerIcon.startsWith("/Images")) && idInfo.sinnerIcon.endsWith(".png");
+        const rarityPng = (idInfo.rarity.startsWith("Images") || idInfo.rarity.startsWith("/Images")) && idInfo.rarity.endsWith(".png");
+        if(oldSinnerIconPath || oldSinnerRarityPath || sinnerIconPng || rarityPng){
             const newIdInfo = {...idInfo};
             if(oldSinnerIconPath) newIdInfo.sinnerIcon = "/" + idInfo.sinnerIcon
             if(oldSinnerRarityPath) newIdInfo.rarity = "/" + idInfo.rarity;
+            if(sinnerIconPng) newIdInfo.sinnerIcon = newIdInfo.sinnerIcon.replace(/\.png$/, ".webp");
+            if(rarityPng) newIdInfo.rarity = newIdInfo.rarity.replace(/\.png$/, ".webp");
             changeIdInfoValue(newIdInfo);
         }
     },[idInfo?.rarity, idInfo?.sinnerIcon])

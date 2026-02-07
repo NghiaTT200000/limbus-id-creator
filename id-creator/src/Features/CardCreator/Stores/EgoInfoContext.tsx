@@ -32,9 +32,11 @@ const EgoInfoProvider: React.FC<{children:ReactElement}>=({children})=>{
     useEffect(()=>{
         // Backward compatibility
         const oldSinnerIconPath = EgoInfoValue.sinnerIcon.startsWith("Images");
-        if(oldSinnerIconPath){
+        const sinnerIconPng = (EgoInfoValue.sinnerIcon.startsWith("Images") || EgoInfoValue.sinnerIcon.startsWith("/Images")) && EgoInfoValue.sinnerIcon.endsWith(".png");
+        if(oldSinnerIconPath || sinnerIconPng){
             const newEgoInfo = {...EgoInfoValue};
             if(oldSinnerIconPath) newEgoInfo.sinnerIcon = "/" + EgoInfoValue.sinnerIcon;
+            if(sinnerIconPng) newEgoInfo.sinnerIcon = newEgoInfo.sinnerIcon.replace(/\.png$/, ".webp");
             changeEgoInfoValue(newEgoInfo);
         }
     },[EgoInfoValue?.sinnerIcon])
