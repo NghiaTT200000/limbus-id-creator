@@ -111,7 +111,7 @@ export default function SaveCloudMenu({setIsActive,saveMode,saveObjInfoValue,loa
                 form = await createForm(saveObjInfoValue);
             } catch (error) {
                 console.log(error);
-                addAlert("Failure","ERROR: Missing asset detected. Please look for and update the missing asset.");
+                addAlert("Failure",error);
                 return;                
             }
             setCreateSaveBtnLoadState({loadingMessage:"Creating new save",isLoading:true})
