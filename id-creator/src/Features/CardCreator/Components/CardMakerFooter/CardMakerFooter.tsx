@@ -24,7 +24,7 @@ export default function CardMakerFooter(){
                 })
                 .catch((err)=>{
                     console.log(err)
-                    addAlert("Failure","Error: Cannot download")
+                    addAlert("Failure","ERROR: Missing asset detected. Please look for and update the missing asset.")
                 })
                 .finally(()=>setIsLoading(false))
         }

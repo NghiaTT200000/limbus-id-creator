@@ -5,8 +5,8 @@ import TurnRefToImg from "Utils/TurnRefToImg";
 const refDownload = createContext(null);
 
 const RefDownloadProvider: React.FC<{children:ReactElement}>=({children})=>{
-    const [imgUrl,setImgUrl] = useState("")
-    const [domRef,setDomRef] = useState<React.MutableRefObject<any>>()
+    const [imgUrl,setImgUrl] = useState("");
+    const [domRef,setDomRef] = useState<React.MutableRefObject<any>>();
     
 
     const setImgUrlState=useCallback(async():Promise<string>=>{
@@ -15,7 +15,7 @@ const RefDownloadProvider: React.FC<{children:ReactElement}>=({children})=>{
             setImgUrl(dataUrl)
             return dataUrl
         }
-            
+        return ""; 
     },[domRef])
 
     return <refDownload.Provider value={{imgUrl,setImgUrlState,setDomRef}}>

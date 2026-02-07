@@ -56,7 +56,9 @@ export default function SaveCloudMenu({setIsActive,saveMode,saveObjInfoValue,loa
             saveInfo.splashArt = ""
         }
 
-        const thumbnailImageFile = base64ToFile(await setImgUrlState(),"new file")
+        const imgUrl = await setImgUrlState();
+
+        const thumbnailImageFile = base64ToFile(imgUrl,"new file")
         const {width} = await getImageDimensions(thumbnailImageFile)
         form.append("thumbnailImage",await imageCompression(thumbnailImageFile,{
             maxSizeMB: 1,
@@ -103,8 +105,15 @@ export default function SaveCloudMenu({setIsActive,saveMode,saveObjInfoValue,loa
         try {
             setIsLoadingSaveData(true)
             setCreateSaveBtnLoadState({loadingMessage:"Waiting for save image to load...",isLoading:true})
-            saveObjInfoValue.id = uuid()
-            const form = await createForm(saveObjInfoValue)
+            saveObjInfoValue.id = uuid();
+            let form;
+            try {
+                form = await createForm(saveObjInfoValue);
+            } catch (error) {
+                console.log(error);
+                addAlert("Failure","ERROR: Missing asset detected. Please look for and update the missing asset.");
+                return;                
+            }
             setCreateSaveBtnLoadState({loadingMessage:"Creating new save",isLoading:true})
             const response = await fetch(`${EnvironmentVariables.REACT_APP_SERVER_URL}/API/${saveMode==="ID"?"SaveIDInfo":"SaveEGOInfo"}/create`,{
                 method: "POST",
@@ -121,8 +130,10 @@ export default function SaveCloudMenu({setIsActive,saveMode,saveObjInfoValue,loa
             console.log(error)
             addAlert("Failure","Something went wrong with the server")
         } 
-        setCreateSaveBtnLoadState({loadingMessage:"",isLoading:false})
-        setIsLoadingSaveData(false)
+        finally{
+            setCreateSaveBtnLoadState({loadingMessage:"",isLoading:false})
+            setIsLoadingSaveData(false)
+        }
     }
 
     async function deleteSave(saveId:string){
