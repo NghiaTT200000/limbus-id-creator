@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ReactElement, createContext, useContext, useState } from "react";
 import { EgoInfo, IEgoInfo } from 'Features/CardCreator/Types/IEgoInfo';
 import { PassiveSkill } from 'Features/CardCreator/Types/Skills/PassiveSkill/IPassiveSkill';
@@ -28,6 +28,16 @@ const EgoInfoProvider: React.FC<{children:ReactElement}>=({children})=>{
         }
         changeEgoInfoValue(newEgoInfo)
     }
+
+    useEffect(()=>{
+        // Backward compatibility
+        const oldSinnerIconPath = EgoInfoValue.sinnerIcon.startsWith("Images");
+        if(oldSinnerIconPath){
+            const newEgoInfo = {...EgoInfoValue};
+            if(oldSinnerIconPath) newEgoInfo.sinnerIcon = "/" + EgoInfoValue.sinnerIcon;
+            changeEgoInfoValue(newEgoInfo);
+        }
+    },[EgoInfoValue])
 
     return <egoInfo.Provider value={{EgoInfoValue,setEgoInfoValue,reset}}>
             {children}

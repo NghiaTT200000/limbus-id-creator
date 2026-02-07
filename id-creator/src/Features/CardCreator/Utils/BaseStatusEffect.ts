@@ -204,7 +204,7 @@ export const baseStatusEffect={
         "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='/Images/status-effect/Hardblood.webp' alt='Hardblood_icon' />Hardblood</span>",
     
     "shimmering_bloodfiend":
-        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='/Images/status-effect/Shmimering_BloodFiend.webp' alt='Shmimering_BloodFiend_icon' />Shmimering [BloodFiend]</span>",
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='/Images/status-effect/Shmimering_BloodFiend.webp' alt='Shimmering_BloodFiend_icon' />Shimmering [BloodFiend]</span>",
     
     "blooming_thorn":
         "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='/Images/status-effect/Blooming_Thorn.webp' alt='Blooming_Thorn_icon' />Blooming Thorn</span>",

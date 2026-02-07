@@ -77,6 +77,11 @@ const SaveLocalMenu=({localSaveName,saveObjInfoValue,loadObjInfoValueCb,isActive
                 </div>
             </PopUpMenu>
         </div>
+        <div className="save-local-warning">
+            <strong>&#9888; Important:</strong> This site will be moving from  <a href="https://limbus-company-id-creator.netlify.app" target="_blank" rel="noreferrer">limbus-company-id-creator.netlify.app</a> to{" "}
+            <a href="https://limbus-company-id-creator.com" target="_blank" rel="noreferrer">limbus-company-id-creator.com</a>
+            {" "}on February 13th, 5:00 PM KST. Local saves will not transfer to the new domain. Please move your saves to the cloud before then.
+        </div>
         <div className="save-menu-list local">
             {saveData.length>0?<>
                 {saveData.sort((a,b)=>{

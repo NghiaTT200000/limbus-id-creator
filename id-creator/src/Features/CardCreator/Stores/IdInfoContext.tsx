@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ReactElement, createContext, useContext, useState } from "react";
 import { PassiveSkill } from 'Features/CardCreator/Types/Skills/PassiveSkill/IPassiveSkill';
 import { IIdInfo, IdInfo } from 'Features/CardCreator/Types/IIdInfo';
@@ -29,9 +29,21 @@ const IdInfoProvider: React.FC<{children:ReactElement}>=({children})=>{
     }
 
 
+    useEffect(()=>{
+        // Backward compatibility
+        const oldSinnerIconPath = idInfo.sinnerIcon.startsWith("Images");
+        const oldSinnerRarityPath = idInfo.rarity.startsWith("Images");
+        if(oldSinnerIconPath || oldSinnerRarityPath){
+            const newIdInfo = {...idInfo};
+            if(oldSinnerIconPath) newIdInfo.sinnerIcon = "/" + idInfo.sinnerIcon
+            if(oldSinnerRarityPath) newIdInfo.rarity = "/" + idInfo.rarity;
+            changeIdInfoValue(newIdInfo);
+        }
+    },[idInfo])
+
     return <idInfoContext.Provider value={{idInfoValue:idInfo,setIdInfoValue,reset}}>
-            {children}
-        </idInfoContext.Provider>;
+        {children}
+    </idInfoContext.Provider>;
 }
 
 const useIdInfoContext = () => useContext(idInfoContext)
