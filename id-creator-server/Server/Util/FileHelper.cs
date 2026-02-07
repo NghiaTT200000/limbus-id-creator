@@ -101,7 +101,7 @@ namespace Server.Util
         public static async Task<bool> CheckUrlSize(string url,long maxFileSize)
         {
             //For url
-            if(Uri.TryCreate(url,UriKind.Absolute, out _))
+            if(Uri.TryCreate(url,UriKind.Absolute, out _) || !url.StartsWith("/Images"))
             {
                 var urlSize = await FileHelper.GetImageSizeFromUrl(url);
                 return urlSize <= maxFileSize && urlSize>0;
