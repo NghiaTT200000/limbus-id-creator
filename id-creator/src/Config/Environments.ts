@@ -3,4 +3,5 @@ export const EnvironmentVariables = {
     REACT_APP_GOOGLE_CLIENT_ID : process.env.REACT_APP_GOOGLE_CLIENT_ID,
     REACT_APP_LOCAL_SAVE_MAX_LEN: process.env.REACT_APP_LOCAL_SAVE_MAX_LEN,
     REACT_APP_SERVER_URL: process.env.REACT_APP_SERVER_URL,
+    REACT_APP_SENTRY_DSN: process.env.REACT_APP_SENTRY_DSN,
 }

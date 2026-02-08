@@ -21,6 +21,7 @@ import { IEgoInfo } from "Features/CardCreator/Types/IEgoInfo";
 import { IIdInfo } from "Features/CardCreator/Types/IIdInfo";
 import { useLoginMenuContext } from "Components/LoginMenu/LoginMenu";
 import { EnvironmentVariables } from "Config/Environments";
+import * as Sentry from "@sentry/react"
 
 export default function SaveCloudMenu({setIsActive,saveMode,saveObjInfoValue,loadObjInfoValueCb,setSaveObjInfoValue}:{
     setIsActive:(a:boolean)=>void,
@@ -110,8 +111,11 @@ export default function SaveCloudMenu({setIsActive,saveMode,saveObjInfoValue,loa
             try {
                 form = await createForm(saveObjInfoValue);
             } catch (error) {
-                console.log(error);
-                addAlert("Failure",JSON.stringify(error));
+                Sentry.captureException({
+                    saveObjInfoValue,
+                    error
+                })
+                addAlert("Failure","ERROR: Missing asset detected. Please look for and update the missing asset.");
                 return;                
             }
             setCreateSaveBtnLoadState({loadingMessage:"Creating new save",isLoading:true})

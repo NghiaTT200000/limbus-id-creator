@@ -1,4 +1,6 @@
 import { RouterProvider } from "react-router-dom";
+import { ErrorBoundary } from "react-error-boundary";
+import ErrorFallback from "Components/ErrorBoundary/ErrorFallback";
 import Provider from "./Provider";
 import { router } from "./Router";
 import React, { useEffect } from "react";
@@ -37,7 +39,9 @@ export default function App(){
         }
     },[])
 
-    return <Provider>
-        <RouterProvider router={router}/>
-    </Provider>
+    return <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <Provider>
+            <RouterProvider router={router}/>
+        </Provider>
+    </ErrorBoundary>
 }
