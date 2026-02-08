@@ -29,10 +29,9 @@
   to = "/static/:splat"
   status = 200
 
-# Backward compatibility redirect for old image paths (png -> webp)
 [[redirects]]
-  from = "/creator/Images/*.png"
-  to = "/Images/:splat.webp"
+  from = "/creator/Images/*"
+  to = "/Images/:splat"
   status = 200
 
 # SPA redirect
