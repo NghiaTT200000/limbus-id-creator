@@ -35,11 +35,6 @@
   to = "/Images/:splat.webp"
   status = 200
 
-[[redirects]]
-  from = "/creator/Images/*"
-  to = "/Images/:splat"
-  status = 200
-
 # SPA redirect
 [[redirects]]
   from = "/*"
