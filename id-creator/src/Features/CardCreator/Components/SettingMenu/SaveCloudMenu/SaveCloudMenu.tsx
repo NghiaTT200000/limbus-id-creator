@@ -111,10 +111,10 @@ export default function SaveCloudMenu({setIsActive,saveMode,saveObjInfoValue,loa
             try {
                 form = await createForm(saveObjInfoValue);
             } catch (error) {
-                Sentry.captureException(JSON.stringify({
-                    error,                    
+                Sentry.captureException({
                     saveObjInfoValue,
-                }))
+                    error
+                })
                 addAlert("Failure","ERROR: Missing asset detected. Please look for and update the missing asset.");
                 return;                
             }
