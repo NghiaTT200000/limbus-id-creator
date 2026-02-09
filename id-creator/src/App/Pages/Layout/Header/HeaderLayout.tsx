@@ -9,7 +9,7 @@ import { useLoginMenuContext } from "Components/LoginMenu/LoginMenu";
 
 export default function HeaderLayout():ReactElement{
     const [isSideBarActive,setActiveSideBar] = useState(false)
-    const {isLoginMenuActive,setIsLoginMenuActive} = useLoginMenuContext()
+    const {setIsLoginMenuActive} = useLoginMenuContext()
     const {loginUser} = useLoginUserContext()
 
     return <>
@@ -40,7 +40,7 @@ export default function HeaderLayout():ReactElement{
                 {loginUser?<Link to={"/user/"+loginUser.id}>
                     <button className="main-button">My account</button>
                 </Link>:
-                <button className={"main-button nav-button"} onClick={()=>setIsLoginMenuActive(!isLoginMenuActive)}>Login</button>}
+                <button className={"main-button nav-button"} onClick={()=>setIsLoginMenuActive(true)}>Login</button>}
                 {loginUser&&<Link to={"/new-post"}><button className="main-button">Post</button></Link>}
                 <a href="https://ko-fi.com/johnlimbusidmaker" target="_blank" rel="noreferrer">
                     <button className="main-button center-element">

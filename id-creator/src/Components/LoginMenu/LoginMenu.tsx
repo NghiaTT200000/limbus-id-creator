@@ -58,7 +58,7 @@ function LoginMenu({children}:{children:ReactNode}){
         [ user ]
     );
 
-    return <loginMenuContext.Provider value={{isLoginMenuActive,setIsLoginMenuActive}}>
+    return <loginMenuContext.Provider value={{setIsLoginMenuActive}}>
         <div className={isLoginMenuActive?"login-menu-popup":"hidden"}>
             <PopUpMenu setIsActive={()=>setIsLoginMenuActive(!isLoginMenuActive)}>
                 <div className="login-menu">

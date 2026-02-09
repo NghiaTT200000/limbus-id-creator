@@ -7,7 +7,7 @@ import { useLoginMenuContext } from "Components/LoginMenu/LoginMenu";
 
 
 export default function SideBar({isActive,setActiveSideBar}:{isActive:boolean,setActiveSideBar:(a:boolean)=>void}){
-    const {isLoginMenuActive,setIsLoginMenuActive} = useLoginMenuContext()
+    const {setIsLoginMenuActive} = useLoginMenuContext()
     const {loginUser} = useLoginUserContext()
 
     return <div className={`side-bar-container ${isActive?"":"hidden"}`}>
@@ -36,7 +36,7 @@ export default function SideBar({isActive,setActiveSideBar}:{isActive:boolean,se
                     {loginUser?<Link to={"/user/"+loginUser.id}>
                         <button onClick={()=>setActiveSideBar(!isActive)} className="main-button">My account</button>
                     </Link>:
-                    <button className={"main-button nav-button"} onClick={()=>setIsLoginMenuActive(!isLoginMenuActive)}>Login</button>}
+                    <button className={"main-button nav-button"} onClick={()=>setIsLoginMenuActive(true)}>Login</button>}
                     {loginUser&&<Link to={"/new-post"}><button className="main-button">Post</button></Link>}
                     <Link to="https://ko-fi.com/johnlimbusidmaker" target="_blank">
                         <button style={{justifyContent:"center"}} className="main-button center-element">
