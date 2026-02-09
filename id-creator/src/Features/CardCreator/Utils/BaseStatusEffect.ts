@@ -406,7 +406,16 @@ export const baseStatusEffect={
     
     "the_middle_styled_augmentation_tattoos":
         "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='/Images/status-effect/The_Middle_Styled_Augmentation_Tattoos_(Ishmael).webp' alt='the_middle_styled_augmentation_tattoos_(ishmael)_icon' />The Middle Styled Augmentation Tattoos</span>",
+    
+    "crit_dmg_up":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='/Images/status-effect/Crit_DMG_Up.webp' alt='crit_dmg_up_icon' />Crit DMG Up</span>",
 
+    "guardians_of_the_forest":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='/Images/status-effect/Guardians_of_the_Forest.webp' alt='guardians_of_the_forest_icon' />Guardians of the Forest</span>",
+    
+    "moonlit_azure_blade":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='/Images/status-effect/Moonlit_Azure_Blade.webp' alt='moonlit_azure_blade_icon' />Moonlit Azure Blade</span>",
+    
     "slash_dmg_down":
         "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='/Images/status-effect/Slash_DMG_Down.webp' alt='slash_dmg_down_icon' />Slash DMG Down</span>",
     
@@ -733,6 +742,9 @@ export const baseStatusEffect={
 
     "gloom_resist_down":
         "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='/Images/status-effect/Gloom_Resist_Down.webp' alt='gloom_resist_down_icon' />Gloom Resist Down</span>",
+    
+    "dazzle":
+        "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='/Images/status-effect/Dazzle.webp' alt='dazzle_icon' />Dazzle</span>",
 
     "aggro":
         "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='/Images/status-effect/Aggro.webp' alt='aggro_icon' />Aggro</span>",
@@ -916,6 +928,9 @@ export const baseStatusEffect={
     
     "prescript:_[device]_IV":
         "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='/Images/status-effect/Prescript_[Device].webp' alt='prescript_[device]_IV_icon' />Prescript [Device] IV</span>",
+    
+    "lamp":
+        "<span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='/Images/status-effect/Lamp.webp' alt='lamp_icon' />Lamp</span>",
 
     "coin_1":
         "<span class='center-element' contenteditable='false'><img class='status-icon' src='/Images/status-effect/Coin_Effect_1.webp' alt='coin-effect-1' /></span>",
@@ -1046,6 +1061,15 @@ export const baseStatusEffect={
     
     "combat_end":
         "<span class='center-element' contenteditable='false' style='color:#94f140'>[Combat End]</span>",
+    
+    "coin_start":
+        "<span class='center-element' contenteditable='false' style='color:#94f140'>[Coin Start]</span>",
+    
+    "coin_end":
+        "<span class='center-element' contenteditable='false' style='color:#94f140'>[Coin End]</span>",
+    
+    "on_unopposed_attack":
+        "<span class='center-element' contenteditable='false' style='color:#94f140'>[On Unopposed Attack]</span>",
     
     "clashable_counter":
         "<span class='center-element' contenteditable='false' style='color:#ff7e00'>[Clashable Counter]</span>",
