@@ -28,7 +28,7 @@ export default function DropDown({dropDownEl,propVal,disabled,cb}:{dropDownEl:{[
                 </span>    
             </div>
             {isActive && 
-                <ul className={`drop-down`}>
+                <ul className={`drop-down ${isActive ? "active" : ""}`}>
                     {Object.keys(dropDownEl).map((key,i)=>
                         <li key={i} onClick={()=>{
                                 if(dropDownEl[key].cb)dropDownEl[key].cb(dropDownEl[key].value)
