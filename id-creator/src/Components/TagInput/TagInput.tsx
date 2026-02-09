@@ -14,8 +14,8 @@ export default function TagInput({completeFn,customClass="",id}:{completeFn:(key
     const arrowUpKeyPress = useKeyPress("ArrowUp",tagInputRef)
     const arrowDownKeyPress = useKeyPress("ArrowDown",tagInputRef)
     const tabDownKeyPress = useKeyPress("Tab",tagInputRef)
-    const selectRef = useRef(null)
-    const containerRef = useRef(null)
+    const selectRef = useRef<HTMLDivElement>(null)
+    const containerRef = useRef<HTMLDivElement>(null)
 
     const handleKeyDown=useCallback((e:React.KeyboardEvent<HTMLInputElement>)=>{
         if((isActive&&(e.key==="Enter"||e.key==="ArrowUp"||e.key==="ArrowDown"||e.key==="Tab"))){
@@ -65,8 +65,8 @@ export default function TagInput({completeFn,customClass="",id}:{completeFn:(key
 
     useEffect(()=>{
 
-        function handleClickOutside(event) {
-            if (containerRef.current && !containerRef.current.contains(event.target)) {
+        function handleClickOutside(event: MouseEvent) {
+            if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
                 setIsActive(false)
             }
         }

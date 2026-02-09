@@ -1,7 +1,5 @@
-
-
-export  default function base64ToFile(dataurl, filename) {
-    const arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+export  default function base64ToFile(dataurl: string = "", filename: string = "") {
+    const arr = dataurl.split(','), mimeMatch = arr[0].match(/:(.*?);/), mime = mimeMatch ? mimeMatch[1] : "application/octet-stream",
         bstr = atob(arr[1]); 
     let n = bstr.length;
     const u8arr = new Uint8Array(n);

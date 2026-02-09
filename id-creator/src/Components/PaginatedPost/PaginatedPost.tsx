@@ -86,10 +86,10 @@ function PostDisplayList({isLoading,cardList}:{cardList:IPostDisplayCard[],isLoa
 }
 
 export default function PaginatedPost({currPage,maxCount,pageLimit,postList,fetchPost,isLoading}:{currPage:number,maxCount:number,pageLimit:number,postList:IPostDisplayCard[],fetchPost:(page:number)=>void,isLoading:boolean}){
-    const headPost = useRef(null)
+    const headPost = useRef<HTMLDivElement>(null)
     
     function changePage(page:number){
-        if(headPost) headPost.current.scrollIntoView()
+        if(headPost.current) headPost.current.scrollIntoView()
         fetchPost(page)
     }
 

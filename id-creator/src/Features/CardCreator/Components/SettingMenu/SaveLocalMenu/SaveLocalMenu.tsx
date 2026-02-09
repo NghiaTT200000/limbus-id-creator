@@ -116,7 +116,7 @@ const SaveLocalMenu=({localSaveName,saveObjInfoValue,loadObjInfoValueCb,isActive
                             </button>
                             <button className="main-button" onClick={async ()=>{
                                 const save = await loadSave(data.id)
-                                loadObjInfoValueCb(save.saveInfo)
+                                if(save) loadObjInfoValueCb(save.saveInfo)
                                 setIsActive(!isActive)
                             }}>
                                 Load
