@@ -12,10 +12,10 @@ import { IEgoInfo } from "Features/CardCreator/Types/IEgoInfo";
 import SearchSaveInput from "../../../Features/CardCreator/Components/SearchSaveInput/SearchSaveInput";
 import CloseIcon from "Assets/Icons/CloseIcon";
 import Editor from 'react-simple-wysiwyg';
-import { useAlertContext } from "Stores/AlertContext";
 import uuid from "react-uuid";
 import { useNavigate } from "react-router-dom";
 import { EnvironmentVariables } from "Config/Environments";
+import useAlert from "Hooks/useAlert";
 
 
 interface IChoosenSave{
@@ -33,7 +33,7 @@ export default function NewPostPage():ReactElement{
     const [isPosting,setIsPosting] = useState(false)
     const {loginUser} = useLoginUserContext()
     const {setIsLoginMenuActive} = useLoginMenuContext()
-    const {addAlert} = useAlertContext()
+    const {addAlert} = useAlert()
     const navigate = useNavigate()
 
     async function createPost(){

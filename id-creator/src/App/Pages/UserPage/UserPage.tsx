@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { ReactElement } from "react";
 import {  useNavigate, useParams } from "react-router-dom";
 import { IUserProfile, UserProfileRes } from "Types/API/OAuth/IUserProfile";
-import { useAlertContext } from "Stores/AlertContext";
 import { useLoginUserContext } from "Stores/LoginUserContext";
 import PaginatedPost from "Components/PaginatedPost/PaginatedPost";
 import { IPostDisplayCard } from "Types/IPostDisplayCard/IPostDisplayCard";
@@ -11,6 +10,7 @@ import UserProfileLoading from "Components/UserProfileLoading/UserProfileLoading
 import "../Shared/Styles/PageLayout.css"
 import "./User.css"
 import { EnvironmentVariables } from "Config/Environments";
+import useAlert from "Hooks/useAlert";
 
 
 
@@ -24,7 +24,7 @@ export default function UserPage():ReactElement{
     const {logOut,loginUser} = useLoginUserContext()
     const [user,setUser] = useState<IUserProfile>(new UserProfileRes("","","","","",false))
     const {userId} = useParams()
-    const {addAlert} = useAlertContext()
+    const {addAlert} = useAlert()
     const navigate = useNavigate()
 
     async function getPosts(page:number){

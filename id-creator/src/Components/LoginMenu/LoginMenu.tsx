@@ -2,13 +2,13 @@ import { createContext, ReactNode, useContext, useEffect, useState } from "react
 import React from "react";
 import "./LoginMenu.css"
 import { TokenResponse, useGoogleLogin } from "@react-oauth/google";
-import { useAlertContext } from "Stores/AlertContext";
 import { useLoginUserContext } from "Stores/LoginUserContext";
 import IResponse from "Types/IResponse";
 import ILoginUser from "Types/ILoginUser";
 import GoogleIcon from "Assets/Icons/GoogleIcon";
 import PopUpMenu from "../PopUpMenu/PopUpMenu";
 import { EnvironmentVariables } from "Config/Environments";
+import useAlert from "Hooks/useAlert";
 
 const loginMenuContext = createContext(null)
 
@@ -16,7 +16,7 @@ function LoginMenu({children}:{children:ReactNode}){
     const [isLoginMenuActive,setIsLoginMenuActive] = useState(false)
     const [isLoggingIn,setIsLogginIn] = useState(false)
     const [user,setUser] = useState<Omit<TokenResponse, "error" | "error_description" | "error_uri">>()
-    const {addAlert} = useAlertContext()
+    const {addAlert} = useAlert()
     const {setLoginUser} = useLoginUserContext()
 
 

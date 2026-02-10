@@ -5,9 +5,9 @@ import CheckIcon from "Assets/Icons/CheckIcon";
 import { useParams } from "react-router-dom";
 import { IUserProfile } from "Types/API/OAuth/IUserProfile";
 import IResponse from "Types/IResponse";
-import { useAlertContext } from "Stores/AlertContext";
 import "./UserProfile.css";
 import { EnvironmentVariables } from "Config/Environments";
+import useAlert from "Hooks/useAlert";
 
 export function UserProfile({userProfile,setUserProfile}:{userProfile:IUserProfile,setUserProfile:React.Dispatch<React.SetStateAction<IUserProfile>>}):ReactElement{
     const {userName,userIcon} = userProfile
@@ -17,7 +17,7 @@ export function UserProfile({userProfile,setUserProfile}:{userProfile:IUserProfi
     const [nameLenErr,setNameLenErr] = useState(false)
     const [name,setName] = useState(userName)
     const {userId} = useParams()
-    const {addAlert} = useAlertContext()
+    const {addAlert} = useAlert()
     const [userError,setUserErr] = useState("")
 
 
@@ -53,9 +53,13 @@ export function UserProfile({userProfile,setUserProfile}:{userProfile:IUserProfi
     const changeProfileImg=useCallback(async(e:React.ChangeEvent<HTMLInputElement>)=>{
         setIsChangingProfile(true)
         try {
+            if (!e.currentTarget.files || !e.currentTarget.files[0]) {
+                addAlert("Failure", "No file selected")
+                setIsChangingProfile(false)
+                return
+            }
             const form = new FormData()
             form.append('newProfile',e.currentTarget.files[0])
-            console.log(e.currentTarget.files[0])
             const req = await fetch(`${EnvironmentVariables.REACT_APP_SERVER_URL}/API/User/change/profile/${userId}`,{
                 method: "POST",
                 credentials: "include",

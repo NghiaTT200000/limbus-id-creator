@@ -5,12 +5,12 @@ import "./ForumPage.css"
 import { useLoginUserContext } from "Stores/LoginUserContext";
 import { Link } from "react-router-dom";
 import DropDown from "Components/DropDown/DropDown";
-import { useAlertContext } from "Stores/AlertContext";
 import { IPostDisplayCard } from "Types/IPostDisplayCard/IPostDisplayCard";
 import { useLoginMenuContext } from "Components/LoginMenu/LoginMenu";
 import PaginatedPost from "Components/PaginatedPost/PaginatedPost";
 import TagInput from "Components/TagInput/TagInput";
 import TagsContainer from "Components/TagsContainer/TagsContainer";
+import useAlert from "Hooks/useAlert";
 
 export default function ForumPage():ReactElement{
     const [postList,setPostList] = useState<IPostDisplayCard[]>([])
@@ -22,7 +22,7 @@ export default function ForumPage():ReactElement{
     const [isLoading,setIsLoading] = useState(false)
     const {loginUser} = useLoginUserContext()
     const {setIsLoginMenuActive} = useLoginMenuContext()
-    const {addAlert} = useAlertContext()
+    const {addAlert} = useAlert()
 
     async function getPosts(page:number){
         setIsLoading(true)

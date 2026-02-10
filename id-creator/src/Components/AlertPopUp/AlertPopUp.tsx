@@ -1,14 +1,14 @@
-import { useAlertContext } from "Stores/AlertContext";
 import React, { useEffect, useState } from "react";
 import { ReactElement } from "react";
 import "./AlertPopUp.css"
 import { IAlert } from "Types/Utils/IAlert";
 import ClosIcon from "Assets/Icons/CloseIcon";
+import useAlert from "Hooks/useAlert";
 
 
 
 export default function AlertPopUp():ReactElement{
-    const {alertArr} = useAlertContext()
+    const {alertArr} = useAlert()
 
 
     return <div className="alert-popup-group">

@@ -10,7 +10,6 @@ import SaveCloudTab from "./SaveCloudTab";
 import PopUpMenu from "Components/PopUpMenu/PopUpMenu";
 import imageCompression from 'browser-image-compression';
 import getImageDimensions from "Utils/getImageDimensions";
-import { useAlertContext } from "Stores/AlertContext";
 import { useRefDownloadContext } from "Stores/ImgUrlContext";
 import { useLoginUserContext } from "Stores/LoginUserContext";
 import base64ToFile from "Utils/base64ToFile";
@@ -22,6 +21,7 @@ import { IIdInfo } from "Features/CardCreator/Types/IIdInfo";
 import { useLoginMenuContext } from "Components/LoginMenu/LoginMenu";
 import { EnvironmentVariables } from "Config/Environments";
 import * as Sentry from "@sentry/react"
+import useAlert from "Hooks/useAlert";
 
 export default function SaveCloudMenu({setIsActive,saveMode,saveObjInfoValue,loadObjInfoValueCb,setSaveObjInfoValue}:{
     setIsActive:(a:boolean)=>void,
@@ -37,7 +37,7 @@ export default function SaveCloudMenu({setIsActive,saveMode,saveObjInfoValue,loa
     const [searchSaveName,setSearchSaveName] = useState("")
     const {loginUser} = useLoginUserContext()
     const {setIsLoginMenuActive} = useLoginMenuContext()
-    const {addAlert} = useAlertContext()
+    const {addAlert} = useAlert()
 
     async function createForm (saveObjInfoValue:ISaveFile<IIdInfo|IEgoInfo>):Promise<FormData>{
         const form = new FormData()
