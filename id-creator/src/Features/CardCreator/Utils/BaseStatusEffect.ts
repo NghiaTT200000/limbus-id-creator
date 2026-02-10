@@ -407,6 +407,9 @@ export const baseStatusEffect={
     "the_middle_styled_augmentation_tattoos":
         "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='/Images/status-effect/The_Middle_Styled_Augmentation_Tattoos_(Ishmael).webp' alt='the_middle_styled_augmentation_tattoos_(ishmael)_icon' />The Middle Styled Augmentation Tattoos</span>",
     
+    "hp_healing_boost":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='/Images/status-effect/HP_Healing_Boost.webp' alt='hp_healing_boost_icon' />HP Healing Boost</span>",
+    
     "crit_dmg_up":
         "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='/Images/status-effect/Crit_DMG_Up.webp' alt='crit_dmg_up_icon' />Crit DMG Up</span>",
 
