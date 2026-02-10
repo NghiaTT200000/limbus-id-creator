@@ -3,7 +3,6 @@ import 'Styles/reset.css'
 import 'Styles/style.css'
 import '../Shared/Styles/EditorPage.css'
 import { StatusEffectProvider } from 'Features/CardCreator/Stores/StatusEffectContext';
-import { useRefDownloadContext } from 'Stores/ImgUrlContext';
 import { EgoInfoProvider, useEgoInfoContext } from 'Features/CardCreator/Stores/EgoInfoContext';
 import { useSearchParams } from 'react-router-dom';
 import { indexDB } from 'Features/CardCreator/Utils/IndexDB';
@@ -15,6 +14,7 @@ import { SettingMenu, useSettingMenuContext } from 'Features/CardCreator/Compone
 import { EgoInfo } from 'Features/CardCreator/Types/IEgoInfo';
 import CardMakerFooter from 'Features/CardCreator/Components/CardMakerFooter/CardMakerFooter';
 import PopUpMenu from 'Components/PopUpMenu/PopUpMenu';
+import { registerDomRef } from 'Stores/Slices/ImgDomRefSlice';
 
 
 
@@ -32,7 +32,6 @@ function EgoCardContent():ReactElement{
     const {EgoInfoValue,setEgoInfoValue,reset} = useEgoInfoContext()
     const {setLocalSaveName,changeSaveInfo,setLoadObjInfoValueCb} = useSettingMenuContext() 
     const domRef=useRef(null)
-    const {setDomRef} = useRefDownloadContext()
     const [query] = useSearchParams()
     const [isResetMenuActive,setResetMenuActive] = useState(false)
     const [activeTab,setActiveTab]=useState(-1)
@@ -62,7 +61,7 @@ function EgoCardContent():ReactElement{
             changeSaveInfo(EgoInfoValue)
             setLoadObjInfoValueCb(()=>{return setEgoInfoValue})
             //Setting the domref for downloading
-            setDomRef(domRef)
+            registerDomRef(domRef)
         })
     },[])
 

@@ -1,6 +1,5 @@
 import AlertPopUp from "Components/AlertPopUp/AlertPopUp";
 import { LoginMenu } from "Components/LoginMenu/LoginMenu";
-import { RefDownloadProvider } from "Stores/ImgUrlContext";
 import { LoginUserContextProvider } from "Stores/LoginUserContext";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import React from "react";
@@ -19,12 +18,10 @@ export default function Provider({children}:{children: ReactNode}){
                 <ReduxProvider store={AppStore}>
                     <LoginUserContextProvider>
                         <EditorProvider>
-                            <RefDownloadProvider>
-                                <LoginMenu>
-                                    {children}
-                                    <AlertPopUp />
-                                </LoginMenu>
-                            </RefDownloadProvider>
+                            <LoginMenu>
+                                {children}
+                                <AlertPopUp />
+                            </LoginMenu>
                         </EditorProvider>
                     </LoginUserContextProvider>
                 </ReduxProvider>
