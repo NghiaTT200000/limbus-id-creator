@@ -1034,12 +1034,18 @@ export const baseStatusEffect={
 
     "heads_attack_end":
         "<span class='center-element' contenteditable='false' style='color:#ff59c2'>[Heads Attack End]</span>",
+    
+    "heads_attack_start":
+        "<span class='center-element' contenteditable='false' style='color:#ff59c2'>[Heads Attack Start]</span>",
 
     "tails_hit":
         "<span class='center-element' contenteditable='false' style='color:#64ab23'>[Tails Hit]</span>",
 
     "tails_attack_end":
         "<span class='center-element' contenteditable='false' style='color:#64ab23'>[Tails Attack Hit]</span>",
+
+    "tails_attack_start":
+        "<span class='center-element' contenteditable='false' style='color:#64ab23'>[Tails Attack Start]</span>",
 
     "on_kill":
         "<span class='center-element' contenteditable='false' style='color:#c9fe98'>[On Kill]</span>",
@@ -1049,12 +1055,24 @@ export const baseStatusEffect={
     
     "on_crit_kill":
         "<span class='center-element' contenteditable='false' style='color:#94f140'>[On Crit Kill]</span>",
+
+    "on_crit_kill_ally":
+        "<span class='center-element' contenteditable='false' style='color:#94f140'>[On Crit Kill Ally]</span>",
+    
+    "on_crit_kill_ally_fail":
+        "<span class='center-element' contenteditable='false' style='color:#94f140'>[On Crit Kill Ally Fail]</span>",
     
     "on_crit_kill_against_enemy":
         "<span class='center-element' contenteditable='false' style='color:#94f140'>[On Crit Kill Against Enemy]</span>",
+    
+    "on_crit_kill_against_enemy_fail":
+        "<span class='center-element' contenteditable='false' style='color:#94f140'>[On Crit Kill Against Enemy Fail]</span>",
 
     "indiscriminate":
         "<span class='center-element' contenteditable='false' style='color:#ff0000'>[Indiscriminate]</span>",
+
+    "unopposed_attack":
+        "<span class='center-element' contenteditable='false' style='color:#ff0000'>[Unopposed Attack]</span>",
     
     "unclashable":
         "<span class='center-element' contenteditable='false' style='color:#ff0000'>[Unclashable]</span>",
@@ -1071,6 +1089,24 @@ export const baseStatusEffect={
     "coin_end":
         "<span class='center-element' contenteditable='false' style='color:#94f140'>[Coin End]</span>",
     
+    "clash_start":
+        "<span class='center-element' contenteditable='false' style='color:#94f140'>[Clash Start]</span>",
+    
+    "clash_end":
+        "<span class='center-element' contenteditable='false' style='color:#94f140'>[Clash End]</span>",
+    
+    "before_getting_hit":
+        "<span class='center-element' contenteditable='false' style='color:#94f140'>[Before Getting Hit]</span>",
+    
+    "after_getting_hit":
+        "<span class='center-element' contenteditable='false' style='color:#94f140'>[After Getting Hit]</span>",
+    
+    "on_ally_kill":
+        "<span class='center-element' contenteditable='false' style='color:#94f140'>[On Ally Kill]</span>",
+
+    "on_ally_kill_fail":
+        "<span class='center-element' contenteditable='false' style='color:#94f140'>[On Ally Kill Fail]</span>",
+    
     "on_unopposed_attack":
         "<span class='center-element' contenteditable='false' style='color:#94f140'>[On Unopposed Attack]</span>",
     
@@ -1080,11 +1116,20 @@ export const baseStatusEffect={
     "before_use":
         "<span class='center-element' contenteditable='false' style='color:#26cfff'>[Before Use]</span>",
 
+    "after_use":
+        "<span class='center-element' contenteditable='false' style='color:#26cfff'>[After Use]</span>",
+
+    "skill_start":
+        "<span class='center-element' contenteditable='false' style='color:#94f140'>[Skill Start]</span>",
+
     "skill_end":
         "<span class='center-element' contenteditable='false' style='color:#94f140'>[Skill End]</span>",
     
     "turn_end":
         "<span class='center-element' contenteditable='false' style='color:#94f140'>[Turn End]</span>",
+    
+    "turn_start":
+        "<span class='center-element' contenteditable='false' style='color:#94f140'>[Turn Start]</span>",
     
     "target_fixed":
         "<span class='center-element' contenteditable='false' style='color:#94f140'>[Target Fixed]</span>",
