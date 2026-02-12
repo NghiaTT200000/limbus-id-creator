@@ -7,7 +7,7 @@ import React, { createContext, ReactElement, useContext, useEffect, useState } f
 const loginContext = createContext(null)
 
 const LoginUserContextProvider: React.FC<{children:ReactElement}>=({children})=>{
-    const [loginUser,setLoginUser]= useState<ILoginUser>(null)
+    const [loginUser,setLoginUser]= useState<ILoginUser | null>(null)
 
     function logOut(){
         setLoginUser(null)
