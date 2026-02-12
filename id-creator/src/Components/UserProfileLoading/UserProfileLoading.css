@@ -1,0 +1,16 @@
+.user-personal-container{
+    margin-bottom: 20px;
+    padding: 4px;
+}
+
+.user-personal-icon{
+    height: 80px;
+    width: 80px;
+    border-radius: 100%;
+}
+
+.user-name{
+    font-weight: bold;
+    font-size: 25px;
+    margin-top: 4px;
+}

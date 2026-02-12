@@ -1,0 +1,17 @@
+.user-container{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--post-background);
+    border: 1px solid var(--brown-pale);
+    padding: 8px;
+}
+
+.user-meta-txt{
+    color: var(--red-meta-txt);
+    font-size: 10px;
+}
+
+.user-log-out-container{
+    display: flex;
+    justify-content: end;
+}

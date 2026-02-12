@@ -1,0 +1,36 @@
+.contact-page-content {
+    gap: 24px;
+}
+
+.contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-method {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 18px;
+}
+
+.contact-method-icon {
+    color: var(--hover-border-color);
+    display: flex;
+    align-items: center;
+}
+
+.contact-method a {
+    color: var(--hover-border-color);
+    text-decoration: none;
+    transition: color 0.1s;
+}
+
+.contact-method a:hover {
+    color: var(--white-skin-color);
+}
+
+.contact-method span {
+    color: var(--white-neutral-weak);
+}

@@ -315,6 +315,20 @@ button{
     color: red;
 }
 
+.site-layout{
+    display: flex;
+    flex-flow: column;
+    min-height: 100vh;
+}
+
+.site-content{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
 /* Style for the wysiwyg simple editor */
 .rsw-ce{
     height: 150px;

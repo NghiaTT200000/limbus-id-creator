@@ -1,0 +1,170 @@
+.skill-section-container{
+    max-width: var(--Skill-max-width);
+    min-width: 350px;
+    position: relative;
+    padding-top: 10px;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+}
+
+.skill-section-container:hover{
+    border-color: yellow;
+    cursor: pointer;
+}
+
+.skill-label{
+    top: 0px;
+    right: 10%;
+    font-size: 30px;
+    position: absolute;
+    color: #49311D;
+    text-transform: uppercase;
+    z-index: 1;
+}
+
+.skill-section{
+    display: flex;
+    gap: 8px;
+    z-index: 9;
+    position: relative;
+}
+
+.sinner-skill-header{
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.sinner-skill-affinity-icon{
+    width: 25px;
+    height: 25px;
+}
+
+.coin-splash-container{
+    max-width: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+
+.small-number-input{
+    width: 20px;
+    height: 20px;
+    outline: none;
+    border: var(--title-color) 2px solid;
+}
+
+.coin-container{
+    display: flex;
+    align-items: center;
+    width: 160px;
+    min-height: 25px;
+}
+
+.coinNo-input{
+    margin-left: auto;
+}
+
+.skill-level{
+    display: flex;
+    align-items: center;
+}
+
+.skill-level-icon{
+    width: 25px;
+    height: 25px;
+}
+
+.skill-description{
+    padding-top: 12px;
+}
+
+.skill-description>*:not(:last-child){
+    margin-bottom: 4px;
+}
+
+.atk-weight-skill-label-section{
+    display: flex;
+    justify-content: space-between;
+}
+
+.skill-label-input{
+    width: 80px;
+    color: #49311D;
+    text-transform: uppercase;
+}
+
+.attack-weight{
+    color:#FAC700
+}
+
+.skill-amount{
+    font-weight: 700;
+}
+
+
+.active-skill-title-container{
+    min-width: 250px;
+    gap: 4px;
+    display: flex;
+    align-items: end;
+}
+
+
+
+.skill-splash{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    z-index: 4;
+}
+
+.sin-frame{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 2.5px;
+    bottom: 4px;
+}
+
+.splash-container{
+    width: 76%;
+    height: 70%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+}
+
+.skill-image{
+    width: 100%;
+    height: 100%;
+}
+
+.placeholder-skill{
+    width: 40px;
+    height: 40px;
+}
+
+.skill-power{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.damage-type{
+    width: 25px;
+    height: 25px;
+}
+
+.none-affinity{
+    width: 90%;
+    height: 90%;
+}

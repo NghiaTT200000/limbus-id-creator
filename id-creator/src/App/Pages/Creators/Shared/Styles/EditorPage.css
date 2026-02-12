@@ -1,0 +1,45 @@
+.editor-container{
+    width: 100vw;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    height: var(--editor-container-height);
+}
+
+.preview-container{
+    position: absolute;
+}
+
+@media screen and (max-width:800px) {
+    .editor-container>.input-tab-container{
+        max-width: 100%;
+        opacity: 95%;
+    }
+}
+
+.migration-warning-popup{
+    max-width: 400px;
+    padding: 16px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.migration-warning-popup h2{
+    font-family: "Mikodacs", "Rubik", sans-serif;
+    font-size: 20px;
+    color: #8B0000;
+    margin: 0;
+}
+
+.migration-warning-popup p{
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.migration-warning-popup a{
+    color: #8B0000;
+    font-weight: bold;
+}

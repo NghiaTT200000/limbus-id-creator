@@ -49,6 +49,7 @@ namespace Server.Util
             using (HttpClient client = new HttpClient())
             {
                 // Send a HEAD request to get the headers
+                Console.WriteLine("Url: "+url);
                 HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Head, url);
                 HttpResponseMessage response = await client.SendAsync(request);
 
@@ -101,7 +102,7 @@ namespace Server.Util
         public static async Task<bool> CheckUrlSize(string url,long maxFileSize)
         {
             //For url
-            if(Uri.TryCreate(url,UriKind.Absolute, out _))
+            if(Uri.TryCreate(url,UriKind.Absolute, out _) && !url.StartsWith("/Images"))
             {
                 var urlSize = await FileHelper.GetImageSizeFromUrl(url);
                 return urlSize <= maxFileSize && urlSize>0;

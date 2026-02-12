@@ -2,55 +2,44 @@
   "name": "id-creator",
   "version": "0.1.0",
   "private": true,
-  "homepage": "./",
+  "homepage": "/",
   "dependencies": {
     "@react-oauth/google": "^0.12.1",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@textcomplete/contenteditable": "^0.1.13",
-    "@textcomplete/core": "^0.1.13",
+    "@reduxjs/toolkit": "^2.11.2",
+    "@sentry/react": "^10.38.0",
     "@types/react": "^18.2.57",
     "@types/react-dom": "^18.2.19",
-    "@types/sanitize-html": "^2.11.0",
     "browser-image-compression": "^2.0.2",
     "dexie": "^4.2.0",
     "dexie-react-hooks": "^4.2.0",
-    "gh-pages": "^6.1.1",
-    "html-to-image": "^1.11.11",
+    "formik": "^2.4.9",
     "id-creator": "file:",
+    "modern-screenshot": "^4.6.8",
     "react": "^18.2.0",
     "react-contenteditable": "^3.3.7",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
     "react-dnd-touch-backend": "^16.0.1",
     "react-dom": "^18.2.0",
-    "react-input-color": "^4.0.1",
+    "react-error-boundary": "^6.1.0",
     "react-map-interaction": "^2.1.0",
     "react-paginate": "^8.2.0",
+    "react-redux": "^9.2.0",
     "react-router-dom": "^6.23.0",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "react-simple-wysiwyg": "^3.1.1",
     "react-uuid": "^2.0.0",
     "react-zoom-pan-pinch": "^3.6.1",
-    "sanitize-html": "^2.13.0",
     "ts-loader": "^9.5.1",
     "web-vitals": "^2.1.4",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "yup": "^1.7.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix"
   },
   "browserslist": {
     "production": [
@@ -65,6 +54,12 @@
     ]
   },
   "devDependencies": {
-    "image-webpack-loader": "^8.1.0"
+    "@eslint/js": "^9.39.2",
+    "eslint": "^9.39.2",
+    "eslint-plugin-check-file": "^3.3.1",
+    "eslint-plugin-react": "^7.37.5",
+    "globals": "^17.2.0",
+    "image-webpack-loader": "^8.0.1",
+    "typescript-eslint": "^8.54.0"
   }
 }
