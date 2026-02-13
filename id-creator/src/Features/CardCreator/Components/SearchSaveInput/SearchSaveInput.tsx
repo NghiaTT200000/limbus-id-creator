@@ -15,8 +15,8 @@ export default function SearchSaveInput({saveList,chooseSave,searchSave}:{saveLi
     const arrowUpKeyPress = useKeyPress("ArrowUp",searchSaveInputRef)
     const arrowDownKeyPress = useKeyPress("ArrowDown",searchSaveInputRef)
     const tabDownKeyPress = useKeyPress("Tab",searchSaveInputRef)
-    const selectRef = useRef(null)
-    const containerRef = useRef(null)
+    const selectRef = useRef<HTMLDivElement>(null)
+    const containerRef = useRef<HTMLDivElement>(null)
 
     const handleKeyDown=(e:React.KeyboardEvent<HTMLInputElement>)=>{
         if((isActive&&(e.key==="Enter"||e.key==="ArrowUp"||e.key==="ArrowDown"||e.key==="Tab"))){
@@ -41,7 +41,7 @@ export default function SearchSaveInput({saveList,chooseSave,searchSave}:{saveLi
 
     useEffect(()=>{
         if((enterKeyPress)&&isActive) {
-            if(saveList[currChoice]){
+            if(saveList[currChoice]?.previewImg){
                 chooseSave(saveList[currChoice].previewImg)
             }
             setIsActive(false)
@@ -63,8 +63,8 @@ export default function SearchSaveInput({saveList,chooseSave,searchSave}:{saveLi
 
     useEffect(()=>{
 
-        function handleClickOutside(event) {
-            if (containerRef.current && !containerRef.current.contains(event.target)) {
+        function handleClickOutside(event: MouseEvent) {
+            if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
                 setIsActive(false)
             }
         }
@@ -92,7 +92,7 @@ export default function SearchSaveInput({saveList,chooseSave,searchSave}:{saveLi
                 {isActive&&<>{saveList.map((save,i)=>{
                     scrollToView()
                     return <div key={save.id} className={`center-element post-save-found-tab ${currChoice===i?"active":""}`} onClick={()=>{
-                        chooseSave(save.previewImg)
+                        if(save.previewImg) chooseSave(save.previewImg)
                         setSearchName("")
                         setIsActive(false)
                     }}>
