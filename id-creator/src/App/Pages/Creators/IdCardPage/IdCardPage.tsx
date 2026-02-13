@@ -13,7 +13,6 @@ import { IdCard } from 'Features/CardCreator/Components/Card/IdCard';
 import InputTabIdInfoContainer from 'Features/CardCreator/Components/InputTab/InputTabContainer/InputTabIdInfoContainer/InputTabIdInfoContainer';
 import ResetMenu from 'Features/CardCreator/Components/ResetMenu/ResetMenu';
 import { IdInfo } from 'Features/CardCreator/Types/IIdInfo';
-import PopUpMenu from 'Components/PopUpMenu/PopUpMenu';
 import { registerDomRef } from 'Stores/Slices/ImgDomRefSlice';
 
 
@@ -72,23 +71,8 @@ function IdCardContext():ReactElement{
         indexDB.currIdSave.put(new IdInfo(idInfoValue),1)
     },[JSON.stringify(idInfoValue)])
 
-    const [showMigrationWarning, setShowMigrationWarning] = useState(()=>{
-        return !sessionStorage.getItem("migrationWarningDismissed")
-    })
-
     return <StatusEffectProvider skillDetails={idInfoValue.skillDetails}>
         <DragAndDroppableSkillPreviewLayer/>
-        {showMigrationWarning && <PopUpMenu setIsActive={()=>{
-            sessionStorage.setItem("migrationWarningDismissed","true")
-            setShowMigrationWarning(false)
-        }}>
-            <div className="migration-warning-popup">
-                <h2>&#9888; Site Migration Notice</h2>
-                <p>This site will be moving from <a href="https://limbus-company-id-creator.netlify.app" target="_blank" rel="noreferrer">limbus-company-id-creator.netlify.app</a> to a new domain on <strong>February 13th, 5:00 PM KST</strong>.</p>
-                <p>Local saves are stored in your browser and <strong>will not transfer</strong> to the new domain. Please move your local saves to the cloud before then.</p>
-                <p>New domain: <a href="https://limbus-company-id-creator.com" target="_blank" rel="noreferrer">limbus-company-id-creator.com</a></p>
-            </div>
-        </PopUpMenu>}
         <div className={`editor-container`}>
             <InputTabIdInfoContainer
                 resetBtnHandler={()=>setResetMenuActive(!isResetMenuActive)}
