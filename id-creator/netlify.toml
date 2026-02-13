@@ -17,6 +17,13 @@
 [build.processing.images]
   compress = true
 
+# Redirect .netlify.app to .com domain
+[[redirects]]
+  from = "https://limbus-company-id-creator.netlify.app/*"
+  to = "https://limbus-company-id-creator.com/:splat"
+  status = 301
+  force = true
+
 # Proxy API requests to backend
 [[redirects]]
   from = "/API/*"

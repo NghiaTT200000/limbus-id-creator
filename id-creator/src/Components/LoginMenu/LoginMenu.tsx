@@ -36,6 +36,7 @@ function LoginMenu({children}:{children:ReactNode}){
                 try{
                     register(JSON.stringify(user.access_token));
                     addAlert("Success","Login successfully");
+                    setIsLoginMenuActive(false);
                 }
                 catch(err){
                     console.log(err);
