@@ -13,7 +13,6 @@ export const AuthApi = BaseApi.injectEndpoints({
             }),
             transformResponse: (response: IResponse<ILoginUser>) => response.response,
             transformErrorResponse: ()=> null,
-            providesTags: ['Auth'],
         }),
         register: builder.mutation<ILoginUser,string>({
             query: (accessToken)=>({
