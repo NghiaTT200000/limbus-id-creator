@@ -1,4 +1,3 @@
-import { useLoginUserContext } from "Stores/LoginUserContext";
 import { useLoginMenuContext } from "Components/LoginMenu/LoginMenu";
 import React, { useEffect, useState } from "react";
 import { ReactElement } from "react";
@@ -16,6 +15,7 @@ import uuid from "react-uuid";
 import { useNavigate } from "react-router-dom";
 import { EnvironmentVariables } from "Config/Environments";
 import useAlert from "Hooks/useAlert";
+import { useCheckAuthQuery } from "Api/AuthApi";
 
 
 interface IChoosenSave{
@@ -31,7 +31,7 @@ export default function NewPostPage():ReactElement{
     const [saveMode,setSaveMode] = useState("Identity")
     const [description,setDescription] = useState("")
     const [isPosting,setIsPosting] = useState(false)
-    const {loginUser} = useLoginUserContext()
+    const {data: loginUser} = useCheckAuthQuery()
     const {setIsLoginMenuActive} = useLoginMenuContext()
     const {addAlert} = useAlert()
     const navigate = useNavigate()
@@ -76,15 +76,17 @@ export default function NewPostPage():ReactElement{
     }
 
     async function searchSave(searchName:string="") {
-        try {
-            const response = await fetch(`${EnvironmentVariables.REACT_APP_SERVER_URL}/API/${saveMode==="Identity"?"SaveIDInfo":"SaveEGOInfo"}?userId=${loginUser.id}&searchName=${searchName}`,{
-                credentials: "include"
-            })
-            const result = await response.json()
-            if(response.ok) setSaveList(result.response)
-        } catch (error) {
-            console.log(error)
-            setSaveList([])
+        if(loginUser){
+            try {
+                const response = await fetch(`${EnvironmentVariables.REACT_APP_SERVER_URL}/API/${saveMode==="Identity"?"SaveIDInfo":"SaveEGOInfo"}?userId=${loginUser.id}&searchName=${searchName}`,{
+                    credentials: "include"
+                })
+                const result = await response.json()
+                if(response.ok) setSaveList(result.response)
+            } catch (error) {
+                console.log(error)
+                setSaveList([])
+            }
         }
     }
 

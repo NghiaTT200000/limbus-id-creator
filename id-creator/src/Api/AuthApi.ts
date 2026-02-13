@@ -5,13 +5,15 @@ import IResponse from "Types/IResponse";
 
 export const AuthApi = BaseApi.injectEndpoints({
     endpoints: (builder)=>({
-        login: builder.mutation<ILoginUser,void>({
+        checkAuth: builder.query<ILoginUser | null,void>({
             query: ()=>({
                 url: '/OAuth/oauth2/login',
                 method: 'POST',
                 credentials: "include",
             }),
             transformResponse: (response: IResponse<ILoginUser>) => response.response,
+            transformErrorResponse: ()=> null,
+            providesTags: ['Auth'],
         }),
         register: builder.mutation<ILoginUser,string>({
             query: (accessToken)=>({
@@ -24,6 +26,10 @@ export const AuthApi = BaseApi.injectEndpoints({
                 body: accessToken,
             }),
             transformResponse: (response: IResponse<ILoginUser>) => response.response,
+            async onQueryStarted(_, { dispatch, queryFulfilled }){
+                const { data } = await queryFulfilled;
+                dispatch(AuthApi.util.updateQueryData('checkAuth', undefined, ()=>data));
+            }
         }),
         logOut: builder.mutation<void,void>({
             query: ()=>({
@@ -31,8 +37,12 @@ export const AuthApi = BaseApi.injectEndpoints({
                 method: "POST",
                 credentials: "include",
             }),
+            async onQueryStarted(_, { dispatch, queryFulfilled }){
+                await queryFulfilled;
+                dispatch(AuthApi.util.updateQueryData('checkAuth', undefined, () => null));
+            }
         })
     })
 })
 
-export const {useLoginMutation,useRegisterMutation,useLogOutMutation} = AuthApi
+export const {useCheckAuthQuery,useRegisterMutation,useLogOutMutation} = AuthApi

@@ -1,6 +1,5 @@
 import AlertPopUp from "Components/AlertPopUp/AlertPopUp";
 import { LoginMenu } from "Components/LoginMenu/LoginMenu";
-import { LoginUserContextProvider } from "Stores/LoginUserContext";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import React from "react";
 import { ReactNode } from "react";
@@ -16,14 +15,12 @@ export default function Provider({children}:{children: ReactNode}){
          <GoogleOAuthProvider clientId={EnvironmentVariables.REACT_APP_GOOGLE_CLIENT_ID!}>
              <DndProvider backend={TouchBackend} options={{ enableMouseEvents: true }}>
                 <ReduxProvider store={AppStore}>
-                    <LoginUserContextProvider>
-                        <EditorProvider>
-                            <LoginMenu>
-                                {children}
-                                <AlertPopUp />
-                            </LoginMenu>
-                        </EditorProvider>
-                    </LoginUserContextProvider>
+                    <EditorProvider>
+                        <LoginMenu>
+                            {children}
+                            <AlertPopUp />
+                        </LoginMenu>
+                    </EditorProvider>
                 </ReduxProvider>
              </DndProvider>
          </GoogleOAuthProvider>

@@ -9,7 +9,7 @@ import "./UserProfile.css";
 import { EnvironmentVariables } from "Config/Environments";
 import useAlert from "Hooks/useAlert";
 
-export function UserProfile({userProfile,setUserProfile}:{userProfile:IUserProfile,setUserProfile:React.Dispatch<React.SetStateAction<IUserProfile>>}):ReactElement{
+export function UserProfile({userProfile,setUserProfile}:{userProfile:IUserProfile,setUserProfile:React.Dispatch<React.SetStateAction<IUserProfile | null>>}):ReactElement{
     const {userName,userIcon} = userProfile
     const [isChangeName,setIsChangeName] = useState(false)
     const [isChangingName,setIsChangingName] = useState(false)

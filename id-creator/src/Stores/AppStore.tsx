@@ -2,13 +2,11 @@ import { configureStore } from '@reduxjs/toolkit'
 import { AlertReducer } from './Slices/AlertSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { BaseApi } from 'Api/BaseApi'
-import { AuthReducer } from './Slices/AuthSlice'
 
 
 export const AppStore = configureStore({
     reducer: {
         alert: AlertReducer,
-        auth: AuthReducer,
         api: BaseApi.reducer,
     },
     middleware: (getDefault) => getDefault().concat(BaseApi.middleware),

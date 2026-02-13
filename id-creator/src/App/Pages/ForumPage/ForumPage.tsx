@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { ReactElement } from "react";
 import { ITag } from "Utils/TagList";
 import "./ForumPage.css"
-import { useLoginUserContext } from "Stores/LoginUserContext";
 import { Link } from "react-router-dom";
 import DropDown from "Components/DropDown/DropDown";
 import { IPostDisplayCard } from "Types/IPostDisplayCard/IPostDisplayCard";
@@ -11,6 +10,7 @@ import PaginatedPost from "Components/PaginatedPost/PaginatedPost";
 import TagInput from "Components/TagInput/TagInput";
 import TagsContainer from "Components/TagsContainer/TagsContainer";
 import useAlert from "Hooks/useAlert";
+import { useCheckAuthQuery } from "Api/AuthApi";
 
 export default function ForumPage():ReactElement{
     const [postList,setPostList] = useState<IPostDisplayCard[]>([])
@@ -20,7 +20,7 @@ export default function ForumPage():ReactElement{
     const [currPage,setCurrPage] = useState(0)
     const [maxCount,setMaxCount] = useState(0)
     const [isLoading,setIsLoading] = useState(false)
-    const {loginUser} = useLoginUserContext()
+    const {data: user} = useCheckAuthQuery()
     const {setIsLoginMenuActive} = useLoginMenuContext()
     const {addAlert} = useAlert()
 
@@ -107,7 +107,7 @@ export default function ForumPage():ReactElement{
                 </div>
             </div>
             <div className="forum-new-post-container">
-                {loginUser?
+                {user?
                     <Link to={"/new-post"}>
                         <button className="main-button">Create new Post</button>
                     </Link>:

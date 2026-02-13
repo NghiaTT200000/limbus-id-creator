@@ -3,13 +3,13 @@ import { ReactElement } from "react";
 import Post from "Features/Post/Components/Post/Post";
 import { useParams } from "react-router-dom";
 import { IPost } from "Types/IPost/IPost";
-import { useLoginUserContext } from "Stores/LoginUserContext";
 import { useLoginMenuContext } from "Components/LoginMenu/LoginMenu";
 import { IComment } from "Types/IPost/IComment";
 import { CommentContainer, PostCommentInput } from "Features/Post/Components/Comment/Comment";
 import "../Shared/Styles/PageLayout.css"
 import { EnvironmentVariables } from "Config/Environments";
 import useAlert from "Hooks/useAlert";
+import { useCheckAuthQuery } from "Api/AuthApi";
 
 export default function PostPage():ReactElement{
     const {postId} = useParams()
@@ -28,7 +28,7 @@ export default function PostPage():ReactElement{
     })
     const [comments,setComments] = useState<IComment[]>([])
     const {addAlert} = useAlert()
-    const {loginUser} = useLoginUserContext()
+    const {data: loginUser} = useCheckAuthQuery()
     const {setIsLoginMenuActive} = useLoginMenuContext()
 
     async function getPost(){
@@ -51,6 +51,10 @@ export default function PostPage():ReactElement{
         try {
             if(!comment) {
                 addAlert("Failure","Comment cannot be emptied")
+                return
+            }
+            if(!loginUser){
+                addAlert("Failure","You must be logged in to comment")
                 return
             }
             const response = await fetch(`${EnvironmentVariables.REACT_APP_SERVER_URL}/API/Comment/create`,{

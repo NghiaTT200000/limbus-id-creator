@@ -10,7 +10,6 @@ import SaveCloudTab from "./SaveCloudTab";
 import PopUpMenu from "Components/PopUpMenu/PopUpMenu";
 import imageCompression from 'browser-image-compression';
 import getImageDimensions from "Utils/getImageDimensions";
-import { useLoginUserContext } from "Stores/LoginUserContext";
 import base64ToFile from "Utils/base64ToFile";
 import checkBase64Image from "Utils/checkBase64Image";
 import "./SaveCloudMenu.css";
@@ -23,6 +22,7 @@ import * as Sentry from "@sentry/react"
 import useAlert from "Hooks/useAlert";
 import TurnRefToImg from "Utils/TurnRefToImg";
 import { getDomRef } from "Stores/Slices/ImgDomRefSlice";
+import { useCheckAuthQuery } from "Api/AuthApi";
 
 export default function SaveCloudMenu({setIsActive,saveMode,saveObjInfoValue,loadObjInfoValueCb,setSaveObjInfoValue}:{
     setIsActive:(a:boolean)=>void,
@@ -35,7 +35,7 @@ export default function SaveCloudMenu({setIsActive,saveMode,saveObjInfoValue,loa
     const [saveList,setSaveList] = useState([])
     const [namePopup,setNamePopup] = useState(false)
     const [searchSaveName,setSearchSaveName] = useState("")
-    const {loginUser} = useLoginUserContext()
+    const {data: loginUser} = useCheckAuthQuery()
     const {setIsLoginMenuActive} = useLoginMenuContext()
     const {addAlert} = useAlert()
 

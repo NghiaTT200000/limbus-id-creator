@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./SideBar.css"
-import { useLoginUserContext } from "Stores/LoginUserContext";
 import KofiIcon from "Assets/Icons/KofiIcon";
 import { useLoginMenuContext } from "Components/LoginMenu/LoginMenu";
+import { useCheckAuthQuery } from "Api/AuthApi";
 
 
 export default function SideBar({isActive,setActiveSideBar}:{isActive:boolean,setActiveSideBar:(a:boolean)=>void}){
     const {setIsLoginMenuActive} = useLoginMenuContext()
-    const {loginUser} = useLoginUserContext()
+    const {data: loginUser} = useCheckAuthQuery()
 
     return <div className={`side-bar-container ${isActive?"":"hidden"}`}>
         <div className="side-bar-background" onClick={()=>setActiveSideBar(!isActive)}></div>

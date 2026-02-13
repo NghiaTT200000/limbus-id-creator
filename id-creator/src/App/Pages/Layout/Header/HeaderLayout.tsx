@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { ReactElement } from "react";
 import {Link} from "react-router-dom";
 import "./HeaderLayout.css"
-import {  useLoginUserContext } from "Stores/LoginUserContext";
 import KofiIcon from "Assets/Icons/KofiIcon";
 import SideBar from "Components/SideBar/SideBar";
 import { useLoginMenuContext } from "Components/LoginMenu/LoginMenu";
+import { useCheckAuthQuery } from "Api/AuthApi";
 
 export default function HeaderLayout():ReactElement{
     const [isSideBarActive,setActiveSideBar] = useState(false)
     const {setIsLoginMenuActive} = useLoginMenuContext()
-    const {loginUser} = useLoginUserContext()
+    const {data: loginUser} = useCheckAuthQuery()
 
     return <>
         <nav className="site-header">
