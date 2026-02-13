@@ -9,7 +9,7 @@
     "target": "ES2015",
     "ignoreDeprecations": "6.0",
   },
-  "include": ["src", "./module.css.d.ts"],
+  "include": ["src", "./module.css.d.ts", "ReactMapInteraction.d.ts"],
   "exclude": ["build"],
     
 }

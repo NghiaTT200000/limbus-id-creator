@@ -6,7 +6,6 @@ import { DefenseSkill, IDefenseSkill } from "Features/CardCreator/Types/Skills/D
 import { IMentalEffect, MentalEffect } from "Features/CardCreator/Types/Skills/MentalEffect/IMentalEffect";
 import { IPassiveSkill, PassiveSkill } from "Features/CardCreator/Types/Skills/PassiveSkill/IPassiveSkill";
 import { useStatusEffectContext } from "Features/CardCreator/Stores/StatusEffectContext";
-import { useAlertContext } from "Stores/AlertContext";
 import { useEgoInfoContext } from "Features/CardCreator/Stores/EgoInfoContext";
 import InputCustomEffectPage from "../../InputCustomEffectPage/InputCustomEffectPage";
 import InputDefenseSkillPage from "../../InputDefenseSkillPage/InputDefenseSkillPage";
@@ -15,6 +14,7 @@ import InputOffenseSkillPage from "../../InputOffenseSkillPage/InputOffenseSkill
 import InputPassivePage from "../../InputPassivePage/InputPassivePage";
 import InputEgoInfoStatPage from "../../InputStatPage/InputEgoInfoStatPage/InputEgoInfoStatPage";
 import InputTabSide from "../../InputTabSide/InputTabSide";
+import useAlert from "Hooks/useAlert";
 
 
 export default function InputTabEgoInfoContainer({
@@ -27,7 +27,7 @@ export default function InputTabEgoInfoContainer({
         changeActiveTab:(i:number)=>void}):ReactElement{
     const {EgoInfoValue,setEgoInfoValue} = useEgoInfoContext()
     const {statusEffect}=useStatusEffectContext()
-    const {addAlert} = useAlertContext()
+    const {addAlert} = useAlert()
 
 
     function deleteHandler(id:string){

@@ -4,7 +4,6 @@ import 'Styles/style.css'
 import '../Shared/Styles/EditorPage.css'
 import { StatusEffectProvider } from 'Features/CardCreator/Stores/StatusEffectContext';
 import { IdInfoProvider, useIdInfoContext } from 'Features/CardCreator/Stores/IdInfoContext';
-import {  useRefDownloadContext } from 'Stores/ImgUrlContext';
 import {  useSearchParams } from 'react-router-dom';
 import { indexDB } from 'Features/CardCreator/Utils/IndexDB';
 import DragAndDroppableSkillPreviewLayer from 'Features/CardCreator/Components/Card/components/DragAndDroppableSkill/DragAndDroppableSkillPreviewLayer';
@@ -15,6 +14,7 @@ import InputTabIdInfoContainer from 'Features/CardCreator/Components/InputTab/In
 import ResetMenu from 'Features/CardCreator/Components/ResetMenu/ResetMenu';
 import { IdInfo } from 'Features/CardCreator/Types/IIdInfo';
 import PopUpMenu from 'Components/PopUpMenu/PopUpMenu';
+import { registerDomRef } from 'Stores/Slices/ImgDomRefSlice';
 
 
 
@@ -34,7 +34,6 @@ function IdCardContext():ReactElement{
     const {setLocalSaveName,changeSaveInfo,setLoadObjInfoValueCb} = useSettingMenuContext() 
     const domRef=useRef(null)
     const [query] = useSearchParams()
-    const {setDomRef} = useRefDownloadContext()
     const [isResetMenuActive,setResetMenuActive] = useState(false)
     const [activeTab,setActiveTab]=useState(-1)
 
@@ -63,7 +62,7 @@ function IdCardContext():ReactElement{
             changeSaveInfo(idInfoValue)
             setLoadObjInfoValueCb(()=>{return setIdInfoValue})
             //Setting the domref for downloading
-            setDomRef(domRef)
+            registerDomRef(domRef)
         })
     },[])
 

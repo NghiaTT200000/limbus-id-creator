@@ -10,9 +10,6 @@ import SaveCloudTab from "./SaveCloudTab";
 import PopUpMenu from "Components/PopUpMenu/PopUpMenu";
 import imageCompression from 'browser-image-compression';
 import getImageDimensions from "Utils/getImageDimensions";
-import { useAlertContext } from "Stores/AlertContext";
-import { useRefDownloadContext } from "Stores/ImgUrlContext";
-import { useLoginUserContext } from "Stores/LoginUserContext";
 import base64ToFile from "Utils/base64ToFile";
 import checkBase64Image from "Utils/checkBase64Image";
 import "./SaveCloudMenu.css";
@@ -22,6 +19,10 @@ import { IIdInfo } from "Features/CardCreator/Types/IIdInfo";
 import { useLoginMenuContext } from "Components/LoginMenu/LoginMenu";
 import { EnvironmentVariables } from "Config/Environments";
 import * as Sentry from "@sentry/react"
+import useAlert from "Hooks/useAlert";
+import TurnRefToImg from "Utils/TurnRefToImg";
+import { getDomRef } from "Stores/Slices/ImgDomRefSlice";
+import { useCheckAuthQuery } from "Api/AuthApi";
 
 export default function SaveCloudMenu({setIsActive,saveMode,saveObjInfoValue,loadObjInfoValueCb,setSaveObjInfoValue}:{
     setIsActive:(a:boolean)=>void,
@@ -29,17 +30,16 @@ export default function SaveCloudMenu({setIsActive,saveMode,saveObjInfoValue,loa
     saveObjInfoValue:ISaveFile<IIdInfo|IEgoInfo>,
     setSaveObjInfoValue:React.Dispatch<React.SetStateAction<ISaveFile<IIdInfo | IEgoInfo>>>,
     loadObjInfoValueCb:React.Dispatch<React.SetStateAction<IIdInfo|IEgoInfo>>}):ReactElement{
-    const {setImgUrlState} = useRefDownloadContext()
     const [createSaveBtnLoadState,setCreateSaveBtnLoadState] = useState<IIsLoading>({loadingMessage:"",isLoading:false})
     const [isLoadingSaveData,setIsLoadingSaveData] = useState(false)
     const [saveList,setSaveList] = useState([])
     const [namePopup,setNamePopup] = useState(false)
     const [searchSaveName,setSearchSaveName] = useState("")
-    const {loginUser} = useLoginUserContext()
+    const {data: loginUser} = useCheckAuthQuery()
     const {setIsLoginMenuActive} = useLoginMenuContext()
-    const {addAlert} = useAlertContext()
+    const {addAlert} = useAlert()
 
-    async function createForm (saveObjInfoValue:ISaveFile<IIdInfo|IEgoInfo>):Promise<FormData>{
+    async function createForm (saveObjInfoValue:ISaveFile<IIdInfo|IEgoInfo>, domRef: React.MutableRefObject<any>):Promise<FormData>{
         const form = new FormData()
         saveObjInfoValue.saveTime = (new Date()).toLocaleString('en-GB')
         //Deep copy
@@ -57,7 +57,7 @@ export default function SaveCloudMenu({setIsActive,saveMode,saveObjInfoValue,loa
             saveInfo.splashArt = ""
         }
 
-        const imgUrl = await setImgUrlState();
+        const imgUrl = await TurnRefToImg(domRef);
 
         const thumbnailImageFile = base64ToFile(imgUrl,"new file")
         const {width} = await getImageDimensions(thumbnailImageFile)
@@ -107,9 +107,14 @@ export default function SaveCloudMenu({setIsActive,saveMode,saveObjInfoValue,loa
             setIsLoadingSaveData(true)
             setCreateSaveBtnLoadState({loadingMessage:"Waiting for save image to load...",isLoading:true})
             saveObjInfoValue.id = uuid();
+            const imgDomRef = getDomRef();
+            if(!imgDomRef){
+                addAlert("Failure","ERROR: Cannot find reference for the id/ego sheet");
+                return;
+            }
             let form;
             try {
-                form = await createForm(saveObjInfoValue);
+                form = await createForm(saveObjInfoValue, imgDomRef);
             } catch (error) {
                 Sentry.captureException({
                     saveObjInfoValue,
@@ -202,10 +207,15 @@ export default function SaveCloudMenu({setIsActive,saveMode,saveObjInfoValue,loa
 
     async function overwriteSave(SaveId:string){
         try {
-            setIsLoadingSaveData(true)
-            setCreateSaveBtnLoadState({loadingMessage:"Waiting for save image to load...",isLoading:true})
-            saveObjInfoValue.id = SaveId
-            const form = await createForm(saveObjInfoValue)
+            setIsLoadingSaveData(true);
+            setCreateSaveBtnLoadState({loadingMessage:"Waiting for save image to load...",isLoading:true});
+            saveObjInfoValue.id = SaveId;
+            const imgDomRef = getDomRef();
+            if(!imgDomRef){
+                addAlert("Failure","ERROR: Cannot find reference for the id/ego sheet");
+                return;
+            }
+            const form = await createForm(saveObjInfoValue, imgDomRef)
             const response = await fetch(`${EnvironmentVariables.REACT_APP_SERVER_URL}/API/${saveMode==="ID"?"SaveIDInfo":"SaveEGOInfo"}/update`,{
                 credentials: "include",
                 method: "POST",

@@ -7,7 +7,6 @@ import { DefenseSkill, IDefenseSkill } from "Features/CardCreator/Types/Skills/D
 import { IMentalEffect, MentalEffect } from "Features/CardCreator/Types/Skills/MentalEffect/IMentalEffect";
 import { IPassiveSkill, PassiveSkill } from "Features/CardCreator/Types/Skills/PassiveSkill/IPassiveSkill";
 import { useStatusEffectContext } from "Features/CardCreator/Stores/StatusEffectContext";
-import { useAlertContext } from "Stores/AlertContext";
 import InputCustomEffectPage from "../../InputCustomEffectPage/InputCustomEffectPage";
 import InputDefenseSkillPage from "../../InputDefenseSkillPage/InputDefenseSkillPage";
 import InputMentalEffect from "../../InputMentalEffect/InputMentalEffect";
@@ -15,6 +14,7 @@ import InputOffenseSkillPage from "../../InputOffenseSkillPage/InputOffenseSkill
 import InputPassivePage from "../../InputPassivePage/InputPassivePage";
 import InputIdInfoStatPage from "../../InputStatPage/InputIdInfoStatPage/InputIdInfoStatPage";
 import InputTabSide from "../../InputTabSide/InputTabSide";
+import useAlert from "Hooks/useAlert";
 
 
 export default function InputTabIdInfoContainer({
@@ -27,7 +27,7 @@ export default function InputTabIdInfoContainer({
         changeActiveTab:(i:number)=>void}):ReactElement{
     const {idInfoValue,setIdInfoValue} = useIdInfoContext()
     const {statusEffect}=useStatusEffectContext()
-    const {addAlert} = useAlertContext()
+    const {addAlert} = useAlert()
 
 
     

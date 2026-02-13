@@ -1,32 +1,34 @@
-import { useAlertContext } from "Stores/AlertContext";
-import { useRefDownloadContext } from "Stores/ImgUrlContext";
 import React, { useState } from "react";
 import DownloadImg from "Utils/DownloadImg";
 import "./CardMakerFooter.css"
 import { useSettingMenuContext } from "../SettingMenu/SettingMenu";
 import DownloadIcon from "Assets/Icons/DownloadIcon";
 import SettingIcon from "Assets/Icons/SettingIcon";
+import useAlert from "Hooks/useAlert";
+import TurnRefToImg from "Utils/TurnRefToImg";
+import { getDomRef } from "Stores/Slices/ImgDomRefSlice";
 
 export default function CardMakerFooter(){
     const {setIsActive} = useSettingMenuContext()
-    const {setImgUrlState} = useRefDownloadContext()
     const [isLoading,setIsLoading] = useState(false)
-    const {addAlert} = useAlertContext()
+    const {addAlert} = useAlert()
 
     
     const downloadImg = ()=>{
         if(!isLoading){
             setIsLoading(true)
-            setImgUrlState()
-                .then((imgUrl:string)=>{
-                    addAlert("Success","Download successful")
-                    DownloadImg(imgUrl,"Custom")
-                })
-                .catch((err)=>{
-                    console.log(err)
-                    addAlert("Failure","ERROR: Missing asset detected. Please look for and update the missing asset.")
-                })
-                .finally(()=>setIsLoading(false))
+            const imgDomRef = getDomRef();
+            if(imgDomRef)
+                TurnRefToImg(imgDomRef)
+                    .then((imgUrl:string)=>{
+                        addAlert("Success","Download successful")
+                        DownloadImg(imgUrl,"Custom")
+                    })
+                    .catch((err)=>{
+                        console.log(err)
+                        addAlert("Failure","ERROR: Missing asset detected. Please look for and update the missing asset.")
+                    })
+                    .finally(()=>setIsLoading(false))
         }
     }
 

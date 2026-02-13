@@ -2,22 +2,24 @@ import { createContext, ReactNode, useContext, useEffect, useState } from "react
 import React from "react";
 import "./LoginMenu.css"
 import { TokenResponse, useGoogleLogin } from "@react-oauth/google";
-import { useAlertContext } from "Stores/AlertContext";
-import { useLoginUserContext } from "Stores/LoginUserContext";
-import IResponse from "Types/IResponse";
-import ILoginUser from "Types/ILoginUser";
 import GoogleIcon from "Assets/Icons/GoogleIcon";
 import PopUpMenu from "../PopUpMenu/PopUpMenu";
-import { EnvironmentVariables } from "Config/Environments";
+import useAlert from "Hooks/useAlert";
+import { useRegisterMutation } from "Api/AuthApi";
 
-const loginMenuContext = createContext(null)
+interface LoginMenuContextProps{
+    setIsLoginMenuActive: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const loginMenuContext = createContext<LoginMenuContextProps>({
+    setIsLoginMenuActive: ()=>{},
+});
 
 function LoginMenu({children}:{children:ReactNode}){
     const [isLoginMenuActive,setIsLoginMenuActive] = useState(false)
-    const [isLoggingIn,setIsLogginIn] = useState(false)
     const [user,setUser] = useState<Omit<TokenResponse, "error" | "error_description" | "error_uri">>()
-    const {addAlert} = useAlertContext()
-    const {setLoginUser} = useLoginUserContext()
+    const {addAlert} = useAlert();
+    const [ register, {isLoading} ] = useRegisterMutation();
 
 
     const login = useGoogleLogin({
@@ -31,28 +33,14 @@ function LoginMenu({children}:{children:ReactNode}){
     useEffect(
         () => {
             if (user) {
-                setIsLogginIn(true)
-                fetch(`${EnvironmentVariables.REACT_APP_SERVER_URL}/API/OAuth/oauth2/register`, {
-                        method: "POST",
-                        credentials: "include",
-                        headers:{
-                            "Content-type":"application/json"
-                        },
-                        body:JSON.stringify(user.access_token)
-                    })
-                    .then(res=>res.json())
-                    .then((res:IResponse<ILoginUser>) => {
-                        if(res.response){
-                            setLoginUser(res.response)
-                            setIsLoginMenuActive(false)
-                            addAlert("Success","Login successfully")
-                        }
-                    })
-                    .catch((err) => {
-                        console.log(err)
-                        addAlert("Failure","Login failed")
-                    })
-                    .finally(()=>setIsLogginIn(false))
+                try{
+                    register(JSON.stringify(user.access_token));
+                    addAlert("Success","Login successfully");
+                }
+                catch(err){
+                    console.log(err);
+                    addAlert("Failure","Login failed");
+                }
             }
         },
         [ user ]
@@ -63,7 +51,7 @@ function LoginMenu({children}:{children:ReactNode}){
             <PopUpMenu setIsActive={()=>setIsLoginMenuActive(!isLoginMenuActive)}>
                 <div className="login-menu">
                     <h1 className="login-menu-header">Login/Register</h1>
-                    {isLoggingIn?
+                    {isLoading?
                     <button className="main-button active center-element">
                         Logging in...
                         <GoogleIcon/>

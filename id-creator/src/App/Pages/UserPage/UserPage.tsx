@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { ReactElement } from "react";
 import {  useNavigate, useParams } from "react-router-dom";
 import { IUserProfile, UserProfileRes } from "Types/API/OAuth/IUserProfile";
-import { useAlertContext } from "Stores/AlertContext";
-import { useLoginUserContext } from "Stores/LoginUserContext";
 import PaginatedPost from "Components/PaginatedPost/PaginatedPost";
 import { IPostDisplayCard } from "Types/IPostDisplayCard/IPostDisplayCard";
 import { UserProfile } from "Features/User/Components/UserProfile/UserProfile";
@@ -11,6 +9,8 @@ import UserProfileLoading from "Components/UserProfileLoading/UserProfileLoading
 import "../Shared/Styles/PageLayout.css"
 import "./User.css"
 import { EnvironmentVariables } from "Config/Environments";
+import useAlert from "Hooks/useAlert";
+import { useCheckAuthQuery, useLogOutMutation } from "Api/AuthApi";
 
 
 
@@ -20,11 +20,11 @@ export default function UserPage():ReactElement{
     const [maxCount,setMaxCount] = useState(0)
     const [postList,setPostList] = useState<IPostDisplayCard[]>([])
     const [isFetchingUser,setIsFetchingUser] = useState(true)
-    const [isLoggingOut,setIsLoggingOut] = useState(false)
-    const {logOut,loginUser} = useLoginUserContext()
-    const [user,setUser] = useState<IUserProfile>(new UserProfileRes("","","","","",false))
+    const { data: loginUser } = useCheckAuthQuery();
+    const [ logOut, {isLoading: isLoggingOut} ] = useLogOutMutation();
+    const [user,setUser] = useState<IUserProfile | null>(new UserProfileRes("","","","","",false))
     const {userId} = useParams()
-    const {addAlert} = useAlertContext()
+    const {addAlert} = useAlert()
     const navigate = useNavigate()
 
     async function getPosts(page:number){
@@ -56,27 +56,13 @@ export default function UserPage():ReactElement{
 
 
     async function logout(){
-        setIsLoggingOut(true)
         try {
-            const res=await fetch(`${EnvironmentVariables.REACT_APP_SERVER_URL}/API/OAuth/oauth2/logout`,{
-                method:"POST",
-                credentials: "include",
-            })
-            const result = await res.json()
-            if(399<res.status&&res.status<500){
-                addAlert("Failure",result.msg)
-            }
-            else{
-                addAlert("Success",result.msg)
-                logOut()
-                navigate("/Forum")
-            }
+            logOut();
+            addAlert("Success","Logout successful")
+            navigate("/Forum")
         } catch (error) {
             console.log(error)
             addAlert("Failure","Something went wrong with the server")
-        }
-        finally{ 
-            setIsLoggingOut(false)
         }
     }
 
