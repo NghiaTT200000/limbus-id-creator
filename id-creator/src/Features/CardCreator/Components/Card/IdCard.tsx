@@ -1,17 +1,19 @@
-import { useIdInfoContext } from "Features/CardCreator/Stores/IdInfoContext";
 import React, { forwardRef, useState } from "react";
 import { ReactElement } from "react";
 import './styles/Card.css'
-import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch"; 
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import IdHeader from "./components/CardHeader/IdHeader";
 import SinnerSplashArt from "./components/SinnerSplashArt/SinnerSplashArt";
 import SinnerStats from "./components/SinnerStats/SinnerStats";
 import SkillDetailContainer from "./components/SkillDetailContainer/SkillDetailContainer";
+import { useAppSelector, useAppDispatch } from "Stores/AppStore";
+import { setIdInfo } from "Features/CardCreator/Stores/IdInfoSlice";
 
 
 const IdCard=forwardRef<HTMLDivElement,{changeActiveTab:React.Dispatch<React.SetStateAction<number>>}>(({changeActiveTab},ref):ReactElement=>{
     const [isDragging,setIsDragging] = useState(false)
-    const {idInfoValue,setIdInfoValue}=useIdInfoContext()
+    const idInfoValue = useAppSelector(state => state.idInfo.value)
+    const dispatch = useAppDispatch()
 
 
     function moveSkill(fromSkillID:string,toSkillID:string){
@@ -42,13 +44,13 @@ const IdCard=forwardRef<HTMLDivElement,{changeActiveTab:React.Dispatch<React.Set
                     }
                 }
             }
-            setIdInfoValue((oldIdInfoValue)=> ({...oldIdInfoValue,skillDetails:newSkillDetails}))
+            dispatch(setIdInfo({...idInfoValue,skillDetails:newSkillDetails}))
         }
     }
 
 
     return(
-        <TransformWrapper 
+        <TransformWrapper
         initialScale={0.5}
         minScale={.1}
         limitToBounds={false}
@@ -64,16 +66,16 @@ const IdCard=forwardRef<HTMLDivElement,{changeActiveTab:React.Dispatch<React.Set
                     <div className="sinner-icon-background" style={{"backgroundImage":`url(${idInfoValue.sinnerIcon})`}}></div>
                     <div className="Card-container">
                         <div className="splashArt-container">
-                            <SinnerSplashArt/>
-                            <SinnerStats />
+                            <SinnerSplashArt splashArt={idInfoValue.splashArt} splashArtScale={idInfoValue.splashArtScale} splashArtTranslation={idInfoValue.splashArtTranslation}/>
+                            <SinnerStats minSpeed={idInfoValue.minSpeed} maxSpeed={idInfoValue.maxSpeed} hp={idInfoValue.hp} staggerResist={idInfoValue.staggerResist} defenseLevel={idInfoValue.defenseLevel} slashResistant={idInfoValue.slashResistant} pierceResistant={idInfoValue.pierceResistant} bluntResistant={idInfoValue.bluntResistant} sinnerColor={idInfoValue.sinnerColor}/>
                         </div>
                         <div className="content-container">
                             <div>
-                                <IdHeader/>
+                                <IdHeader title={idInfoValue.title} name={idInfoValue.name} sinnerColor={idInfoValue.sinnerColor} rarity={idInfoValue.rarity}/>
                             </div>
                             <div className="center-element" style={{height:"100%"}}>
                                 <SkillDetailContainer moveSkill={moveSkill} skillDetails={idInfoValue.skillDetails} draggingHandler={(isDragging)=>setIsDragging(isDragging)} changeActiveTab={changeActiveTab}/>
-                            </div> 
+                            </div>
                         </div>
                     </div>
                 </div>

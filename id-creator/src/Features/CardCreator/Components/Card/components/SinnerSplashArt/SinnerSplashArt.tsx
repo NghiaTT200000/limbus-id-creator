@@ -1,12 +1,14 @@
-import { useIdInfoContext } from "Features/CardCreator/Stores/IdInfoContext"
 import React, { ReactElement } from "react"
 import {MapInteractionCSS} from "react-map-interaction"
 import "./SinnerSplashArt.css"
 
-export default function SinnerSplashArt():ReactElement{
-    const {idInfoValue}=useIdInfoContext()
+interface SinnerSplashArtProps {
+    splashArt: string
+    splashArtScale: number
+    splashArtTranslation: {x: number, y: number}
+}
 
-    const {splashArt,splashArtScale,splashArtTranslation}=idInfoValue
+export default function SinnerSplashArt({splashArt, splashArtScale, splashArtTranslation}: SinnerSplashArtProps):ReactElement{
     return(
         <div className="sinner-splash-art-container">
             <MapInteractionCSS disableZoom={true} disablePan={true} value={{scale:splashArtScale,translation:splashArtTranslation}}>

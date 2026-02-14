@@ -1,8 +1,9 @@
 import IUID from "Types/IUID";
-import IEffect from "Features/CardCreator/Types/Skills/SkillAndEffect/IEffect";
 import uuid from "react-uuid";
+import { IType } from "../../IType";
+import { SkillTypes } from "../../SkillTypes";
 
-export interface ICustomEffect extends IEffect,IUID{
+export interface ICustomEffect extends IType,IUID{
     name:string,
     customImg:string,
     effectColor:string,
@@ -15,5 +16,5 @@ export class CustomEffect implements ICustomEffect,IUID{
     customImg:string="";
     effectColor:string="#F1F1F1";
     effect:string="";
-    type:string="CustomEffect";
+    type = SkillTypes.CustomEffect;
 }

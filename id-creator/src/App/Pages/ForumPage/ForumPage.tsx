@@ -4,7 +4,7 @@ import { ITag } from "Utils/TagList";
 import "./ForumPage.css"
 import { Link } from "react-router-dom";
 import DropDown from "Components/DropDown/DropDown";
-import { useLoginMenuContext } from "Components/LoginMenu/LoginMenu";
+import { useLoginMenu } from "Hooks/useLoginMenu";
 import PaginatedPost from "Components/PaginatedPost/PaginatedPost";
 import TagInput from "Components/TagInput/TagInput";
 import TagsContainer from "Components/TagsContainer/TagsContainer";
@@ -18,7 +18,7 @@ export default function ForumPage():ReactElement{
     const [sortedBy,setSortedBy] = useState("Latest")
     const [currPage,setCurrPage] = useState(0)
     const {data: user} = useCheckAuthQuery()
-    const {setIsLoginMenuActive} = useLoginMenuContext()
+    const {setIsLoginMenuActive} = useLoginMenu()
     const {addAlert} = useAlert()
 
     const { data, isLoading, error } = useGetPostsQuery({

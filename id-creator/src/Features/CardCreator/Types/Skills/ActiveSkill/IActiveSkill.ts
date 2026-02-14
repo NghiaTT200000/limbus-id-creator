@@ -1,6 +1,4 @@
-import ISkill from "Features/CardCreator/Types/Skills/SkillAndEffect/ISkill";
-
-export interface IActiveSkill extends ISkill{
+export interface IActiveSkill{
     name:string,
     skillAffinity:string,
     basePower:number,

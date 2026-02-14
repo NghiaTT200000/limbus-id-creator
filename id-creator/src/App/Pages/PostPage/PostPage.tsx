@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ReactElement } from "react";
 import Post from "Features/Post/Components/Post/Post";
 import { useParams } from "react-router-dom";
-import { useLoginMenuContext } from "Components/LoginMenu/LoginMenu";
+import { useLoginMenu } from "Hooks/useLoginMenu";
 import { CommentContainer, PostCommentInput } from "Features/Post/Components/Comment/Comment";
 import "../Shared/Styles/PageLayout.css"
 import useAlert from "Hooks/useAlert";
@@ -14,7 +14,7 @@ export default function PostPage():ReactElement{
     const {postId} = useParams()
     const {addAlert} = useAlert()
     const {data: loginUser} = useCheckAuthQuery()
-    const {setIsLoginMenuActive} = useLoginMenuContext()
+    const {setIsLoginMenuActive} = useLoginMenu()
     const [commentPage, setCommentPage] = useState(0)
     const { data: post, isLoading: isLoadingPost } = useGetPostQuery(postId!)
     const { data: comments = [], isFetching: isFetchingComments } = useGetCommentsQuery({

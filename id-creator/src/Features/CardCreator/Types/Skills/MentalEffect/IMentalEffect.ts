@@ -1,13 +1,14 @@
 import IUID from "Types/IUID";
-import IEffect from "Features/CardCreator/Types/Skills/SkillAndEffect/IEffect";
 import uuid from "react-uuid";
+import { IType } from "../../IType";
+import { SkillTypes } from "../../SkillTypes";
 
-export interface IMentalEffect extends IEffect,IUID{
+export interface IMentalEffect extends IType,IUID{
     effect:string
 }
 
 export class MentalEffect implements IMentalEffect,IUID{
     inputId: string = uuid()
     effect: string = "";
-    type: string = "MentalEffect";
+    type = SkillTypes.MentalEffect;
 }

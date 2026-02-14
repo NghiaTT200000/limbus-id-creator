@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { ReactElement } from "react";
-import { ISaveFile } from "Types/ISaveFile";
+import { ISaveFile, SaveFile } from "Types/ISaveFile";
 import { IOffenseSkill } from "Features/CardCreator/Types/Skills/OffenseSkill/IOffenseSkill";
 import { IDefenseSkill } from "Features/CardCreator/Types/Skills/DefenseSkill/IDefenseSkill";
 import { ICustomEffect } from "Features/CardCreator/Types/Skills/CustomEffect/ICustomEffect";
-import { IIsLoading } from "Types/Utils/IIsLoading";
 import uuid from "react-uuid";
 import SaveCloudTab from "./SaveCloudTab";
 import PopUpMenu from "Components/PopUpMenu/PopUpMenu";
@@ -16,37 +15,57 @@ import "./SaveCloudMenu.css";
 import "../SettingMenu.css";
 import { IEgoInfo } from "Features/CardCreator/Types/IEgoInfo";
 import { IIdInfo } from "Features/CardCreator/Types/IIdInfo";
-import { useLoginMenuContext } from "Components/LoginMenu/LoginMenu";
-import { EnvironmentVariables } from "Config/Environments";
+import { useLoginMenu } from "Hooks/useLoginMenu";
 import * as Sentry from "@sentry/react"
 import useAlert from "Hooks/useAlert";
 import TurnRefToImg from "Utils/TurnRefToImg";
 import { getDomRef } from "Stores/Slices/ImgDomRefSlice";
 import { useCheckAuthQuery } from "Api/AuthApi";
+import { useAppSelector, useAppDispatch } from "Stores/AppStore";
+import { setIdInfo } from "Features/CardCreator/Stores/IdInfoSlice";
+import { setEgoInfo } from "Features/CardCreator/Stores/EgoInfoSlice";
+import { closeSettingMenu } from "Stores/Slices/UiSlice";
+import {
+    useGetSaveListQuery,
+    useLazyGetSaveQuery,
+    useCreateSaveMutation,
+    useUpdateSaveMutation,
+    useDeleteSaveMutation,
+} from "Api/SaveInfoApi";
 
-export default function SaveCloudMenu({setIsActive,saveMode,saveObjInfoValue,loadObjInfoValueCb,setSaveObjInfoValue}:{
-    setIsActive:(a:boolean)=>void,
-    saveMode:string,
-    saveObjInfoValue:ISaveFile<IIdInfo|IEgoInfo>,
-    setSaveObjInfoValue:React.Dispatch<React.SetStateAction<ISaveFile<IIdInfo | IEgoInfo>>>,
-    loadObjInfoValueCb:React.Dispatch<React.SetStateAction<IIdInfo|IEgoInfo>>}):ReactElement{
-    const [createSaveBtnLoadState,setCreateSaveBtnLoadState] = useState<IIsLoading>({loadingMessage:"",isLoading:false})
-    const [isLoadingSaveData,setIsLoadingSaveData] = useState(false)
-    const [saveList,setSaveList] = useState<ISaveFile<IIdInfo|IEgoInfo>[]>([])
+export default function SaveCloudMenu({saveMode}:{saveMode:"ID"|"EGO"}):ReactElement{
+    const [createSaveBtnLoadMsg,setCreateSaveBtnLoadMsg] = useState("")
+    const [isCreating,setIsCreating] = useState(false)
     const [namePopup,setNamePopup] = useState(false)
     const [searchSaveName,setSearchSaveName] = useState("")
+    const [saveName,setSaveName] = useState("New save file")
     const {data: loginUser} = useCheckAuthQuery()
-    const {setIsLoginMenuActive} = useLoginMenuContext()
+    const {setIsLoginMenuActive} = useLoginMenu()
     const {addAlert} = useAlert()
+    const dispatch = useAppDispatch()
 
-    async function createForm (saveObjInfoValue:ISaveFile<IIdInfo|IEgoInfo>, domRef: React.MutableRefObject<any>):Promise<FormData>{
+    const idInfoValue = useAppSelector(state => state.idInfo.value)
+    const egoInfoValue = useAppSelector(state => state.egoInfo.value)
+    const cardData = saveMode === "ID" ? idInfoValue : egoInfoValue
+
+    const { data: saveList = [], isFetching: isLoadingSaveList } = useGetSaveListQuery(
+        { userId: loginUser?.id ?? "", searchName: searchSaveName, saveMode },
+        { skip: !loginUser }
+    )
+
+    const [triggerGetSave, { isFetching: isLoadingSave }] = useLazyGetSaveQuery()
+    const [createSaveMutation] = useCreateSaveMutation()
+    const [updateSaveMutation] = useUpdateSaveMutation()
+    const [deleteSaveMutation, { isLoading: isDeleting }] = useDeleteSaveMutation()
+
+    const isLoadingSaveData = isLoadingSaveList || isLoadingSave || isDeleting || isCreating
+
+    async function createForm(saveFileData: ISaveFile<IIdInfo|IEgoInfo>, domRef: React.MutableRefObject<any>): Promise<FormData> {
         const form = new FormData()
-        saveObjInfoValue.saveTime = (new Date()).toLocaleString('en-GB')
-        //Deep copy
-        const saveData = JSON.parse(JSON.stringify(saveObjInfoValue))
+        saveFileData.saveTime = (new Date()).toLocaleString('en-GB')
+        const saveData = JSON.parse(JSON.stringify(saveFileData)) as ISaveFile<IIdInfo|IEgoInfo>
         const saveInfo = {...saveData.saveInfo}
-        //Check all of the field that can contain base64 string and convert them to file
-        //Then remove the string in the object to send them to the backend quicker
+
         if(checkBase64Image(saveInfo.sinnerIcon)){
             form.append("sinnerIcon",base64ToFile(saveInfo.sinnerIcon,"new file"))
             saveInfo.sinnerIcon = ""
@@ -58,12 +77,11 @@ export default function SaveCloudMenu({setIsActive,saveMode,saveObjInfoValue,loa
         }
 
         const imgUrl = await TurnRefToImg(domRef);
-
         const thumbnailImageFile = base64ToFile(imgUrl,"new file")
         const {width} = await getImageDimensions(thumbnailImageFile)
         form.append("thumbnailImage",await imageCompression(thumbnailImageFile,{
             maxSizeMB: 1,
-            useWebWorker: true,                    
+            useWebWorker: true,
             maxWidthOrHeight: Math.max(1650,Math.floor(width*(2/3)))
         }))
 
@@ -92,21 +110,15 @@ export default function SaveCloudMenu({setIsActive,saveMode,saveObjInfoValue,loa
         })
         saveData.saveInfo=saveInfo
         form.append("SaveData",JSON.stringify(saveData))
-
-        //Log all form data
-        // for (let [key, value] of form.entries()) {
-        //     console.log(key+":")
-        //     console.log(value)
-        // }
-
         return form
     }
 
     async function createNewSaveFile(){
         try {
-            setIsLoadingSaveData(true)
-            setCreateSaveBtnLoadState({loadingMessage:"Waiting for save image to load...",isLoading:true})
-            saveObjInfoValue.id = uuid();
+            setIsCreating(true)
+            setCreateSaveBtnLoadMsg("Waiting for save image to load...")
+            const saveFileData = new SaveFile(cardData, saveName)
+            saveFileData.id = uuid()
             const imgDomRef = getDomRef();
             if(!imgDomRef){
                 addAlert("Failure","ERROR: Cannot find reference for the id/ego sheet");
@@ -114,146 +126,88 @@ export default function SaveCloudMenu({setIsActive,saveMode,saveObjInfoValue,loa
             }
             let form;
             try {
-                form = await createForm(saveObjInfoValue, imgDomRef);
+                form = await createForm(saveFileData, imgDomRef);
             } catch (error) {
-                Sentry.captureException({
-                    saveObjInfoValue,
-                    error
-                })
+                Sentry.captureException({ saveFileData, error })
                 addAlert("Failure","ERROR: Missing asset detected. Please look for and update the missing asset.");
-                return;                
+                return;
             }
-            setCreateSaveBtnLoadState({loadingMessage:"Creating new save",isLoading:true})
-            const response = await fetch(`${EnvironmentVariables.REACT_APP_SERVER_URL}/API/${saveMode==="ID"?"SaveIDInfo":"SaveEGOInfo"}/create`,{
-                method: "POST",
-                credentials: "include",
-                body:form
-            })
-            const result = await response.json()
-            if(!response.ok) addAlert("Failure",result.msg)
-            else{
-                addAlert("Success",result.msg)
-                loadSaveList()
-            }
+            setCreateSaveBtnLoadMsg("Creating new save")
+            await createSaveMutation({ saveMode, form }).unwrap()
+            addAlert("Success","Save created successfully")
         } catch (error) {
             console.log(error)
             addAlert("Failure","Something went wrong with the server")
-        } 
-        finally{
-            setCreateSaveBtnLoadState({loadingMessage:"",isLoading:false})
-            setIsLoadingSaveData(false)
+        } finally {
+            setIsCreating(false)
+            setCreateSaveBtnLoadMsg("")
         }
     }
 
-    async function deleteSave(saveId:string){
+    async function deleteSave(saveId: string){
         try {
-            setIsLoadingSaveData(true)
-            const req = await fetch(`${EnvironmentVariables.REACT_APP_SERVER_URL}/API/${saveMode==="ID"?"SaveIDInfo":"SaveEGOInfo"}/delete`,{
-                method: "POST",
-                credentials: "include",
-                headers:{
-                    "Content-type":"application/json"
-                },
-                body:JSON.stringify(saveId)
-            })
-            const res = await req.json()
-            if(!req.ok) addAlert("Failure",res.msg)
-            else{ 
-                loadSaveList()
-                addAlert("Success","Deleted")
-            }
+            await deleteSaveMutation({ saveMode, saveId }).unwrap()
+            addAlert("Success","Deleted")
         } catch (error) {
             console.log(error)
             addAlert("Failure","Something went wrong with the server")
         }
-        setIsLoadingSaveData(false)
     }
 
-    async function loadSaveList(){
+    async function loadSave(saveId: string){
         try {
-            setIsLoadingSaveData(true)
-            const response = await fetch(`${EnvironmentVariables.REACT_APP_SERVER_URL}/API/${saveMode==="ID"?"SaveIDInfo":"SaveEGOInfo"}?userId=${loginUser.id}&searchName=${searchSaveName}`,{
-                credentials: "include"
-            })
-            const result = await response.json()
-            if(!response.ok) addAlert("Failure",result.msg)
-            else setSaveList(result.response)
-        } catch (error) {
-            console.log(error)
-            addAlert("Failure","Something went wrong with the server")
-        }
-        setIsLoadingSaveData(false)
-    }
-
-    async function loadSave(SaveId:string){
-        try{
-            setIsLoadingSaveData(true)
-            const response = await fetch(`${EnvironmentVariables.REACT_APP_SERVER_URL}/API/${saveMode==="ID"?"SaveIDInfo":"SaveEGOInfo"}/${SaveId}?includeSkill=true`,{
-                credentials: "include"
-            })
-            const result = await response.json()
-            if(!response.ok) addAlert("Failure",result.msg)
-            else{ 
-                loadObjInfoValueCb(result.response.saveInfo)
-                setIsActive(false)
+            const result = await triggerGetSave({ saveId, saveMode }).unwrap()
+            if(saveMode === "ID"){
+                dispatch(setIdInfo(result.saveInfo as IIdInfo))
+            } else {
+                dispatch(setEgoInfo(result.saveInfo as IEgoInfo))
             }
-        }
-        catch(error){
+            dispatch(closeSettingMenu())
+        } catch(error){
             console.log(error)
             addAlert("Failure","Something went wrong with the server")
         }
-        setIsLoadingSaveData(false)
     }
 
-    async function overwriteSave(SaveId:string){
+    async function overwriteSave(saveId: string){
         try {
-            setIsLoadingSaveData(true);
-            setCreateSaveBtnLoadState({loadingMessage:"Waiting for save image to load...",isLoading:true});
-            saveObjInfoValue.id = SaveId;
+            setIsCreating(true)
+            setCreateSaveBtnLoadMsg("Waiting for save image to load...")
+            const saveFileData = new SaveFile(cardData, saveName)
+            saveFileData.id = saveId
             const imgDomRef = getDomRef();
             if(!imgDomRef){
                 addAlert("Failure","ERROR: Cannot find reference for the id/ego sheet");
                 return;
             }
-            const form = await createForm(saveObjInfoValue, imgDomRef)
-            const response = await fetch(`${EnvironmentVariables.REACT_APP_SERVER_URL}/API/${saveMode==="ID"?"SaveIDInfo":"SaveEGOInfo"}/update`,{
-                credentials: "include",
-                method: "POST",
-                body:form
-            })
-            const result = await response.json()
-            if(!response.ok) addAlert("Failure",result.msg)
-            else{ 
-                loadSaveList()
-                addAlert("Success",result.msg)
-            }
+            const form = await createForm(saveFileData, imgDomRef)
+            setCreateSaveBtnLoadMsg("Overwriting save...")
+            await updateSaveMutation({ saveMode, form }).unwrap()
+            addAlert("Success","Save updated successfully")
         } catch (error) {
             console.log(error)
             addAlert("Failure","Something went wrong with the server")
+        } finally {
+            setIsCreating(false)
+            setCreateSaveBtnLoadMsg("")
         }
-        setIsLoadingSaveData(false)
     }
 
     const loadCreateNewSaveButton = ()=>{
         if(!loginUser) return <button className="main-button create-new-save-btn" onClick={()=>{setIsLoginMenuActive(true)}}>Login</button>
-        if(createSaveBtnLoadState.isLoading) return <button className="main-button active create-new-save-btn">{createSaveBtnLoadState.loadingMessage}</button>
-        return <button className="main-button create-new-save-btn" onClick={()=>setNamePopup(true)}>Create a new save</button> 
+        if(isCreating) return <button className="main-button active create-new-save-btn">{createSaveBtnLoadMsg}</button>
+        return <button className="main-button create-new-save-btn" onClick={()=>setNamePopup(true)}>Create a new save</button>
     }
-
-    useEffect(()=>{
-        if(loginUser)loadSaveList()
-    },[saveMode,loginUser,searchSaveName])
-
 
     return <div className="save-cloud-container">
         <div className={`${namePopup?"":"hidden"}`}>
             <PopUpMenu setIsActive={()=>setNamePopup(false)}>
                 <div className="save-cloud-name-popup">
                     <label htmlFor="saveName">Enter the name of the new save:</label>
-                    <input className="input save-cloud-name-input" name="saveName" id="saveName" type="text" placeholder="Save name" 
-                    value={saveObjInfoValue.saveName} 
+                    <input className="input save-cloud-name-input" name="saveName" id="saveName" type="text" placeholder="Save name"
+                    value={saveName}
                     onChange={(e)=>{
-                        setSaveObjInfoValue({...saveObjInfoValue,saveName:e.target.value})
+                        setSaveName(e.target.value)
                     }}/>
                     <button className="main-button create-new-save-btn" onClick={()=>{
                         createNewSaveFile()

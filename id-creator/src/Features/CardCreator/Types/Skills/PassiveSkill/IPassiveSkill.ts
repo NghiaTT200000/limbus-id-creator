@@ -1,6 +1,7 @@
 import IUID from "Types/IUID";
-import ISkill from "Features/CardCreator/Types/Skills/SkillAndEffect/ISkill"
 import uuid from "react-uuid";
+import { IType } from "../../IType";
+import { SkillTypes } from "../../SkillTypes";
 
 interface ISinCost{
     wrath_cost:number;
@@ -12,7 +13,7 @@ interface ISinCost{
     envy_cost:number;
 }
 
-export interface IPassiveSkill extends ISkill,IUID{
+export interface IPassiveSkill extends IType,IUID{
     name:string,
     skillEffect:string,
     affinity:string,
@@ -28,7 +29,7 @@ export class PassiveSkill implements IPassiveSkill,IUID{
     inputId: string=uuid();
     name: string ="";
     skillEffect: string ="";
-    type: string ="PassiveSkill";
+    type = SkillTypes.PassiveSkill;
     affinity:string="Wrath";
     req:string="Own";//Res or own or none
     reqNo:number=1;

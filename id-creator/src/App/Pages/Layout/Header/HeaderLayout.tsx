@@ -4,12 +4,12 @@ import {Link} from "react-router-dom";
 import "./HeaderLayout.css"
 import KofiIcon from "Assets/Icons/KofiIcon";
 import SideBar from "Components/SideBar/SideBar";
-import { useLoginMenuContext } from "Components/LoginMenu/LoginMenu";
+import { useLoginMenu } from "Hooks/useLoginMenu";
 import { useCheckAuthQuery } from "Api/AuthApi";
 
 export default function HeaderLayout():ReactElement{
     const [isSideBarActive,setActiveSideBar] = useState(false)
-    const {setIsLoginMenuActive} = useLoginMenuContext()
+    const {setIsLoginMenuActive} = useLoginMenu()
     const {data: loginUser} = useCheckAuthQuery()
 
     return <>

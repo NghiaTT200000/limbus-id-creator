@@ -1,8 +1,10 @@
 import { IActiveSkill } from "Features/CardCreator/Types/Skills/ActiveSkill/IActiveSkill";
 import IUID from "Types/IUID";
 import uuid from "react-uuid";
+import { IType } from "../../IType";
+import { SkillTypes } from "../../SkillTypes";
 
-export interface IDefenseSkill extends IActiveSkill,IUID{
+export interface IDefenseSkill extends IActiveSkill,IType,IUID{
     defenseType:string,
     damageType:string,
     skillAmt: number,
@@ -25,7 +27,7 @@ export class DefenseSkill implements IDefenseSkill, IUID{
     skillImage: string = "";
     skillEffect: string="";
     skillLabel: string = "Defense";
-    type: string = "DefenseSkill";
+    type = SkillTypes.DefenseSkill;
     public constructor(name?:string){
         this.name=(name)?name:""
     }

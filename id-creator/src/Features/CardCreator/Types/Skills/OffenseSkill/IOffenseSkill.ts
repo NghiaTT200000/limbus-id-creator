@@ -1,8 +1,10 @@
 import { IActiveSkill } from "Features/CardCreator/Types/Skills/ActiveSkill/IActiveSkill";
 import IUID from "Types/IUID";
 import uuid from "react-uuid";
+import { IType } from "../../IType";
+import { SkillTypes } from "../../SkillTypes";
 
-export interface IOffenseSkill extends IActiveSkill,IUID{
+export interface IOffenseSkill extends IActiveSkill, IType, IUID{
     damageType:string,
     skillLevel:number,
     skillAmt:number,
@@ -24,7 +26,7 @@ export class OffenseSkill implements IOffenseSkill,IUID{
     skillImage: string="";
     skillEffect: string="";
     skillLabel: string="SKILL";
-    type: string="OffenseSkill";
+    type = SkillTypes.OffenseSkill;
     public constructor(name?:string,skillAffinity?:string,skillAmt?:number,skillLabel?:string){
         this.name=(name)?name:""
         this.skillAffinity=(skillAffinity)?skillAffinity:"Wrath"

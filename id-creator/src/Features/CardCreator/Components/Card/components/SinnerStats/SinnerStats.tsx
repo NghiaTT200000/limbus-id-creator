@@ -1,29 +1,25 @@
 import React from "react";
 import { ReactElement } from "react";
 import "./SinnerStats.css"
-import { useIdInfoContext } from "Features/CardCreator/Stores/IdInfoContext";
 
-export default function SinnerStats():ReactElement{
-    const {idInfoValue} = useIdInfoContext()
-    
-    //The hp can be lower and upercase
-    const {
-        minSpeed,
-        maxSpeed,
-        hp,
-        staggerResist,
-        defenseLevel,
-        slashResistant,
-        pierceResistant,
-        bluntResistant,
-        sinnerColor
-    }=idInfoValue
+interface SinnerStatsProps {
+    minSpeed: number
+    maxSpeed: number
+    hp: number
+    staggerResist: string
+    defenseLevel: number
+    slashResistant: number
+    pierceResistant: number
+    bluntResistant: number
+    sinnerColor: string
+}
 
-    
+export default function SinnerStats({minSpeed, maxSpeed, hp, staggerResist, defenseLevel, slashResistant, pierceResistant, bluntResistant, sinnerColor}: SinnerStatsProps):ReactElement{
+
     function changeResistantColor(value:number):string{
         if(value<=0.75) return "var(--Endure)"
         if(value>=1.5) return "var(--Fatal)"
-        
+
         return"var(--Normal)"
     }
 
@@ -34,7 +30,7 @@ export default function SinnerStats():ReactElement{
         if(value>=2.0) return "Fatal"
         return "Normal"
     }
-    
+
     function generateSinnerStatsBorder(){
         const borderText = []
         for(let i=0;i<9;i++){
@@ -42,7 +38,7 @@ export default function SinnerStats():ReactElement{
         }
         return borderText
     }
-    
+
     return(
         <div className="sinner-stats">
             <div className="sinner-stats-border" style={{color:sinnerColor}}>
@@ -108,6 +104,6 @@ export default function SinnerStats():ReactElement{
             <div className="sinner-stats-border" style={{color:sinnerColor}}>
                 {generateSinnerStatsBorder()}
             </div>
-        </div>    
+        </div>
     )
 }

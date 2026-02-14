@@ -1,18 +1,20 @@
 import React, { forwardRef, useState } from "react";
 import { ReactElement } from "react";
 import './styles/Card.css'
-import { useEgoInfoContext } from "Features/CardCreator/Stores/EgoInfoContext";
 import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
 import EgoHeader from "./components/CardHeader/EgoHeader";
 import EgoSplashArt from "./components/EgoSplashArt/EgoSplashArt";
 import SinCost from "./components/SinCost/SinCost";
 import SinResistant from "./components/SinResistant/SinResistant";
 import SkillDetailContainer from "./components/SkillDetailContainer/SkillDetailContainer";
+import { useAppSelector, useAppDispatch } from "Stores/AppStore";
+import { setEgoInfo } from "Features/CardCreator/Stores/EgoInfoSlice";
 
 
 const EgoCard=forwardRef<HTMLDivElement,{changeActiveTab:React.Dispatch<React.SetStateAction<number>>}>(({changeActiveTab},ref):ReactElement=>{
     const [isDragging,setIsDragging] = useState(false)
-    const {EgoInfoValue,setEgoInfoValue}=useEgoInfoContext()
+    const EgoInfoValue = useAppSelector(state => state.egoInfo.value)
+    const dispatch = useAppDispatch()
 
     function moveSkill(fromSkillID:string,toSkillID:string){
         //Do nothing if they are the same id
@@ -42,7 +44,7 @@ const EgoCard=forwardRef<HTMLDivElement,{changeActiveTab:React.Dispatch<React.Se
                     }
                 }
             }
-            setEgoInfoValue((oldIdInfoValue)=> ({...oldIdInfoValue,skillDetails:newSkillDetails}))
+            dispatch(setEgoInfo({...EgoInfoValue,skillDetails:newSkillDetails}))
         }
     }
 
@@ -63,15 +65,15 @@ const EgoCard=forwardRef<HTMLDivElement,{changeActiveTab:React.Dispatch<React.Se
                 <div className="Card" ref={ref}>
                     <div className="sinner-icon-background" style={{"backgroundImage":`url(${EgoInfoValue.sinnerIcon})`}}></div>
                     <div className="Card-container">
-                        {EgoInfoValue.splashArt?                
+                        {EgoInfoValue.splashArt?
                         <div className="ego-splash-art-container">
-                            <EgoSplashArt/>
+                            <EgoSplashArt splashArt={EgoInfoValue.splashArt} splashArtScale={EgoInfoValue.splashArtScale} splashArtTranslation={EgoInfoValue.splashArtTranslation}/>
                         </div>:<></>}
 
                         <div className="content-container">
                             <div>
-                                <EgoHeader/>
-                            </div> 
+                                <EgoHeader title={EgoInfoValue.title} name={EgoInfoValue.name} egoLevel={EgoInfoValue.egoLevel} sanityCost={EgoInfoValue.sanityCost} sinnerColor={EgoInfoValue.sinnerColor}/>
+                            </div>
                             <div className="center-element" style={{maxHeight:"665px"}}>
                                 <SkillDetailContainer  moveSkill={moveSkill} skillDetails={EgoInfoValue.skillDetails} draggingHandler={(isDragging)=>setIsDragging(isDragging)} changeActiveTab={changeActiveTab}/>
                                 <SinCost sinCost={EgoInfoValue.sinCost}/>

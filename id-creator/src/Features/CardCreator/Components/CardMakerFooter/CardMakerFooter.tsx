@@ -1,19 +1,20 @@
 import React, { useState } from "react";
 import DownloadImg from "Utils/DownloadImg";
 import "./CardMakerFooter.css"
-import { useSettingMenuContext } from "../SettingMenu/SettingMenu";
 import DownloadIcon from "Assets/Icons/DownloadIcon";
 import SettingIcon from "Assets/Icons/SettingIcon";
 import useAlert from "Hooks/useAlert";
 import TurnRefToImg from "Utils/TurnRefToImg";
 import { getDomRef } from "Stores/Slices/ImgDomRefSlice";
+import { useAppDispatch } from "Stores/AppStore";
+import { openSettingMenu } from "Stores/Slices/UiSlice";
 
 export default function CardMakerFooter(){
-    const {setIsActive} = useSettingMenuContext()
+    const dispatch = useAppDispatch()
     const [isLoading,setIsLoading] = useState(false)
     const {addAlert} = useAlert()
 
-    
+
     const downloadImg = ()=>{
         if(!isLoading){
             setIsLoading(true)
@@ -38,7 +39,7 @@ export default function CardMakerFooter(){
                 <DownloadIcon width="16px" height="16px"/>
                 <p>{isLoading? "Downloading..." :"Download"}</p>
             </div>
-            <div className="center-element card-maker-footer-component" onClick={()=>setIsActive(true)}>
+            <div className="center-element card-maker-footer-component" onClick={()=>dispatch(openSettingMenu())}>
                 <SettingIcon width="16px" height="16px"/>
                 <p>Setting/Saves</p>
             </div>

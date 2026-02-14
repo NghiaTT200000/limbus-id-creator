@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
 import "./LoginMenu.css"
 import { TokenResponse, useGoogleLogin } from "@react-oauth/google";
@@ -6,17 +6,12 @@ import GoogleIcon from "Assets/Icons/GoogleIcon";
 import PopUpMenu from "../PopUpMenu/PopUpMenu";
 import useAlert from "Hooks/useAlert";
 import { useRegisterMutation } from "Api/AuthApi";
+import { useAppSelector, useAppDispatch } from "Stores/AppStore";
+import { closeLoginMenu, toggleLoginMenu } from "Stores/Slices/UiSlice";
 
-interface LoginMenuContextProps{
-    setIsLoginMenuActive: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-const loginMenuContext = createContext<LoginMenuContextProps>({
-    setIsLoginMenuActive: ()=>{},
-});
-
-function LoginMenu({children}:{children:ReactNode}){
-    const [isLoginMenuActive,setIsLoginMenuActive] = useState(false)
+function LoginMenu(){
+    const isLoginMenuActive = useAppSelector(state => state.ui.isLoginMenuActive)
+    const dispatch = useAppDispatch()
     const [user,setUser] = useState<Omit<TokenResponse, "error" | "error_description" | "error_uri">>()
     const {addAlert} = useAlert();
     const [ register, {isLoading} ] = useRegisterMutation();
@@ -37,7 +32,7 @@ function LoginMenu({children}:{children:ReactNode}){
                     try{
                         await register(JSON.stringify(user.access_token)).unwrap();
                         addAlert("Success","Login successfully");
-                        setIsLoginMenuActive(false);
+                        dispatch(closeLoginMenu());
                     }
                     catch(err){
                         console.log(err);
@@ -50,28 +45,22 @@ function LoginMenu({children}:{children:ReactNode}){
         [ user ]
     );
 
-    return <loginMenuContext.Provider value={{setIsLoginMenuActive}}>
-        <div className={isLoginMenuActive?"login-menu-popup":"hidden"}>
-            <PopUpMenu setIsActive={()=>setIsLoginMenuActive(!isLoginMenuActive)}>
-                <div className="login-menu">
-                    <h1 className="login-menu-header">Login/Register</h1>
-                    {isLoading?
-                    <button className="main-button active center-element">
-                        Logging in...
-                        <GoogleIcon/>
-                    </button>:
-                    <button onClick={() => login()} className="main-button center-element">
-                        Login/Register with Google
-                        <GoogleIcon/>
-                    </button>}
-                </div>
-            </PopUpMenu>
-        </div>
-        {children}
-
-    </loginMenuContext.Provider>
+    return <div className={isLoginMenuActive?"login-menu-popup":"hidden"}>
+        <PopUpMenu setIsActive={()=>dispatch(toggleLoginMenu())}>
+            <div className="login-menu">
+                <h1 className="login-menu-header">Login/Register</h1>
+                {isLoading?
+                <button className="main-button active center-element">
+                    Logging in...
+                    <GoogleIcon/>
+                </button>:
+                <button onClick={() => login()} className="main-button center-element">
+                    Login/Register with Google
+                    <GoogleIcon/>
+                </button>}
+            </div>
+        </PopUpMenu>
+    </div>
 }
 
-const useLoginMenuContext = ()=>useContext(loginMenuContext)
-
-export {LoginMenu,useLoginMenuContext}
+export { LoginMenu }

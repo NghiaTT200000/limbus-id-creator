@@ -1,6 +1,5 @@
-import useInputs from "Features/CardCreator/Hooks/useInputs";
 import { IPassiveSkill } from "Features/CardCreator/Types/Skills/PassiveSkill/IPassiveSkill";
-import React from "react";
+import React, { useEffect } from "react";
 import { ReactElement } from "react";
 import DropDown from "Components/DropDown/DropDown";
 import "../InputPage.css"
@@ -8,8 +7,8 @@ import DeleteIcon from "Assets/Icons/DeleteIcon";
 import ArrowDownIcon from "Assets/Icons/ArrowDownIcon";
 import ChangeInputType from "../Components/ChangeInputType/ChangeInputType";
 import EditableAutoCorrect from "../Components/EditableAutoCorrectInput/EditableAutoCorrect";
-
-
+import replaceKeyWord from "../Components/EditableAutoCorrectInput/Functions/replaceKeyWord";
+import { useForm } from "react-hook-form";
 
 export default function InputPassivePage({
     passiveSkill,
@@ -24,34 +23,20 @@ export default function InputPassivePage({
         changeSkillType:(newVal:string)=>void,
         deleteSkill:(inputID:string)=>void,
         collaspPage:()=>void}):ReactElement{
-    const {onChangeDropDownMenu,onChangeInput,onChangeAutoCorrectInput}=useInputs(passiveSkill as any,changeSkill)
 
-    const {
-        name,
-        skillLabel,
-        skillEffect,
-        ownCost:{
-            wrath_cost:wrath_own_cost,
-            lust_cost:lust_own_cost,
-            sloth_cost:sloth_own_cost,
-            gluttony_cost:gluttony_own_cost,
-            gloom_cost:gloom_own_cost,
-            pride_cost:pride_own_cost,
-            envy_cost:envy_own_cost,
-        },
-        resCost:{
-            wrath_cost:wrath_res_cost,
-            lust_cost:lust_res_cost,
-            sloth_cost:sloth_res_cost,
-            gluttony_cost:gluttony_res_cost,
-            gloom_cost:gloom_res_cost,
-            pride_cost:pride_res_cost,
-            envy_cost:envy_res_cost,
-        },
-        req,
-        type,
-        inputId
-    } = passiveSkill
+    const { register, setValue, watch, reset } = useForm<IPassiveSkill>({ defaultValues: passiveSkill })
+
+    useEffect(() => { reset(passiveSkill) }, [passiveSkill.inputId])
+
+    useEffect(() => {
+        const sub = watch((values) => changeSkill(values as any))
+        return () => sub.unsubscribe()
+    }, [watch, changeSkill])
+
+    const req = watch("req")
+    const type = watch("type")
+    const inputId = watch("inputId")
+    const skillEffect = watch("skillEffect")
 
     return <div className="input-page input-passive-page">
         <div className="input-page-icon-container">
@@ -81,18 +66,18 @@ export default function InputPassivePage({
                         el:<p>None</p>,
                         value:"None"
                     }
-                }} propVal={req} cb={onChangeDropDownMenu("req")}/>
+                }} propVal={req} cb={(newVal)=>setValue("req",newVal as any)}/>
             </div>
-            
+
         </div>
-        
+
         <p>Sin Own</p>
         <div className="input-group-container">
             <div className="input-container center-element-vertically">
                 <label htmlFor="wrath_own_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Wrath_big.webp" alt="wrath-input-resistant-icon" /></label>
                 <div className="resistant-content">
                     <div>
-                        <input type="number" className="input stat-page-input-border input-number" value={wrath_own_cost} onChange={onChangeInput("ownCost.wrath_cost")} name="wrath_own_cost" id="wrath_own_cost"/>
+                        <input type="number" className="input stat-page-input-border input-number" {...register("ownCost.wrath_cost")} id="wrath_own_cost"/>
                     </div>
                 </div>
             </div>
@@ -100,7 +85,7 @@ export default function InputPassivePage({
                 <label htmlFor="lust_own_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Lust_big.webp" alt="lust-input-resistant-icon" /></label>
                 <div className="resistant-content">
                     <div>
-                        <input type="number" className="input stat-page-input-border input-number" value={lust_own_cost} onChange={onChangeInput("ownCost.lust_cost")} name="lust_own_cost" id="lust_own_cost"/>
+                        <input type="number" className="input stat-page-input-border input-number" {...register("ownCost.lust_cost")} id="lust_own_cost"/>
                     </div>
                 </div>
             </div>
@@ -108,7 +93,7 @@ export default function InputPassivePage({
                 <label htmlFor="sloth_own_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Sloth_big.webp" alt="sloth-input-resistant-icon" /></label>
                 <div className="resistant-content">
                     <div>
-                        <input type="number" className="input stat-page-input-border input-number" value={sloth_own_cost} onChange={onChangeInput("ownCost.sloth_cost")} name="sloth_own_cost" id="sloth_own_cost"/>
+                        <input type="number" className="input stat-page-input-border input-number" {...register("ownCost.sloth_cost")} id="sloth_own_cost"/>
                     </div>
                 </div>
             </div>
@@ -116,7 +101,7 @@ export default function InputPassivePage({
                 <label htmlFor="gluttony_own_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Gluttony_big.webp" alt="gluttony-input-resistant-icon" /></label>
                 <div className="resistant-content">
                     <div>
-                        <input type="number" className="input stat-page-input-border input-number" value={gluttony_own_cost} onChange={onChangeInput("ownCost.gluttony_cost")} name="gluttony_own_cost" id="gluttony_own_cost"/>
+                        <input type="number" className="input stat-page-input-border input-number" {...register("ownCost.gluttony_cost")} id="gluttony_own_cost"/>
                     </div>
                 </div>
             </div>
@@ -124,7 +109,7 @@ export default function InputPassivePage({
                 <label htmlFor="gloom_own_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Gloom_big.webp" alt="gloom-input-resistant-icon" /></label>
                 <div className="resistant-content">
                     <div>
-                        <input type="number" className="input stat-page-input-border input-number" value={gloom_own_cost} onChange={onChangeInput("ownCost.gloom_cost")} name="gloom_own_cost" id="gloom_own_cost"/>
+                        <input type="number" className="input stat-page-input-border input-number" {...register("ownCost.gloom_cost")} id="gloom_own_cost"/>
                     </div>
                 </div>
             </div>
@@ -132,7 +117,7 @@ export default function InputPassivePage({
                 <label htmlFor="pride_own_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Pride_big.webp" alt="pride-input-resistant-icon" /></label>
                 <div className="resistant-content">
                     <div>
-                        <input type="number" className="input stat-page-input-border input-number" value={pride_own_cost} onChange={onChangeInput("ownCost.pride_cost")} name="pride_own_cost" id="pride_own_cost"/>
+                        <input type="number" className="input stat-page-input-border input-number" {...register("ownCost.pride_cost")} id="pride_own_cost"/>
                     </div>
                 </div>
             </div>
@@ -140,7 +125,7 @@ export default function InputPassivePage({
                 <label htmlFor="envy_own_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Envy_big.webp" alt="envy-input-resistant-icon" /></label>
                 <div className="resistant-content">
                     <div>
-                        <input type="number" className="input stat-page-input-border input-number" value={envy_own_cost} onChange={onChangeInput("ownCost.envy_cost")} name="envy_own_cost" id="envy_own_cost"/>
+                        <input type="number" className="input stat-page-input-border input-number" {...register("ownCost.envy_cost")} id="envy_own_cost"/>
                     </div>
                 </div>
             </div>
@@ -151,7 +136,7 @@ export default function InputPassivePage({
                 <label htmlFor="wrath_res_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Wrath_big.webp" alt="wrath-input-resistant-icon" /></label>
                 <div className="resistant-content">
                     <div>
-                        <input type="number" className="input stat-page-input-border input-number" value={wrath_res_cost} onChange={onChangeInput("resCost.wrath_cost")} name="wrath_res_cost" id="wrath_res_cost"/>
+                        <input type="number" className="input stat-page-input-border input-number" {...register("resCost.wrath_cost")} id="wrath_res_cost"/>
                     </div>
                 </div>
             </div>
@@ -159,7 +144,7 @@ export default function InputPassivePage({
                 <label htmlFor="lust_res_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Lust_big.webp" alt="lust-input-resistant-icon" /></label>
                 <div className="resistant-content">
                     <div>
-                        <input type="number" className="input stat-page-input-border input-number" value={lust_res_cost} onChange={onChangeInput("resCost.lust_cost")} name="lust_res_cost" id="lust_res_cost"/>
+                        <input type="number" className="input stat-page-input-border input-number" {...register("resCost.lust_cost")} id="lust_res_cost"/>
                     </div>
                 </div>
             </div>
@@ -167,7 +152,7 @@ export default function InputPassivePage({
                 <label htmlFor="sloth_res_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Sloth_big.webp" alt="sloth-input-resistant-icon" /></label>
                 <div className="resistant-content">
                     <div>
-                        <input type="number" className="input stat-page-input-border input-number" value={sloth_res_cost} onChange={onChangeInput("resCost.sloth_cost")} name="sloth_res_cost" id="sloth_res_cost"/>
+                        <input type="number" className="input stat-page-input-border input-number" {...register("resCost.sloth_cost")} id="sloth_res_cost"/>
                     </div>
                 </div>
             </div>
@@ -175,7 +160,7 @@ export default function InputPassivePage({
                 <label htmlFor="gluttony_res_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Gluttony_big.webp" alt="gluttony-input-resistant-icon" /></label>
                 <div className="resistant-content">
                     <div>
-                        <input type="number" className="input stat-page-input-border input-number" value={gluttony_res_cost} onChange={onChangeInput("resCost.gluttony_cost")} name="gluttony_res_cost" id="gluttony_res_cost"/>
+                        <input type="number" className="input stat-page-input-border input-number" {...register("resCost.gluttony_cost")} id="gluttony_res_cost"/>
                     </div>
                 </div>
             </div>
@@ -183,7 +168,7 @@ export default function InputPassivePage({
                 <label htmlFor="gloom_res_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Gloom_big.webp" alt="gloom-input-resistant-icon" /></label>
                 <div className="resistant-content">
                     <div>
-                        <input type="number" className="input stat-page-input-border input-number" value={gloom_res_cost} onChange={onChangeInput("resCost.gloom_cost")} name="gloom_res_cost" id="gloom_res_cost"/>
+                        <input type="number" className="input stat-page-input-border input-number" {...register("resCost.gloom_cost")} id="gloom_res_cost"/>
                     </div>
                 </div>
             </div>
@@ -191,7 +176,7 @@ export default function InputPassivePage({
                 <label htmlFor="pride_res_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Pride_big.webp" alt="pride-input-resistant-icon" /></label>
                 <div className="resistant-content">
                     <div>
-                        <input type="number" className="input stat-page-input-border input-number" value={pride_res_cost} onChange={onChangeInput("resCost.pride_cost")} name="pride_res_cost" id="pride_res_cost"/>
+                        <input type="number" className="input stat-page-input-border input-number" {...register("resCost.pride_cost")} id="pride_res_cost"/>
                     </div>
                 </div>
             </div>
@@ -199,7 +184,7 @@ export default function InputPassivePage({
                 <label htmlFor="envy_res_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Envy_big.webp" alt="envy-input-resistant-icon" /></label>
                 <div className="resistant-content">
                     <div>
-                        <input type="number" className="input stat-page-input-border input-number" value={envy_res_cost} onChange={onChangeInput("resCost.envy_cost")} name="envy_res_cost" id="envy_res_cost"/>
+                        <input type="number" className="input stat-page-input-border input-number" {...register("resCost.envy_cost")} id="envy_res_cost"/>
                     </div>
                 </div>
             </div>
@@ -207,24 +192,24 @@ export default function InputPassivePage({
         <div className="input-group-container">
             <div className="input-container">
                 <label className="input-label" htmlFor="skillLabel">Skill label:</label>
-                <input className="input block" type="text" name="skillLabel" id="skillLabel" value={skillLabel} onChange={onChangeInput()} />
+                <input className="input block" type="text" id="skillLabel" {...register("skillLabel")} />
             </div>
         </div>
         <div className="input-group-container">
             <div className="input-container">
                 <label className="input-label" htmlFor="name">Passive name:</label>
-                <input className="input block" type="string" name="name" id="name" value={name} onChange={onChangeInput()}/>
+                <input className="input block" type="string" id="name" {...register("name")}/>
             </div>
         </div>
         <div className="input-group-container">
             <div className="input-container">
                 <label className="input-label" htmlFor="skillEffect">Passive description:</label>
-                <p className="effect-guide">To enter a status effect/coin effect/attack effect, put them in square bracket with underscore instead of spacebar like [sinking_deluge]/[coin_1]/[heads_hit] -{">"} 
+                <p className="effect-guide">To enter a status effect/coin effect/attack effect, put them in square bracket with underscore instead of spacebar like [sinking_deluge]/[coin_1]/[heads_hit] -{">"}
                     <span contentEditable={false} style={{color:"var(--Debuff-color)",textDecoration:"underline"}}><img className='status-icon' src='/Images/status-effect/Sinking_Deluge.webp' alt='sinking_deluge_icon' />Sinking Deluge</span>/
                     <span contentEditable={false}><img className='status-icon' src='/Images/status-effect/Coin_Effect_1.webp' alt='coin-effect-1' /></span>/
                     <span contentEditable={false} style={{color:'#c7ff94'}}>[Heads Hit]</span>
-                </p>    
-                <EditableAutoCorrect inputId={"skillEffect"} content={skillEffect} changeHandler={onChangeAutoCorrectInput(keyWordList,"skillEffect")} matchList={keyWordList}/>          
+                </p>
+                <EditableAutoCorrect inputId={"skillEffect"} content={skillEffect} changeHandler={(e)=>setValue("skillEffect",replaceKeyWord(e.target.value,keyWordList))} matchList={keyWordList}/>
             </div>
         </div>
     </div>

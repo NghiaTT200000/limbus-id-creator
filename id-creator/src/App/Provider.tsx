@@ -16,10 +16,9 @@ export default function Provider({children}:{children: ReactNode}){
              <DndProvider backend={TouchBackend} options={{ enableMouseEvents: true }}>
                 <ReduxProvider store={AppStore}>
                     <EditorProvider>
-                        <LoginMenu>
-                            {children}
-                            <AlertPopUp />
-                        </LoginMenu>
+                        <LoginMenu/>
+                        {children}
+                        <AlertPopUp />
                     </EditorProvider>
                 </ReduxProvider>
              </DndProvider>

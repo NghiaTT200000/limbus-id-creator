@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../SettingMenu.css"
-import { ISaveFile } from "Types/ISaveFile";
+import { SaveFile } from "Types/ISaveFile";
 import useSaveLocal from "Features/CardCreator/Hooks/useSaveLocal";
 import uuid from "react-uuid";
 import PopUpMenu from "Components/PopUpMenu/PopUpMenu";
@@ -8,10 +8,18 @@ import EditIcon from "Assets/Icons/EditIcon";
 import { IEgoInfo } from "Features/CardCreator/Types/IEgoInfo";
 import { IIdInfo } from "Features/CardCreator/Types/IIdInfo";
 import { EnvironmentVariables } from "Config/Environments";
+import { useAppSelector, useAppDispatch } from "Stores/AppStore";
+import { setIdInfo } from "Features/CardCreator/Stores/IdInfoSlice";
+import { setEgoInfo } from "Features/CardCreator/Stores/EgoInfoSlice";
 
 
+const SaveLocalMenu=({saveMode, close}:{saveMode: "ID" | "EGO", close: ()=>void})=>{
+    const localSaveName = saveMode === "ID" ? "IdLocalSaves" : "EgoLocalSaves"
+    const idInfoValue = useAppSelector(state => state.idInfo.value)
+    const egoInfoValue = useAppSelector(state => state.egoInfo.value)
+    const dispatch = useAppDispatch()
+    const cardData = saveMode === "ID" ? idInfoValue : egoInfoValue
 
-const SaveLocalMenu=({localSaveName,saveObjInfoValue,loadObjInfoValueCb,isActive,setIsActive}:{localSaveName:string, saveObjInfoValue:ISaveFile<IIdInfo|IEgoInfo>, loadObjInfoValueCb:React.Dispatch<React.SetStateAction<IIdInfo|IEgoInfo>>,isActive:boolean,setIsActive:(a:boolean)=>void})=>{
     const {saveData,isLoading,deleteSave,createSave,changeSaveName,loadSave,overwriteSave} = useSaveLocal<IIdInfo|IEgoInfo>(localSaveName)
     const [namePopup,setNamePopup] = useState(false)
     const [popupMode,setPopupMode] = useState<"create"|"overwrite">("create")
@@ -43,16 +51,17 @@ const SaveLocalMenu=({localSaveName,saveObjInfoValue,loadObjInfoValueCb,isActive
             if(nameChangingSaveId) changeSaveName(nameChangingSaveId,newSaveName)
         }
         else{
-            saveObjInfoValue.id = uuid()
-            saveObjInfoValue.saveName = newSaveName
+            const saveFile = new SaveFile(cardData, newSaveName)
+            saveFile.id = uuid()
+            saveFile.saveName = newSaveName
             const createdDate = new Date().toLocaleString()
-            createSave({...saveObjInfoValue, updateTime:createdDate, saveTime: createdDate})
+            createSave({...saveFile, updateTime:createdDate, saveTime: createdDate})
         }
         closePopup()
     }
 
     //Some of the save can have the same id
-    //This is to create new save for some 
+    //This is to create new save for some
     //of the save with same id
     useEffect(()=>{
         saveData.map(save=>{
@@ -68,8 +77,8 @@ const SaveLocalMenu=({localSaveName,saveObjInfoValue,loadObjInfoValueCb,isActive
                 }}>
                 <div className="save-cloud-name-popup">
                     <label htmlFor="saveName">Enter the name of the new save:</label>
-                    <input className="input save-cloud-name-input" name="saveName" id="saveName" type="text" placeholder="Save name" 
-                    value={newSaveName} 
+                    <input className="input save-cloud-name-input" name="saveName" id="saveName" type="text" placeholder="Save name"
+                    value={newSaveName}
                     onChange={(e)=>{
                         setNewSaveName(e.target.value)
                     }}/>
@@ -104,15 +113,17 @@ const SaveLocalMenu=({localSaveName,saveObjInfoValue,loadObjInfoValueCb,isActive
                                 Delete
                             </button>
                             <button className="main-button" onClick={()=>{
-                                saveObjInfoValue.saveTime = new Date().toLocaleString()
-                                overwriteSave(data.id,saveObjInfoValue.saveInfo)
+                                overwriteSave(data.id, cardData)
                             }}>
                                 Overwrite
                             </button>
                             <button className="main-button" onClick={async ()=>{
                                 const save = await loadSave(data.id)
-                                if(save) loadObjInfoValueCb(save.saveInfo)
-                                setIsActive(!isActive)
+                                if(save){
+                                    if(saveMode === "ID") dispatch(setIdInfo(save.saveInfo as IIdInfo))
+                                    else dispatch(setEgoInfo(save.saveInfo as IEgoInfo))
+                                }
+                                close()
                             }}>
                                 Load
                             </button>

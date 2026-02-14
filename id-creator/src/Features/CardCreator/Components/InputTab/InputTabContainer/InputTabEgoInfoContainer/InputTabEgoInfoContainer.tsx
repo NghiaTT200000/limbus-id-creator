@@ -5,8 +5,7 @@ import { CustomEffect, ICustomEffect } from "Features/CardCreator/Types/Skills/C
 import { DefenseSkill, IDefenseSkill } from "Features/CardCreator/Types/Skills/DefenseSkill/IDefenseSkill";
 import { IMentalEffect, MentalEffect } from "Features/CardCreator/Types/Skills/MentalEffect/IMentalEffect";
 import { IPassiveSkill, PassiveSkill } from "Features/CardCreator/Types/Skills/PassiveSkill/IPassiveSkill";
-import { useStatusEffectContext } from "Features/CardCreator/Stores/StatusEffectContext";
-import { useEgoInfoContext } from "Features/CardCreator/Stores/EgoInfoContext";
+import { useStatusEffect } from "Features/CardCreator/Hooks/useStatusEffect";
 import InputCustomEffectPage from "../../InputCustomEffectPage/InputCustomEffectPage";
 import InputDefenseSkillPage from "../../InputDefenseSkillPage/InputDefenseSkillPage";
 import InputMentalEffect from "../../InputMentalEffect/InputMentalEffect";
@@ -15,6 +14,8 @@ import InputPassivePage from "../../InputPassivePage/InputPassivePage";
 import InputEgoInfoStatPage from "../../InputStatPage/InputEgoInfoStatPage/InputEgoInfoStatPage";
 import InputTabSide from "../../InputTabSide/InputTabSide";
 import useAlert from "Hooks/useAlert";
+import { useAppSelector, useAppDispatch } from "Stores/AppStore";
+import { setEgoInfo } from "Features/CardCreator/Stores/EgoInfoSlice";
 
 
 export default function InputTabEgoInfoContainer({
@@ -25,10 +26,19 @@ export default function InputTabEgoInfoContainer({
         resetBtnHandler:()=>void,
         activeTab:number,
         changeActiveTab:(i:number)=>void}):ReactElement{
-    const {EgoInfoValue,setEgoInfoValue} = useEgoInfoContext()
-    const {statusEffect}=useStatusEffectContext()
+    const EgoInfoValue = useAppSelector(state => state.egoInfo.value)
+    const dispatch = useAppDispatch()
+    const statusEffect = useStatusEffect(EgoInfoValue.skillDetails)
     const {addAlert} = useAlert()
 
+
+    function setEgoInfoValue(newVal: any) {
+        if (typeof newVal === "function") {
+            dispatch(setEgoInfo(newVal(EgoInfoValue)))
+        } else {
+            dispatch(setEgoInfo(newVal))
+        }
+    }
 
     function deleteHandler(id:string){
         for(let i = 0;i<EgoInfoValue.skillDetails.length;i++){
@@ -36,7 +46,7 @@ export default function InputTabEgoInfoContainer({
                 const newIdInfoValue={...EgoInfoValue}
 
                 newIdInfoValue.skillDetails.splice(i,1)
-                
+
                 setEgoInfoValue({...newIdInfoValue})
                 if(i===activeTab&&i===EgoInfoValue.skillDetails.length) changeActiveTab(activeTab-1)
             }
@@ -51,15 +61,15 @@ export default function InputTabEgoInfoContainer({
 
     function showInputPage(skill:IOffenseSkill|IDefenseSkill|IPassiveSkill|ICustomEffect|IMentalEffect|never,index:number){
         if(!skill) return;
-        function changeSkill(newSkill:{[key:string]:string}){
-            const newEgoInfoValue={...EgoInfoValue}
-            newEgoInfoValue.skillDetails[index]=newSkill
-            setEgoInfoValue({...newEgoInfoValue})
+        function changeSkill(newSkill:any){
+            const newSkillDetails = [...EgoInfoValue.skillDetails]
+            newSkillDetails[index]=newSkill
+            setEgoInfoValue({...EgoInfoValue, skillDetails: newSkillDetails})
         }
-        
+
         function changeSkillType(newVal:string){
             const newEgoInfoValue={...EgoInfoValue}
-            
+
             switch(newVal){
                 case "OffenseSkill":{
                     newEgoInfoValue.skillDetails.splice(index,1,new OffenseSkill())
@@ -109,7 +119,7 @@ export default function InputTabEgoInfoContainer({
     }
 
     return <div className="input-tab-container">
-            <InputTabSide sinnerIcon={EgoInfoValue.sinnerIcon} skillDetails={EgoInfoValue.skillDetails} changeTab={changeActiveTab} 
+            <InputTabSide sinnerIcon={EgoInfoValue.sinnerIcon} skillDetails={EgoInfoValue.skillDetails} changeTab={changeActiveTab}
             activeTab={activeTab} addTab={addTab} resetBtnHandler={resetBtnHandler}></InputTabSide>
             {(activeTab!==-2)?(activeTab===-1)?<InputEgoInfoStatPage  collaspPage={()=>changeActiveTab(-2)}/>:showInputPage(EgoInfoValue.skillDetails[activeTab],activeTab):<></>}
         </div>

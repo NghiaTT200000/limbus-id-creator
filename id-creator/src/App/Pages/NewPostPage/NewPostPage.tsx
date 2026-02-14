@@ -1,4 +1,4 @@
-import { useLoginMenuContext } from "Components/LoginMenu/LoginMenu";
+import { useLoginMenu } from "Hooks/useLoginMenu";
 import React, { useState } from "react";
 import { ReactElement } from "react";
 import "./NewPostPage.css";
@@ -26,7 +26,7 @@ export default function NewPostPage():ReactElement{
     const [saveMode,setSaveMode] = useState("Identity")
     const [description,setDescription] = useState("")
     const {data: loginUser} = useCheckAuthQuery()
-    const {setIsLoginMenuActive} = useLoginMenuContext()
+    const {setIsLoginMenuActive} = useLoginMenu()
     const {addAlert} = useAlert()
     const navigate = useNavigate()
 
