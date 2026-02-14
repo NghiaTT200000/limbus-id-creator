@@ -22,12 +22,12 @@ export default function InputMentalEffect({
         deleteSkill:(inputID:string)=>void,
         collaspPage:()=>void}):ReactElement{
 
-    const { setValue, watch, reset } = useForm<IMentalEffect>({ defaultValues: mentalEffect })
+    const { setValue, watch, reset } = useForm<IMentalEffect>({ defaultValues: structuredClone(mentalEffect) })
 
-    useEffect(() => { reset(mentalEffect) }, [mentalEffect.inputId])
+    useEffect(() => { reset(structuredClone(mentalEffect)) }, [mentalEffect.inputId])
 
     useEffect(() => {
-        const sub = watch((values) => changeSkill(values as any))
+        const sub = watch((values) => changeSkill(structuredClone(values) as any))
         return () => sub.unsubscribe()
     }, [watch, changeSkill])
 

@@ -47,4 +47,11 @@ export default defineConfig([
       "check-file/filename-naming-convention": "off",
     },
   },
+  // Exclude hook files (use* camelCase) in Hooks folders
+  {
+    files: ["**/Hooks/use*.{ts,tsx,js,jsx}"],
+    rules: {
+      "check-file/filename-naming-convention": "off",
+    },
+  },
 ]);

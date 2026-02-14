@@ -27,12 +27,12 @@ export default function InputOffenseSkillPage({
             deleteSkill:(skillID:string)=>void,
             collaspPage:()=>void}):ReactElement{
 
-    const { register, setValue, watch, reset } = useForm<IOffenseSkill>({ defaultValues: offenseSkill })
+    const { register, setValue, watch, reset } = useForm<IOffenseSkill>({ defaultValues: structuredClone(offenseSkill) })
 
-    useEffect(() => { reset(offenseSkill) }, [offenseSkill.inputId])
+    useEffect(() => { reset(structuredClone(offenseSkill)) }, [offenseSkill.inputId])
 
     useEffect(() => {
-        const sub = watch((values) => changeSkill(values as any))
+        const sub = watch((values) => changeSkill(structuredClone(values) as any))
         return () => sub.unsubscribe()
     }, [watch, changeSkill])
 

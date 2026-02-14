@@ -28,8 +28,12 @@ function fixBackwardCompatPaths(info: IEgoInfo): IEgoInfo {
     return fixed
 }
 
+function toPlain(info: IEgoInfo): IEgoInfo {
+    return JSON.parse(JSON.stringify(info))
+}
+
 const initialState: EgoInfoState = {
-    value: new EgoInfo(),
+    value: toPlain(new EgoInfo()),
 }
 
 const EgoInfoSlice = createSlice({
@@ -43,7 +47,7 @@ const EgoInfoSlice = createSlice({
             (state.value as any)[action.payload.field] = action.payload.value
         },
         resetEgoInfo(state) {
-            state.value = new EgoInfo()
+            state.value = toPlain(new EgoInfo())
         },
         setEgoInfoSkillDetails(state, action: PayloadAction<IEgoInfo['skillDetails']>) {
             state.value.skillDetails = action.payload

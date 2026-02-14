@@ -25,12 +25,12 @@ export default function InputCustomEffectPage({
         deleteSkill:(inputID:string)=>void,
         collaspPage:()=>void}):ReactElement{
 
-    const { register, setValue, watch, reset } = useForm<ICustomEffect>({ defaultValues: customEffect })
+    const { register, setValue, watch, reset } = useForm<ICustomEffect>({ defaultValues: structuredClone(customEffect) })
 
-    useEffect(() => { reset(customEffect) }, [customEffect.inputId])
+    useEffect(() => { reset(structuredClone(customEffect)) }, [customEffect.inputId])
 
     useEffect(() => {
-        const sub = watch((values) => changeSkill(values as any))
+        const sub = watch((values) => changeSkill(structuredClone(values) as any))
         return () => sub.unsubscribe()
     }, [watch, changeSkill])
 

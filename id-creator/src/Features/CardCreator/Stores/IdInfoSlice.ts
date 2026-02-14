@@ -32,8 +32,12 @@ function fixBackwardCompatPaths(info: IIdInfo): IIdInfo {
     return fixed
 }
 
+function toPlain(info: IIdInfo): IIdInfo {
+    return JSON.parse(JSON.stringify(info))
+}
+
 const initialState: IdInfoState = {
-    value: new IdInfo(),
+    value: toPlain(new IdInfo()),
 }
 
 const IdInfoSlice = createSlice({
@@ -47,7 +51,7 @@ const IdInfoSlice = createSlice({
             (state.value as any)[action.payload.field] = action.payload.value
         },
         resetIdInfo(state) {
-            state.value = new IdInfo()
+            state.value = toPlain(new IdInfo())
         },
         setIdInfoSkillDetails(state, action: PayloadAction<IIdInfo['skillDetails']>) {
             state.value.skillDetails = action.payload

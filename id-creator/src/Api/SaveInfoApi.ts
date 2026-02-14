@@ -4,8 +4,6 @@ import { ISaveFile } from "Types/ISaveFile";
 import { IIdInfo } from "Features/CardCreator/Types/IIdInfo";
 import { IEgoInfo } from "Features/CardCreator/Types/IEgoInfo";
 
-type SaveMode = 'ID' | 'EGO'
-
 function getSaveEndpoint(saveMode: string): string {
     return saveMode === 'ID' ? 'SaveIDInfo' : 'SaveEGOInfo'
 }

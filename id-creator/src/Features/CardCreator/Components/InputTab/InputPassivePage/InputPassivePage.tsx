@@ -24,12 +24,12 @@ export default function InputPassivePage({
         deleteSkill:(inputID:string)=>void,
         collaspPage:()=>void}):ReactElement{
 
-    const { register, setValue, watch, reset } = useForm<IPassiveSkill>({ defaultValues: passiveSkill })
+    const { register, setValue, watch, reset } = useForm<IPassiveSkill>({ defaultValues: structuredClone(passiveSkill) })
 
-    useEffect(() => { reset(passiveSkill) }, [passiveSkill.inputId])
+    useEffect(() => { reset(structuredClone(passiveSkill)) }, [passiveSkill.inputId])
 
     useEffect(() => {
-        const sub = watch((values) => changeSkill(values as any))
+        const sub = watch((values) => changeSkill(structuredClone(values) as any))
         return () => sub.unsubscribe()
     }, [watch, changeSkill])
 

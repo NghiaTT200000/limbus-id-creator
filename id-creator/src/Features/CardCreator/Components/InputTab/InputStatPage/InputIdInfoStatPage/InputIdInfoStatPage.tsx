@@ -18,16 +18,15 @@ export default function InputIdInfoStatPage({collaspPage}:{collaspPage:()=>void}
     const idInfoValue = useAppSelector(state => state.idInfo.value)
     const dispatch = useAppDispatch()
 
-    const { register, setValue, watch, reset } = useForm<IIdInfo>({ defaultValues: idInfoValue })
+    const { register, setValue, watch, reset } = useForm<IIdInfo>({ defaultValues: structuredClone(idInfoValue) })
 
-    useEffect(() => { reset(idInfoValue) }, [JSON.stringify(idInfoValue)])
+    useEffect(() => { reset(structuredClone(idInfoValue)) }, [JSON.stringify(idInfoValue)])
 
     useEffect(() => {
-        const sub = watch((values) => dispatch(setIdInfo(values as any)))
+        const sub = watch((values) => dispatch(setIdInfo(structuredClone(values) as any)))
         return () => sub.unsubscribe()
     }, [watch, dispatch])
 
-    const sinnerColor = watch("sinnerColor")
     const splashArt = watch("splashArt")
     const splashArtScale = watch("splashArtScale")
     const splashArtTranslation = watch("splashArtTranslation")

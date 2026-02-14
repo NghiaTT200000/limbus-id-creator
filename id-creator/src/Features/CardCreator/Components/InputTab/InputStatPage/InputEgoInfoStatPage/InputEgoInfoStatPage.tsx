@@ -18,16 +18,15 @@ export default function InputStatPage({collaspPage}:{collaspPage:()=>void}):Reac
     const EgoInfoValue = useAppSelector(state => state.egoInfo.value)
     const dispatch = useAppDispatch()
 
-    const { register, setValue, watch, reset } = useForm<IEgoInfo>({ defaultValues: EgoInfoValue })
+    const { register, setValue, watch, reset } = useForm<IEgoInfo>({ defaultValues: structuredClone(EgoInfoValue) })
 
-    useEffect(() => { reset(EgoInfoValue) }, [JSON.stringify(EgoInfoValue)])
+    useEffect(() => { reset(structuredClone(EgoInfoValue)) }, [JSON.stringify(EgoInfoValue)])
 
     useEffect(() => {
-        const sub = watch((values) => dispatch(setEgoInfo(values as any)))
+        const sub = watch((values) => dispatch(setEgoInfo(structuredClone(values) as any)))
         return () => sub.unsubscribe()
     }, [watch, dispatch])
 
-    const sinnerColor = watch("sinnerColor")
     const splashArt = watch("splashArt")
     const splashArtScale = watch("splashArtScale")
     const splashArtTranslation = watch("splashArtTranslation")
