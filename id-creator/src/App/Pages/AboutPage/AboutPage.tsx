@@ -47,7 +47,7 @@ export default function AboutPage() {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            Project Moon's Fan Content Policy
+                            Project Moon&apos;s Fan Content Policy
                         </a>.
                     </p>
                 </div>
