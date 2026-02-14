@@ -7,10 +7,25 @@ import { Color } from "@tiptap/extension-color"
 import { Image } from "@tiptap/extension-image"
 import tippy, { Instance as TippyInstance } from "tippy.js"
 import KeywordSuggestion from "./Extensions/KeywordSuggestion"
+import StatusEffectNode from "./Extensions/StatusEffectNode"
 import SuggestionDropdown, { SuggestionDropdownRef } from "./SuggestionDropdown/SuggestionDropdown"
 import Toolbar from "./Toolbar/Toolbar"
-import replaceKeyWord from "../EditableAutoCorrectInput/Functions/replaceKeyWord"
 import "./TipTapEditor.css"
+
+function replaceKeyWordAsNodes(str: string, keyWord: { [key: string]: string }): string {
+    const suggestions = str.match(/\[([^ ]+)\](?!<([^ ]+)>)/g)
+    if (suggestions) {
+        suggestions.forEach((suggestion) => {
+            const key = suggestion.slice(1, suggestion.length - 1).toLowerCase().replace(/&amp;/g, "&")
+            const selectedWord = keyWord[key]
+            if (selectedWord) {
+                const escaped = selectedWord.replace(/"/g, "&quot;")
+                str = str.replace(suggestion, `<span data-status-effect="${escaped}">${selectedWord}</span>`)
+            }
+        })
+    }
+    return str
+}
 
 interface TipTapEditorProps {
     inputId: string
@@ -41,6 +56,7 @@ export default function TipTapEditor({ inputId, content, changeHandler, matchLis
             Color,
             Image.configure({ inline: true, allowBase64: true }),
             FontSize,
+            StatusEffectNode,
             KeywordSuggestion.configure({
                 suggestion: {
                     char: "[",
@@ -58,7 +74,10 @@ export default function TipTapEditor({ inputId, content, changeHandler, matchLis
                             .chain()
                             .focus()
                             .deleteRange(range)
-                            .insertContent(props.html + " ")
+                            .insertContent([
+                                { type: "statusEffect", attrs: { html: props.html } },
+                                { type: "text", text: " " },
+                            ])
                             .run()
                     },
                     render: () => {
@@ -119,16 +138,21 @@ export default function TipTapEditor({ inputId, content, changeHandler, matchLis
         },
         onUpdate: ({ editor }) => {
             let html = editor.getHTML()
-            const processed = replaceKeyWord(html, matchListRef.current)
-            if (processed !== html) {
-                const { from } = editor.state.selection
-                editor.commands.setContent(processed, { emitUpdate: false })
-                // Restore cursor - clamp to valid range
-                const maxPos = editor.state.doc.content.size
-                const safePos = Math.min(from, maxPos)
-                editor.commands.focus(safePos)
-                html = processed
+            // Check if there are any [keyword] patterns to replace
+            const hasKeywords = /\[([^ ]+)\](?!<([^ ]+)>)/g.test(html)
+            if (hasKeywords) {
+                // Use node-wrapped version for TipTap internal content
+                const processedForEditor = replaceKeyWordAsNodes(html, matchListRef.current)
+                if (processedForEditor !== html) {
+                    const { from } = editor.state.selection
+                    editor.commands.setContent(processedForEditor, { emitUpdate: false })
+                    const maxPos = editor.state.doc.content.size
+                    const safePos = Math.min(from, maxPos)
+                    editor.commands.focus(safePos)
+                    html = editor.getHTML()
+                }
             }
+            // Output the final HTML (getHTML already renders StatusEffectNodes as raw HTML)
             changeHandlerRef.current(html)
         },
     })
