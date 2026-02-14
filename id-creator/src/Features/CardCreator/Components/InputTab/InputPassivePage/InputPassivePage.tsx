@@ -5,8 +5,7 @@ import "../InputPage.css"
 import DeleteIcon from "Assets/Icons/DeleteIcon";
 import ArrowDownIcon from "Assets/Icons/ArrowDownIcon";
 import ChangeInputType from "../Components/ChangeInputType/ChangeInputType";
-import EditableAutoCorrect from "../Components/EditableAutoCorrectInput/EditableAutoCorrect";
-import replaceKeyWord from "../Components/EditableAutoCorrectInput/Functions/replaceKeyWord";
+import TipTapEditor from "../Components/TipTapEditor/TipTapEditor";
 import { useForm } from "react-hook-form";
 
 export default function InputPassivePage({
@@ -186,7 +185,7 @@ export default function InputPassivePage({
                     <span contentEditable={false}><img className='status-icon' src='/Images/status-effect/Coin_Effect_1.webp' alt='coin-effect-1' /></span>/
                     <span contentEditable={false} style={{color:'#c7ff94'}}>[Heads Hit]</span>
                 </p>
-                <EditableAutoCorrect inputId={"skillEffect"} content={skillEffect} changeHandler={(e)=>setValue("skillEffect",replaceKeyWord(e.target.value,keyWordList))} matchList={keyWordList}/>
+                <TipTapEditor inputId={"skillEffect"} content={skillEffect} changeHandler={(html)=>setValue("skillEffect",html)} matchList={keyWordList}/>
             </div>
         </div>
     </div>

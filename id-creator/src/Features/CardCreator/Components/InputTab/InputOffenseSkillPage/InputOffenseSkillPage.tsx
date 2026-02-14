@@ -6,11 +6,10 @@ import DeleteIcon from "Assets/Icons/DeleteIcon";
 import ArrowDownIcon from "Assets/Icons/ArrowDownIcon";
 import ChangeInputType from "../Components/ChangeInputType/ChangeInputType";
 import DamageTypeInput from "../Components/DamageTypeInput/DamageTypeInput";
-import EditableAutoCorrect from "../Components/EditableAutoCorrectInput/EditableAutoCorrect";
+import TipTapEditor from "../Components/TipTapEditor/TipTapEditor";
 import SinAffinityInput from "../Components/SinAffinityInput/SinAffinityInput";
 import UploadImgBtn from "../Components/UploadImgBtn/UploadImgBtn";
 import { compressAndReadImage } from "Features/CardCreator/Utils/CompressAndReadImage";
-import replaceKeyWord from "../Components/EditableAutoCorrectInput/Functions/replaceKeyWord";
 import { useForm } from "react-hook-form";
 
 export default function InputOffenseSkillPage({
@@ -136,7 +135,7 @@ export default function InputOffenseSkillPage({
                     <span contentEditable={false} className='center-element'><img className='status-icon' src='/Images/status-effect/Coin_Effect_1.webp' alt='coin-effect-1-unbreakable' /> <span contentEditable={false} className='center-element' style={{color:"var(--Neutral-color)",textDecoration:"underline"}}><img className='status-icon' src='/Images/Unbreakable_Coin.webp' alt='unbreakable_coin_icon' />Unbreakable Coin</span></span>
                     <span contentEditable={false} style={{color:'#c7ff94'}}>[Heads Hit]</span>
                 </p>
-                <EditableAutoCorrect inputId={`skillEffect_${inputId}`} content={skillEffect} changeHandler={(e)=>setValue("skillEffect",replaceKeyWord(e.target.value,keyWordList))} matchList={keyWordList} />
+                <TipTapEditor inputId={`skillEffect_${inputId}`} content={skillEffect} changeHandler={(html)=>setValue("skillEffect",html)} matchList={keyWordList} />
             </div>
         </div>
     </div>

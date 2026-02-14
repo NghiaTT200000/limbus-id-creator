@@ -1,0 +1,73 @@
+.tiptap-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+    border: 1px solid white;
+    border-bottom: none;
+    background: #1a1a1a;
+    flex-wrap: wrap;
+}
+
+.toolbar-btn {
+    background: none;
+    border: 1px solid transparent;
+    color: white;
+    cursor: pointer;
+    padding: 2px 8px;
+    font-size: 14px;
+    font-family: inherit;
+    min-width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toolbar-btn:hover {
+    border-color: white;
+}
+
+.toolbar-btn.is-active {
+    background: var(--button);
+    border-color: white;
+}
+
+.toolbar-btn-sm {
+    font-size: 12px;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 4px;
+}
+
+.toolbar-separator {
+    width: 1px;
+    height: 20px;
+    background: #555;
+    margin: 0 2px;
+}
+
+.toolbar-color-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.toolbar-color-input {
+    width: 24px;
+    height: 24px;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    background: none;
+}
+
+.toolbar-select {
+    background: #1a1a1a;
+    color: white;
+    border: 1px solid #555;
+    padding: 2px 4px;
+    font-size: 12px;
+    height: 28px;
+    cursor: pointer;
+}
