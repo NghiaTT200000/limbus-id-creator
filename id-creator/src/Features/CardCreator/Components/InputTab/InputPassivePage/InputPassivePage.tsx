@@ -1,7 +1,6 @@
 import { IPassiveSkill } from "Features/CardCreator/Types/Skills/PassiveSkill/IPassiveSkill";
 import React, { useEffect } from "react";
 import { ReactElement } from "react";
-import DropDown from "Components/DropDown/DropDown";
 import "../InputPage.css"
 import DeleteIcon from "Assets/Icons/DeleteIcon";
 import ArrowDownIcon from "Assets/Icons/ArrowDownIcon";
@@ -33,7 +32,6 @@ export default function InputPassivePage({
         return () => sub.unsubscribe()
     }, [watch, changeSkill])
 
-    const req = watch("req")
     const type = watch("type")
     const inputId = watch("inputId")
     const skillEffect = watch("skillEffect")
@@ -50,27 +48,6 @@ export default function InputPassivePage({
         <div className="input-group-container">
             <ChangeInputType changeSkillType={changeSkillType} type={type}/>
         </div>
-        <div className="input-group-container">
-            <div className="input-cotainer center-element">
-                <p className="input-label">Passive requirement:</p>
-                <DropDown dropDownEl={{
-                    Res:{
-                        el:<p>Res</p>,
-                        value:"Res"
-                    },
-                    Own:{
-                        el:<p>Own</p>,
-                        value:"Own"
-                    },
-                    None:{
-                        el:<p>None</p>,
-                        value:"None"
-                    }
-                }} propVal={req} cb={(newVal)=>setValue("req",newVal as any)}/>
-            </div>
-
-        </div>
-
         <p>Sin Own</p>
         <div className="input-group-container">
             <div className="input-container center-element-vertically">
