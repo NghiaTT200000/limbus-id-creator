@@ -1,5 +1,5 @@
 import React from "react"
-import { Editor } from "@tiptap/react"
+import { Editor, useEditorState } from "@tiptap/react"
 import "./Toolbar.css"
 
 interface ToolbarProps {
@@ -7,28 +7,51 @@ interface ToolbarProps {
 }
 
 export default function Toolbar({ editor }: ToolbarProps) {
+    const state = useEditorState({
+        editor,
+        selector: (ctx) => {
+            if (!ctx.editor) return { bold: false, italic: false, underline: false, color: "#ffffff", fontSize: "" }
+            return {
+                bold: ctx.editor.isActive("bold"),
+                italic: ctx.editor.isActive("italic"),
+                underline: ctx.editor.isActive("underline"),
+                color: ctx.editor.getAttributes("textStyle").color || "#ffffff",
+                fontSize: ctx.editor.getAttributes("textStyle").fontSize || "",
+            }
+        },
+    })
+
     if (!editor) return null
 
     return (
         <div className="tiptap-toolbar">
             <button
                 type="button"
-                className={`toolbar-btn ${editor.isActive("bold") ? "is-active" : ""}`}
-                onClick={() => editor.chain().focus().toggleBold().run()}
+                className={`toolbar-btn ${state.bold ? "is-active" : ""}`}
+                onMouseDown={(e) => {
+                    e.preventDefault()
+                    editor.chain().focus().toggleBold().run()
+                }}
             >
                 <b>B</b>
             </button>
             <button
                 type="button"
-                className={`toolbar-btn ${editor.isActive("italic") ? "is-active" : ""}`}
-                onClick={() => editor.chain().focus().toggleItalic().run()}
+                className={`toolbar-btn ${state.italic ? "is-active" : ""}`}
+                onMouseDown={(e) => {
+                    e.preventDefault()
+                    editor.chain().focus().toggleItalic().run()
+                }}
             >
                 <i>I</i>
             </button>
             <button
                 type="button"
-                className={`toolbar-btn ${editor.isActive("underline") ? "is-active" : ""}`}
-                onClick={() => editor.chain().focus().toggleUnderline().run()}
+                className={`toolbar-btn ${state.underline ? "is-active" : ""}`}
+                onMouseDown={(e) => {
+                    e.preventDefault()
+                    editor.chain().focus().toggleUnderline().run()
+                }}
             >
                 <u>U</u>
             </button>
@@ -39,14 +62,17 @@ export default function Toolbar({ editor }: ToolbarProps) {
                 <input
                     type="color"
                     className="toolbar-color-input"
-                    value={editor.getAttributes("textStyle").color || "#ffffff"}
+                    value={state.color}
                     onChange={(e) => editor.chain().focus().setColor(e.target.value).run()}
                 />
             </label>
             <button
                 type="button"
                 className="toolbar-btn toolbar-btn-sm"
-                onClick={() => editor.chain().focus().unsetColor().run()}
+                onMouseDown={(e) => {
+                    e.preventDefault()
+                    editor.chain().focus().unsetColor().run()
+                }}
                 title="Reset color"
             >
                 ✕
@@ -56,7 +82,7 @@ export default function Toolbar({ editor }: ToolbarProps) {
 
             <select
                 className="toolbar-select"
-                value={editor.getAttributes("textStyle").fontSize || ""}
+                value={state.fontSize}
                 onChange={(e) => {
                     const size = e.target.value
                     if (size) {
