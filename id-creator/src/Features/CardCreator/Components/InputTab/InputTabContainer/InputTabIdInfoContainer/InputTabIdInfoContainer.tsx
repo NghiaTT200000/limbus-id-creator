@@ -43,11 +43,10 @@ export default function InputTabIdInfoContainer({
     function deleteHandler(id:string){
         for(let i = 0;i<idInfoValue.skillDetails.length;i++){
             if(idInfoValue.skillDetails[i].inputId===id){
-                const newIdInfoValue={...idInfoValue}
+                const newSkillDetails = [...idInfoValue.skillDetails]
+                newSkillDetails.splice(i,1)
 
-                newIdInfoValue.skillDetails.splice(i,1)
-
-                setIdInfoValue({...newIdInfoValue})
+                setIdInfoValue({...idInfoValue, skillDetails: newSkillDetails})
                 if(i===activeTab&&i===idInfoValue.skillDetails.length) changeActiveTab(activeTab-1)
             }
         }
@@ -67,35 +66,31 @@ export default function InputTabIdInfoContainer({
         }
 
         function changeSkillType(newVal:string){
-            const newIdInfoValue={...idInfoValue}
+            const newSkillDetails = [...idInfoValue.skillDetails]
 
             switch(newVal){
                 case "OffenseSkill":{
-                    newIdInfoValue.skillDetails.splice(index,1,new OffenseSkill())
-                    setIdInfoValue({...newIdInfoValue})
+                    newSkillDetails.splice(index,1,new OffenseSkill())
                     break
                 }
                 case "DefenseSkill":{
-                    newIdInfoValue.skillDetails.splice(index,1,new DefenseSkill())
-                    setIdInfoValue({...newIdInfoValue})
+                    newSkillDetails.splice(index,1,new DefenseSkill())
                     break
                 }
                 case "PassiveSkill":{
-                    newIdInfoValue.skillDetails.splice(index,1,new PassiveSkill())
-                    setIdInfoValue({...newIdInfoValue})
+                    newSkillDetails.splice(index,1,new PassiveSkill())
                     break
                 }
                 case "CustomEffect":{
-                    newIdInfoValue.skillDetails.splice(index,1,new CustomEffect())
-                    setIdInfoValue({...newIdInfoValue})
+                    newSkillDetails.splice(index,1,new CustomEffect())
                     break
                 }
                 case "MentalEffect":{
-                    newIdInfoValue.skillDetails.splice(index,1,new MentalEffect())
-                    setIdInfoValue({...newIdInfoValue})
+                    newSkillDetails.splice(index,1,new MentalEffect())
                     break
                 }
             }
+            setIdInfoValue({...idInfoValue, skillDetails: newSkillDetails})
         }
 
         switch(skill.type){

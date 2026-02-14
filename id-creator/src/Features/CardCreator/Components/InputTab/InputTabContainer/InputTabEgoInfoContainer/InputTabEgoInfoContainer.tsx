@@ -43,11 +43,10 @@ export default function InputTabEgoInfoContainer({
     function deleteHandler(id:string){
         for(let i = 0;i<EgoInfoValue.skillDetails.length;i++){
             if(EgoInfoValue.skillDetails[i].inputId===id){
-                const newIdInfoValue={...EgoInfoValue}
+                const newSkillDetails = [...EgoInfoValue.skillDetails]
+                newSkillDetails.splice(i,1)
 
-                newIdInfoValue.skillDetails.splice(i,1)
-
-                setEgoInfoValue({...newIdInfoValue})
+                setEgoInfoValue({...EgoInfoValue, skillDetails: newSkillDetails})
                 if(i===activeTab&&i===EgoInfoValue.skillDetails.length) changeActiveTab(activeTab-1)
             }
         }
@@ -68,35 +67,31 @@ export default function InputTabEgoInfoContainer({
         }
 
         function changeSkillType(newVal:string){
-            const newEgoInfoValue={...EgoInfoValue}
+            const newSkillDetails = [...EgoInfoValue.skillDetails]
 
             switch(newVal){
                 case "OffenseSkill":{
-                    newEgoInfoValue.skillDetails.splice(index,1,new OffenseSkill())
-                    setEgoInfoValue({...newEgoInfoValue})
+                    newSkillDetails.splice(index,1,new OffenseSkill())
                     break
                 }
                 case "DefenseSkill":{
-                    newEgoInfoValue.skillDetails.splice(index,1,new DefenseSkill())
-                    setEgoInfoValue({...newEgoInfoValue})
+                    newSkillDetails.splice(index,1,new DefenseSkill())
                     break
                 }
                 case "PassiveSkill":{
-                    newEgoInfoValue.skillDetails.splice(index,1,new PassiveSkill())
-                    setEgoInfoValue({...newEgoInfoValue})
+                    newSkillDetails.splice(index,1,new PassiveSkill())
                     break
                 }
                 case "CustomEffect":{
-                    newEgoInfoValue.skillDetails.splice(index,1,new CustomEffect())
-                    setEgoInfoValue({...newEgoInfoValue})
+                    newSkillDetails.splice(index,1,new CustomEffect())
                     break
                 }
                 case "MentalEffect":{
-                    newEgoInfoValue.skillDetails.splice(index,1,new MentalEffect())
-                    setEgoInfoValue({...newEgoInfoValue})
+                    newSkillDetails.splice(index,1,new MentalEffect())
                     break
                 }
             }
+            setEgoInfoValue({...EgoInfoValue, skillDetails: newSkillDetails})
         }
 
         switch(skill.type){
