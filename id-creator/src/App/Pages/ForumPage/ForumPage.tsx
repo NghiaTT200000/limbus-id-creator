@@ -4,69 +4,50 @@ import { ITag } from "Utils/TagList";
 import "./ForumPage.css"
 import { Link } from "react-router-dom";
 import DropDown from "Components/DropDown/DropDown";
-import { IPostDisplayCard } from "Types/IPostDisplayCard/IPostDisplayCard";
 import { useLoginMenuContext } from "Components/LoginMenu/LoginMenu";
 import PaginatedPost from "Components/PaginatedPost/PaginatedPost";
 import TagInput from "Components/TagInput/TagInput";
 import TagsContainer from "Components/TagsContainer/TagsContainer";
 import useAlert from "Hooks/useAlert";
 import { useCheckAuthQuery } from "Api/AuthApi";
+import { useGetPostsQuery } from "Api/PostAPI";
 
 export default function ForumPage():ReactElement{
-    const [postList,setPostList] = useState<IPostDisplayCard[]>([])
     const [searchPostName,setSearchPostName] = useState("")
     const [tags,setTags] = useState<ITag[]>([])
     const [sortedBy,setSortedBy] = useState("Latest")
     const [currPage,setCurrPage] = useState(0)
-    const [maxCount,setMaxCount] = useState(0)
-    const [isLoading,setIsLoading] = useState(false)
     const {data: user} = useCheckAuthQuery()
     const {setIsLoginMenuActive} = useLoginMenuContext()
     const {addAlert} = useAlert()
 
-    async function getPosts(page:number){
-        setIsLoading(true)
-        try {
-            const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/API/Post?Title=${searchPostName}&Tag=${tags.map(t=>t.tagName).join(",")}&SortedBy=${sortedBy}&page=${page}&limit=10`,{
-                credentials: "include"
-            })
-            const result = await response.json()
-            if(!response.ok){
-                addAlert("Failure",result.msg)
-                setPostList([])
-            }
-            else{ 
-                const newList = result.response.list.map((p)=>({
-                    ...p,
-                    cardImg:p.imagesAttach[0]
-                }))
-                setPostList(newList)
-                setMaxCount(result.response.total)
-            }
-        } catch (error) {
-            console.log(error)
-            addAlert("Failure","Something went wrong with the server")
-            setPostList([])
-        }
-        setIsLoading(false)
-    }
+    const { data, isLoading, error } = useGetPostsQuery({
+        title: searchPostName,
+        tag: tags.map(t => t.tagName),
+        sortedBy,
+        page: currPage,
+        limit: 10,
+    })
 
-    useEffect(()=>{
-        if(currPage!==0)setCurrPage(0)
-        else{
-            getPosts(0)
-        }
-    },[tags.toString(),searchPostName,sortedBy])
+    const postList = data?.list.map((p) => ({
+        ...p,
+        cardImg: p.imagesAttach[0]
+    })) ?? []
+    const maxCount = data?.total ?? 0
 
-    useEffect(()=>{
-        getPosts(currPage)
-    },[currPage])
+    useEffect(() => {
+        if (error) addAlert("Failure", "Something went wrong with the server")
+    }, [error])
+
+    useEffect(() => {
+        setCurrPage(0)
+    }, [tags.toString(), searchPostName, sortedBy])
 
     return <div className="page-container">
         <div className="page-content">
             <div className="forum-input-container">
                 <label htmlFor="name">Post name:</label>
-                <input type="text" name="searchPostName" id="searchPostName" className="input" placeholder="Search" value={searchPostName} onChange={(e)=>setSearchPostName(e.target.value)}/>           
+                <input type="text" name="searchPostName" id="searchPostName" className="input" placeholder="Search" value={searchPostName} onChange={(e)=>setSearchPostName(e.target.value)}/>
             </div>
             <div className="forum-input-container">
                 <label htmlFor="tag">Tags:</label>
@@ -116,9 +97,9 @@ export default function ForumPage():ReactElement{
                     </button>
                 }
             </div>
-            <PaginatedPost currPage={currPage} 
-                maxCount={maxCount} 
-                pageLimit={10} 
+            <PaginatedPost currPage={currPage}
+                maxCount={maxCount}
+                pageLimit={10}
                 postList={postList}
                 fetchPost={setCurrPage}
                 isLoading={isLoading}/>

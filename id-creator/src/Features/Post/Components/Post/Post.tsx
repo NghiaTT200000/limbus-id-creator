@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ReactElement } from "react";
 import { IPost } from "Types/IPost/IPost";
 import { ITag, TagList } from "Utils/TagList";
@@ -70,14 +70,7 @@ function PostCarousel({postImages}:{postImages:string[]}){
     </div>
 }
 
-export default function Post({post,getPost}:{post:IPost,getPost:()=>Promise<void>}):ReactElement{
-    const [isLoading,setIsLoading] = useState(true)
-
-    useEffect(()=>{
-        setIsLoading(true)
-        getPost().finally(()=>setIsLoading(false))
-    },[])
-
+export default function Post({post,isLoading}:{post:IPost|null,isLoading:boolean}):ReactElement{
     return <div className="post-container post-page-element-container">
         {!post?<div>Post not found</div>:<>
             <h1 className="post-title">{post.title}</h1>

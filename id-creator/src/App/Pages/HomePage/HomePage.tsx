@@ -1,35 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./HomePage.css"
 import "../Shared/Styles/PageLayout.css";
 import "Components/PaginatedPost/PaginatedPost.css";
 import { Link } from "react-router-dom";
-import { IPostDisplayCard } from "Types/IPostDisplayCard/IPostDisplayCard";
 import { PostDisplayCard, PostDisplayCardLoading } from "Components/PaginatedPost/PaginatedPost";
+import { useGetPostsQuery } from "Api/PostAPI";
 
 export default function HomePage(){
-    const [latestPosts, setLatestPosts] = useState<IPostDisplayCard[]>([])
-    const [isLoading, setIsLoading] = useState(true)
+    const { data, isLoading } = useGetPostsQuery({ sortedBy: 'Latest', page: 0, limit: 4 })
 
-    useEffect(()=>{
-        async function fetchLatestPosts(){
-            try {
-                const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/API/Post?Title=&Tag=&SortedBy=Latest&page=0&limit=4`,{
-                    credentials: "include"
-                })
-                const result = await response.json()
-                if(response.ok){
-                    setLatestPosts(result.response.list.map((p)=>({
-                        ...p,
-                        cardImg: p.imagesAttach[0]
-                    })))
-                }
-            } catch (error) {
-                console.log(error)
-            }
-            setIsLoading(false)
-        }
-        fetchLatestPosts()
-    },[])
+    const latestPosts = data?.list.map((p) => ({
+        ...p,
+        cardImg: p.imagesAttach[0]
+    })) ?? []
 
     return <div className="page-container home-page-container">
         <div className="page-content home-page-content">

@@ -32,17 +32,20 @@ function LoginMenu({children}:{children:ReactNode}){
 
     useEffect(
         () => {
-            if (user) {
-                try{
-                    register(JSON.stringify(user.access_token));
-                    addAlert("Success","Login successfully");
-                    setIsLoginMenuActive(false);
-                }
-                catch(err){
-                    console.log(err);
-                    addAlert("Failure","Login failed");
+            const registerUser = async ()=>{
+                if (user) {
+                    try{
+                        await register(JSON.stringify(user.access_token)).unwrap();
+                        addAlert("Success","Login successfully");
+                        setIsLoginMenuActive(false);
+                    }
+                    catch(err){
+                        console.log(err);
+                        addAlert("Failure","Login failed");
+                    }
                 }
             }
+            registerUser();
         },
         [ user ]
     );

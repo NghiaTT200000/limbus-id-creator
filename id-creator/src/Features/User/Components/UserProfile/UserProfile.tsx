@@ -1,86 +1,48 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import { ReactElement } from "react";
 import EditIcon from "Assets/Icons/EditIcon";
 import CheckIcon from "Assets/Icons/CheckIcon";
-import { useParams } from "react-router-dom";
 import { IUserProfile } from "Types/API/OAuth/IUserProfile";
-import IResponse from "Types/IResponse";
 import "./UserProfile.css";
-import { EnvironmentVariables } from "Config/Environments";
 import useAlert from "Hooks/useAlert";
+import { useChangeNameMutation, useChangeProfileImgMutation } from "Api/UserApi";
 
-export function UserProfile({userProfile,setUserProfile}:{userProfile:IUserProfile,setUserProfile:React.Dispatch<React.SetStateAction<IUserProfile | null>>}):ReactElement{
+export function UserProfile({userProfile,userId}:{userProfile:IUserProfile,userId:string}):ReactElement{
     const {userName,userIcon} = userProfile
     const [isChangeName,setIsChangeName] = useState(false)
-    const [isChangingName,setIsChangingName] = useState(false)
-    const [isChangingProfile,setIsChangingProfile] = useState(false)
     const [nameLenErr,setNameLenErr] = useState(false)
     const [name,setName] = useState(userName)
-    const {userId} = useParams()
     const {addAlert} = useAlert()
     const [userError,setUserErr] = useState("")
 
+    const [changeName, {isLoading: isChangingName}] = useChangeNameMutation()
+    const [changeProfileImg, {isLoading: isChangingProfile}] = useChangeProfileImgMutation()
 
-    const changeName = useCallback(async()=>{
+    async function handleChangeName(){
         if(!name||isChangingName) return
-        setIsChangingName(true)
         try {
-            console.log(name)
-            const req = await fetch(`${EnvironmentVariables.REACT_APP_SERVER_URL}/API/User/change/name/${userId}`,{
-                method: "POST",
-                credentials: "include",
-                headers:{
-                    "Content-type":"application/json"
-                },
-                body:JSON.stringify(name)
-            })
-            const res:IResponse<string> = (await req.json())
-            if(req.ok){
-                setUserProfile({...userProfile,userName:res.response})
-                addAlert("Success","Name changed")
-                setIsChangeName(false)
-            }
-            else{
-                addAlert("Failure",res.msg)
-            }
-        } catch (error) {
-            console.log(error)
+            await changeName({ userId, name }).unwrap()
+            addAlert("Success","Name changed")
+            setIsChangeName(false)
+        } catch {
             addAlert("Failure","Can't change name")
         }
-        setIsChangingName(false)
-    },[name,setName,userId,setUserProfile,isChangingName,setIsChangeName,addAlert])
+    }
 
-    const changeProfileImg=useCallback(async(e:React.ChangeEvent<HTMLInputElement>)=>{
-        setIsChangingProfile(true)
+    async function handleChangeProfileImg(e:React.ChangeEvent<HTMLInputElement>){
+        if (!e.currentTarget.files || !e.currentTarget.files[0]) {
+            addAlert("Failure", "No file selected")
+            return
+        }
+        const form = new FormData()
+        form.append('newProfile',e.currentTarget.files[0])
         try {
-            if (!e.currentTarget.files || !e.currentTarget.files[0]) {
-                addAlert("Failure", "No file selected")
-                setIsChangingProfile(false)
-                return
-            }
-            const form = new FormData()
-            form.append('newProfile',e.currentTarget.files[0])
-            const req = await fetch(`${EnvironmentVariables.REACT_APP_SERVER_URL}/API/User/change/profile/${userId}`,{
-                method: "POST",
-                credentials: "include",
-                body:form
-            })
-            
-            const res:IResponse<string> = (await req.json())
-            if(!req.ok){
-                addAlert("Failure",res.msg)
-            }
-            else{
-                setUserProfile({...userProfile,userIcon:res.response})
-                addAlert("Success","Profile changed")
-                setIsChangeName(false)
-            }
-        } catch (error) {
-            console.log(error)
+            await changeProfileImg({ userId, form }).unwrap()
+            addAlert("Success","Profile changed")
+        } catch {
             addAlert("Failure","Can't change profile")
         }
-        setIsChangingProfile(false)
-    },[userId])
+    }
 
     const printProfileEditButton = ()=>{
         if (!userProfile.owned) return <></>
@@ -89,7 +51,7 @@ export function UserProfile({userProfile,setUserProfile}:{userProfile:IUserProfi
             {isChangeName?
                 <button className={`main-button ${isChangingName?"active":""} center-element user-name-edit`} onClick={()=>{
                     if(name.length<=65&&name.length>0){
-                        changeName()
+                        handleChangeName()
                     }
                     else{
                         setUserErr("(Username must have at least one character and less than or equal to 64 characters)")
@@ -109,15 +71,15 @@ export function UserProfile({userProfile,setUserProfile}:{userProfile:IUserProfi
     }
 
     return <div className="user-personal-container center-element">
-        
+
         <div className="user-profile-img-container">
             <img className="user-personal-icon" src={userIcon} alt="user-icon" />
-            {(isChangingProfile && userProfile.owned) &&
+            {userProfile.owned &&
                 <button className={`main-button ${isChangingProfile && "active"} center-element input-profile-img-button`}>
                     {isChangingProfile?
                         <p>Editing...</p>:
                         <>
-                            <input className="input-profile-img" type="file" name="input-profile-img"  accept="image/png, image/jpeg" id="input-profile-img" onInput={changeProfileImg}/>
+                            <input className="input-profile-img" type="file" name="input-profile-img"  accept="image/png, image/jpeg" id="input-profile-img" onInput={handleChangeProfileImg}/>
                             <p>Edit Profile</p>
                             <EditIcon/>
                         </>
@@ -133,6 +95,6 @@ export function UserProfile({userProfile,setUserProfile}:{userProfile:IUserProfi
             }}/>
             :<p className="user-name">{userName}</p>}
         </div>
-        
+
     </div>
 }

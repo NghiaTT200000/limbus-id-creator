@@ -1,12 +1,10 @@
-import { IEgoInfo } from "Features/CardCreator/Types/IEgoInfo";
-import { IIdInfo } from "Features/CardCreator/Types/IIdInfo";
-import { ISaveFile } from "Types/ISaveFile";
 import React, { useEffect, useRef, useState } from "react";
 import { ReactElement } from "react";
 import "./SearchSaveInput.css"
 import useKeyPress from "Hooks/useKeyPress";
+import { useGetSaveListQuery } from "Api/SaveInfoApi";
 
-export default function SearchSaveInput({saveList,chooseSave,searchSave}:{saveList:ISaveFile<IIdInfo|IEgoInfo>[],chooseSave:(saveUrl:string)=>void,searchSave:(name:string)=>void}):ReactElement{
+export default function SearchSaveInput({userId,saveMode,chooseSave}:{userId:string,saveMode:string,chooseSave:(saveUrl:string)=>void}):ReactElement{
     const [searchName,setSearchName] = useState("")
     const [currChoice,setCurrChoice] = useState(0)
     const [isActive,setIsActive] = useState(false)
@@ -18,6 +16,11 @@ export default function SearchSaveInput({saveList,chooseSave,searchSave}:{saveLi
     const selectRef = useRef<HTMLDivElement>(null)
     const containerRef = useRef<HTMLDivElement>(null)
 
+    const { data: saveList = [] } = useGetSaveListQuery(
+        { userId, searchName, saveMode },
+        { skip: !userId }
+    )
+
     const handleKeyDown=(e:React.KeyboardEvent<HTMLInputElement>)=>{
         if((isActive&&(e.key==="Enter"||e.key==="ArrowUp"||e.key==="ArrowDown"||e.key==="Tab"))){
             e.preventDefault()
@@ -28,14 +31,13 @@ export default function SearchSaveInput({saveList,chooseSave,searchSave}:{saveLi
         const selected = selectRef?.current?.querySelector(".post-save-found-tab.active")
         if(selected){
             selected?.scrollIntoView({
-                block: 'nearest', 
-                inline: 'start' 
+                block: 'nearest',
+                inline: 'start'
             });
-        } 
+        }
     }
-    
+
     useEffect(()=>{
-        searchSave(searchName)
         setCurrChoice(0)
     },[searchName])
 
@@ -50,7 +52,7 @@ export default function SearchSaveInput({saveList,chooseSave,searchSave}:{saveLi
     },[enterKeyPress])
 
     useEffect(()=>{
-        if((arrowDownKeyPress||tabDownKeyPress)&&isActive){ 
+        if((arrowDownKeyPress||tabDownKeyPress)&&isActive){
             setCurrChoice((currChoice+1>saveList.length-1)?0:currChoice+1)
         }
     },[arrowDownKeyPress,tabDownKeyPress])
@@ -68,16 +70,16 @@ export default function SearchSaveInput({saveList,chooseSave,searchSave}:{saveLi
                 setIsActive(false)
             }
         }
-    
+
         document.addEventListener('mousedown', handleClickOutside);
-    
+
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     },[containerRef])
 
     return <div className="post-save-mode-input-container" ref={containerRef}>
-        <input ref={searchSaveInputRef} type="text" className="input post-save-input" placeholder="ID/EGO name" value={searchName} 
+        <input ref={searchSaveInputRef} type="text" className="input post-save-input" placeholder="ID/EGO name" value={searchName}
             onFocus={()=>{
                 setIsActive(true)
             }}
@@ -103,7 +105,7 @@ export default function SearchSaveInput({saveList,chooseSave,searchSave}:{saveLi
                         </div>
                     </div>
                 })}</>}
-                
+
             </div>
         </div>
     </div>

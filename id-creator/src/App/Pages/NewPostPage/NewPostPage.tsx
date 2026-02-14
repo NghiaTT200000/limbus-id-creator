@@ -1,22 +1,18 @@
 import { useLoginMenuContext } from "Components/LoginMenu/LoginMenu";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { ReactElement } from "react";
 import "./NewPostPage.css";
 import TagInput from "Components/TagInput/TagInput";
 import TagsContainer from "Components/TagsContainer/TagsContainer";
 import { ITag } from "Utils/TagList";
-import { ISaveFile } from "Types/ISaveFile";
-import { IIdInfo } from "Features/CardCreator/Types/IIdInfo";
-import { IEgoInfo } from "Features/CardCreator/Types/IEgoInfo";
 import SearchSaveInput from "../../../Features/CardCreator/Components/SearchSaveInput/SearchSaveInput";
 import CloseIcon from "Assets/Icons/CloseIcon";
 import Editor from 'react-simple-wysiwyg';
 import uuid from "react-uuid";
 import { useNavigate } from "react-router-dom";
-import { EnvironmentVariables } from "Config/Environments";
 import useAlert from "Hooks/useAlert";
 import { useCheckAuthQuery } from "Api/AuthApi";
-
+import { useCreatePostMutation } from "Api/PostAPI";
 
 interface IChoosenSave{
     PreviewUrl:string,
@@ -26,67 +22,36 @@ interface IChoosenSave{
 export default function NewPostPage():ReactElement{
     const [postName,setPostName] = useState("")
     const [tags,setTags] = useState<ITag[]>([])
-    const [saveList,setSaveList] = useState<ISaveFile<IIdInfo|IEgoInfo>[]>([])
     const [choosenSave,setChoosenSave] = useState<IChoosenSave[]>([])
     const [saveMode,setSaveMode] = useState("Identity")
     const [description,setDescription] = useState("")
-    const [isPosting,setIsPosting] = useState(false)
     const {data: loginUser} = useCheckAuthQuery()
     const {setIsLoginMenuActive} = useLoginMenuContext()
     const {addAlert} = useAlert()
     const navigate = useNavigate()
 
-    async function createPost(){
-        if(!isPosting){
-            if(!postName) return addAlert("Failure","Post name length must be between 1 and 200")
-            if(choosenSave.length<1) return addAlert("Failure","Post must have between 1 and 8 images")
-            if(loginUser){
-                try {
-                    setIsPosting(true)
-                    const uploadTags = tags.map(t=>(t.tagName))
-                    if(choosenSave.some(s=>s.SaveType==="Identity")&&!tags.some(t=>t.tagName==="Identity")) uploadTags.push("Identity")
-                    if(choosenSave.some(s=>s.SaveType==="Ego")&&!tags.some(t=>t.tagName==="Ego")) uploadTags.push("Ego")
-                    const response = await fetch(`${EnvironmentVariables.REACT_APP_SERVER_URL}/API/Post/create`,{
-                        method: "POST",
-                        credentials: "include",
-                        headers:{
-                            "Content-type":"application/json"
-                        },
-                        body: JSON.stringify({
-                            id: uuid(),
-                            title:postName,
-                            description: description,
-                            imagesAttach: choosenSave.map(s=>s.PreviewUrl),
-                            userId: loginUser.id,
-                            tags: uploadTags
-                        })
-                    })
-                    const result = await response.json()
-                    if(!response.ok) addAlert("Failure",result.msg)
-                    else{
-                        navigate("/Post/"+result.response.id)
-                    }
-                } catch (error) {
-                    console.log(error)
-                    addAlert("Failure","Something went wrong with the server")
-                }
-            }
-            setIsPosting(false)
-        }
-    }
+    const [createPost, {isLoading: isPosting}] = useCreatePostMutation()
 
-    async function searchSave(searchName:string="") {
-        if(loginUser){
-            try {
-                const response = await fetch(`${EnvironmentVariables.REACT_APP_SERVER_URL}/API/${saveMode==="Identity"?"SaveIDInfo":"SaveEGOInfo"}?userId=${loginUser.id}&searchName=${searchName}`,{
-                    credentials: "include"
-                })
-                const result = await response.json()
-                if(response.ok) setSaveList(result.response)
-            } catch (error) {
-                console.log(error)
-                setSaveList([])
-            }
+    async function handleCreatePost(){
+        if(isPosting) return
+        if(!postName) return addAlert("Failure","Post name length must be between 1 and 200")
+        if(choosenSave.length<1) return addAlert("Failure","Post must have between 1 and 8 images")
+        if(!loginUser) return
+        try {
+            const uploadTags = tags.map(t=>(t.tagName))
+            if(choosenSave.some(s=>s.SaveType==="Identity")&&!tags.some(t=>t.tagName==="Identity")) uploadTags.push("Identity")
+            if(choosenSave.some(s=>s.SaveType==="Ego")&&!tags.some(t=>t.tagName==="Ego")) uploadTags.push("Ego")
+            const result = await createPost({
+                id: uuid(),
+                title: postName,
+                description,
+                imagesAttach: choosenSave.map(s=>s.PreviewUrl),
+                userId: loginUser.id,
+                tags: uploadTags,
+            }).unwrap()
+            navigate("/Post/"+result.id)
+        } catch {
+            addAlert("Failure","Something went wrong with the server")
         }
     }
 
@@ -102,8 +67,6 @@ export default function NewPostPage():ReactElement{
         newChoosenSave.splice(i,1)
         setChoosenSave(newChoosenSave)
     }
-
-    useEffect(()=>{searchSave("")},[saveMode])
 
     return <div className="page-container post-page">
         {loginUser?<div className="page-content">
@@ -123,23 +86,23 @@ export default function NewPostPage():ReactElement{
                     setTags(newTags)
                 }
             }}/>}
-            
+
             <div className="post-input-container">
                 <div>
                     <label htmlFor="search-save">Enter ID/EGO you want to add to the post (Required) {choosenSave.length}/8:</label>
                     <div className="post-save-mode-container">
                         <div className="center-element">
                             <label htmlFor="Identity">Identity</label>
-                            <input type="radio" id={"Identity"} name="saveMode" value={"Identity"} checked={saveMode==="Identity"} onChange={(e)=>setSaveMode(e.target.value)} />  
+                            <input type="radio" id={"Identity"} name="saveMode" value={"Identity"} checked={saveMode==="Identity"} onChange={(e)=>setSaveMode(e.target.value)} />
                         </div>
                         <div className="center-element">
                             <label htmlFor="Ego">Ego</label>
-                            <input type="radio" id={"Ego"} name="saveMode" value={"Ego"} checked={saveMode==="Ego"} onChange={(e)=>setSaveMode(e.target.value)} />    
+                            <input type="radio" id={"Ego"} name="saveMode" value={"Ego"} checked={saveMode==="Ego"} onChange={(e)=>setSaveMode(e.target.value)} />
                         </div>
-                    </div> 
+                    </div>
                 </div>
                 <div className="post-save-mode-input-container">
-                    <SearchSaveInput saveList={saveList} chooseSave={chooseSave} searchSave={searchSave}/>
+                    <SearchSaveInput userId={loginUser.id} saveMode={saveMode === "Identity" ? "ID" : "EGO"} chooseSave={chooseSave}/>
                 </div>
                 <div className="choosen-save-container">
                     {choosenSave.map((save,i)=><div key={i} className="choosen-save-img-container">
@@ -154,7 +117,7 @@ export default function NewPostPage():ReactElement{
                 <label htmlFor="description">Description:</label>
                 <Editor className="input post-description-input" name="description" id="description" value={description} onChange={(e)=>setDescription(e.target.value)}/>
             </div>
-            <button className={`main-button ${isPosting??"active"}`} onClick={createPost}>{isPosting?"Posting...":"Post"}</button>
+            <button className={`main-button ${isPosting??"active"}`} onClick={handleCreatePost}>{isPosting?"Posting...":"Post"}</button>
         </div>:
             <div className="page-content">
                 Please login to post

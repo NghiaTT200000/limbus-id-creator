@@ -32,7 +32,7 @@ export default function SaveCloudMenu({setIsActive,saveMode,saveObjInfoValue,loa
     loadObjInfoValueCb:React.Dispatch<React.SetStateAction<IIdInfo|IEgoInfo>>}):ReactElement{
     const [createSaveBtnLoadState,setCreateSaveBtnLoadState] = useState<IIsLoading>({loadingMessage:"",isLoading:false})
     const [isLoadingSaveData,setIsLoadingSaveData] = useState(false)
-    const [saveList,setSaveList] = useState([])
+    const [saveList,setSaveList] = useState<ISaveFile<IIdInfo|IEgoInfo>[]>([])
     const [namePopup,setNamePopup] = useState(false)
     const [searchSaveName,setSearchSaveName] = useState("")
     const {data: loginUser} = useCheckAuthQuery()
@@ -272,7 +272,7 @@ export default function SaveCloudMenu({setIsActive,saveMode,saveObjInfoValue,loa
             {isLoadingSaveData?<div className="loading-cloud-tab"><div className="loader"></div></div>:<></>}
             <div className="save-menu-list">
                 {loginUser?<>
-                    {saveList.map(save=><SaveCloudTab key={save.id} saveDate={save.saveTime} saveName={save.saveName} previewUrl={save.previewImg}
+                    {saveList.map(save=><SaveCloudTab key={save.id} saveDate={save.saveTime} saveName={save.saveName} previewUrl={save.previewImg ?? ""}
                                     deleteSave={()=>deleteSave(save.id)} loadSave={()=>loadSave(save.id)} overwriteSave={()=>overwriteSave(save.id)}/>)}
                 </>:
                     <div className="save-cloud-login-remainder">

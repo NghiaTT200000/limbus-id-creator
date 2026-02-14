@@ -24,7 +24,7 @@ export default function FooterLayout(): ReactElement {
                         target="_blank"
                         rel="noreferrer"
                     >
-                        Project Moon's Fan Content Policy
+                        Project Moon&apos;s Fan Content Policy
                     </a>
                 </div>
             </div>

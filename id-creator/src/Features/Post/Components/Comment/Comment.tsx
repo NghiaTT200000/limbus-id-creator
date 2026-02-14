@@ -20,18 +20,14 @@ function Comment({comment}:{comment:IComment}){
 </div>
 }
 
-export function CommentContainer({comments,getComments}:{comments:IComment[],getComments:(page:number,limit:number)=>Promise<void>}){
-    const [isLoading,setIsLoading] = useState(false)
-    const [page,setPage] = useState(0)
-    const [limit] = useState(10)
+export function CommentContainer({comments,loadMore,isLoading}:{comments:IComment[],loadMore:()=>void,isLoading:boolean}){
     const loaderRef = useRef(null)
 
     useEffect(()=>{
         const observer = new IntersectionObserver((entries)=>{
             const target = entries[0]
-            if(target.isIntersecting&&isLoading)
-            {
-                setPage(page+1)
+            if(target.isIntersecting && !isLoading){
+                loadMore()
             }
         })
 
@@ -43,15 +39,8 @@ export function CommentContainer({comments,getComments}:{comments:IComment[],get
               observer.unobserve(loaderRef.current);
             }
           };
-    },[getComments])
+    },[isLoading, loadMore])
 
-    useEffect(()=>{
-        if(!isLoading){
-            setIsLoading(true)
-            getComments(page,limit).finally(()=>setIsLoading(false))
-        }
-    },[page])
-    
     return <>
         {comments.map((comment,i)=><Comment key={i} comment={comment}/>)}
         <div ref={loaderRef}>{isLoading&&<div className="loader"></div>}</div>
