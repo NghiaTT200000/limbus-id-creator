@@ -83,9 +83,13 @@ export default function TipTapEditor({ inputId, content, changeHandler, matchLis
                     render: () => {
                         let component: ReactRenderer<SuggestionDropdownRef>
                         let popup: TippyInstance[]
+                        let currentQuery = ""
+                        let currentCommand: ((props: any) => void) | null = null
 
                         return {
                             onStart: (props) => {
+                                currentQuery = props.query
+                                currentCommand = props.command
                                 component = new ReactRenderer(SuggestionDropdown, {
                                     props,
                                     editor: props.editor,
@@ -104,6 +108,8 @@ export default function TipTapEditor({ inputId, content, changeHandler, matchLis
                                 })
                             },
                             onUpdate: (props) => {
+                                currentQuery = props.query
+                                currentCommand = props.command
                                 component?.updateProps(props)
                                 if (props.clientRect && popup?.[0]) {
                                     popup[0].setProps({
@@ -115,6 +121,15 @@ export default function TipTapEditor({ inputId, content, changeHandler, matchLis
                                 if (props.event.key === "Escape") {
                                     popup?.[0]?.hide()
                                     return true
+                                }
+                                // When ']' is typed, auto-complete if exact keyword match exists
+                                if (props.event.key === "]" && currentCommand) {
+                                    const list = matchListRef.current
+                                    const key = currentQuery.toLowerCase()
+                                    if (list[key]) {
+                                        currentCommand({ keyword: key, html: list[key] })
+                                        return true
+                                    }
                                 }
                                 return component?.ref?.onKeyDown(props) ?? false
                             },
