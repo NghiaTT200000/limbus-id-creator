@@ -5,9 +5,10 @@
     min-height: 100%;
     background-color: var(--None-input-page);
     padding: 10px 6px;
+    padding-top: 36px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     overflow-y: auto;
     color: white;
     gap: 12px;
@@ -46,7 +47,7 @@
     width: 100%;
     max-width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
     gap: 8px;
@@ -66,6 +67,10 @@
 .input-label{
     font-weight: 400;
     font-size: 20px;
+    margin-bottom: 6px;
+    align-items: center;
+    display: flex;
+    gap: 2px;
 }
 
 .skill-effect-input{
@@ -85,4 +90,23 @@
 .fill-button-component{
     width: 100%;
     font-size: 18px;
+}
+
+.input-error{
+    border: 2px solid red;
+}
+
+.input-error-msg{
+    color: red;
+    font-size: 12px;
+    margin-top: 2px;
+}
+
+.delete-skill-button{
+    width: 100%;
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
 }

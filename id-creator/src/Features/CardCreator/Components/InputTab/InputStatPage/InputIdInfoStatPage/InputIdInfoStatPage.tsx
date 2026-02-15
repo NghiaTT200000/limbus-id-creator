@@ -4,6 +4,7 @@ import "../../InputPage.css"
 import "../InputStatPage.css"
 import DeleteIcon from "Assets/Icons/DeleteIcon";
 import ArrowDownIcon from "Assets/Icons/ArrowDownIcon";
+import AccordionSection from "Components/AccordionSection/AccordionSection";
 import SinnerIconInput from "../SinnerIconInput/SinnerIconInput";
 import SinnerRarityIconInput from "../SinnerRarityInput/SinnerRarityInput";
 import SinnerSplashArtRepositionInput from "../SinnerSplashArtRepositionInput/SinnerSplashArtRepositionInput";
@@ -55,109 +56,135 @@ export default function InputIdInfoStatPage({collaspPage}:{collaspPage:()=>void}
                 <ArrowDownIcon></ArrowDownIcon>
             </div>
         </div>
-        <div className="sinner-icon-input-container">
-            <p>Pick the sinner icon: </p>
-            <SinnerIconInput/>
+
+        <AccordionSection title="Sinner General Info">
+            <div className="sinner-icon-input-container">
+                <p>Pick the sinner icon: </p>
+                <SinnerIconInput/>
+                <UploadImgBtn onFileInputChange={async(e)=>{
+                    if(e.currentTarget.files && e.currentTarget.files.length>0){
+                        const url = await compressAndReadImage(e.currentTarget.files[0])
+                        setValue("sinnerIcon",url)
+                    }
+                }} btnTxt={"Upload sinner icon (<= 100kb)"} maxSize={100000}/>
+            </div>
+            <div className="sinner-color-input-container">
+                <p>Pick a color for your sinner: </p>
+                <input className="sinner-color-input" type="color" id="sinnerColor" {...register("sinnerColor")}/>
+            </div>
+            {splashArt?
+                <>
+                    <div className="input-group-container">
+                        <p>Control the position of the splash art by dragging and zooming on this circle:</p>
+                        <SinnerSplashArtRepositionInput scale={splashArtScale} translation={splashArtTranslation} onChange={(value:{scale:number,translation:{x:number,y:number}})=>{
+                            setValue("splashArtScale",value.scale)
+                            setValue("splashArtTranslation",value.translation)
+                        }}/>
+                    </div>
+                    <div className="input-group-container">
+                        <button onClick={()=>setValue("splashArt","")} className="main-button">
+                            <p className="center-element delete-txt"><DeleteIcon/> Delete splash art</p>
+                        </button>
+                    </div>
+                </>
+               :<></>}
             <UploadImgBtn onFileInputChange={async(e)=>{
                 if(e.currentTarget.files && e.currentTarget.files.length>0){
                     const url = await compressAndReadImage(e.currentTarget.files[0])
-                    setValue("sinnerIcon",url)
+                    setValue("splashArt",url)
                 }
-            }} btnTxt={"Upload sinner icon (<= 100kb)"} maxSize={100000}/>
-        </div>
-        <div className="sinner-color-input-container">
-            <p>Pick a color for your sinner: </p>
-            <input className="sinner-color-input" type="color" id="sinnerColor" {...register("sinnerColor")}/>
-        </div>
-        {splashArt?
-            <>
-                <div className="input-group-container">
-                    <p style={{textAlign:"center"}}>Control the position of the splash art by dragging and zooming on this circle:</p>
-                    <SinnerSplashArtRepositionInput scale={splashArtScale} translation={splashArtTranslation} onChange={(value:{scale:number,translation:{x:number,y:number}})=>{
-                        setValue("splashArtScale",value.scale)
-                        setValue("splashArtTranslation",value.translation)
-                    }}/>
+            }} btnTxt={"Upload splash art (<= 4mb)"} maxSize={4000000}/>
+            <div>
+                <p>Pick the sinner rarity: </p>
+                <SinnerRarityIconInput/>
+            </div>
+            <div className="input-group-container">
+                <div className="input-container">
+                    <label className="input-label" htmlFor="title">Title: </label>
+                    <input type="text" className="input stat-page-input-border block" id="title" {...register("title")}/>
                 </div>
-                <div className="input-group-container">
-                    <button onClick={()=>setValue("splashArt","")} className="main-button">
-                        <p className="center-element delete-txt"><DeleteIcon/> Delete splash art</p>
-                    </button>
+            </div>
+            <div className="input-group-container">
+                <div className="input-container">
+                    <label className="input-label" htmlFor="name">Name: </label>
+                    <input type="text" className="input stat-page-input-border" id="name" {...register("name")}/>
                 </div>
-            </>
-           :<></>}
+            </div>
+        </AccordionSection>
 
-        <UploadImgBtn onFileInputChange={async(e)=>{
-            if(e.currentTarget.files && e.currentTarget.files.length>0){
-                const url = await compressAndReadImage(e.currentTarget.files[0])
-                setValue("splashArt",url)
-            }
-        }} btnTxt={"Upload splash art (<= 4mb)"} maxSize={4000000}/>
-
-        <div>
-            <p>Pick the sinner rarity: </p>
-            <SinnerRarityIconInput/>
-        </div>
-        <div className="input-group-container">
-            <div className="input-container">
-                <label className="input-label" htmlFor="title">Title: </label>
-                <input type="text" className="input stat-page-input-border block" id="title" {...register("title")}/>
-            </div>
-        </div>
-        <div className="input-group-container">
-            <div className="input-container">
-                <label className="input-label" htmlFor="name">Name: </label>
-                <input type="text" className="input stat-page-input-border" id="name" {...register("name")}/>
-            </div>
-        </div>
-        <div className="sinner-stat-inputs">
-            <div className="stat-input-container">
-                <label htmlFor="minSpeed"><img className="stat-icon" src="/Images/stat/stat_speed.webp" alt="speed_icon" /></label>
-                <div>
-                    <input className="input stat-page-input-border input-number" type="number" id="minSpeed" {...register("minSpeed")}/> -
-                    <input className="input stat-page-input-border input-number" type="number" id="maxSpeed" {...register("maxSpeed")}/>
+        <AccordionSection title="Sinner Stats">
+            <div className="input-group-container">
+                <div className="input-container">
+                    <label className="input-label" htmlFor="minSpeed">
+                        <img className="stat-icon" src="/Images/stat/stat_speed.webp" alt="speed_icon" /> 
+                        <span>Speed from</span></label>
+                    <input className="input stat-page-input-border" type="number" id="minSpeed" {...register("minSpeed")}/>
+                </div>
+                <div className="input-container">
+                    <label className="input-label" htmlFor="maxSpeed">
+                        <img className="stat-icon" src="/Images/stat/stat_speed.webp" alt="speed_icon" /> 
+                        <span>Speed to</span>
+                    </label>
+                    <input className="input stat-page-input-border" type="number" id="maxSpeed" {...register("maxSpeed")}/>
                 </div>
             </div>
-            <div className="stat-input-container">
-                <label htmlFor="hp"><img className="stat-icon" src="/Images/stat/stat_hp.webp" alt="hp_icon" /></label>
-                <input type="number" className="input stat-page-input-border input-number" id="hp" {...register("hp")}/>
-            </div>
-            <div className="stat-input-container">
-                <label htmlFor="defenseLevel"><img className="stat-icon" src="/Images/stat/stat_def.webp" alt="def_icon" /></label>
-                <input type="number" className="input stat-page-input-border input-number" id="defenseLevel" {...register("defenseLevel")}/>
-            </div>
-            <div className="stat-input-container">
-                <label htmlFor="staggerResist">Stagger Threshold:</label>
-                <input type="text" className="input stat-page-input-border" id="staggerResist" {...register("staggerResist")}/>
-            </div>
-        </div>
-        <div  className="sinner-stat-inputs">
-            <div className="stat-input-container">
-                <label htmlFor="slashResistant"><img className="stat-icon" src="/Images/attack/attackt_slash.webp" alt="attackt_slash" /></label>
-                <div className="resistant-content">
-                    <div>
-                        <p style={{color:changeResistantColor(slashResistant)}}>{changeResistantText(slashResistant)}</p>
-                        <input style={{color:changeResistantColor(slashResistant)}} type="number" className="input stat-page-input-border input-number" {...register("slashResistant")} id="slashResistant"/>
-                    </div>
+            <div className="input-group-container">
+                <div className="input-container">
+                    <label className="input-label" htmlFor="hp">
+                        <img className="stat-icon" src="/Images/stat/stat_hp.webp" alt="hp_icon" /> 
+                        <span>Health</span>
+                    </label>
+                    <input type="number" className="input stat-page-input-border" id="hp" {...register("hp")}/>
                 </div>
             </div>
-            <div className="stat-input-container">
-                <label htmlFor="pierceResistant"><img className="stat-icon" src="/Images/attack/attackt_pierce.webp" alt="attackt_pierce" /></label>
-                <div className="resistant-content">
-                    <div>
-                        <p style={{color:changeResistantColor(pierceResistant)}}>{changeResistantText(pierceResistant)}</p>
-                        <input style={{color:changeResistantColor(pierceResistant)}} type="number" className="input stat-page-input-border input-number" {...register("pierceResistant")} id="pierceResistant"/>
-                    </div>
+            <div className="input-group-container">
+                <div className="input-container">
+                    <label className="input-label" htmlFor="defenseLevel">
+                        <img className="stat-icon" src="/Images/stat/stat_def.webp" alt="def_icon" /> 
+                        <span>Defense</span>
+                    </label>
+                    <input type="number" className="input stat-page-input-border" id="defenseLevel" {...register("defenseLevel")}/>
                 </div>
             </div>
-            <div className="stat-input-container">
-                <label htmlFor="bluntResistant"><img className="stat-icon" src="/Images/attack/attackt_blunt.webp" alt="attackt_blunt" /></label>
-                <div className="resistant-content">
-                    <div>
-                        <p style={{color:changeResistantColor(bluntResistant)}}>{changeResistantText(bluntResistant)}</p>
-                        <input style={{color:changeResistantColor(bluntResistant)}} type="number" className="input stat-page-input-border input-number" {...register("bluntResistant")} id="bluntResistant"/>
-                    </div>
+            <div className="input-group-container">
+                <div className="input-container">
+                    <label htmlFor="staggerResist" className="input-label">Stagger Threshold:</label>
+                    <input type="text" className="input stat-page-input-border" id="staggerResist" {...register("staggerResist")}/>
                 </div>
             </div>
-        </div>
+            <div className="input-group-container">
+                <div className="input-container">
+                    <label className="input-label" htmlFor="slashResistant">
+                        <img className="stat-icon" src="/Images/attack/attackt_slash.webp" alt="attackt_slash" />
+                        <span className="input-label">
+                            Slash resist (<span style={{color:changeResistantColor(slashResistant)}}>{changeResistantText(slashResistant)}</span>): 
+                        </span>
+                    </label>
+                    <input style={{color:changeResistantColor(slashResistant)}} type="number" className="input stat-page-input-border" {...register("slashResistant")} id="slashResistant"/>
+                </div>
+            </div>
+            <div className="input-group-container">
+                <div className="input-container">
+                    <label className="input-label" htmlFor="pierceResistant">
+                        <img className="stat-icon" src="/Images/attack/attackt_pierce.webp" alt="attackt_pierce" />
+                        <span className="input-label">
+                            Pierce resist (<span style={{color:changeResistantColor(pierceResistant)}}>{changeResistantText(pierceResistant)}</span>) :
+                        </span>
+                    </label>
+                    <input style={{color:changeResistantColor(pierceResistant)}} type="number" className="input stat-page-input-border" {...register("pierceResistant")} id="pierceResistant"/>
+                </div>
+            </div>
+            <div className="input-group-container">
+                <div className="input-container">
+                    <label className="input-label" htmlFor="bluntResistant">
+                        <img className="stat-icon" src="/Images/attack/attackt_blunt.webp" alt="attackt_blunt" />
+                        <span>
+                            Blunt resist (<span style={{color:changeResistantColor(bluntResistant)}}>{changeResistantText(bluntResistant)}</span>) :
+                        </span>
+                    </label>
+                    <input style={{color:changeResistantColor(bluntResistant)}} type="number" className="input stat-page-input-border" {...register("bluntResistant")} id="bluntResistant"/>
+                </div>
+            </div>
+        </AccordionSection>
     </div>
 }

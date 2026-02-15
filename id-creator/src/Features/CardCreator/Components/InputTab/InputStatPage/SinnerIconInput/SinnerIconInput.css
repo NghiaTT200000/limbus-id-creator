@@ -1,5 +1,5 @@
 .sinner-icon-container{
-    max-width: 350px;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     background-color: black;
@@ -11,8 +11,8 @@
 .sinner-icon{
     flex: 1;
     cursor: pointer;
-    max-width: 55px;
-    max-height: 55px;
+    max-width: 45px;
+    max-height: 45px;
     filter: saturate(0);
 }
 

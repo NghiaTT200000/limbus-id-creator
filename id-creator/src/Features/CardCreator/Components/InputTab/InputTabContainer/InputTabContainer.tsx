@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useState, useRef, useCallback, useEffect } from "react";
 import "./InputTabContainer.css"
 import { IOffenseSkill } from "Features/CardCreator/Types/Skills/OffenseSkill/IOffenseSkill";
 import { ICustomEffect } from "Features/CardCreator/Types/Skills/CustomEffect/ICustomEffect";
@@ -20,6 +20,19 @@ import { addEgoInfoSkill } from "Features/CardCreator/Stores/EgoInfoSlice";
 import { useCardMode } from "Features/CardCreator/Contexts/CardModeContext";
 import { SkillDetail } from "Features/CardCreator/Types/SkillDetail";
 
+const MIN_CLOSE_WIDTH = 240
+const MAX_WIDTH = 700
+const DEFAULT_WIDTH = 400
+const STORAGE_KEY = "inputPanelWidth"
+
+function getSavedWidth(): number {
+    const saved = localStorage.getItem(STORAGE_KEY)
+    if (saved) {
+        const num = Number(saved)
+        if (num >= MIN_CLOSE_WIDTH && num <= MAX_WIDTH) return num
+    }
+    return DEFAULT_WIDTH
+}
 
 export default function InputTabContainer({
         resetBtnHandler,
@@ -38,6 +51,52 @@ export default function InputTabContainer({
         mode === "id" ? state.idInfo.value.sinnerIcon : state.egoInfo.value.sinnerIcon
     )
     const {addAlert} = useAlert()
+
+    const [panelWidth, setPanelWidth] = useState(getSavedWidth)
+    const isDragging = useRef(false)
+    const containerRef = useRef<HTMLDivElement>(null)
+
+    const isPanelOpen = activeTab !== -2
+
+    const handleMouseDown = useCallback((e: React.MouseEvent) => {
+        e.preventDefault()
+        isDragging.current = true
+        document.body.style.cursor = "col-resize"
+        document.body.style.userSelect = "none"
+    }, [])
+
+    useEffect(() => {
+        const handleMouseMove = (e: MouseEvent) => {
+            if (!isDragging.current || !containerRef.current) return
+            const containerRect = containerRef.current.getBoundingClientRect()
+            const newWidth = e.clientX - containerRect.left
+            if (newWidth < MIN_CLOSE_WIDTH) {
+                isDragging.current = false
+                document.body.style.cursor = ""
+                document.body.style.userSelect = ""
+                changeActiveTab(-2)
+                return
+            }
+            const clamped = Math.min(newWidth, MAX_WIDTH)
+            setPanelWidth(clamped)
+            localStorage.setItem(STORAGE_KEY, String(clamped))
+        }
+
+        const handleMouseUp = () => {
+            if (isDragging.current) {
+                isDragging.current = false
+                document.body.style.cursor = ""
+                document.body.style.userSelect = ""
+            }
+        }
+
+        window.addEventListener("mousemove", handleMouseMove)
+        window.addEventListener("mouseup", handleMouseUp)
+        return () => {
+            window.removeEventListener("mousemove", handleMouseMove)
+            window.removeEventListener("mouseup", handleMouseUp)
+        }
+    }, [changeActiveTab])
 
     function addTab(skill: IOffenseSkill|IDefenseSkill|IPassiveSkill|ICustomEffect|IMentalEffect){
         if(skillDetails.length>=20) addAlert("Failure","There can only be 20 or less skill/effects")
@@ -61,13 +120,14 @@ export default function InputTabContainer({
         }
     }
 
-    return <div className="input-tab-container">
+    return <div className="input-tab-container" ref={containerRef} style={isPanelOpen ? { width: panelWidth + "px" } : undefined}>
         <InputTabSide sinnerIcon={sinnerIcon} skillDetails={skillDetails} changeTab={changeActiveTab}
         activeTab={activeTab} addTab={addTab} resetBtnHandler={resetBtnHandler}></InputTabSide>
-        {(activeTab!==-2)
-            ? (activeTab===-1)
+        {isPanelOpen && <>
+            {activeTab === -1
                 ? (mode === "id" ? <InputIdInfoStatPage collaspPage={()=>changeActiveTab(-2)}/> : <InputEgoInfoStatPage collaspPage={()=>changeActiveTab(-2)}/>)
-                : renderSkillPage(skillDetails[activeTab], activeTab)
-            : <></>}
+                : renderSkillPage(skillDetails[activeTab], activeTab)}
+            <div className="input-tab-resize-handle" onMouseDown={handleMouseDown}></div>
+        </>}
     </div>
 }

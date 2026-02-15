@@ -1,5 +1,5 @@
-import { useEffect } from 'react'
-import { useForm, UseFormReturn } from 'react-hook-form'
+import { useEffect, useCallback } from 'react'
+import { useForm, UseFormReturn, Path, UseFormRegisterReturn, FieldErrors } from 'react-hook-form'
 import { useCardMode } from 'Features/CardCreator/Contexts/CardModeContext'
 import { useAppDispatch, useAppSelector } from 'Stores/AppStore'
 import { useStatusEffect } from './useStatusEffect'
@@ -26,6 +26,8 @@ function createSkillByType(newType: string): SkillDetail {
 interface UseSkillFormReturn<T extends SkillDetail> extends UseFormReturn<T> {
     deleteSkill: () => void
     changeSkillType: (newType: string) => void
+    registerNumber: (name: Path<T>) => UseFormRegisterReturn
+    errors: FieldErrors<T>
     skill: T
     keyWordList: { [key: string]: string }
 }
@@ -40,7 +42,7 @@ export function useSkillForm<T extends SkillDetail>(index: number): UseSkillForm
 
     const keyWordList = useStatusEffect()
 
-    const form = useForm<T>({ defaultValues: structuredClone(skill) as any })
+    const form = useForm<T>({ defaultValues: structuredClone(skill) as any, mode: "onChange" })
 
     useEffect(() => { form.reset(structuredClone(skill) as any) }, [skill.inputId])
 
@@ -65,5 +67,14 @@ export function useSkillForm<T extends SkillDetail>(index: number): UseSkillForm
         )
     }
 
-    return { ...form, deleteSkill, changeSkillType, skill, keyWordList }
+    const registerNumber = useCallback((name: Path<T>) =>
+        form.register(name, {
+            valueAsNumber: true,
+            validate: (v: any) => !isNaN(Number(v)) || "Must be a number",
+        } as any)
+    , [form.register])
+
+    const { errors } = form.formState
+
+    return { ...form, deleteSkill, changeSkillType, registerNumber, errors, skill, keyWordList }
 }

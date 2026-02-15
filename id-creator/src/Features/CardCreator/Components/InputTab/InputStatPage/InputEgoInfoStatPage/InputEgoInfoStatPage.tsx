@@ -4,6 +4,7 @@ import "../../InputPage.css"
 import "../InputStatPage.css"
 import DropDown from "Components/DropDown/DropDown";
 import ArrowDownIcon from "Assets/Icons/ArrowDownIcon";
+import AccordionSection from "Components/AccordionSection/AccordionSection";
 import { EgoLevelDropDown } from "../EgoLevelDropDown/EgoLevelDropDown";
 import SinnerEgoIconInput from "../SinnerEgoIconInput/SinnerEgoIconInput";
 import SinnerSplashArtRepositionInput from "../SinnerSplashArtRepositionInput/SinnerSplashArtRepositionInput";
@@ -52,185 +53,158 @@ export default function InputStatPage({collaspPage}:{collaspPage:()=>void}):Reac
                 <ArrowDownIcon></ArrowDownIcon>
             </div>
         </div>
-        <div className="sinner-icon-input-container">
-            <p>Pick the sinner icon: </p>
-            <SinnerEgoIconInput/>
+
+        <AccordionSection title="Ego General Info">
+            <div className="sinner-icon-input-container">
+                <p>Pick the sinner icon: </p>
+                <SinnerEgoIconInput/>
+                <UploadImgBtn onFileInputChange={async (e)=>{
+                    if(e.currentTarget.files && e.currentTarget.files.length>0){
+                        const url = await compressAndReadImage(e.currentTarget.files[0])
+                        setValue("sinnerIcon",url)
+                    }
+                }} btnTxt={"Upload sinner icon (<= 80kb)"} maxSize={80000}/>
+            </div>
+            <div className="sinner-color-input-container">
+                <p>Pick a color for your sinner: </p>
+                <input className="sinner-color-input" type="color" id="sinnerColor" {...register("sinnerColor")}/>
+            </div>
+            {splashArt?<div className="input-group-container">
+                    <p className="center-element">Delete the splash art? <span className="material-symbols-outlined delete-splash-art-btn" onClick={()=>setValue("splashArt","")}>
+                        delete
+                    </span></p>
+                    <p style={{textAlign:"center"}}>Control the position of the splash art by dragging and zooming on this circle:</p>
+                    <SinnerSplashArtRepositionInput scale={splashArtScale} translation={splashArtTranslation} onChange={(value:{scale:number,translation:{x:number,y:number}})=>{
+                        setValue("splashArtScale",value.scale)
+                        setValue("splashArtTranslation",value.translation)
+                    }}/>
+                </div>:<></>}
             <UploadImgBtn onFileInputChange={async (e)=>{
                 if(e.currentTarget.files && e.currentTarget.files.length>0){
                     const url = await compressAndReadImage(e.currentTarget.files[0])
-                    setValue("sinnerIcon",url)
+                    setValue("splashArt",url)
                 }
-            }} btnTxt={"Upload sinner icon (<= 80kb)"} maxSize={80000}/>
-        </div>
-        <div className="sinner-color-input-container">
-            <p>Pick a color for your sinner: </p>
-            <input className="sinner-color-input" type="color" id="sinnerColor" {...register("sinnerColor")}/>
-        </div>
-        {splashArt?<div className="input-group-container">
-                <p className="center-element">Delete the splash art? <span className="material-symbols-outlined delete-splash-art-btn" onClick={()=>setValue("splashArt","")}>
-                    delete
-                </span></p>
-                <p style={{textAlign:"center"}}>Control the position of the splash art by dragging and zooming on this circle:</p>
-                <SinnerSplashArtRepositionInput scale={splashArtScale} translation={splashArtTranslation} onChange={(value:{scale:number,translation:{x:number,y:number}})=>{
-                    setValue("splashArtScale",value.scale)
-                    setValue("splashArtTranslation",value.translation)
-                }}/>
-            </div>:<></>}
-        <UploadImgBtn onFileInputChange={async (e)=>{
-            if(e.currentTarget.files && e.currentTarget.files.length>0){
-                const url = await compressAndReadImage(e.currentTarget.files[0])
-                setValue("splashArt",url)
-            }
-        }} btnTxt={"Upload splash art (<= 1.2mb)"} maxSize={1200000}/>
+            }} btnTxt={"Upload splash art (<= 1.2mb)"} maxSize={1200000}/>
+            <div className="input-group-container">
+                <div className="input-container">
+                    <label className="input-label" htmlFor="title">Title: </label>
+                    <input type="text" className="input stat-page-input-border block" id="title" {...register("title")}/>
+                </div>
+            </div>
+            <div className="input-group-container">
+                <div className="input-container">
+                    <label className="input-label" htmlFor="name">Name: </label>
+                    <input type="text" className="input stat-page-input-border" id="name" {...register("name")}/>
+                </div>
+            </div>
+        </AccordionSection>
 
-        <div className="input-group-container">
-            <div className="input-container">
-                <label className="input-label" htmlFor="title">Title: </label>
-                <input type="text" className="input stat-page-input-border block" id="title" {...register("title")}/>
-            </div>
-        </div>
-        <div className="input-group-container">
-            <div className="input-container">
-                <label className="input-label" htmlFor="name">Name: </label>
-                <input type="text" className="input stat-page-input-border" id="name" {...register("name")}/>
-            </div>
-        </div>
-        <div className="input-group-container">
-            <div className="input-container">
-                <p>Ego level:</p>
-                <DropDown dropDownEl={EgoLevelDropDown} cb={(newVal)=>setValue("egoLevel",newVal)}/>
-            </div>
-        </div>
-        <div className="input-group-container">
-            <div className="input-container">
-                <label htmlFor="sanityCost">Sanity cost:</label>
-                <input type="number" className="input stat-page-input-border" id="sanityCost" {...register("sanityCost")} />
-            </div>
-        </div>
-        <p>Sin cost:</p>
-        <div className="sinner-stat-inputs">
-            <div className="stat-input-container">
-                <label htmlFor="wrath_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Wrath_big.webp" alt="wrath-input-resistant-icon" /></label>
-                <div className="resistant-content">
-                    <div>
-                        <input type="number" className="input stat-page-input-border input-number" {...register("sinCost.wrath_cost")} id="wrath_cost"/>
-                    </div>
+        <AccordionSection title="Ego Stats">
+            <div className="input-group-container">
+                <div className="input-container">
+                    <label className="input-label">Ego level:</label>
+                    <DropDown dropDownEl={EgoLevelDropDown} cb={(newVal)=>setValue("egoLevel",newVal)}/>
                 </div>
             </div>
-            <div className="stat-input-container">
-                <label htmlFor="lust_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Lust_big.webp" alt="Lust-input-resistant-icon" /></label>
-                <div className="resistant-content">
-                    <div>
-                        <input type="number" className="input stat-page-input-border input-number" {...register("sinCost.lust_cost")} id="lust_cost"/>
-                    </div>
+            <div className="input-group-container">
+                <div className="input-container">
+                    <label htmlFor="sanityCost" className="input-label">Sanity cost:</label>
+                    <input type="number" className="input stat-page-input-border" id="sanityCost" {...register("sanityCost")} />
                 </div>
             </div>
-            <div className="stat-input-container">
-                <label htmlFor="sloth_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Sloth_big.webp" alt="Sloth-input-resistant-icon" /></label>
-                <div className="resistant-content">
-                    <div>
-                        <input type="number" className="input stat-page-input-border input-number" {...register("sinCost.sloth_cost")} id="sloth_cost"/>
-                    </div>
+            <p className="input-label">Sin cost:</p>
+                <div className="sin-input-item input-container">
+                    <label className="input-label" htmlFor="wrath_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Wrath_big.webp" alt="wrath-input-resistant-icon" /> <span>Wrath</span></label>
+                    <input type="number" className="input stat-page-input-border" {...register("sinCost.wrath_cost")} id="wrath_cost"/>
+                </div>
+                <div className="sin-input-item input-container">
+                    <label className="input-label" htmlFor="lust_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Lust_big.webp" alt="Lust-input-resistant-icon" /> <span>Lust</span></label>
+                    <input type="number" className="input stat-page-input-border" {...register("sinCost.lust_cost")} id="lust_cost"/>
+                </div>
+                <div className="sin-input-item input-container">
+                    <label className="input-label" htmlFor="sloth_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Sloth_big.webp" alt="Sloth-input-resistant-icon" /> <span>Sloth</span></label>
+                    <input type="number" className="input stat-page-input-border" {...register("sinCost.sloth_cost")} id="sloth_cost"/>
+                </div>
+                <div className="sin-input-item input-container">
+                    <label className="input-label" htmlFor="gluttony_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Gluttony_big.webp" alt="Gluttony-input-resistant-icon" /> <span>Gluttony</span></label>
+                    <input type="number" className="input stat-page-input-border" {...register("sinCost.gluttony_cost")} id="gluttony_cost"/>
+                </div>
+                <div className="sin-input-item input-container">
+                    <label className="input-label" htmlFor="gloom_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Gloom_big.webp" alt="Gloom-input-resistant-icon" /> <span>Gloom</span></label>
+                    <input type="number" className="input stat-page-input-border" {...register("sinCost.gloom_cost")} id="gloom_cost"/>
+                </div>
+                <div className="sin-input-item input-container">
+                    <label className="input-label" htmlFor="pride_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Pride_big.webp" alt="Pride-input-resistant-icon" /> <span>Pride</span></label>
+                    <input type="number" className="input stat-page-input-border" {...register("sinCost.pride_cost")} id="pride_cost"/>
+                </div>
+                <div className="sin-input-item input-container">
+                    <label className="input-label" htmlFor="envy_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Envy_big.webp" alt="Envy-input-resistant-icon" /> <span>Envy</span></label>
+                    <input type="number" className="input stat-page-input-border" {...register("sinCost.envy_cost")} id="envy_cost"/>
+                </div>
+            <p className="input-label">Sin resistant:</p>
+            <div className="input-group-container">
+                <div className="input-container">
+                    <label className="input-label" htmlFor="wrath_resistant">
+                        <img className="stat-icon" src="/Images/sin-affinity/affinity_Wrath_big.webp" alt="wrath-input-resistant-icon" />
+                        <span>Wrath (<span style={{color:changeResistantColor(sinResistant?.wrath_resistant)}}>{changeResistantText(sinResistant?.wrath_resistant)}</span>)</span>
+                    </label>
+                    <input style={{color:changeResistantColor(sinResistant?.wrath_resistant)}} type="number" className="input stat-page-input-border" {...register("sinResistant.wrath_resistant")} id="wrath_resistant"/>
                 </div>
             </div>
-            <div className="stat-input-container">
-                <label htmlFor="gluttony_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Gluttony_big.webp" alt="Gluttony-input-resistant-icon" /></label>
-                <div className="resistant-content">
-                    <div>
-                        <input type="number" className="input stat-page-input-border input-number" {...register("sinCost.gluttony_cost")} id="gluttony_cost"/>
-                    </div>
+            <div className="input-group-container">
+                <div className="input-container">
+                    <label className="input-label" htmlFor="lust_resistant">
+                        <img className="stat-icon" src="/Images/sin-affinity/affinity_Lust_big.webp" alt="Lust-input-resistant-icon" />
+                        <span>Lust (<span style={{color:changeResistantColor(sinResistant?.lust_resistant)}}>{changeResistantText(sinResistant?.lust_resistant)}</span>)</span>
+                    </label>
+                    <input style={{color:changeResistantColor(sinResistant?.lust_resistant)}} type="number" className="input stat-page-input-border" {...register("sinResistant.lust_resistant")} id="lust_resistant"/>
                 </div>
             </div>
-            <div className="stat-input-container">
-                <label htmlFor="gloom_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Gloom_big.webp" alt="Gloom-input-resistant-icon" /></label>
-                <div className="resistant-content">
-                    <div>
-                        <input type="number" className="input stat-page-input-border input-number" {...register("sinCost.gloom_cost")} id="gloom_cost"/>
-                    </div>
+            <div className="input-group-container">
+                <div className="input-container">
+                    <label className="input-label" htmlFor="sloth_resistant">
+                        <img className="stat-icon" src="/Images/sin-affinity/affinity_Sloth_big.webp" alt="Sloth-input-resistant-icon" />
+                        <span>Sloth (<span style={{color:changeResistantColor(sinResistant?.sloth_resistant)}}>{changeResistantText(sinResistant?.sloth_resistant)}</span>)</span>
+                    </label>
+                    <input style={{color:changeResistantColor(sinResistant?.sloth_resistant)}} type="number" className="input stat-page-input-border" {...register("sinResistant.sloth_resistant")} id="sloth_resistant"/>
                 </div>
             </div>
-            <div className="stat-input-container">
-                <label htmlFor="pride_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Pride_big.webp" alt="Pride-input-resistant-icon" /></label>
-                <div className="resistant-content">
-                    <div>
-                        <input type="number" className="input stat-page-input-border input-number" {...register("sinCost.pride_cost")} id="pride_cost"/>
-                    </div>
+            <div className="input-group-container">
+                <div className="input-container">
+                    <label className="input-label" htmlFor="gluttony_resistant">
+                        <img className="stat-icon" src="/Images/sin-affinity/affinity_Gluttony_big.webp" alt="Gluttony-input-resistant-icon" />
+                        <span>Gluttony (<span style={{color:changeResistantColor(sinResistant?.gluttony_resistant)}}>{changeResistantText(sinResistant?.gluttony_resistant)}</span>)</span>
+                    </label>
+                    <input style={{color:changeResistantColor(sinResistant?.gluttony_resistant)}} type="number" className="input stat-page-input-border" {...register("sinResistant.gluttony_resistant")} id="gluttony_resistant"/>
                 </div>
             </div>
-            <div className="stat-input-container">
-                <label htmlFor="envy_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Envy_big.webp" alt="Envy-input-resistant-icon" /></label>
-                <div className="resistant-content">
-                    <div>
-                        <input type="number" className="input stat-page-input-border input-number" {...register("sinCost.envy_cost")} id="envy_cost"/>
-                    </div>
+            <div className="input-group-container">
+                <div className="input-container">
+                    <label className="input-label" htmlFor="gloom_resistant">
+                        <img className="stat-icon" src="/Images/sin-affinity/affinity_Gloom_big.webp" alt="Gloom-input-resistant-icon" />
+                        <span>Gloom (<span style={{color:changeResistantColor(sinResistant?.gloom_resistant)}}>{changeResistantText(sinResistant?.gloom_resistant)}</span>)</span>
+                    </label>
+                    <input style={{color:changeResistantColor(sinResistant?.gloom_resistant)}} type="number" className="input stat-page-input-border" {...register("sinResistant.gloom_resistant")} id="gloom_resistant"/>
                 </div>
             </div>
-        </div>
-        <p>Sin resistant:</p>
-        <div className="sinner-stat-inputs">
-            <div className="stat-input-container">
-                <label htmlFor="wrath_resistant"><img className="stat-icon" src="/Images/sin-affinity/affinity_Wrath_big.webp" alt="wrath-input-resistant-icon" /></label>
-                <div className="resistant-content">
-                    <div>
-                        <p  style={{color:changeResistantColor(sinResistant?.wrath_resistant)}}>{changeResistantText(sinResistant?.wrath_resistant)}</p>
-                        <input style={{color:changeResistantColor(sinResistant?.wrath_resistant)}} type="number" className="input stat-page-input-border input-number" {...register("sinResistant.wrath_resistant")} id="wrath_resistant"/>
-                    </div>
+            <div className="input-group-container">
+                <div className="input-container">
+                    <label className="input-label" htmlFor="pride_resistant">
+                        <img className="stat-icon" src="/Images/sin-affinity/affinity_Pride_big.webp" alt="Pride-input-resistant-icon" />
+                        <span>Pride (<span style={{color:changeResistantColor(sinResistant?.pride_resistant)}}>{changeResistantText(sinResistant?.pride_resistant)}</span>)</span>
+                    </label>
+                    <input style={{color:changeResistantColor(sinResistant?.pride_resistant)}} type="number" className="input stat-page-input-border" {...register("sinResistant.pride_resistant")} id="pride_resistant"/>
                 </div>
             </div>
-            <div className="stat-input-container">
-                <label htmlFor="lust_resistant"><img className="stat-icon" src="/Images/sin-affinity/affinity_Lust_big.webp" alt="Lust-input-resistant-icon" /></label>
-                <div className="resistant-content">
-                    <div>
-                        <p style={{color:changeResistantColor(sinResistant?.lust_resistant)}}>{changeResistantText(sinResistant?.lust_resistant)}</p>
-                        <input style={{color:changeResistantColor(sinResistant?.lust_resistant)}} type="number" className="input stat-page-input-border input-number" {...register("sinResistant.lust_resistant")} id="lust_resistant"/>
-                    </div>
+            <div className="input-group-container">
+                <div className="input-container">
+                    <label className="input-label" htmlFor="envy_resistant">
+                        <img className="stat-icon" src="/Images/sin-affinity/affinity_Envy_big.webp" alt="Envy-input-resistant-icon" />
+                        <span>Envy (<span style={{color:changeResistantColor(sinResistant?.envy_resistant)}}>{changeResistantText(sinResistant?.envy_resistant)}</span>)</span>
+                    </label>
+                    <input style={{color:changeResistantColor(sinResistant?.envy_resistant)}} type="number" className="input stat-page-input-border" {...register("sinResistant.envy_resistant")} id="envy_resistant"/>
                 </div>
             </div>
-            <div className="stat-input-container">
-                <label htmlFor="sloth_resistant"><img className="stat-icon" src="/Images/sin-affinity/affinity_Sloth_big.webp" alt="Sloth-input-resistant-icon" /></label>
-                <div className="resistant-content">
-                    <div>
-                        <p style={{color:changeResistantColor(sinResistant?.sloth_resistant)}}>{changeResistantText(sinResistant?.sloth_resistant)}</p>
-                        <input style={{color:changeResistantColor(sinResistant?.sloth_resistant)}} type="number" className="input stat-page-input-border input-number" {...register("sinResistant.sloth_resistant")} id="sloth_resistant"/>
-                    </div>
-                </div>
-            </div>
-            <div className="stat-input-container">
-                <label htmlFor="gluttony_resistant"><img className="stat-icon" src="/Images/sin-affinity/affinity_Gluttony_big.webp" alt="Gluttony-input-resistant-icon" /></label>
-                <div className="resistant-content">
-                    <div>
-                        <p style={{color:changeResistantColor(sinResistant?.gluttony_resistant)}}>{changeResistantText(sinResistant?.gluttony_resistant)}</p>
-                        <input style={{color:changeResistantColor(sinResistant?.gluttony_resistant)}} type="number" className="input stat-page-input-border input-number" {...register("sinResistant.gluttony_resistant")} id="gluttony_resistant"/>
-                    </div>
-                </div>
-            </div>
-            <div className="stat-input-container">
-                <label htmlFor="gloom_resistant"><img className="stat-icon" src="/Images/sin-affinity/affinity_Gloom_big.webp" alt="Gloom-input-resistant-icon" /></label>
-                <div className="resistant-content">
-                    <div>
-                        <p style={{color:changeResistantColor(sinResistant?.gloom_resistant)}}>{changeResistantText(sinResistant?.gloom_resistant)}</p>
-                        <input style={{color:changeResistantColor(sinResistant?.gloom_resistant)}} type="number" className="input stat-page-input-border input-number" {...register("sinResistant.gloom_resistant")} id="gloom_resistant"/>
-                    </div>
-                </div>
-            </div>
-            <div className="stat-input-container">
-                <label htmlFor="pride_resistant"><img className="stat-icon" src="/Images/sin-affinity/affinity_Pride_big.webp" alt="Pride-input-resistant-icon" /></label>
-                <div className="resistant-content">
-                    <div>
-                        <p style={{color:changeResistantColor(sinResistant?.pride_resistant)}}>{changeResistantText(sinResistant?.pride_resistant)}</p>
-                        <input style={{color:changeResistantColor(sinResistant?.pride_resistant)}} type="number" className="input stat-page-input-border input-number" {...register("sinResistant.pride_resistant")} id="pride_resistant"/>
-                    </div>
-                </div>
-            </div>
-            <div className="stat-input-container">
-                <label htmlFor="envy_resistant"><img className="stat-icon" src="/Images/sin-affinity/affinity_Envy_big.webp" alt="Envy-input-resistant-icon" /></label>
-                <div className="resistant-content">
-                    <div>
-                        <p style={{color:changeResistantColor(sinResistant?.envy_resistant)}}>{changeResistantText(sinResistant?.envy_resistant)}</p>
-                        <input style={{color:changeResistantColor(sinResistant?.envy_resistant)}} type="number" className="input stat-page-input-border input-number" {...register("sinResistant.envy_resistant")} id="envy_resistant"/>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </AccordionSection>
     </div>
 }
