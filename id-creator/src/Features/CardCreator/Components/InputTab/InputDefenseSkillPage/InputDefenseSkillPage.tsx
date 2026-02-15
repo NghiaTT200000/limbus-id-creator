@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { ReactElement } from "react";
 import "../InputPage.css"
 import { IDefenseSkill } from "Features/CardCreator/Types/Skills/DefenseSkill/IDefenseSkill";
@@ -11,30 +11,15 @@ import ChangeInputType from "../Components/ChangeInputType/ChangeInputType";
 import TipTapEditor from "../Components/TipTapEditor/TipTapEditor";
 import UploadImgBtn from "../Components/UploadImgBtn/UploadImgBtn";
 import { compressAndReadImage } from "Features/CardCreator/Utils/CompressAndReadImage";
-import { useForm } from "react-hook-form";
+import { useSkillForm } from "Features/CardCreator/Hooks/useSkillForm";
 
 export default function InputDefenseSkillPage({
-    defenseSkill,
-    keyWordList,
-    changeSkill,
-    changeSkillType,
-    deleteSkill,
+    index,
     collaspPage}:{
-        defenseSkill:IDefenseSkill,
-        keyWordList:{[key:string]:string},
-        changeSkill:(newInput:{[type:string]:string|number})=>void,
-        changeSkillType:(newVal:string)=>void,
-        deleteSkill:(inputID:string)=>void,
+        index:number,
         collaspPage:()=>void}):ReactElement{
 
-    const { register, setValue, watch, reset } = useForm<IDefenseSkill>({ defaultValues: structuredClone(defenseSkill) })
-
-    useEffect(() => { reset(structuredClone(defenseSkill)) }, [defenseSkill.inputId])
-
-    useEffect(() => {
-        const sub = watch((values) => changeSkill(structuredClone(values) as any))
-        return () => sub.unsubscribe()
-    }, [watch, changeSkill])
+    const { register, setValue, watch, deleteSkill, changeSkillType, keyWordList } = useSkillForm<IDefenseSkill>(index)
 
     const skillAffinity = watch("skillAffinity")
     const skillImage = watch("skillImage")
@@ -49,7 +34,7 @@ export default function InputDefenseSkillPage({
             <div className="collasp-icon" onClick={collaspPage}>
                 <ArrowDownIcon></ArrowDownIcon>
             </div>
-            <div className="delete-icon" onClick={()=>deleteSkill(inputId)}>
+            <div className="delete-icon" onClick={()=>deleteSkill()}>
                 <DeleteIcon></DeleteIcon>
             </div>
         </div>

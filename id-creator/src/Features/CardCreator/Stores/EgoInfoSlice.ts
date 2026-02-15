@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { IEgoInfo, EgoInfo } from 'Features/CardCreator/Types/IEgoInfo'
 import { PassiveSkill } from 'Features/CardCreator/Types/Skills/PassiveSkill/IPassiveSkill'
+import { SkillDetail } from 'Features/CardCreator/Types/SkillDetail'
 
 interface EgoInfoState {
     value: IEgoInfo
@@ -52,6 +53,19 @@ const EgoInfoSlice = createSlice({
         setEgoInfoSkillDetails(state, action: PayloadAction<IEgoInfo['skillDetails']>) {
             state.value.skillDetails = action.payload
         },
+        addEgoInfoSkill(state, action: PayloadAction<SkillDetail>) {
+            if (state.value.skillDetails.length < 20)
+                state.value.skillDetails.push(action.payload)
+        },
+        deleteEgoInfoSkill(state, action: PayloadAction<string>) {
+            state.value.skillDetails = state.value.skillDetails.filter(s => s.inputId !== action.payload)
+        },
+        updateEgoInfoSkill(state, action: PayloadAction<{ index: number, skill: SkillDetail }>) {
+            state.value.skillDetails[action.payload.index] = action.payload.skill
+        },
+        changeEgoInfoSkillType(state, action: PayloadAction<{ index: number, skill: SkillDetail }>) {
+            state.value.skillDetails[action.payload.index] = action.payload.skill
+        },
     },
 })
 
@@ -60,6 +74,10 @@ export const {
     updateEgoInfoField,
     resetEgoInfo,
     setEgoInfoSkillDetails,
+    addEgoInfoSkill,
+    deleteEgoInfoSkill,
+    updateEgoInfoSkill,
+    changeEgoInfoSkillType,
 } = EgoInfoSlice.actions
 
 export const EgoInfoReducer = EgoInfoSlice.reducer

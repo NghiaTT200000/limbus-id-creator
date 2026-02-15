@@ -172,14 +172,12 @@ export default function TipTapEditor({ inputId, content, changeHandler, matchLis
         },
     })
 
-    // Reset editor content when switching between skills (inputId changes)
     useEffect(() => {
         if (editor && !editor.isDestroyed) {
             editor.commands.setContent(content, { emitUpdate: false })
         }
     }, [inputId])
 
-    // Sync content from external resets (e.g. loading saves)
     useEffect(() => {
         if (editor && !editor.isDestroyed) {
             const currentHtml = editor.getHTML()

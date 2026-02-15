@@ -1,35 +1,20 @@
 import { IPassiveSkill } from "Features/CardCreator/Types/Skills/PassiveSkill/IPassiveSkill";
-import React, { useEffect } from "react";
+import React from "react";
 import { ReactElement } from "react";
 import "../InputPage.css"
 import DeleteIcon from "Assets/Icons/DeleteIcon";
 import ArrowDownIcon from "Assets/Icons/ArrowDownIcon";
 import ChangeInputType from "../Components/ChangeInputType/ChangeInputType";
 import TipTapEditor from "../Components/TipTapEditor/TipTapEditor";
-import { useForm } from "react-hook-form";
+import { useSkillForm } from "Features/CardCreator/Hooks/useSkillForm";
 
 export default function InputPassivePage({
-    passiveSkill,
-    keyWordList,
-    changeSkill,
-    changeSkillType,
-    deleteSkill,
+    index,
     collaspPage}:{
-        passiveSkill:IPassiveSkill,
-        keyWordList:{[key:string]:string},
-        changeSkill:(newInput:{[type:string]:string|number})=>void,
-        changeSkillType:(newVal:string)=>void,
-        deleteSkill:(inputID:string)=>void,
+        index:number,
         collaspPage:()=>void}):ReactElement{
 
-    const { register, setValue, watch, reset } = useForm<IPassiveSkill>({ defaultValues: structuredClone(passiveSkill) })
-
-    useEffect(() => { reset(structuredClone(passiveSkill)) }, [passiveSkill.inputId])
-
-    useEffect(() => {
-        const sub = watch((values) => changeSkill(structuredClone(values) as any))
-        return () => sub.unsubscribe()
-    }, [watch, changeSkill])
+    const { register, setValue, watch, deleteSkill, changeSkillType, keyWordList } = useSkillForm<IPassiveSkill>(index)
 
     const type = watch("type")
     const inputId = watch("inputId")
@@ -40,7 +25,7 @@ export default function InputPassivePage({
             <div className="collasp-icon" onClick={collaspPage}>
                 <ArrowDownIcon></ArrowDownIcon>
             </div>
-            <div className="delete-icon" onClick={()=>deleteSkill(inputId)}>
+            <div className="delete-icon" onClick={()=>deleteSkill()}>
                 <DeleteIcon></DeleteIcon>
             </div>
         </div>

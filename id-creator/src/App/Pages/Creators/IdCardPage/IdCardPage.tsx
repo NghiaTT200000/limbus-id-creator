@@ -7,13 +7,14 @@ import DragAndDroppableSkillPreviewLayer from 'Features/CardCreator/Components/C
 import CardMakerFooter from 'Features/CardCreator/Components/CardMakerFooter/CardMakerFooter';
 import SettingMenu from 'Features/CardCreator/Components/SettingMenu/SettingMenu';
 import { IdCard } from 'Features/CardCreator/Components/Card/IdCard';
-import InputTabIdInfoContainer from 'Features/CardCreator/Components/InputTab/InputTabContainer/InputTabIdInfoContainer/InputTabIdInfoContainer';
+import InputTabContainer from 'Features/CardCreator/Components/InputTab/InputTabContainer/InputTabContainer';
 import ResetMenu from 'Features/CardCreator/Components/ResetMenu/ResetMenu';
 import { IdInfo } from 'Features/CardCreator/Types/IIdInfo';
 import { registerDomRef } from 'Stores/Slices/ImgDomRefSlice';
 import { useAppDispatch, useAppSelector } from 'Stores/AppStore';
 import { setIdInfo, resetIdInfo } from 'Features/CardCreator/Stores/IdInfoSlice';
 import { setSettingMenuSaveMode } from 'Stores/Slices/UiSlice';
+import CardModeContext from 'Features/CardCreator/Contexts/CardModeContext';
 
 
 export default function IdCardPage():ReactElement{
@@ -47,11 +48,11 @@ export default function IdCardPage():ReactElement{
         indexDB.currIdSave.put(new IdInfo(idInfoValue),1)
     },[JSON.stringify(idInfoValue)])
 
-    return <>
+    return <CardModeContext.Provider value="id">
         <SettingMenu saveMode="ID"/>
         <DragAndDroppableSkillPreviewLayer/>
         <div className={`editor-container`}>
-            <InputTabIdInfoContainer
+            <InputTabContainer
                 resetBtnHandler={()=>setResetMenuActive(!isResetMenuActive)}
                 activeTab={activeTab}
                 changeActiveTab={changeActiveTab} />
@@ -61,5 +62,5 @@ export default function IdCardPage():ReactElement{
             </div>
         </div>
         <CardMakerFooter/>
-    </>
+    </CardModeContext.Provider>
 }

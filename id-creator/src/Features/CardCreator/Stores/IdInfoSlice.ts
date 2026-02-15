@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { IIdInfo, IdInfo } from 'Features/CardCreator/Types/IIdInfo'
 import { PassiveSkill } from 'Features/CardCreator/Types/Skills/PassiveSkill/IPassiveSkill'
+import { SkillDetail } from 'Features/CardCreator/Types/SkillDetail'
 
 interface IdInfoState {
     value: IIdInfo
@@ -56,6 +57,19 @@ const IdInfoSlice = createSlice({
         setIdInfoSkillDetails(state, action: PayloadAction<IIdInfo['skillDetails']>) {
             state.value.skillDetails = action.payload
         },
+        addIdInfoSkill(state, action: PayloadAction<SkillDetail>) {
+            if (state.value.skillDetails.length < 20)
+                state.value.skillDetails.push(action.payload)
+        },
+        deleteIdInfoSkill(state, action: PayloadAction<string>) {
+            state.value.skillDetails = state.value.skillDetails.filter(s => s.inputId !== action.payload)
+        },
+        updateIdInfoSkill(state, action: PayloadAction<{ index: number, skill: SkillDetail }>) {
+            state.value.skillDetails[action.payload.index] = action.payload.skill
+        },
+        changeIdInfoSkillType(state, action: PayloadAction<{ index: number, skill: SkillDetail }>) {
+            state.value.skillDetails[action.payload.index] = action.payload.skill
+        },
     },
 })
 
@@ -64,6 +78,10 @@ export const {
     updateIdInfoField,
     resetIdInfo,
     setIdInfoSkillDetails,
+    addIdInfoSkill,
+    deleteIdInfoSkill,
+    updateIdInfoSkill,
+    changeIdInfoSkillType,
 } = IdInfoSlice.actions
 
 export const IdInfoReducer = IdInfoSlice.reducer

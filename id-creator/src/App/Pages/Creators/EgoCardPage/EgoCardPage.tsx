@@ -5,7 +5,7 @@ import '../Shared/Styles/EditorPage.css'
 import { indexDB } from 'Features/CardCreator/Utils/IndexDB';
 import DragAndDroppableSkillPreviewLayer from 'Features/CardCreator/Components/Card/components/DragAndDroppableSkill/DragAndDroppableSkillPreviewLayer';
 import { EgoCard } from 'Features/CardCreator/Components/Card/EgoCard';
-import InputTabEgoInfoContainer from 'Features/CardCreator/Components/InputTab/InputTabContainer/InputTabEgoInfoContainer/InputTabEgoInfoContainer';
+import InputTabContainer from 'Features/CardCreator/Components/InputTab/InputTabContainer/InputTabContainer';
 import ResetMenu from 'Features/CardCreator/Components/ResetMenu/ResetMenu';
 import SettingMenu from 'Features/CardCreator/Components/SettingMenu/SettingMenu';
 import { EgoInfo } from 'Features/CardCreator/Types/IEgoInfo';
@@ -14,6 +14,7 @@ import { registerDomRef } from 'Stores/Slices/ImgDomRefSlice';
 import { useAppDispatch, useAppSelector } from 'Stores/AppStore';
 import { setEgoInfo, resetEgoInfo } from 'Features/CardCreator/Stores/EgoInfoSlice';
 import { setSettingMenuSaveMode } from 'Stores/Slices/UiSlice';
+import CardModeContext from 'Features/CardCreator/Contexts/CardModeContext';
 
 
 export default function EgoCardPage():ReactElement{
@@ -47,11 +48,11 @@ export default function EgoCardPage():ReactElement{
         indexDB.currEgoSave.put(new EgoInfo(egoInfoValue), 1)
     },[JSON.stringify(egoInfoValue)])
 
-    return <>
+    return <CardModeContext.Provider value="ego">
         <SettingMenu saveMode="EGO"/>
         <DragAndDroppableSkillPreviewLayer/>
         <div className={`editor-container`}>
-            <InputTabEgoInfoContainer
+            <InputTabContainer
                 resetBtnHandler={()=>setResetMenuActive(!isResetMenuActive)}
                 activeTab={activeTab}
                 changeActiveTab={changeActiveTab} />
@@ -61,5 +62,5 @@ export default function EgoCardPage():ReactElement{
             </div>
         </div>
         <CardMakerFooter/>
-    </>
+    </CardModeContext.Provider>
 }
