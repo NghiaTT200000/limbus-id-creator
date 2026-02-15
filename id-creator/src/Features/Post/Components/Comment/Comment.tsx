@@ -20,20 +20,22 @@ function Comment({comment}:{comment:IComment}){
 </div>
 }
 
-export function CommentContainer({comments,loadMore,isLoading}:{comments:IComment[],loadMore:()=>void,isLoading:boolean}){
+export function CommentContainer({comments,loadMore,isLoading,hasMore}:{comments:IComment[],loadMore:()=>void,isLoading:boolean,hasMore:boolean}){
     const loaderRef = useRef(null)
     const loadMoreRef = useRef(loadMore)
     const isLoadingRef = useRef(isLoading)
+    const hasMoreRef = useRef(hasMore)
 
     useEffect(()=>{
         loadMoreRef.current = loadMore
         isLoadingRef.current = isLoading
+        hasMoreRef.current = hasMore
     })
 
     useEffect(()=>{
         const observer = new IntersectionObserver((entries)=>{
             const target = entries[0]
-            if(target.isIntersecting && !isLoadingRef.current){
+            if(target.isIntersecting && !isLoadingRef.current && hasMoreRef.current){
                 loadMoreRef.current()
             }
         })
@@ -46,7 +48,7 @@ export function CommentContainer({comments,loadMore,isLoading}:{comments:ICommen
 
     return <>
         {comments.map((comment,i)=><Comment key={i} comment={comment}/>)}
-        <div ref={loaderRef}>{isLoading&&<div className="loader"></div>}</div>
+        {hasMore && <div ref={loaderRef}>{isLoading&&<div className="loader"></div>}</div>}
     </>
 }
 
