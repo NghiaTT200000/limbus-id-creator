@@ -60,7 +60,7 @@ export default function PostPage():ReactElement{
         <div className="page-content">
             {(()=>{
                 if(loginUser && post) return <PostCommentInput authorIcon={loginUser.userIcon} authorName={loginUser.userName} createComment={createNewComment}/>
-                if(post) return <button className="main-button" onClick={()=>setIsLoginMenuActive(true)}></button>
+                if(post) return <button className="main-button" onClick={()=>setIsLoginMenuActive(true)}>Login to comment</button>
                 return <></>
             })()}
         </div>
