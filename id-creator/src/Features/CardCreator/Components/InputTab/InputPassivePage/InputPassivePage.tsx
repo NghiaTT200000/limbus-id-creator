@@ -17,7 +17,6 @@ export default function InputPassivePage({
     const { register, setValue, watch, deleteSkill, changeSkillType, keyWordList } = useSkillForm<IPassiveSkill>(index)
 
     const type = watch("type")
-    const inputId = watch("inputId")
     const skillEffect = watch("skillEffect")
 
     return <div className="input-page input-passive-page">

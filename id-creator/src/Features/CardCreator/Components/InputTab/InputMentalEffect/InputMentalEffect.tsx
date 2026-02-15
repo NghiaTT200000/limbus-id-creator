@@ -17,7 +17,6 @@ export default function InputMentalEffect({
 
     const effect = watch("effect")
     const type = watch("type")
-    const inputId = watch("inputId")
 
     return <div className="input-page">
         <div className="input-page-icon-container">

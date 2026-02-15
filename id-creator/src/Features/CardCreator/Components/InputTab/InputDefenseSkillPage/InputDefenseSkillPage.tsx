@@ -25,7 +25,6 @@ export default function InputDefenseSkillPage({
     const skillImage = watch("skillImage")
     const damageType = watch("damageType")
     const defenseType = watch("defenseType")
-    const inputId = watch("inputId")
     const type = watch("type")
     const skillEffect = watch("skillEffect")
 

@@ -69,13 +69,13 @@ export default function TipTapEditor({ inputId, content, changeHandler, matchLis
                             .slice(0, 10)
                             .map((key) => ({ keyword: key, html: list[key] }))
                     },
-                    command: ({ editor, range, props }) => {
-                        editor
+                    command: ({ editor: cmdEditor, range, props: itemProps }) => {
+                        cmdEditor
                             .chain()
                             .focus()
                             .deleteRange(range)
                             .insertContent([
-                                { type: "statusEffect", attrs: { html: props.html } },
+                                { type: "statusEffect", attrs: { html: itemProps.html } },
                                 { type: "text", text: " " },
                             ])
                             .run()
@@ -87,18 +87,18 @@ export default function TipTapEditor({ inputId, content, changeHandler, matchLis
                         let currentCommand: ((props: any) => void) | null = null
 
                         return {
-                            onStart: (props) => {
-                                currentQuery = props.query
-                                currentCommand = props.command
+                            onStart: (suggestionProps) => {
+                                currentQuery = suggestionProps.query
+                                currentCommand = suggestionProps.command
                                 component = new ReactRenderer(SuggestionDropdown, {
-                                    props,
-                                    editor: props.editor,
+                                    props: suggestionProps,
+                                    editor: suggestionProps.editor,
                                 })
 
-                                if (!props.clientRect) return
+                                if (!suggestionProps.clientRect) return
 
                                 popup = tippy("body", {
-                                    getReferenceClientRect: props.clientRect as () => DOMRect,
+                                    getReferenceClientRect: suggestionProps.clientRect as () => DOMRect,
                                     appendTo: () => document.body,
                                     content: component.element,
                                     showOnCreate: true,
@@ -107,23 +107,23 @@ export default function TipTapEditor({ inputId, content, changeHandler, matchLis
                                     placement: "bottom-start",
                                 })
                             },
-                            onUpdate: (props) => {
-                                currentQuery = props.query
-                                currentCommand = props.command
-                                component?.updateProps(props)
-                                if (props.clientRect && popup?.[0]) {
+                            onUpdate: (suggestionProps) => {
+                                currentQuery = suggestionProps.query
+                                currentCommand = suggestionProps.command
+                                component?.updateProps(suggestionProps)
+                                if (suggestionProps.clientRect && popup?.[0]) {
                                     popup[0].setProps({
-                                        getReferenceClientRect: props.clientRect as () => DOMRect,
+                                        getReferenceClientRect: suggestionProps.clientRect as () => DOMRect,
                                     })
                                 }
                             },
-                            onKeyDown: (props) => {
-                                if (props.event.key === "Escape") {
+                            onKeyDown: ({ event }) => {
+                                if (event.key === "Escape") {
                                     popup?.[0]?.hide()
                                     return true
                                 }
                                 // When ']' is typed, auto-complete if exact keyword match exists
-                                if (props.event.key === "]" && currentCommand) {
+                                if (event.key === "]" && currentCommand) {
                                     const list = matchListRef.current
                                     const key = currentQuery.toLowerCase()
                                     if (list[key]) {
@@ -131,7 +131,7 @@ export default function TipTapEditor({ inputId, content, changeHandler, matchLis
                                         return true
                                     }
                                 }
-                                return component?.ref?.onKeyDown(props) ?? false
+                                return component?.ref?.onKeyDown({ event }) ?? false
                             },
                             onExit: () => {
                                 popup?.[0]?.destroy()

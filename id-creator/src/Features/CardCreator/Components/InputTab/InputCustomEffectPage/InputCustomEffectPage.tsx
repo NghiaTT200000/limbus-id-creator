@@ -21,7 +21,6 @@ export default function InputCustomEffectPage({
     const effectColor = watch("effectColor")
     const customImg = watch("customImg")
     const type = watch("type")
-    const inputId = watch("inputId")
     const effect = watch("effect")
 
     return <div className="input-page">
