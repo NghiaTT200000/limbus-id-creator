@@ -3,7 +3,8 @@
 }
 
 .tiptap-editor-content .tiptap {
-    min-height: 200px;
+    height: 250px;
+    overflow-y: auto;
     white-space: break-spaces;
     padding: 5px;
     border: 1px solid white;
