@@ -22,24 +22,27 @@ function Comment({comment}:{comment:IComment}){
 
 export function CommentContainer({comments,loadMore,isLoading}:{comments:IComment[],loadMore:()=>void,isLoading:boolean}){
     const loaderRef = useRef(null)
+    const loadMoreRef = useRef(loadMore)
+    const isLoadingRef = useRef(isLoading)
+
+    useEffect(()=>{
+        loadMoreRef.current = loadMore
+        isLoadingRef.current = isLoading
+    })
 
     useEffect(()=>{
         const observer = new IntersectionObserver((entries)=>{
             const target = entries[0]
-            if(target.isIntersecting && !isLoading){
-                loadMore()
+            if(target.isIntersecting && !isLoadingRef.current){
+                loadMoreRef.current()
             }
         })
 
         if(loaderRef.current){
             observer.observe(loaderRef.current)
         }
-        return () => {
-            if (loaderRef.current) {
-              observer.unobserve(loaderRef.current);
-            }
-          };
-    },[isLoading, loadMore])
+        return () => observer.disconnect()
+    },[])
 
     return <>
         {comments.map((comment,i)=><Comment key={i} comment={comment}/>)}

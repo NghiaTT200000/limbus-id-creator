@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { ReactElement } from "react";
 import Post from "Features/Post/Components/Post/Post";
 import { useParams } from "react-router-dom";
@@ -46,9 +46,9 @@ export default function PostPage():ReactElement{
         }
     }
 
-    function loadMoreComments(){
+    const loadMoreComments = useCallback(()=>{
         setCommentPage(prev => prev + 1)
-    }
+    },[])
 
     return <div className="page-container">
         <div className="page-content">
