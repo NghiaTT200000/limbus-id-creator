@@ -1,5 +1,5 @@
-.suggest-box{
-    position: absolute;
+.suggest-box {
+    position: relative;
     width: 200px;
     max-height: 130px;
     height: min-content;

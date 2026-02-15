@@ -5,10 +5,9 @@ import "../InputPage.css"
 import DeleteIcon from "Assets/Icons/DeleteIcon";
 import ArrowDownIcon from "Assets/Icons/ArrowDownIcon";
 import ChangeInputType from "../Components/ChangeInputType/ChangeInputType";
-import EditableAutoCorrect from "../Components/EditableAutoCorrectInput/EditableAutoCorrect";
+import TipTapEditor from "../Components/TipTapEditor/TipTapEditor";
 import UploadImgBtn from "../Components/UploadImgBtn/UploadImgBtn";
 import { compressAndReadImage } from "Features/CardCreator/Utils/CompressAndReadImage";
-import replaceKeyWord from "../Components/EditableAutoCorrectInput/Functions/replaceKeyWord";
 import { useForm } from "react-hook-form";
 
 export default function InputCustomEffectPage({
@@ -90,7 +89,7 @@ export default function InputCustomEffectPage({
                     <span contentEditable={false}><img className='status-icon' src='/Images/status-effect/Coin_Effect_1.webp' alt='coin-effect-1' /></span>/
                     <span contentEditable={false} style={{color:'#c7ff94'}}>[Heads Hit]</span>
                 </p>
-                <EditableAutoCorrect inputId={"effect"} content={effect} changeHandler={(e)=>setValue("effect",replaceKeyWord(e.target.value,keyWordList))} matchList={keyWordList}/>
+                <TipTapEditor inputId={"effect"} content={effect} changeHandler={(html)=>setValue("effect",html)} matchList={keyWordList}/>
             </div>
         </div>
     </div>
