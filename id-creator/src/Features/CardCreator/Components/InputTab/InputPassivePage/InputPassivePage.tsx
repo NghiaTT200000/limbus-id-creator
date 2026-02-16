@@ -30,6 +30,7 @@ export default function InputPassivePage({
             </div>
         </div>
         <div className="input-group-container">
+            <label className="input-label">Change skill:</label>
             <ChangeInputType changeSkillType={changeSkillType} type={type}/>
         </div>
 

@@ -27,7 +27,10 @@ export default function InputMentalEffect({
                 <ArrowDownIcon></ArrowDownIcon>
             </div>
         </div>
-        <ChangeInputType changeSkillType={changeSkillType} type={type}/>
+        <div className="input-group-container">
+            <label className="input-label">Change skill:</label>
+            <ChangeInputType changeSkillType={changeSkillType} type={type}/>
+        </div>
 
         <AccordionSection title="Effect Info">
             <div className="input-group-container">

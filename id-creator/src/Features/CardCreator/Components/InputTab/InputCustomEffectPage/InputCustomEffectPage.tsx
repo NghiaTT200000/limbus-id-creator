@@ -32,7 +32,10 @@ export default function InputCustomEffectPage({
                 <ArrowDownIcon></ArrowDownIcon>
             </div>
         </div>
-        <ChangeInputType changeSkillType={changeSkillType} type={type}/>
+        <div className="input-group-container">
+            <label className="input-label">Change skill:</label>
+            <ChangeInputType changeSkillType={changeSkillType} type={type}/>
+        </div>
 
         <AccordionSection title="Effect Style">
             <div className="input-group-container">
