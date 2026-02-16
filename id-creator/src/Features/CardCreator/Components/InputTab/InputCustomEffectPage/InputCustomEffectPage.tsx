@@ -40,7 +40,7 @@ export default function InputCustomEffectPage({
         <AccordionSection title="Effect Style">
             <div className="input-group-container">
                 <div className="input-container">
-                    <label className="input-label">Custom image: </label>
+                    <label className="input-label" htmlFor="custom-effect-img-input">Custom image: </label>
                     {customImg &&
                         <div className="input-group-container">
                             <div className="input-container center-element">
@@ -51,7 +51,7 @@ export default function InputCustomEffectPage({
                             </div>
                         </div>
                     }
-                    <UploadImgBtn onFileInputChange={async(e)=>{
+                    <UploadImgBtn name="custom-effect-img-input" id="custom-effect-img-input" onFileInputChange={async(e)=>{
                         if(e.currentTarget.files && e.currentTarget.files.length>0){
                             const url = await compressAndReadImage(e.currentTarget.files[0])
                             setValue("customImg",url)

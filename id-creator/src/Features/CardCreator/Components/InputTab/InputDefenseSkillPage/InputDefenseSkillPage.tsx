@@ -103,7 +103,7 @@ export default function InputDefenseSkillPage({
         <AccordionSection title="Skill Info">
             <div className="input-group-container">
                 <div className="input-container">
-                    <label className="input-label">Skill image: </label>
+                    <label className="input-label" htmlFor="skill-image-input">Skill image: </label>
                     {skillImage &&
                         <div className="input-group-container">
                             <div className="center-element">
@@ -114,7 +114,7 @@ export default function InputDefenseSkillPage({
                             </div>
                         </div>
                     }
-                    <UploadImgBtn onFileInputChange={async(e)=>{
+                    <UploadImgBtn name="skill-image-input" id="skill-image-input" onFileInputChange={async(e)=>{
                         if(e.currentTarget.files && e.currentTarget.files.length>0){
                             const url = await compressAndReadImage(e.currentTarget.files[0])
                             setValue("skillImage",url)

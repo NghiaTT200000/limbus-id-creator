@@ -71,7 +71,7 @@ export default function InputStatPage({collaspPage}:{collaspPage:()=>void}):Reac
             <div className="sinner-icon-input-container">
                 <p>Pick the sinner icon: </p>
                 <SinnerEgoIconInput/>
-                <UploadImgBtn onFileInputChange={async (e)=>{
+                <UploadImgBtn name="sinner-icon-image-input" id="sinner-icon-image-input" onFileInputChange={async (e)=>{
                     if(e.currentTarget.files && e.currentTarget.files.length>0){
                         const url = await compressAndReadImage(e.currentTarget.files[0])
                         setValue("sinnerIcon",url)
@@ -92,7 +92,7 @@ export default function InputStatPage({collaspPage}:{collaspPage:()=>void}):Reac
                         setValue("splashArtTranslation",value.translation)
                     }}/>
                 </div>:<></>}
-            <UploadImgBtn onFileInputChange={async (e)=>{
+            <UploadImgBtn name="splash-art-img-input" id="splash-art-img-input" onFileInputChange={async (e)=>{
                 if(e.currentTarget.files && e.currentTarget.files.length>0){
                     const url = await compressAndReadImage(e.currentTarget.files[0])
                     setValue("splashArt",url)
