@@ -13,18 +13,19 @@ import Toolbar from "./Toolbar/Toolbar"
 import "./TipTapEditor.css"
 
 function replaceKeyWordAsNodes(str: string, keyWord: { [key: string]: string }): string {
-    const suggestions = str.match(/\[([^ ]+)\](?!<([^ ]+)>)/g)
-    if (suggestions) {
-        suggestions.forEach((suggestion) => {
-            const key = suggestion.slice(1, suggestion.length - 1).toLowerCase().replace(/&amp;/g, "&")
-            const selectedWord = keyWord[key]
+    return str.replace(
+        /<span\s+data-status-effect[^>]*>[\s\S]*?<\/span>\s*<\/span>|<[^>]*>|(\[([^ ]+)\])/g,
+        (match, bracket, key) => {
+            if (!bracket) return match
+            const lowerKey = key.toLowerCase().replace(/&amp;/g, "&")
+            const selectedWord = keyWord[lowerKey]
             if (selectedWord) {
                 const escaped = selectedWord.replace(/"/g, "&quot;")
-                str = str.replace(suggestion, `<span data-status-effect="${escaped}">${selectedWord}</span>`)
+                return `<span data-status-effect="${escaped}">${selectedWord}</span>`
             }
-        })
-    }
-    return str
+            return match
+        }
+    )
 }
 
 interface TipTapEditorProps {
@@ -69,13 +70,13 @@ export default function TipTapEditor({ inputId, content, changeHandler, matchLis
                             .slice(0, 10)
                             .map((key) => ({ keyword: key, html: list[key] }))
                     },
-                    command: ({ editor, range, props }) => {
-                        editor
+                    command: ({ editor: cmdEditor, range, props: itemProps }) => {
+                        cmdEditor
                             .chain()
                             .focus()
                             .deleteRange(range)
                             .insertContent([
-                                { type: "statusEffect", attrs: { html: props.html } },
+                                { type: "statusEffect", attrs: { html: itemProps.html } },
                                 { type: "text", text: " " },
                             ])
                             .run()
@@ -87,18 +88,18 @@ export default function TipTapEditor({ inputId, content, changeHandler, matchLis
                         let currentCommand: ((props: any) => void) | null = null
 
                         return {
-                            onStart: (props) => {
-                                currentQuery = props.query
-                                currentCommand = props.command
+                            onStart: (suggestionProps) => {
+                                currentQuery = suggestionProps.query
+                                currentCommand = suggestionProps.command
                                 component = new ReactRenderer(SuggestionDropdown, {
-                                    props,
-                                    editor: props.editor,
+                                    props: suggestionProps,
+                                    editor: suggestionProps.editor,
                                 })
 
-                                if (!props.clientRect) return
+                                if (!suggestionProps.clientRect) return
 
                                 popup = tippy("body", {
-                                    getReferenceClientRect: props.clientRect as () => DOMRect,
+                                    getReferenceClientRect: suggestionProps.clientRect as () => DOMRect,
                                     appendTo: () => document.body,
                                     content: component.element,
                                     showOnCreate: true,
@@ -107,23 +108,23 @@ export default function TipTapEditor({ inputId, content, changeHandler, matchLis
                                     placement: "bottom-start",
                                 })
                             },
-                            onUpdate: (props) => {
-                                currentQuery = props.query
-                                currentCommand = props.command
-                                component?.updateProps(props)
-                                if (props.clientRect && popup?.[0]) {
+                            onUpdate: (suggestionProps) => {
+                                currentQuery = suggestionProps.query
+                                currentCommand = suggestionProps.command
+                                component?.updateProps(suggestionProps)
+                                if (suggestionProps.clientRect && popup?.[0]) {
                                     popup[0].setProps({
-                                        getReferenceClientRect: props.clientRect as () => DOMRect,
+                                        getReferenceClientRect: suggestionProps.clientRect as () => DOMRect,
                                     })
                                 }
                             },
-                            onKeyDown: (props) => {
-                                if (props.event.key === "Escape") {
+                            onKeyDown: ({ event }) => {
+                                if (event.key === "Escape") {
                                     popup?.[0]?.hide()
                                     return true
                                 }
                                 // When ']' is typed, auto-complete if exact keyword match exists
-                                if (props.event.key === "]" && currentCommand) {
+                                if (event.key === "]" && currentCommand) {
                                     const list = matchListRef.current
                                     const key = currentQuery.toLowerCase()
                                     if (list[key]) {
@@ -131,7 +132,7 @@ export default function TipTapEditor({ inputId, content, changeHandler, matchLis
                                         return true
                                     }
                                 }
-                                return component?.ref?.onKeyDown(props) ?? false
+                                return component?.ref?.onKeyDown({ event }) ?? false
                             },
                             onExit: () => {
                                 popup?.[0]?.destroy()
@@ -153,33 +154,25 @@ export default function TipTapEditor({ inputId, content, changeHandler, matchLis
         },
         onUpdate: ({ editor }) => {
             let html = editor.getHTML()
-            // Check if there are any [keyword] patterns to replace
-            const hasKeywords = /\[([^ ]+)\](?!<([^ ]+)>)/g.test(html)
-            if (hasKeywords) {
-                // Use node-wrapped version for TipTap internal content
-                const processedForEditor = replaceKeyWordAsNodes(html, matchListRef.current)
-                if (processedForEditor !== html) {
-                    const { from } = editor.state.selection
-                    editor.commands.setContent(processedForEditor, { emitUpdate: false })
-                    const maxPos = editor.state.doc.content.size
-                    const safePos = Math.min(from, maxPos)
-                    editor.commands.focus(safePos)
-                    html = editor.getHTML()
-                }
+            const processedForEditor = replaceKeyWordAsNodes(html, matchListRef.current)
+            if (processedForEditor !== html) {
+                const { from } = editor.state.selection
+                editor.commands.setContent(processedForEditor, { emitUpdate: false })
+                const maxPos = editor.state.doc.content.size
+                const safePos = Math.min(from, maxPos)
+                editor.commands.focus(safePos)
+                html = editor.getHTML()
             }
-            // Output the final HTML (getHTML already renders StatusEffectNodes as raw HTML)
             changeHandlerRef.current(html)
         },
     })
 
-    // Reset editor content when switching between skills (inputId changes)
     useEffect(() => {
         if (editor && !editor.isDestroyed) {
             editor.commands.setContent(content, { emitUpdate: false })
         }
     }, [inputId])
 
-    // Sync content from external resets (e.g. loading saves)
     useEffect(() => {
         if (editor && !editor.isDestroyed) {
             const currentHtml = editor.getHTML()
