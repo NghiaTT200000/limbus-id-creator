@@ -101,7 +101,7 @@ export default function InputOffenseSkillPage({
                     <label className="input-label">Skill image: </label>
                     {skillImage &&
                         <div className="input-group-container">
-                            <div className="center-element-vertically">
+                            <div className="center-element">
                                 <img className="preview-skill-image" src={skillImage} alt="custom-skill-img" />
                                 <button className="main-button" onClick={()=>setValue("skillImage","")}>
                                     <p className="center-element delete-txt"><DeleteIcon/> Delete</p>
