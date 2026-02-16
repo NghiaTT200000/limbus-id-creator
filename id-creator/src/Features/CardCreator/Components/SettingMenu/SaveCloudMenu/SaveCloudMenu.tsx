@@ -5,7 +5,6 @@ import { IOffenseSkill } from "Features/CardCreator/Types/Skills/OffenseSkill/IO
 import { IDefenseSkill } from "Features/CardCreator/Types/Skills/DefenseSkill/IDefenseSkill";
 import { ICustomEffect } from "Features/CardCreator/Types/Skills/CustomEffect/ICustomEffect";
 import uuid from "react-uuid";
-import SaveCloudTab from "./SaveCloudTab";
 import PopUpMenu from "Components/PopUpMenu/PopUpMenu";
 import imageCompression from 'browser-image-compression';
 import getImageDimensions from "Utils/getImageDimensions";
@@ -32,6 +31,29 @@ import {
     useUpdateSaveMutation,
     useDeleteSaveMutation,
 } from "Api/SaveInfoApi";
+
+function SaveCloudTab({saveName,saveDate,previewUrl,deleteSave,loadSave,overwriteSave}:{saveName:string,saveDate:string,previewUrl:string,deleteSave:()=>void,loadSave:()=>void,overwriteSave:()=>void}):ReactElement{
+    return <div className="save-cloud-tab">
+        <div className="center-element save-cloud-tab-content">
+            <img className="preview-img" src={previewUrl} alt="preview-img" />
+            <div style={{textAlign:"left"}}>
+                <p className="created-time">Updated: {saveDate}</p>
+                <p>{saveName}</p>
+            </div>
+        </div>
+        <div className="center-element save-cloud-tab-button-container">
+            <button className="main-button" onClick={deleteSave}>
+                Delete
+            </button>
+            <button className="main-button" onClick={overwriteSave}>
+                Overwrite
+            </button>
+            <button className="main-button" onClick={loadSave}>
+                Load
+            </button>
+        </div>
+    </div>
+}
 
 export default function SaveCloudMenu({saveMode}:{saveMode:"ID"|"EGO"}):ReactElement{
     const [createSaveBtnLoadMsg,setCreateSaveBtnLoadMsg] = useState("")
