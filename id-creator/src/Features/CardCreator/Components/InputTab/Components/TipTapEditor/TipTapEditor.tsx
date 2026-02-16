@@ -13,18 +13,19 @@ import Toolbar from "./Toolbar/Toolbar"
 import "./TipTapEditor.css"
 
 function replaceKeyWordAsNodes(str: string, keyWord: { [key: string]: string }): string {
-    const suggestions = str.match(/\[([^ ]+)\](?!<([^ ]+)>)/g)
-    if (suggestions) {
-        suggestions.forEach((suggestion) => {
-            const key = suggestion.slice(1, suggestion.length - 1).toLowerCase().replace(/&amp;/g, "&")
-            const selectedWord = keyWord[key]
+    return str.replace(
+        /<span\s+data-status-effect[^>]*>[\s\S]*?<\/span>\s*<\/span>|<[^>]*>|(\[([^ ]+)\])/g,
+        (match, bracket, key) => {
+            if (!bracket) return match
+            const lowerKey = key.toLowerCase().replace(/&amp;/g, "&")
+            const selectedWord = keyWord[lowerKey]
             if (selectedWord) {
                 const escaped = selectedWord.replace(/"/g, "&quot;")
-                str = str.replace(suggestion, `<span data-status-effect="${escaped}">${selectedWord}</span>`)
+                return `<span data-status-effect="${escaped}">${selectedWord}</span>`
             }
-        })
-    }
-    return str
+            return match
+        }
+    )
 }
 
 interface TipTapEditorProps {
@@ -153,21 +154,15 @@ export default function TipTapEditor({ inputId, content, changeHandler, matchLis
         },
         onUpdate: ({ editor }) => {
             let html = editor.getHTML()
-            // Check if there are any [keyword] patterns to replace
-            const hasKeywords = /\[([^ ]+)\](?!<([^ ]+)>)/g.test(html)
-            if (hasKeywords) {
-                // Use node-wrapped version for TipTap internal content
-                const processedForEditor = replaceKeyWordAsNodes(html, matchListRef.current)
-                if (processedForEditor !== html) {
-                    const { from } = editor.state.selection
-                    editor.commands.setContent(processedForEditor, { emitUpdate: false })
-                    const maxPos = editor.state.doc.content.size
-                    const safePos = Math.min(from, maxPos)
-                    editor.commands.focus(safePos)
-                    html = editor.getHTML()
-                }
+            const processedForEditor = replaceKeyWordAsNodes(html, matchListRef.current)
+            if (processedForEditor !== html) {
+                const { from } = editor.state.selection
+                editor.commands.setContent(processedForEditor, { emitUpdate: false })
+                const maxPos = editor.state.doc.content.size
+                const safePos = Math.min(from, maxPos)
+                editor.commands.focus(safePos)
+                html = editor.getHTML()
             }
-            // Output the final HTML (getHTML already renders StatusEffectNodes as raw HTML)
             changeHandlerRef.current(html)
         },
     })

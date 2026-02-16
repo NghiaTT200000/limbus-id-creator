@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback, useEffect, useRef } from "react";
 import { ReactElement } from "react";
 import Post from "Features/Post/Components/Post/Post";
 import { useParams } from "react-router-dom";
@@ -23,6 +23,18 @@ export default function PostPage():ReactElement{
         limit: 10,
     })
 
+    const [hasMore, setHasMore] = useState(true)
+    const prevLengthRef = useRef(0)
+
+    useEffect(()=>{
+        if(!isFetchingComments){
+            if(comments.length === prevLengthRef.current){
+                setHasMore(false)
+            }
+            prevLengthRef.current = comments.length
+        }
+    },[comments.length, isFetchingComments])
+
     const [createComment] = useCreateCommentMutation()
 
     async function createNewComment(comment:string):Promise<void>{
@@ -46,21 +58,21 @@ export default function PostPage():ReactElement{
         }
     }
 
-    function loadMoreComments(){
+    const loadMoreComments = useCallback(()=>{
         setCommentPage(prev => prev + 1)
-    }
+    },[])
 
     return <div className="page-container">
         <div className="page-content">
             <Post post={post ?? null} isLoading={isLoadingPost}/>
         </div>
         <div className="page-content">
-            <CommentContainer comments={comments} loadMore={loadMoreComments} isLoading={isFetchingComments}/>
+            <CommentContainer comments={comments} loadMore={loadMoreComments} isLoading={isFetchingComments} hasMore={hasMore}/>
         </div>
         <div className="page-content">
             {(()=>{
                 if(loginUser && post) return <PostCommentInput authorIcon={loginUser.userIcon} authorName={loginUser.userName} createComment={createNewComment}/>
-                if(post) return <button className="main-button" onClick={()=>setIsLoginMenuActive(true)}></button>
+                if(post) return <button className="main-button" onClick={()=>setIsLoginMenuActive(true)}>Login to comment</button>
                 return <></>
             })()}
         </div>
