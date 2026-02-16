@@ -21,6 +21,19 @@ export default function InputIdInfoStatPage({collaspPage}:{collaspPage:()=>void}
 
     const { register, setValue, watch, reset } = useForm<IIdInfo>({ defaultValues: structuredClone(idInfoValue) })
 
+    const registerNumber = (name: string) => {
+        const reg = register(name as any, { valueAsNumber: true })
+        return {
+            ...reg,
+            onBlur: (e: any) => {
+                reg.onBlur(e)
+                if (isNaN(e.target.valueAsNumber) || e.target.value === '') {
+                    setValue(name as any, 0)
+                }
+            }
+        }
+    }
+
     useEffect(() => { reset(structuredClone(idInfoValue)) }, [JSON.stringify(idInfoValue)])
 
     useEffect(() => {
@@ -118,14 +131,14 @@ export default function InputIdInfoStatPage({collaspPage}:{collaspPage:()=>void}
                     <label className="input-label" htmlFor="minSpeed">
                         <img className="stat-icon" src="/Images/stat/stat_speed.webp" alt="speed_icon" /> 
                         <span>Speed from</span></label>
-                    <input className="input stat-page-input-border" type="number" id="minSpeed" {...register("minSpeed")}/>
+                    <input className="input stat-page-input-border" type="number" id="minSpeed" {...registerNumber("minSpeed")}/>
                 </div>
                 <div className="input-container">
                     <label className="input-label" htmlFor="maxSpeed">
                         <img className="stat-icon" src="/Images/stat/stat_speed.webp" alt="speed_icon" /> 
                         <span>Speed to</span>
                     </label>
-                    <input className="input stat-page-input-border" type="number" id="maxSpeed" {...register("maxSpeed")}/>
+                    <input className="input stat-page-input-border" type="number" id="maxSpeed" {...registerNumber("maxSpeed")}/>
                 </div>
             </div>
             <div className="input-group-container">
@@ -134,7 +147,7 @@ export default function InputIdInfoStatPage({collaspPage}:{collaspPage:()=>void}
                         <img className="stat-icon" src="/Images/stat/stat_hp.webp" alt="hp_icon" /> 
                         <span>Health</span>
                     </label>
-                    <input type="number" className="input stat-page-input-border" id="hp" {...register("hp")}/>
+                    <input type="number" className="input stat-page-input-border" id="hp" {...registerNumber("hp")}/>
                 </div>
             </div>
             <div className="input-group-container">
@@ -143,7 +156,7 @@ export default function InputIdInfoStatPage({collaspPage}:{collaspPage:()=>void}
                         <img className="stat-icon" src="/Images/stat/stat_def.webp" alt="def_icon" /> 
                         <span>Defense</span>
                     </label>
-                    <input type="number" className="input stat-page-input-border" id="defenseLevel" {...register("defenseLevel")}/>
+                    <input type="number" className="input stat-page-input-border" id="defenseLevel" {...registerNumber("defenseLevel")}/>
                 </div>
             </div>
             <div className="input-group-container">
@@ -160,7 +173,7 @@ export default function InputIdInfoStatPage({collaspPage}:{collaspPage:()=>void}
                             Slash resist (<span style={{color:changeResistantColor(slashResistant)}}>{changeResistantText(slashResistant)}</span>): 
                         </span>
                     </label>
-                    <input style={{color:changeResistantColor(slashResistant)}} type="number" className="input stat-page-input-border" {...register("slashResistant")} id="slashResistant"/>
+                    <input style={{color:changeResistantColor(slashResistant)}} type="number" className="input stat-page-input-border" {...registerNumber("slashResistant")} id="slashResistant"/>
                 </div>
             </div>
             <div className="input-group-container">
@@ -171,7 +184,7 @@ export default function InputIdInfoStatPage({collaspPage}:{collaspPage:()=>void}
                             Pierce resist (<span style={{color:changeResistantColor(pierceResistant)}}>{changeResistantText(pierceResistant)}</span>) :
                         </span>
                     </label>
-                    <input style={{color:changeResistantColor(pierceResistant)}} type="number" className="input stat-page-input-border" {...register("pierceResistant")} id="pierceResistant"/>
+                    <input style={{color:changeResistantColor(pierceResistant)}} type="number" className="input stat-page-input-border" {...registerNumber("pierceResistant")} id="pierceResistant"/>
                 </div>
             </div>
             <div className="input-group-container">
@@ -182,7 +195,7 @@ export default function InputIdInfoStatPage({collaspPage}:{collaspPage:()=>void}
                             Blunt resist (<span style={{color:changeResistantColor(bluntResistant)}}>{changeResistantText(bluntResistant)}</span>) :
                         </span>
                     </label>
-                    <input style={{color:changeResistantColor(bluntResistant)}} type="number" className="input stat-page-input-border" {...register("bluntResistant")} id="bluntResistant"/>
+                    <input style={{color:changeResistantColor(bluntResistant)}} type="number" className="input stat-page-input-border" {...registerNumber("bluntResistant")} id="bluntResistant"/>
                 </div>
             </div>
         </AccordionSection>

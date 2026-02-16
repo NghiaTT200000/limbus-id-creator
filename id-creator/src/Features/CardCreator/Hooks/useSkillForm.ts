@@ -67,12 +67,20 @@ export function useSkillForm<T extends SkillDetail>(index: number): UseSkillForm
         )
     }
 
-    const registerNumber = useCallback((name: Path<T>) =>
-        form.register(name, {
+    const registerNumber = useCallback((name: Path<T>) => {
+        const reg = form.register(name, {
             valueAsNumber: true,
-            validate: (v: any) => !isNaN(Number(v)) || "Must be a number",
         } as any)
-    , [form.register])
+        return {
+            ...reg,
+            onBlur: async (e: any) => {
+                await reg.onBlur(e)
+                if (isNaN(e.target.valueAsNumber) || e.target.value === '') {
+                    form.setValue(name, 0 as any)
+                }
+            }
+        }
+    }, [form.register, form.setValue])
 
     const { errors } = form.formState
 
