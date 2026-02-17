@@ -119,6 +119,9 @@ export const baseStatusEffect={
     "plus_coin_boost":
         "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='/Images/status-effect/Plus_Coin_Boost.webp' alt='plus_coin_boost_icon' />Plus Coin Boost</span>",
     
+    "minus_coin_drop":
+        "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='/Images/status-effect/Minus_Coin_Drop.webp' alt='minus_coin_drop_icon' />Minus Coin Drop</span>",
+
     "haste":
         "<span class='center-element' contenteditable='false' style='color:var(--Buff-color);text-decoration:underline;'><img class='status-icon' src='/Images/status-effect/Haste.webp' alt='haste_icon' />Haste</span>",
     
