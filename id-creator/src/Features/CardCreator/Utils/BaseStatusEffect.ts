@@ -623,6 +623,9 @@ export const baseStatusEffect={
     "declared_duel":
         "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='/Images/status-effect/Declared_Duel.webp' alt='declared_duel_icon' />Declared Duel</span>",
     
+    "immobilized":
+        "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='/Images/status-effect/Immobilized.webp' alt='immobilized_icon' />Immobilized</span>",
+    
     "nails":
         "<span class='center-element' contenteditable='false' style='color:var(--Debuff-color);text-decoration:underline;'><img class='status-icon' src='/Images/status-effect/Nails.webp' alt='nails_icon' />Nails</span>",
     
