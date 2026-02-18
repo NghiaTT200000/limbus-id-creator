@@ -49,6 +49,7 @@ namespace Server.Models
 
         public string SkillEffect { get; set; } = "";
         public string SkillLabel { get; set; } = "SKILL";
+        public string SkillFrame { get; set; } = "1";
         public string Type { get; set; } = "OffenseSkill";
     }
 }

@@ -18,6 +18,7 @@ namespace Server.DTOs.Requests.SavedInfo.Skills
         public string skillImage { get; set; } = "";
         public string skillEffect { get; set; } = "";
         public string skillLabel { get; set; } = "Defense";
+        public string skillFrame { get; set; } = "1";
         public string type { get; set; } = "DefenseSkill";
     }
 }

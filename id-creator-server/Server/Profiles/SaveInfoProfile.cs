@@ -244,6 +244,7 @@ namespace Server.Profiles
                         },
                         SkillEffect = offenseSkill.skillEffect,
                         SkillLabel = offenseSkill.skillLabel,
+                        SkillFrame = offenseSkill.skillFrame,
                         Type = offenseSkill.type,
                         Index = i,
                         SavedSkillId = SaveSkillId
@@ -275,6 +276,7 @@ namespace Server.Profiles
                         } ,
                         SkillEffect = defenseSkill.skillEffect,
                         SkillLabel = defenseSkill.skillLabel,
+                        SkillFrame = defenseSkill.skillFrame,
                         Type = defenseSkill.type,
                         Index = i,
                         SavedSkillId = SaveSkillId 
@@ -381,6 +383,7 @@ namespace Server.Profiles
                         skillImage = offenseSkill.ImageAttach.Url,
                         skillEffect = offenseSkill.SkillEffect,
                         skillLabel = offenseSkill.SkillLabel,
+                        skillFrame = offenseSkill.SkillFrame,
                     };
                 }
 
@@ -404,6 +407,7 @@ namespace Server.Profiles
                         skillImage = defenseSkill.ImageAttach.Url,
                         skillEffect = defenseSkill.SkillEffect,
                         skillLabel = defenseSkill.SkillLabel,
+                        skillFrame = defenseSkill.SkillFrame,
                     };
                 }
 
