@@ -9,3 +9,8 @@
 .skill-effect.preview{
     border: none;
 }
+
+.skill-effect.preview p:empty::before {
+  content: '';
+  display: inline-block;
+}
