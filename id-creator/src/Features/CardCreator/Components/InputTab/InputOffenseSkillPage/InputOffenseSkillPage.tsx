@@ -10,6 +10,7 @@ import ChangeInputType from "../Components/ChangeInputType/ChangeInputType";
 import DamageTypeInput from "../Components/DamageTypeInput/DamageTypeInput";
 import TipTapEditor from "../Components/TipTapEditor/TipTapEditor";
 import SinAffinityInput from "../Components/SinAffinityInput/SinAffinityInput";
+import SkillFrameInput from "../Components/SkillFrameInput/SkillFrameInput";
 import UploadImgBtn from "../Components/UploadImgBtn/UploadImgBtn";
 import { compressAndReadImage } from "Features/CardCreator/Utils/CompressAndReadImage";
 import { useSkillForm } from "Features/CardCreator/Hooks/useSkillForm";
@@ -24,6 +25,7 @@ export default function InputOffenseSkillPage({
     const [showConfirm, setShowConfirm] = useState(false)
 
     const skillAffinity = watch("skillAffinity")
+    const skillFrame = watch("skillFrame")
     const skillImage = watch("skillImage")
     const damageType = watch("damageType")
     const inputId = watch("inputId")
@@ -52,6 +54,12 @@ export default function InputOffenseSkillPage({
                 <div className="input-container">
                     <p className="input-label">Sin affinity:</p>
                     <SinAffinityInput onChangeSinAffinity={(newVal)=>setValue("skillAffinity",newVal)} activeSin={skillAffinity}/>
+                </div>
+            </div>
+            <div className="input-group-container">
+                <div className="input-container">
+                    <p className="input-label">Skill frame:</p>
+                    <SkillFrameInput onChangeSkillFrame={(newVal)=>setValue("skillFrame",newVal)} activeFrame={skillFrame} skillAffinity={skillAffinity}/>
                 </div>
             </div>
         </AccordionSection>

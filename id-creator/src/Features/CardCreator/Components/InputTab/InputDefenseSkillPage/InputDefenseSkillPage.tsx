@@ -7,6 +7,7 @@ import ArrowDownIcon from "Assets/Icons/ArrowDownIcon";
 import AccordionSection from "Components/AccordionSection/AccordionSection";
 import ConfirmDialog from "Components/ConfirmDialog/ConfirmDialog";
 import SinAffinityInput from "../Components/SinAffinityInput/SinAffinityInput";
+import SkillFrameInput from "../Components/SkillFrameInput/SkillFrameInput";
 import DamageTypeInput from "../Components/DamageTypeInput/DamageTypeInput";
 import DefenseTypeInput from "../Components/DefenseTypeInput/DefenseTypeInput";
 import ChangeInputType from "../Components/ChangeInputType/ChangeInputType";
@@ -25,6 +26,7 @@ export default function InputDefenseSkillPage({
     const [showConfirm, setShowConfirm] = useState(false)
 
     const skillAffinity = watch("skillAffinity")
+    const skillFrame = watch("skillFrame")
     const skillImage = watch("skillImage")
     const damageType = watch("damageType")
     const defenseType = watch("defenseType")
@@ -57,6 +59,12 @@ export default function InputDefenseSkillPage({
                 <div className="input-container">
                     <p className="input-label">Sin affinity:</p>
                     <SinAffinityInput onChangeSinAffinity={(newVal)=>setValue("skillAffinity",newVal)} activeSin={skillAffinity}/>
+                </div>
+            </div>
+            <div className="input-group-container">
+                <div className="input-container">
+                    <p className="input-label">Skill frame:</p>
+                    <SkillFrameInput onChangeSkillFrame={(newVal)=>setValue("skillFrame",newVal)} activeFrame={skillFrame} skillAffinity={skillAffinity}/>
                 </div>
             </div>
         </AccordionSection>

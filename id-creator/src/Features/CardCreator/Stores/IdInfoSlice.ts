@@ -18,6 +18,17 @@ function hydratePassiveSkills(info: IIdInfo): IIdInfo {
     return hydrated
 }
 
+function hydrateSkillFrames(info: IIdInfo): IIdInfo {
+    const hydrated = { ...info }
+    hydrated.skillDetails = hydrated.skillDetails.map(skill => {
+        if ((skill.type === "OffenseSkill" || skill.type === "DefenseSkill") && !('skillFrame' in skill && skill.skillFrame)) {
+            return { ...skill, skillFrame: "1" }
+        }
+        return skill
+    })
+    return hydrated
+}
+
 function fixBackwardCompatPaths(info: IIdInfo): IIdInfo {
     const fixed = { ...info }
     const oldSinnerIconPath = fixed.sinnerIcon.startsWith("Images")
@@ -46,7 +57,7 @@ const IdInfoSlice = createSlice({
     initialState,
     reducers: {
         setIdInfo(state, action: PayloadAction<IIdInfo>) {
-            state.value = fixBackwardCompatPaths(hydratePassiveSkills(action.payload))
+            state.value = fixBackwardCompatPaths(hydrateSkillFrames(hydratePassiveSkills(action.payload)))
         },
         updateIdInfoField(state, action: PayloadAction<{ field: string, value: any }>) {
             (state.value as any)[action.payload.field] = action.payload.value

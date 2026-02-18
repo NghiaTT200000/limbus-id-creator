@@ -26,6 +26,7 @@ export class OffenseSkill implements IOffenseSkill,IUID{
     skillImage: string="";
     skillEffect: string="";
     skillLabel: string="SKILL";
+    skillFrame: string = "1";
     type = SkillTypes.OffenseSkill;
     public constructor(name?:string,skillAffinity?:string,skillAmt?:number,skillLabel?:string){
         this.name=(name)?name:""

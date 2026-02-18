@@ -5,10 +5,11 @@ import { IOffenseSkill } from "Features/CardCreator/Types/Skills/OffenseSkill/IO
 import SkillTitle from "../../components/SkillTitle/SkillTitle";
 import SkillEffect from "../../components/SkillEffect/SkillEffect";
 
-const OffenseSkillSplash = ({skillAffinity,skillImage}:{skillAffinity:string,skillImage?:string}):ReactElement =>{
+const OffenseSkillSplash = ({skillAffinity,skillImage,skillFrame}:{skillAffinity:string,skillImage?:string,skillFrame:string}):ReactElement =>{
+    const frameSrc = skillAffinity === "None" ? `/Images/skill-frame/NoneFrame.webp` : `/Images/skill-frame/${skillAffinity}${skillFrame}.webp`
     return(
         <div className="skill-splash">
-            <img src={`/Images/skill-frame/${skillAffinity}Frame.webp`} alt={skillAffinity+"Frame"} className={`sin-frame ${skillAffinity==="None"?"none-affinity":""}`} />
+            <img src={frameSrc} alt={skillAffinity+"Frame"} className={`sin-frame ${skillAffinity==="None"?"none-affinity":""}`} />
             <div className="splash-container" style={{'backgroundColor':`var(--${skillAffinity})`}}>
                 {
                 (skillImage)?
@@ -34,6 +35,7 @@ const OffenseSinnerSkill = forwardRef<HTMLDivElement, { offenseSkill: IOffenseSk
         skillLevel,
         skillAmt,
         atkWeight,
+        skillFrame,
     } = offenseSkill;
 
     const printCoins = function (coinNo: number,skillEffect:string): (ReactElement | never)[] {
@@ -59,7 +61,7 @@ const OffenseSinnerSkill = forwardRef<HTMLDivElement, { offenseSkill: IOffenseSk
             <div className="skill-section">
                 <div>
                     <div className="coin-splash-container">
-                        <OffenseSkillSplash skillAffinity={skillAffinity} skillImage={skillImage} />
+                        <OffenseSkillSplash skillAffinity={skillAffinity} skillImage={skillImage} skillFrame={skillFrame} />
                         <div className="skill-power">
                             {basePower}
                             <img className="damage-type" src={`/Images/attack/attackt_${damageType}.webp`} alt="" />

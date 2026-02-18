@@ -27,6 +27,7 @@ export class DefenseSkill implements IDefenseSkill, IUID{
     skillImage: string = "";
     skillEffect: string="";
     skillLabel: string = "Defense";
+    skillFrame: string = "1"
     type = SkillTypes.DefenseSkill;
     public constructor(name?:string){
         this.name=(name)?name:""

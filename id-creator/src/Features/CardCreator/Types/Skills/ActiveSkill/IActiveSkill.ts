@@ -7,4 +7,5 @@ export interface IActiveSkill{
     skillImage:string,
     skillEffect:string,
     skillLabel:string,
+    skillFrame: string,
 }

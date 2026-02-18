@@ -6,10 +6,11 @@ import { IDefenseSkill } from "Features/CardCreator/Types/Skills/DefenseSkill/ID
 import SkillTitle from "../../components/SkillTitle/SkillTitle";
 import SkillEffect from "../../components/SkillEffect/SkillEffect";
 
-const DefenseSkillSplash = ({skillAffinity,skillImage,defenseType}:{skillAffinity:string,skillImage?:string,defenseType:string}):ReactElement => {
+const DefenseSkillSplash = ({skillAffinity,skillImage,defenseType,skillFrame}:{skillAffinity:string,skillImage?:string,defenseType:string,skillFrame:string}):ReactElement => {
+    const frameSrc = skillAffinity === "None" ? `/Images/skill-frame/NoneFrame.webp` : `/Images/skill-frame/${skillAffinity}${skillFrame}.webp`
     return(
         <div className="skill-splash">
-            <img src={`/Images/skill-frame/${skillAffinity}Frame.webp`} alt={skillAffinity+"Frame"} className={`sin-frame ${skillAffinity==="None"?"none-affinity":""}`} />
+            <img src={frameSrc} alt={skillAffinity+"Frame"} className={`sin-frame ${skillAffinity==="None"?"none-affinity":""}`} />
             <div className="splash-container" style={{'backgroundColor':`var(--${skillAffinity})`}}>
                 <div className="defense-icon-container">
                     <img src={`/Images/defense/defense_${defenseType}.webp`} alt={`defense_${defenseType}`} />
@@ -35,6 +36,7 @@ const DefenseSinnerSkill = forwardRef<HTMLDivElement, { defenseSkill: IDefenseSk
         skillLevel,
         skillAmt,
         atkWeight,
+        skillFrame,
     } = defenseSkill;
 
     const printCoins = function (coinNo: number,skillEffect:string): (ReactElement | never)[] {
@@ -60,7 +62,7 @@ const DefenseSinnerSkill = forwardRef<HTMLDivElement, { defenseSkill: IDefenseSk
             <div className="skill-section">
                 <div>
                     <div className="coin-splash-container">
-                        <DefenseSkillSplash skillAffinity={skillAffinity} skillImage={skillImage} defenseType={defenseType} />
+                        <DefenseSkillSplash skillAffinity={skillAffinity} skillImage={skillImage} defenseType={defenseType} skillFrame={skillFrame} />
                         <div className="skill-power">
                             {basePower}
                             {defenseType === "Counter" ? (
