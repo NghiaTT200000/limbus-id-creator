@@ -50,6 +50,9 @@ namespace Server.Util
             {
                 // Send a HEAD request to get the headers
                 Console.WriteLine("Url: "+url);
+                if(url.StartsWith("https://res.cloudinary.com/")){
+                    url = url.Replace("/q_35/f_auto","");
+                }
                 HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Head, url);
                 HttpResponseMessage response = await client.SendAsync(request);
 
