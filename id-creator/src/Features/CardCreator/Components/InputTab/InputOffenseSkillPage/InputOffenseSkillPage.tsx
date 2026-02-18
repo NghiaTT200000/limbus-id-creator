@@ -56,12 +56,14 @@ export default function InputOffenseSkillPage({
                     <SinAffinityInput onChangeSinAffinity={(newVal)=>setValue("skillAffinity",newVal)} activeSin={skillAffinity}/>
                 </div>
             </div>
-            <div className="input-group-container">
-                <div className="input-container">
-                    <p className="input-label">Skill frame:</p>
-                    <SkillFrameInput onChangeSkillFrame={(newVal)=>setValue("skillFrame",newVal)} activeFrame={skillFrame} skillAffinity={skillAffinity}/>
+            {skillAffinity !== "None" &&
+                <div className="input-group-container">
+                    <div className="input-container">
+                        <p className="input-label">Skill frame:</p>
+                        <SkillFrameInput onChangeSkillFrame={(newVal)=>setValue("skillFrame",newVal)} activeFrame={skillFrame} skillAffinity={skillAffinity}/>
+                    </div>
                 </div>
-            </div>
+            }
         </AccordionSection>
 
         <AccordionSection title="Skill Stats">
