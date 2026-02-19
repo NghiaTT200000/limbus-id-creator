@@ -1,0 +1,13 @@
+.trait-input input, .trait-input input::placeholder {
+    color: inherit
+}
+
+.trait-tab{
+    color: #b88d00;
+    background: #2d150a;
+    padding: 2px;
+    padding-left: 6px;
+    padding-right: 6px;
+    border-radius: 2px;
+    text-wrap: nowrap;
+}

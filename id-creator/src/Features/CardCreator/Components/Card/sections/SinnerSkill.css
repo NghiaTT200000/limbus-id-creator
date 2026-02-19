@@ -169,3 +169,13 @@
     width: 90%;
     height: 90%;
 }
+
+.trait-tab{
+    color: #b88d00;
+    background: #2d150a;
+    padding: 2px;
+    padding-left: 6px;
+    padding-right: 6px;
+    border-radius: 2px;
+    text-wrap: nowrap;
+}

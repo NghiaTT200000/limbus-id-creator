@@ -12,6 +12,7 @@ interface ISplashArtTranslation{
 export interface IIdInfo{
     title:string,
     name:string,
+    traits:string[],
     splashArt:string,
     splashArtScale:number,
     splashArtTranslation:ISplashArtTranslation,
@@ -32,6 +33,7 @@ export interface IIdInfo{
 export class IdInfo implements IIdInfo{
     title:string = "";
     name:string ="";
+    traits:string[] = [];
     splashArt:string ="";
     splashArtScale:number=1;
     splashArtTranslation:ISplashArtTranslation={

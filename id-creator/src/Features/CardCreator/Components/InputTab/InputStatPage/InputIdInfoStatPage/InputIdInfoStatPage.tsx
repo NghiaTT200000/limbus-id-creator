@@ -2,6 +2,9 @@ import React, { useEffect } from "react";
 import { ReactElement } from "react";
 import "../../InputPage.css"
 import "../InputStatPage.css"
+import "./InputIdInfoStatPage.css"
+import TagsInput from "react-tagsinput"
+import "react-tagsinput/react-tagsinput.css"
 import DeleteIcon from "Assets/Icons/DeleteIcon";
 import ArrowDownIcon from "Assets/Icons/ArrowDownIcon";
 import AccordionSection from "Components/AccordionSection/AccordionSection";
@@ -41,6 +44,7 @@ export default function InputIdInfoStatPage({collaspPage}:{collaspPage:()=>void}
         return () => sub.unsubscribe()
     }, [watch, dispatch])
 
+    const traits = watch("traits") ?? []
     const splashArt = watch("splashArt")
     const splashArtScale = watch("splashArtScale")
     const splashArtTranslation = watch("splashArtTranslation")
@@ -121,6 +125,22 @@ export default function InputIdInfoStatPage({collaspPage}:{collaspPage:()=>void}
                 <div className="input-container">
                     <label className="input-label" htmlFor="name">Name: </label>
                     <input type="text" className="input stat-page-input-border" id="name" {...register("name")}/>
+                </div>
+            </div>
+            <div className="input-group-container">
+                <div className="input-container">
+                    <label className="input-label">Traits: </label>
+                    <TagsInput
+                        value={traits}
+                        onChange={(newTags) => setValue("traits", newTags)}
+                        addKeys={[13, 9]}
+                        onlyUnique
+                        maxTags={10}
+                        inputProps={{placeholder: "Add trait..."}}
+                        className="input stat-page-input-border trait-input"
+                        focusedClassName=""
+                        tagProps={{className: "trait-tab"}}
+                    />
                 </div>
             </div>
         </AccordionSection>

@@ -71,7 +71,7 @@ const IdCard=forwardRef<HTMLDivElement,{changeActiveTab:React.Dispatch<React.Set
                         </div>
                         <div className="content-container">
                             <div>
-                                <IdHeader title={idInfoValue.title} name={idInfoValue.name} sinnerColor={idInfoValue.sinnerColor} rarity={idInfoValue.rarity}/>
+                                <IdHeader title={idInfoValue.title} name={idInfoValue.name} sinnerColor={idInfoValue.sinnerColor} rarity={idInfoValue.rarity} traits={idInfoValue.traits ?? []}/>
                             </div>
                             <div className="center-element" style={{height:"100%"}}>
                                 <SkillDetailContainer moveSkill={moveSkill} skillDetails={idInfoValue.skillDetails} draggingHandler={(isDragging)=>setIsDragging(isDragging)} changeActiveTab={changeActiveTab}/>
