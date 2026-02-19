@@ -36,62 +36,122 @@ export default function InputPassivePage({
 
         <AccordionSection title="Passive Requirements">
             <p className="input-label">Sin Own</p>
-                <div className="sin-input-item input-container">
-                    <label className="input-label" htmlFor="wrath_own_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Wrath_big.webp" alt="wrath-input-resistant-icon" /> <span>Wrath</span></label>
-                    <input type="number" className="input stat-page-input-border" {...registerNumber("ownCost.wrath_cost" as any)} id="wrath_own_cost"/>
+            <div className="input-group-container">
+                <div className="input-container center-element-vertically">
+                    <label htmlFor="wrath_own_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Wrath_big.webp" alt="wrath-input-resistant-icon" /></label>
+                    <div className="resistant-content">
+                        <div>
+                            <input type="number" className="input stat-page-input-border input-number" {...registerNumber("ownCost.wrath_cost")} id="wrath_own_cost"/>
+                        </div>
+                    </div>
                 </div>
-                <div className="sin-input-item input-container">
-                    <label className="input-label" htmlFor="lust_own_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Lust_big.webp" alt="lust-input-resistant-icon" /> <span>Lust</span></label>
-                    <input type="number" className="input stat-page-input-border" {...registerNumber("ownCost.lust_cost" as any)} id="lust_own_cost"/>
+                <div className="input-container center-element-vertically">
+                    <label htmlFor="lust_own_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Lust_big.webp" alt="lust-input-resistant-icon" /></label>
+                    <div className="resistant-content">
+                        <div>
+                            <input type="number" className="input stat-page-input-border input-number" {...registerNumber("ownCost.lust_cost")} id="lust_own_cost"/>
+                        </div>
+                    </div>
                 </div>
-                <div className="sin-input-item input-container">
-                    <label className="input-label" htmlFor="sloth_own_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Sloth_big.webp" alt="sloth-input-resistant-icon" /> <span>Sloth</span></label>
-                    <input type="number" className="input stat-page-input-border" {...registerNumber("ownCost.sloth_cost" as any)} id="sloth_own_cost"/>
+                <div className="input-container center-element-vertically">
+                    <label htmlFor="sloth_own_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Sloth_big.webp" alt="sloth-input-resistant-icon" /></label>
+                    <div className="resistant-content">
+                        <div>
+                            <input type="number" className="input stat-page-input-border input-number" {...registerNumber("ownCost.sloth_cost")} id="sloth_own_cost"/>
+                        </div>
+                    </div>
                 </div>
-                <div className="sin-input-item input-container">
-                    <label className="input-label" htmlFor="gluttony_own_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Gluttony_big.webp" alt="gluttony-input-resistant-icon" /> <span>Gluttony</span></label>
-                    <input type="number" className="input stat-page-input-border" {...registerNumber("ownCost.gluttony_cost" as any)} id="gluttony_own_cost"/>
+                <div className="input-container center-element-vertically">
+                    <label htmlFor="gluttony_own_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Gluttony_big.webp" alt="gluttony-input-resistant-icon" /></label>
+                    <div className="resistant-content">
+                        <div>
+                            <input type="number" className="input stat-page-input-border input-number" {...registerNumber("ownCost.gluttony_cost")} id="gluttony_own_cost"/>
+                        </div>
+                    </div>
                 </div>
-                <div className="sin-input-item input-container">
-                    <label className="input-label" htmlFor="gloom_own_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Gloom_big.webp" alt="gloom-input-resistant-icon" /> <span>Gloom</span></label>
-                    <input type="number" className="input stat-page-input-border" {...registerNumber("ownCost.gloom_cost" as any)} id="gloom_own_cost"/>
+                <div className="input-container center-element-vertically">
+                    <label htmlFor="gloom_own_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Gloom_big.webp" alt="gloom-input-resistant-icon" /></label>
+                    <div className="resistant-content">
+                        <div>
+                            <input type="number" className="input stat-page-input-border input-number" {...registerNumber("ownCost.gloom_cost")} id="gloom_own_cost"/>
+                        </div>
+                    </div>
                 </div>
-                <div className="sin-input-item input-container">
-                    <label className="input-label" htmlFor="pride_own_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Pride_big.webp" alt="pride-input-resistant-icon" /> <span>Pride</span></label>
-                    <input type="number" className="input stat-page-input-border" {...registerNumber("ownCost.pride_cost" as any)} id="pride_own_cost"/>
+                <div className="input-container center-element-vertically">
+                    <label htmlFor="pride_own_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Pride_big.webp" alt="pride-input-resistant-icon" /></label>
+                    <div className="resistant-content">
+                        <div>
+                            <input type="number" className="input stat-page-input-border input-number" {...registerNumber("ownCost.pride_cost")} id="pride_own_cost"/>
+                        </div>
+                    </div>
                 </div>
-                <div className="sin-input-item input-container">
-                    <label className="input-label" htmlFor="envy_own_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Envy_big.webp" alt="envy-input-resistant-icon" /> <span>Envy</span></label>
-                    <input type="number" className="input stat-page-input-border" {...registerNumber("ownCost.envy_cost" as any)} id="envy_own_cost"/>
+                <div className="input-container center-element-vertically">
+                    <label htmlFor="envy_own_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Envy_big.webp" alt="envy-input-resistant-icon" /></label>
+                    <div className="resistant-content">
+                        <div>
+                            <input type="number" className="input stat-page-input-border input-number" {...registerNumber("ownCost.envy_cost")} id="envy_own_cost"/>
+                        </div>
+                    </div>
                 </div>
+            </div>
             <p className="input-label">Sin Res</p>
-                <div className="sin-input-item input-container">
-                    <label className="input-label" htmlFor="wrath_res_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Wrath_big.webp" alt="wrath-input-resistant-icon" /> <span>Wrath</span></label>
-                    <input type="number" className="input stat-page-input-border" {...registerNumber("resCost.wrath_cost" as any)} id="wrath_res_cost"/>
-                </div>
-                <div className="sin-input-item input-container">
-                    <label className="input-label" htmlFor="lust_res_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Lust_big.webp" alt="lust-input-resistant-icon" /> <span>Lust</span></label>
-                    <input type="number" className="input stat-page-input-border" {...registerNumber("resCost.lust_cost" as any)} id="lust_res_cost"/>
-                </div>
-                <div className="sin-input-item input-container">
-                    <label className="input-label" htmlFor="sloth_res_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Sloth_big.webp" alt="sloth-input-resistant-icon" /> <span>Sloth</span></label>
-                    <input type="number" className="input stat-page-input-border" {...registerNumber("resCost.sloth_cost" as any)} id="sloth_res_cost"/>
-                </div>
-                <div className="sin-input-item input-container">
-                    <label className="input-label" htmlFor="gluttony_res_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Gluttony_big.webp" alt="gluttony-input-resistant-icon" /> <span>Gluttony</span></label>
-                    <input type="number" className="input stat-page-input-border" {...registerNumber("resCost.gluttony_cost" as any)} id="gluttony_res_cost"/>
-                </div>
-                <div className="sin-input-item input-container">
-                    <label className="input-label" htmlFor="gloom_res_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Gloom_big.webp" alt="gloom-input-resistant-icon" /> <span>Gloom</span></label>
-                    <input type="number" className="input stat-page-input-border" {...registerNumber("resCost.gloom_cost" as any)} id="gloom_res_cost"/>
-                </div>
-                <div className="sin-input-item input-container">
-                    <label className="input-label" htmlFor="pride_res_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Pride_big.webp" alt="pride-input-resistant-icon" /> <span>Pride</span></label>
-                    <input type="number" className="input stat-page-input-border" {...registerNumber("resCost.pride_cost" as any)} id="pride_res_cost"/>
-                </div>
-                <div className="sin-input-item input-container">
-                    <label className="input-label" htmlFor="envy_res_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Envy_big.webp" alt="envy-input-resistant-icon" /> <span>Envy</span></label>
-                    <input type="number" className="input stat-page-input-border" {...registerNumber("resCost.envy_cost" as any)} id="envy_res_cost"/>
+                <div className="input-group-container">
+                    <div className="input-container center-element-vertically">
+                        <label htmlFor="wrath_res_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Wrath_big.webp" alt="wrath-input-resistant-icon" /></label>
+                        <div className="resistant-content">
+                            <div>
+                                <input type="number" className="input stat-page-input-border input-number" {...registerNumber("resCost.wrath_cost")} id="wrath_res_cost"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="input-container center-element-vertically">
+                        <label htmlFor="lust_res_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Lust_big.webp" alt="lust-input-resistant-icon" /></label>
+                        <div className="resistant-content">
+                            <div>
+                                <input type="number" className="input stat-page-input-border input-number" {...registerNumber("resCost.lust_cost")} id="lust_res_cost"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="input-container center-element-vertically">
+                        <label htmlFor="sloth_res_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Sloth_big.webp" alt="sloth-input-resistant-icon" /></label>
+                        <div className="resistant-content">
+                            <div>
+                                <input type="number" className="input stat-page-input-border input-number" {...registerNumber("resCost.sloth_cost")} id="sloth_res_cost"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="input-container center-element-vertically">
+                        <label htmlFor="gluttony_res_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Gluttony_big.webp" alt="gluttony-input-resistant-icon" /></label>
+                        <div className="resistant-content">
+                            <div>
+                                <input type="number" className="input stat-page-input-border input-number" {...registerNumber("resCost.gluttony_cost")} id="gluttony_res_cost"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="input-container center-element-vertically">
+                        <label htmlFor="gloom_res_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Gloom_big.webp" alt="gloom-input-resistant-icon" /></label>
+                        <div className="resistant-content">
+                            <div>
+                                <input type="number" className="input stat-page-input-border input-number" {...registerNumber("resCost.gloom_cost")} id="gloom_res_cost"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="input-container center-element-vertically">
+                        <label htmlFor="pride_res_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Pride_big.webp" alt="pride-input-resistant-icon" /></label>
+                        <div className="resistant-content">
+                            <div>
+                                <input type="number" className="input stat-page-input-border input-number" {...registerNumber("resCost.pride_cost")} id="pride_res_cost"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="input-container center-element-vertically">
+                        <label htmlFor="envy_res_cost"><img className="stat-icon" src="/Images/sin-affinity/affinity_Envy_big.webp" alt="envy-input-resistant-icon" /></label>
+                        <div className="resistant-content">
+                            <div>
+                                <input type="number" className="input stat-page-input-border input-number" {...registerNumber("resCost.envy_cost")} id="envy_res_cost"/>
+                            </div>
+                        </div>
+                    </div>
                 </div>
         </AccordionSection>
 
