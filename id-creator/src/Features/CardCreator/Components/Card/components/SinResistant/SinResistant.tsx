@@ -25,7 +25,7 @@ export default function SinResistant({sinResistant}:{sinResistant:sinResistant})
     }=sinResistant
 
     function changeResistantColor(value:number):string{
-        if(value<=0.75) return "var(--Endure)"
+        if(value<1) return "var(--Endure)"
         if(value>=2.0) return "var(--Fatal)"
         
         return"var(--Normal)"
@@ -33,7 +33,7 @@ export default function SinResistant({sinResistant}:{sinResistant:sinResistant})
 
     function changeResistantText(value:number):string{
         if(value<=0.5) return "Ineff"
-        if(value<=0.75) return "Endure"
+        if(value<1) return "Endure"
         if(value>=2.0) return "Fatal"
         return "Normal"
     }
