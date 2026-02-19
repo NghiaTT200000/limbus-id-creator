@@ -82,7 +82,7 @@ const OffenseSinnerSkill = forwardRef<HTMLDivElement, { offenseSkill: IOffenseSk
                         <div>
                             <div className="coin-container">
                                 {printCoins(coinNo,skillEffect)}
-                                {coinNo > 5 ? `x ${coinNo}` : ""}
+                                {coinNo > 10 ? `x ${coinNo}` : ""}
                             </div>
                             <div className="active-skill-title-container">
                                 <div className="active-skill-title">
