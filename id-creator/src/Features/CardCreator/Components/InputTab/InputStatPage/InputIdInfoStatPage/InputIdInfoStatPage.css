@@ -1,10 +1,18 @@
+.trait-input {
+    padding-top: 8px;
+}
+
+.trait-input .trait-tab{
+    margin-right: 2px;
+}
+
 .trait-input input, .trait-input input::placeholder {
     color: inherit
 }
 
 .trait-input-row{
     display: flex;
-    align-items: stretch;
+    align-items: center;
     gap: 6px;
     width: 100%;
 }
@@ -12,6 +20,10 @@
 .trait-input-row .trait-input{
     flex: 1;
     min-width: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 4px;
 }
 
 .trait-add-btn{
