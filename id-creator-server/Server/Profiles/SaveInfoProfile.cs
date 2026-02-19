@@ -132,6 +132,7 @@ namespace Server.Profiles
                 PierceResistant = src.saveInfo.pierceResistant,
                 BluntResistant = src.saveInfo.bluntResistant,
                 Rarity = src.saveInfo.rarity,
+                Traits = src.saveInfo.traits,
                 SavedSkillId = src.id,
                 Skill = MapNewSkill(src.id, src.saveInfo.skillDetails)
             };
@@ -204,6 +205,7 @@ namespace Server.Profiles
                 pierceResistant = src.PierceResistant,
                 bluntResistant = src.BluntResistant,
                 rarity = src.Rarity,
+                traits = src.Traits,
                 skillDetails = MapSkillRequest(src.Skill)
             };
         }

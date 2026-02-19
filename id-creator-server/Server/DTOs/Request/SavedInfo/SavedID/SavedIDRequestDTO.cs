@@ -18,7 +18,8 @@ namespace Server.DTOs.Requests.SavedInfo.SavedID
         public double pierceResistant { get; set; }
         public double bluntResistant { get; set; }
         public string rarity { get; set; }
-        public List<object> skillDetails { get; set; } 
+        public List<string> traits { get; set; } = [];
+        public List<object> skillDetails { get; set; }
 
         
     }

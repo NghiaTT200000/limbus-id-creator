@@ -64,6 +64,7 @@ namespace Server.Models
         public double PierceResistant { get; set; }
         public double BluntResistant { get; set; }
         public string Rarity { get; set; } = "";
+        public List<string> Traits { get; set; } = [];
 
         [Required]
         [ForeignKey(nameof(SavedSkill))]
