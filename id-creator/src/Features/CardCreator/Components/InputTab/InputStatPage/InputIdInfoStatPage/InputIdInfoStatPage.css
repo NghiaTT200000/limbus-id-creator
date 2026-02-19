@@ -2,6 +2,32 @@
     color: inherit
 }
 
+.trait-input-row{
+    display: flex;
+    align-items: stretch;
+    gap: 6px;
+    width: 100%;
+}
+
+.trait-input-row .trait-input{
+    flex: 1;
+    min-width: 0;
+}
+
+.trait-add-btn{
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 10px;
+    fill: white;
+}
+
+.trait-add-btn:disabled{
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
 .trait-tab{
     color: #b88d00;
     background: #2d150a;

@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { ReactElement } from "react";
 import "../../InputPage.css"
 import "../InputStatPage.css"
 import "./InputIdInfoStatPage.css"
 import TagsInput from "react-tagsinput"
 import "react-tagsinput/react-tagsinput.css"
+import AddIcon from "Assets/Icons/AddIcon"
 import DeleteIcon from "Assets/Icons/DeleteIcon";
 import ArrowDownIcon from "Assets/Icons/ArrowDownIcon";
 import AccordionSection from "Components/AccordionSection/AccordionSection";
@@ -45,6 +46,16 @@ export default function InputIdInfoStatPage({collaspPage}:{collaspPage:()=>void}
     }, [watch, dispatch])
 
     const traits = watch("traits") ?? []
+    const [traitInput, setTraitInput] = useState("")
+
+    function handleAddTrait() {
+        const trimmed = traitInput.trim()
+        if (trimmed && !traits.includes(trimmed) && traits.length < 10) {
+            setValue("traits", [...traits, trimmed])
+            setTraitInput("")
+        }
+    }
+
     const splashArt = watch("splashArt")
     const splashArtScale = watch("splashArtScale")
     const splashArtTranslation = watch("splashArtTranslation")
@@ -129,18 +140,31 @@ export default function InputIdInfoStatPage({collaspPage}:{collaspPage:()=>void}
             </div>
             <div className="input-group-container">
                 <div className="input-container">
-                    <label className="input-label">Traits: </label>
-                    <TagsInput
-                        value={traits}
-                        onChange={(newTags) => setValue("traits", newTags)}
-                        addKeys={[13, 9]}
-                        onlyUnique
-                        maxTags={10}
-                        inputProps={{placeholder: "Add trait..."}}
-                        className="input stat-page-input-border trait-input"
-                        focusedClassName=""
-                        tagProps={{className: "trait-tab"}}
-                    />
+                    <label className="input-label" htmlFor="traits">Traits: ({traits.length}/10)</label>
+                    <div className="trait-input-row">
+                        <TagsInput
+                            value={traits}
+                            onChange={(newTags) => setValue("traits", newTags)}
+                            addKeys={[13, 9]}
+                            onlyUnique
+                            maxTags={10}
+                            inputValue={traitInput}
+                            onChangeInput={setTraitInput}
+                            inputProps={{placeholder: "Add trait...", id: "traits"}}
+                            className="input stat-page-input-border trait-input"
+                            focusedClassName=""
+                            tagProps={{className: "trait-tab"}}
+                        />
+                        <button
+                            type="button"
+                            className="main-button trait-add-btn"
+                            onClick={handleAddTrait}
+                            disabled={traits.length >= 10}
+                            aria-label="Add trait"
+                        >
+                            <AddIcon/>
+                        </button>
+                    </div>
                 </div>
             </div>
         </AccordionSection>
