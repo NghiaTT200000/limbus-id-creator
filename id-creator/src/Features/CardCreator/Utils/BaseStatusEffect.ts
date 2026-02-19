@@ -959,6 +959,15 @@ export const baseStatusEffect={
     "coin_6":
         "<span class='center-element' contenteditable='false'><img class='status-icon' src='/Images/status-effect/Coin_Effect_6.webp' alt='coin-effect-6' /></span>",
     
+    "coin_7":
+        "<span class='center-element' contenteditable='false'><img class='status-icon' src='/Images/status-effect/Coin_Effect_7.webp' alt='coin-effect-7' /></span>",
+    
+    "coin_8":
+        "<span class='center-element' contenteditable='false'><img class='status-icon' src='/Images/status-effect/Coin_Effect_8.webp' alt='coin-effect-8' /></span>",
+    
+    "coin_9":
+        "<span class='center-element' contenteditable='false'><img class='status-icon' src='/Images/status-effect/Coin_Effect_9.webp' alt='coin-effect-9' /></span>",
+
     "coin_1_unbreakable":
         "<span class='center-element' contenteditable='false'><img class='status-icon' src='/Images/status-effect/Coin_Effect_1.webp' alt='coin-effect-1-unbreakable' /> <span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='/Images/Unbreakable_Coin.webp' alt='unbreakable_coin_icon' />Unbreakable Coin</span></span>",
 
@@ -976,6 +985,15 @@ export const baseStatusEffect={
 
     "coin_6_unbreakable":
         "<span class='center-element' contenteditable='false'><img class='status-icon' src='/Images/status-effect/Coin_Effect_6.webp' alt='coin-effect-6-unbreakable' /> <span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='/Images/Unbreakable_Coin.webp' alt='unbreakable_coin_icon' />Unbreakable Coin</span></span>",
+    
+    "coin_7_unbreakable":
+        "<span class='center-element' contenteditable='false'><img class='status-icon' src='/Images/status-effect/Coin_Effect_7.webp' alt='coin-effect-7-unbreakable' /> <span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='/Images/Unbreakable_Coin.webp' alt='unbreakable_coin_icon' />Unbreakable Coin</span></span>",
+    
+    "coin_8_unbreakable":
+        "<span class='center-element' contenteditable='false'><img class='status-icon' src='/Images/status-effect/Coin_Effect_8.webp' alt='coin-effect-8-unbreakable' /> <span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='/Images/Unbreakable_Coin.webp' alt='unbreakable_coin_icon' />Unbreakable Coin</span></span>",
+
+    "coin_9_unbreakable":
+        "<span class='center-element' contenteditable='false'><img class='status-icon' src='/Images/status-effect/Coin_Effect_9.webp' alt='coin-effect-9-unbreakable' /> <span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='/Images/Unbreakable_Coin.webp' alt='unbreakable_coin_icon' />Unbreakable Coin</span></span>",
     
     "coin_1_excision":
         "<span class='center-element' contenteditable='false'><img class='status-icon' src='/Images/status-effect/Coin_Effect_1.webp' alt='coin-effect-1-excision' /> <span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='/Images/Excision_Coin.webp' alt='excision_coin_icon' />Excision Coin</span></span>",
@@ -995,6 +1013,14 @@ export const baseStatusEffect={
     "coin_6_excision":
         "<span class='center-element' contenteditable='false'><img class='status-icon' src='/Images/status-effect/Coin_Effect_6.webp' alt='coin-effect-6-excision' /> <span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='/Images/Excision_Coin.webp' alt='excision_coin_icon' />Excision Coin</span></span>",
 
+    "coin_7_excision":
+        "<span class='center-element' contenteditable='false'><img class='status-icon' src='/Images/status-effect/Coin_Effect_7.webp' alt='coin-effect-7-excision' /> <span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='/Images/Excision_Coin.webp' alt='excision_coin_icon' />Excision Coin</span></span>",
+    
+    "coin_8_excision":
+        "<span class='center-element' contenteditable='false'><img class='status-icon' src='/Images/status-effect/Coin_Effect_8.webp' alt='coin-effect-8-excision' /> <span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='/Images/Excision_Coin.webp' alt='excision_coin_icon' />Excision Coin</span></span>",
+    
+    "coin_9_excision":
+        "<span class='center-element' contenteditable='false'><img class='status-icon' src='/Images/status-effect/Coin_Effect_9.webp' alt='coin-effect-9-excision' /> <span class='center-element' contenteditable='false' style='color:var(--Neutral-color);text-decoration:underline;'><img class='status-icon' src='/Images/Excision_Coin.webp' alt='excision_coin_icon' />Excision Coin</span></span>",
     
     "on_use":
         "<span class='center-element' contenteditable='false' style='color:#26cfff'>[On Use]</span>",
